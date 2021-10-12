@@ -7,7 +7,7 @@
 ## List of Team Members
 | Name | Email | Number |
 | --- | ----------- | ---|
-| Dorsa Tayebipour | ---| ---|
+| Dorsa Tayebipour | dtayebip@ucsd.edu | 310-721-1119 |
 | Jerry Zhang | jcz001@ucsd.edu | 916-747-9790|
 | Jieun Lee | jil167@ucsd.edu | 917-209-2666 | 
 | Justin Nguyen | jdnguyen@ucsd.edu | 949-324-8103 |
