@@ -8,7 +8,7 @@
 2. [Group Identification](#group-identification)
 3. [Primary Means of Communication and Expectations](#primary-means-of-communication-and-expectations)
 4. [Meetings](#meetings)
-5. [Team Expectations](team-expecations)
+5. [Team Expectations](team-expectations)
 6. [Conflict Resolution and Consequences](#conflict-resolution-and-consequences)
 7. [Signing Contract](#signing-contract)
 ---
