@@ -136,7 +136,7 @@ Team members are expected to treat each other with respect. Intentionally disres
 
 2. _I understand that I am now bound to the terms and conditions set forth in this document._
 
-3. _I am responsible for finalizing my general availability. I am agreeing to this availability for future meetings._
+3. _I am responsible for finalizing my general availability. I am agreeing to [this availability](https://docs.google.com/document/d/1-7UpoA8AxCboxE3X76EfwPhj5w-848mOaKB6ba6SUds/edit?usp=sharing) for future meetings._
 
 4. _I understand that if I am required to attend a meeting, I will show up [on time] unless I have provided a 24 hour notice of unavailability._
 
@@ -145,6 +145,10 @@ Team members are expected to treat each other with respect. Intentionally disres
 6. _I am responsible for notifying one of the team leaders, Jieun Lee or Ruby Marroquin, if something is to come up that interferes with my ability to complete assignments and/or meet deadlines._
 
 7. _I understand that I am expected to treat each team member with respect, kindness, and compassion._
+9. _I understand that despite my own opinion(s) or want(s), once the team’s vote has been casted, I cannot and will not stray from the final decision._
+10. _I am aware of and understand the consequences stated above. I also understand that if I do not abide by these terms and conditions set forth in this document, I will suffer the said consequences._
+
+
 
 
 
