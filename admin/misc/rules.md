@@ -3,6 +3,15 @@
 <img src="/admin/mascot.png" alt="mascot" width="600"/>
 
 ---
+## Table of Contents
+1. [List of Team Members](#list-of-team-members)
+2. [Group Identification](#group-identification)
+3. [Primary Means of Communication and Expectations](#primary-means-of-communication-and-expectations)
+4. [Meetings](#meetings)
+5. [Team Expectations](team-expecations)
+6. [Conflict Resolution and Consequences](#conflict-resolution-and-consequences)
+7. [Signing Contract](#signing-contract)
+---
 
 ## List of Team Members
 | Name | Email | Number |
@@ -118,6 +127,32 @@ If for any reason a team member continues to fail their obligations or breach th
 When team conflict arises for minor reasons (e.g., feature request, specific fonts), the team will meet as a group to figure out what the issue is. Afterwards, if needed, the team will take a vote on what to do to resolve the issue. Once a vote has been made on an issue of this type, the team member(s) involved are prohibited from straying from the results of the vote. Meaning, if the vote is not what they wanted it to be, despite what they want, they must fulfill their tasks based on the final team’s vote. Failure to do so is an infraction of the team rules and contract and there will be consequences. 
 
 Team members are expected to treat each other with respect. Intentionally disrespecting a team member will not be tolerated and should be reported to team leaders immediately so that they can take the proper steps necessary. 
+
+---
+
+## Signing Contract
+
+1. _I am agreeing that I participated in the creation of this contract and all of its rules, agreements, responsibilities, expectations, consequences, and procedures._
+
+2. _I understand that I am now bound to the terms and conditions set forth in this document._
+
+3. _I am responsible for finalizing my general availability. I am agreeing to this availability for future meetings._
+
+4. _I understand that if I am required to attend a meeting, I will show up [on time] unless I have provided a 24 hour notice of unavailability._
+
+5. _I am agreeing that I have access to the team’s github repository and organization. I am also agreeing that I have verified my admin privileges in the repository._
+
+6. _I am responsible for notifying one of the team leaders, Jieun Lee or Ruby Marroquin, if something is to come up that interferes with my ability to complete assignments and/or meet deadlines._
+
+7. _I understand that I am expected to treat each team member with respect, kindness, and compassion._
+
+
+
+### _SIGN AND DATE HERE_
+<br><br>
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
