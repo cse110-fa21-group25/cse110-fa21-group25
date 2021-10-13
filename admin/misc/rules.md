@@ -136,7 +136,7 @@ Team members are expected to treat each other with respect. Intentionally disres
 
 2. _I understand that I am now bound to the terms and conditions set forth in this document._
 
-3. _I am responsible for finalizing my general availability. I am agreeing to [this availability](https://docs.google.com/document/d/1-7UpoA8AxCboxE3X76EfwPhj5w-848mOaKB6ba6SUds/edit?usp=sharing) for future meetings._
+3. _I am responsible for finalizing my general availability. I am agreeing to [this availability](https://www.when2meet.com/?13236153-6UH6Y) for future meetings._
 
 4. _I understand that if I am required to attend a meeting, I will show up [on time] unless I have provided a 24 hour notice of unavailability._
 
