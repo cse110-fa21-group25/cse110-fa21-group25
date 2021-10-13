@@ -1,5 +1,5 @@
 # Runtime Terror
-<img src="mascot.png" alt="mascot" width="300"/>
+<img src="branding/mascot.png" alt="mascot" width="300"/>
 description of our team?
 
 
