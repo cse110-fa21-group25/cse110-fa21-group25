@@ -1,6 +1,6 @@
 # Runtime Terror's Team Working Contract
 ### CSE 110 - Fall 2021
-<img src="/admin/mascot.png" alt="mascot" width="600"/>
+<img src="/admin/branding/mascot.png" alt="mascot" width="600"/>
 
 ---
 ## Table of Contents
@@ -32,10 +32,10 @@
 ## Group Identification
 - **Team Name:** Runtime Terror
 - **Team Mascot:** 
-<img src="/admin/mascot.png" alt="mascot" width="200"/>
+<img src="/admin/branding/mascot.png" alt="mascot" width="200"/>
 
 - **Team Color Scheme:** 
-<img src = "/admin/colors.png" alt="colors" width="200"/>
+<img src = "/admin/branding/colors.png" alt="colors" width="200"/>
 
 ---
 
