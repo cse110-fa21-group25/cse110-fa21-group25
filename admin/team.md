@@ -1,12 +1,16 @@
 # Runtime Terror
-
 <img src="mascot.png" alt="mascot" width="300"/>
+description of our team?
 
 
 ## Meetings
 - Mondays 9PM - 10PM 
 - Wednesdays 5PM - 6PM 
 - Saturdays 12:30PM - 1:30PM 
+
+<em>Note: Meetings may be skipped depending on workload (e.g., all assignments have already been completed) or if there is no purpose/reason for a meeting to take place. </em>
+
+
 
 
 ## Members
