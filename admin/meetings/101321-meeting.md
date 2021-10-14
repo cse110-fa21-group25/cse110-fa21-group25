@@ -50,6 +50,7 @@ Notes:
 
 ## Action Plan 
 - All members: Record short video (no more than 15 seconds) of yourself for group video. Once finished, send video to Pranav. 
+- All members: Edit the team.md (Team Github Page) to include your description/information about you. 
 - Yoomin: Sign and submit contract to repository. 
 - Jieun: Submit screenshot of group hangout session. 
 - Ruby: Publish meeting minutes and submit screenshot of admin/misc/ once all members have submitted their contract. 
