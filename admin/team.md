@@ -1,7 +1,10 @@
 # Runtime Terror
 <img src="branding/mascot.png" alt="mascot" width="300"/>
-description of our team?
 
+### Description
+Our team name is "Runtime Terror" we are a diverse group of students focused on studying software engineering skills and gaining practical industry experience through project coursework and exploration. Our brand image/mascot is an image of a scared hamster representing the "terror" of poorly written programs with high runtime. Our team colors can be found under /admin/branding and the color scheme was chosen with the image of a cheetah in mind with blacks, yellows, and oranges. As a team we value punctuality, respect for one another, and proper communication skills.
+
+---
 
 ## Meetings
 - Mondays 9PM - 10PM 
@@ -10,10 +13,10 @@ description of our team?
 
 <em>Note: Meetings may be skipped depending on workload (e.g., all assignments have already been completed) or if there is no purpose/reason for a meeting to take place. </em>
 
+---
 
 
-
-## Members
+## Team Roster
 - [Ruby Marroquin](https://github.com/rubycmarroquin)
 - [Jieun Lee](https://github.com/JinnnyWinnny)
 - [Quoc-Zuy Do](https://github.com/QuocVDo)
@@ -24,3 +27,13 @@ description of our team?
 - [Ting-Yun Yeh](https://github.com/Lilith-Schreiber)
 - [Yoomin Oh](https://github.com/Yoomin99)
 - [Dorsa Tayebipour](https://github.com/Dorsa-lucky)
+
+---
+
+## About Us
+
+**Quoc-Zuy Do:** I'm a third year computer engineering major interested in web-dev and general software engineering. I am most familair with C or C++, but I am also proficient in Java, Arduino C, and Python to some extent (MATLAB too if you count that!).
+
+
+
+---
