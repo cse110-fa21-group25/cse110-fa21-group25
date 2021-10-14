@@ -32,8 +32,8 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 ## About Us
 
-**Quoc-Zuy Do:** I'm a third year computer engineering major interested in web-dev and general software engineering. I am most familair with C or C++, but I am also proficient in Java, Arduino C, and Python to some extent (MATLAB too if you count that!).
+**Quoc-Zuy Do:** I'm a third year computer engineering major interested in web-dev and general software engineering. I am most familiar with C or C++, but I am also proficient in Java, Arduino C, and Python to some extent (MATLAB too if you count that!).
 
-
+**Justin Nguyen:** I'm a third year computer science major interested in general software engineering. I am most familiar with Java, Python, and JavaScript. During my free time, I enjoy running, surfing, and watching movies/TV.
 
 ---
