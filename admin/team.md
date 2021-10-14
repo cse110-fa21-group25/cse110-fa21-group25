@@ -40,4 +40,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Dorsa Tayebipour:** I'm fourth year computer engineering major interested in software engineering. I'm familiar with C, C++, Java and Python. 
 
+**Jieun Lee:** I'm a fourth year computer science major interested in software engineering and web development. I am skilled in C++, Java, Python, HTML, JS, and CSS. 
+
 ---
