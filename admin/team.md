@@ -38,4 +38,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Yoomin Oh:** I'am a second year trasnfer student and computer science major interested in machine learning, Blockchain, and cryptocurrency. I feel comfortable to use C++, python, and matlab. 
 
+**Dorsa Tayebipour:** I'm fourth year computer engineering major interested in software engineering. I'm familiar with C, C++, Java and Python. 
+
 ---
