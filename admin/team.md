@@ -36,4 +36,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Justin Nguyen:** I'm a third year computer science major interested in general software engineering. I am most familiar with Java, Python, and JavaScript. During my free time, I enjoy running, surfing, and watching movies/TV.
 
+**Yoomin Oh:** I'am a second year trasnfer student and computer science major interested in machine learning, Blockchain, and cryptocurrency. I feel comfortable to use C++, python, and matlab. 
+
 ---
