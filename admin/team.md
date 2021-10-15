@@ -42,4 +42,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Jieun Lee:** I'm a fourth year computer science major interested in software engineering and web development. I am skilled in C++, Java, Python, HTML, JS, and CSS. 
 
+**Jerry Zhang:** I'm a third year computer engineering major interested in machine learning and software engineering. I know Python, C/C++, and Java. In my free time I enjoy reading and hanging out with people (doing whatever).
+
 ---
