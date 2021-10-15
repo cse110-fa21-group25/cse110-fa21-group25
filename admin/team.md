@@ -48,6 +48,6 @@ Our team name is "Runtime Terror." We are a diverse group of students focused on
 
 **Ting-Yun Yeh:** I'm a second year transfer student, majoring in Math - CS, interested in cryptography, network, security, blockchain, cloud, web, econ. I know C++ (most familiar), Python, HTML/CSS, and x86 Assembly Language. I am an amateur translator, translating among Mandarin, English, Japanese, and German. Anime Fan
 
-**Pranav Janjam:** I'm a third year math-computer science student interested in full-stack software engineering. I am most familiar with Java, Python, C, C++, and HTML/CSS. In my free time, I enjoy playing and watching sports, as well as listening to music and going to concerts.
+**Pranav Janjam:** I'm a third year math-computer science major interested in full-stack software engineering. I am most familiar with Java, Python, C, C++, and HTML/CSS. In my free time, I enjoy playing and watching sports, as well as listening to music and going to concerts.
 
 ---
