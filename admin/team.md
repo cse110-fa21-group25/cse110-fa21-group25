@@ -46,4 +46,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Reyner Santonius:** I'm a fourth year computer science major, music minor, interested in software engineering. Python and C++ are my go-to languages, but I'm also familiar with Java, C and JavaScript. I like to exercise on a regular basis and play music in my free time.
 
+**Ting-Yun Yeh:** I'm a second year transfer student, majoring in Math - CS, interested in cryptography, network, security, blockchain, cloud, web, econ. I know C++ (most familiar), Python, HTML/CSS, and x86 Assembly Language. I am an amateur translator, translating among Mandarin, English, Japanese, and German. Anime Fan
+
 ---
