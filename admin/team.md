@@ -44,4 +44,6 @@ Our team name is "Runtime Terror" we are a diverse group of students focused on 
 
 **Jerry Zhang:** I'm a third year computer engineering major interested in machine learning and software engineering. I know Python, C/C++, and Java. In my free time I enjoy reading and hanging out with people (doing whatever).
 
+**Reyner Santonius:** I'm a fourth year computer science major, music minor, interested in software engineering. Python and C++ are my go-to languages, but I'm also familiar with Java, C and JavaScript. I like to exercise on a regular basis and play music in my free time.
+
 ---
