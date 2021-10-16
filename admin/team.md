@@ -50,4 +50,6 @@ Our team name is "Runtime Terror." We are a diverse group of students focused on
 
 **Pranav Janjam:** I'm a third year math-computer science major interested in full-stack software engineering. I am most familiar with Java, Python, C, C++, and HTML/CSS. In my free time, I enjoy playing and watching sports, as well as listening to music and going to concerts.
 
+**Ruby Marroquin:** I'm a transfer student from Los Angeles Harbour College. I'm a senior majoring in Computer Science and minoring in Cognitive Science. I am interested in Mobile Development and software engineering. The languages I am proficient in are JAVA, C/C++, Python/R, and HTML/CSS. I like to watch anime, play video games, and eat tacos.  
+
 ---
