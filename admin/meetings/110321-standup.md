@@ -7,7 +7,6 @@
 - Minutes Taker: Ruby Marroquin
 
 ## Members Present 
-- Jerry Zhang
 - Pranav Janjam
 - Reyner Santonius
 - Ruby Marroquin
@@ -19,6 +18,7 @@
 ## Members Absent 
 - Quoc-zuy Do
 - Jieun Lee (Jenny)
+- Jerry Zhang
 
 ## Meeting Agenda
 1. Weekly Standup
