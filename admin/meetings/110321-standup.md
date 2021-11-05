@@ -65,6 +65,13 @@ Notes:
 - Cora added that she would not have gave our team the option to present had she thought we were not ready, meaning that she believes our team is prepared. 
 - Pranav asked a question regarding the rabbit hole and risks slides. He asked whether the team specific risks/rabbit holes should be removed from the slides or kept? 
   - Cora stated that we could keep them there but the main point that she wanted to see were the risks associated with the features that we plan on implementing. 
+- Ruby asked Cora what software will the team be able to use for the actual representation?
+  - Cora suggested implementing code in local storage to begin with. 
+  - Cora expressed that if we are not familiar with certain databases, software, frameworks that we should avoid them. The reason for this is because the team will end up spending more time trying to figure it out rather than implementing. 
+  - Cora also stated that the professor wants students to specifically want to stay away from Firebase and REACT.
+    - However, if the team did decide to continue using it, we would need to present a case supporting that we are fully capable of using it and knowledgeable in it. 
+  - Justin followed up with a question if the team will be able to use express? 
+    - Cora stated that it would be fine. 
 - The meeting ended at 5:13PM. 
    
 ## Unfinished Business
