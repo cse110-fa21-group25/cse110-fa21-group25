@@ -1,18 +1,18 @@
 # Login Feature
 
-* Status: {accepted}
-* Deciders: {Dorsa, Quoc, Ruby, Ting-Yun, Jerry, Justin, Reyner, Yoomin, Jenny} <!-- optional -->
-* Date: {2021-11-6} 
+* Status: accepted
+* Deciders: Dorsa, Quoc, Ruby, Ting-Yun, Jerry, Justin, Reyner, Yoomin, Jenny <!-- optional -->
+* Date: 2021-11-6
 
 
 ## Context and Problem Statement
 
-{We need to decide how recipe management works. Proposed solution was to make a login feature that would tie recipe management to a personal user account}
+We need to decide how recipe management works. Proposed solution was to make a login feature that would tie recipe management to a personal user account
 
 ## Considered Options
 
-* {No login feature - anyone can create/update/delete recipes. This is rejected for obvious reasons}
-* {Browse recipes without needing to make an account, but creating a recipe must be tied to an account so only the owner of that recipe can update/delete that recipe at a later date}
+* No login feature - anyone can create/update/delete recipes. This is rejected for obvious reasons
+* Browse recipes without needing to make an account, but creating a recipe must be tied to an account so only the owner of that recipe can update/delete that recipe at a later date
 
 
 ## Decision Outcome
