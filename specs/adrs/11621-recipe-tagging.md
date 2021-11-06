@@ -1,4 +1,4 @@
-# {short title of solved problem and solution}
+# Recipe Tagging
 
 * Status: proposed 
 * Date: 2021-11-06
