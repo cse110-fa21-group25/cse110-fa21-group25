@@ -23,12 +23,12 @@ Chosen option: Option 1
 
 ## Pros and Cons of Option 1 
 
-**Pros:** Allows an easy way to associate a recipe and who has permision to create/modify/recipes. Allows us also to give credit to however is creating a recipe and see recipes associated with a user's account.
+**Pros:** Allows an easy way to filter recipes by tag.
 
-**Cons:** We now have to work on back end design that will safely store user data. Further decisions may be necessary on how this is done.
+**Cons:** Each recipe will be required to have a tag. Users will have to choose a tag from a list of preset tags whenever creating or editing a recipe.
 
 ## Pros and Cons of Option 2
 
-**Pros:** Allows an easy way to associate a recipe and who has permision to create/modify/recipes. Allows us also to give credit to however is creating a recipe and see recipes associated with a user's account.
+**Pros:** User does not have to choose a tag whenever creating or editing a recipe.
 
-**Cons:** We now have to work on back end design that will safely store user data. Further decisions may be necessary on how this is done.
+**Cons:** When filtering by tag, recipes that do not have a tag will be left out.
