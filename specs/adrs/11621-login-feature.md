@@ -1,4 +1,4 @@
-# {Login Feature}
+# Login Feature
 
 * Status: {accepted}
 * Deciders: {Dorsa, Quoc, Ruby, Ting-Yun, Jerry, Justin, Reyner, Yoomin, Jenny} <!-- optional -->
