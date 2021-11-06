@@ -7,63 +7,28 @@
 
 We want recipes to have tags that can be used for filtering recipes, so that users can easily filter recipes based on tag(s).
 
-## Decision Drivers <!-- optional -->
-
-* {driver 1, e.g., a force, facing concern, …}
-* {driver 2, e.g., a force, facing concern, …}
-* … <!-- numbers of drivers can vary -->
-
 ## Considered Options
 
-* {option 1}
-* {option 2}
-* {option 3}
-* … <!-- numbers of options can vary -->
+* At least one tag required for each recipe
+* Tags optional for each recipe
 
 ## Decision Outcome
 
-Chosen option: "{option 1}", because {justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
+Chosen option: Option 1 
 
-### Positive Consequences <!-- optional -->
+## Reasons for Choosing Option 1 
 
-* {e.g., improvement of quality attribute satisfaction, follow-up decisions required, …}
-* …
+* Filtering by tag is a feature that we want to implement, so if a recipe does not have a tag, that recipe would never show up when filtering by tag.
+* Allowing the user to filter by tag makes it easier to find whatever recipe they are looking for.
 
-### Negative Consequences <!-- optional -->
+## Pros and Cons of Option 1 
 
-* {e.g., compromising quality attribute, follow-up decisions required, …}
-* …
+**Pros:** Allows an easy way to associate a recipe and who has permision to create/modify/recipes. Allows us also to give credit to however is creating a recipe and see recipes associated with a user's account.
 
-## Pros and Cons of the Options <!-- optional -->
+**Cons:** We now have to work on back end design that will safely store user data. Further decisions may be necessary on how this is done.
 
-### {option 1}
+## Pros and Cons of Option 2
 
-{example | description | pointer to more information | …} <!-- optional -->
+**Pros:** Allows an easy way to associate a recipe and who has permision to create/modify/recipes. Allows us also to give credit to however is creating a recipe and see recipes associated with a user's account.
 
-* Good, because {argument a}
-* Good, because {argument b}
-* Bad, because {argument c}
-* … <!-- numbers of pros and cons can vary -->
-
-### {option 2}
-
-{example | description | pointer to more information | …} <!-- optional -->
-
-* Good, because {argument a}
-* Good, because {argument b}
-* Bad, because {argument c}
-* … <!-- numbers of pros and cons can vary -->
-
-### {option 3}
-
-{example | description | pointer to more information | …} <!-- optional -->
-
-* Good, because {argument a}
-* Good, because {argument b}
-* Bad, because {argument c}
-* … <!-- numbers of pros and cons can vary -->
-
-## Links <!-- optional -->
-
-* {Link type} {Link to ADR} <!-- example: Refined by [ADR-0005](0005-example.md) -->
-* … <!-- numbers of links can vary -->
+**Cons:** We now have to work on back end design that will safely store user data. Further decisions may be necessary on how this is done.
