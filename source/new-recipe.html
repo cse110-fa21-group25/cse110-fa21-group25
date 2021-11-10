@@ -5,6 +5,7 @@
         <title>New Recipe</title>
         <!-- TODO: Temporary Icon -->
         <link rel="icon" href="icon.png">
+        <script src="./assets/scripts/recipe-form.js" type="module"></script>
     </head>
     <body>
         <header>
@@ -21,13 +22,20 @@
 
                 <label>Ingredients</label>
                 <section name="ingredients">
-                    <!-- TODO: Populate with JavaScript?-->
+                    
+                    <div class="ingredients_field">
+                        <div><input type="text" name="ingredient"></div>
+                    </div>
+                    <button id="add_ingredient" type="button">Add Ingredient</button>
+                    <button id="remove_ingredient" type="button">Remove Ingredient</button>
+
                 </section>
                 <br><br>
 
                 <label>Steps</label>
                 <section name="steps">
                     <!-- same as above -->
+                    
                 </section>
                 <br><br>
 
