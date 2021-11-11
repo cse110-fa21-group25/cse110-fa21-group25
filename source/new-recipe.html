@@ -9,33 +9,56 @@
     </head>
     <body>
         <header>
+            <h1> Create New Recipe</h1>
         </header>
         <main>
             <form>
-                <label>Title:</label>
-                <input type="text">
+                <label> My Recipe Title:</label>
+                <input type="text" class="recipe-title">
                 <br><br>
                 
                 <label>Tags:</label>
-                <!-- TODO: Multi-select -->
+                <select class="tags">
+                    <option value="0">Select Tags:</option>
+                    <option value="1">Healthy</option>
+                    <option value="2">Easy</option>
+                    <option value="3">Quick</option>
+                    <option value="4">Dinner</option>
+                    <option value="5">Lunch</option>
+                </select>
+                
                 <br><br>
 
                 <label>Ingredients</label>
                 <section name="ingredients">
                     
-                    <div class="ingredients_field">
-                        <div><input type="text" name="ingredient"></div>
+                    <div class="ingredients-field">
+                        <div>
+                            <input type="text" class="ingredient" placeholder="Ingredient Name">
+                            <input type="text" class="quantity" placeholder="Quantity">
+                        </div>
+                        
                     </div>
-                    <button id="add_ingredient" type="button">Add Ingredient</button>
-                    <button id="remove_ingredient" type="button">Remove Ingredient</button>
+                    <button id="add-ingredient" type="button">Add Ingredient</button>
+                    <button id="remove-ingredient" type="button">Remove Ingredient</button>
 
                 </section>
                 <br><br>
 
-                <label>Steps</label>
+                <label>Steps:</label>
                 <section name="steps">
                     <!-- same as above -->
-                    
+                    <div class="recipe-steps">
+                        <div>
+                            <label>1.</label>
+                            <textarea class="steps" style="height:70px; width:300px; vertical-align: middle" 
+                            placeholder='Add the first step of creating your recipe here!'></textarea>
+                        </div>
+                        
+                    </div>
+                    <button id="add-step" type="button">Add Step</button>
+                    <button id="remove-step" type="button">Remove Step</button>
+
                 </section>
                 <br><br>
 
@@ -43,7 +66,8 @@
                 <input type="file" accept="image/png, image/jpeg">
                 <br><br>
 
-                <input type="submit">
+                <input type="submit" id="submit-recipe">
+                <button type='button' id='cancel'>Cancel</button>
             </form>
         </main>
         <footer>
