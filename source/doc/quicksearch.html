@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body style="background: transparent;">
+    <script src="scripts/docstrap.lib.js"></script>
+    <script src="scripts/lunr.min.js"></script>
+    <script src="scripts/fulltext-search.js"></script>
+
+    <script type="text/x-docstrap-searchdb">
+    {"recipe-form.js.html":{"id":"recipe-form.js.html","title":"Source: recipe-form.js","body":" DocStrap Global add_ingredientadd_stepremove_ingredientremove_step Source: recipe-form.js function init() { //Add event listener for \"Add Ingredient\" Button Press const add_ingredient_button = document.querySelector(\"#add-ingredient\"); add_ingredient_button.addEventListener(\"click\", add_ingredient); const remove_ingr_button = document.querySelector(\"#remove-ingredient\"); remove_ingr_button.addEventListener(\"click\", remove_ingredient); const add_step_button = document.querySelector(\"#add-step\"); add_step_button.addEventListener(\"click\", add_step); const remove_step_button = document.querySelector(\"#remove-step\"); remove_step_button.addEventListener(\"click\", remove_step); } window.addEventListener(\"DOMContentLoaded\", init); /** * Function to append a new input to the Ingredients part of the form. * On button click, a new Ingredient form will appear along with its * corresponding input fields. */ function add_ingredient() { //Create HTML elements const newField = document.createElement(\"div\"); const newIngredient = document.createElement(\"input\"); const newQuantity = document.createElement(\"input\"); //Populate Input Fields newIngredient.type = \"text\"; newQuantity.type = \"text\"; //set classes newIngredient.className = \"ingredient\"; newQuantity.className = \"quantity\"; //Append to HTML doc newField.appendChild(newIngredient); newField.appendChild(newQuantity); document.querySelector(\".ingredients-field\").appendChild(newField); } /** * Just removes the last element (bottom-most) from the Ingredients input * fields. You can remove any of the HTML elements added but not the first one. */ function remove_ingredient() { //Return without doing anything if there is only one element if (document.querySelector(\".ingredients-field\").childElementCount === 1) { return; } let remove = document.querySelector(\".ingredients-field\"); remove.removeChild(remove.lastChild); } /** * Dynamically adds additional steps to the HTML document. */ function add_step() { //Create HTML elements const newField = document.createElement(\"div\"); const label = document.createElement(\"label\"); const newStep = document.createElement(\"textarea\"); const parentDiv = document.querySelector(\".recipe-steps\"); //Set the step label to be the number of \"steps\" fields there will be. label.textContent = (parentDiv.childElementCount + 1) + \".\"; //Adjust some basic styles for the textarea element newStep.style.height = \"70px\"; newStep.style.width = \"300px\"; newStep.style.verticalAlign = \"middle\"; //Append HTMl elements to DOM newField.appendChild(label); newField.appendChild(newStep); document.querySelector(\".recipe-steps\").appendChild(newField); } /** * Just removes the last element (bottom-most) from the Steps input fields. * You can remove any of the HTML elements added but not the first one. */ function remove_step() { //Return without doing anything if there is only one element if (document.querySelector(\".recipe-steps\").childElementCount === 1) { return; } let remove = document.querySelector(\".recipe-steps\"); remove.removeChild(remove.lastChild); } × Search results Close "},"global.html":{"id":"global.html","title":"Global","body":" DocStrap Global add_ingredientadd_stepremove_ingredientremove_step Global Methods add_ingredient() Function to append a new input to the Ingredients part of the form. On button click, a new Ingredient form will appear along with its corresponding input fields. Source: recipe-form.js, line 24 add_step() Dynamically adds additional steps to the HTML document. Source: recipe-form.js, line 62 remove_ingredient() Just removes the last element (bottom-most) from the Ingredients input fields. You can remove any of the HTML elements added but not the first one. Source: recipe-form.js, line 48 remove_step() Just removes the last element (bottom-most) from the Steps input fields. You can remove any of the HTML elements added but not the first one. Source: recipe-form.js, line 87 × Search results Close "},"index.html":{"id":"index.html","title":"Index","body":" DocStrap Global add_ingredientadd_stepremove_ingredientremove_step × Search results Close "}}
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Searcher.init();
+        });
+
+        $(window).on("message", function(msg) {
+            var msgData = msg.originalEvent.data;
+
+            if (msgData.msgid != "docstrap.quicksearch.start") {
+                return;
+            }
+
+            var results = Searcher.search(msgData.searchTerms);
+
+            window.parent.postMessage({"results": results, "msgid": "docstrap.quicksearch.done"}, "*");
+        });
+    </script>
+</body>
+</html>

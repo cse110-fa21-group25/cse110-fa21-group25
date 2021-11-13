@@ -16,7 +16,7 @@ function init() {
 window.addEventListener("DOMContentLoaded", init);
 
 
-/*
+/**
  *  Function to append a new input to the Ingredients part of the form.
  *  On button click, a new Ingredient form will appear along with its
  *  corresponding input fields.
@@ -41,7 +41,7 @@ function add_ingredient() {
     document.querySelector(".ingredients-field").appendChild(newField);
 }
 
-/*
+/**
  * Just removes the last element (bottom-most) from the Ingredients input
  * fields. You can remove any of the HTML elements added but not the first one.
  */
@@ -56,7 +56,7 @@ function remove_ingredient() {
     remove.removeChild(remove.lastChild);
 }
 
-/*
+/**
  * Dynamically adds additional steps to the HTML document.
  */
 function add_step() {
@@ -80,7 +80,7 @@ function add_step() {
     document.querySelector(".recipe-steps").appendChild(newField);
 }
 
-/*
+/**
  * Just removes the last element (bottom-most) from the Steps input fields.
  * You can remove any of the HTML elements added but not the first one.
  */
