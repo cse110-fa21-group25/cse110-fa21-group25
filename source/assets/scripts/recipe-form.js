@@ -3,12 +3,15 @@ function init() {
     const add_ingredient_button = document.querySelector("#add-ingredient");
     add_ingredient_button.addEventListener("click", add_ingredient);
 
+    //Add event listener for "Remove Ingredient" Button Press
     const remove_ingr_button = document.querySelector("#remove-ingredient");
     remove_ingr_button.addEventListener("click", remove_ingredient);
 
+    //Add event listneer for "Add Step" Button Press
     const add_step_button = document.querySelector("#add-step");
     add_step_button.addEventListener("click", add_step);
 
+    //Add event listener for "Remove Step" Button Press
     const remove_step_button = document.querySelector("#remove-step");
     remove_step_button.addEventListener("click", remove_step);
 
