@@ -31,23 +31,61 @@ function buildJSON(event) {
     event.preventDefault();
     console.log("building JSON");
     
-    //Query select all the "input" elements within #recipeForm, make an array out of it  
-    // in order to run reduce on it
-    const recipeInput = Array.from(document.querySelectorAll("#recipeForm input"));
-   
-    //Take all the inputs and make it a key value pair
-    const formattedInputs  = recipeInput.reduce((acc,input) => ({...acc,[input.id]: input.value}), {});
-    console.log(formattedInputs);
+    //Query select all the "input" elements within .ingredients-field, make an array out of it  
+    // in order to run reduce on it and scrape out the necessary data.
+    const recipeInput = Array.from(document.querySelectorAll(".ingredients-field input"));
 
-    //Take all the "textarea" elements within #recipeFor, repeat the above steps
-    const recipeTextArea = Array.from(document.querySelectorAll("#recipeForm textarea"));
-    const formattedTextArea = recipeTextArea.reduce((acc,textarea) => 
+    //Take all the inputs and make it a key value pair, then format the ingredients list as the JSON expects
+    const formattedIngredients  = recipeInput.reduce((acc,input) => ({...acc,[input.id]: input.value}), {});
+    let ingredientArray = [];
+    for(const currIngred in formattedIngredients) {
+        ingredientArray.push(formattedIngredients[currIngred]);
+    }
+
+    //Take all the "textarea" elements within .recipeSteps, scrape the necessary data. 
+    //Then build a string int he format that the JSON schema expects
+    const recipeTextArea = Array.from(document.querySelectorAll(".recipe-steps textarea"));
+    const formattedSteps = recipeTextArea.reduce((acc,textarea) => 
         ({...acc,[textarea.id]: textarea.value}), {});
-    console.log(formattedTextArea);
+    let stepString = "";
+    for (const currStep in formattedSteps) {
+        stepString += (formattedSteps[currStep] + ";");
+    }
+    
+    //remove the extra semicolon
+    let completedSteps = stepString.slice(0,-1);
+
+    //get the cooktime and convert it to the right format ISO 8601 Duration format
+    let numHours = document.querySelector("#num-hours").value;
+    let numMinutes = document.querySelector("#num-minutes").value * 5;
+    let cookTime;
+    if (numHours == 0 && numMinutes != 0) {
+        cookTime = "PT" + numMinutes + "M";
+    }
+    else if(numHours != 0 && numMinutes == 0) {
+        cookTime = "PT" + numHours + "H";
+    }
+    else if(numHours == 0 && numMinutes == 0) {
+        alert("Cook Time cannot be Blank!");
+    }
+    else {
+        cookTime = "PT" + numHours + "H" + numMinutes + "M";
+    }
+
+    //Start building JSON string first from object, fill out the obvious form
+    let object = {};
+    object.description = document.querySelector("#description").value;
+    object.name = document.querySelector("#recipe-title").value;
+    object.datePublished = new Date();
+    object.cookTime = cookTime;
+    object.recipeIngredient = ingredientArray;
+    object.recipeInstructions = completedSteps;
+    
+    //Use JSON stringify to create json string from object.
+    let jsonString = JSON.stringify(object);
+    console.log(jsonString);
     
 }    
-
-
 
 
 /**
@@ -59,19 +97,22 @@ function add_ingredient() {
     //Create HTML elements
     const newField = document.createElement("div");
     const newIngredient = document.createElement("input");
-    const newQuantity = document.createElement("input");
-
+ 
     //Populate Input Fields
     newIngredient.type = "text";
-    newQuantity.type = "text";
 
     //set classes
     newIngredient.className = "ingredient";
-    newQuantity.className = "quantity";
 
+
+    // set unique id's, the name of the ingredient is ingredient + number of children
+    // the parent div will have after these elements are added.
+    let idNum = document.querySelector(".ingredients-field").childElementCount + 1;
+    newIngredient.id = "ingredient" + idNum;
+
+    
     //Append to HTML doc
     newField.appendChild(newIngredient);
-    newField.appendChild(newQuantity);
     document.querySelector(".ingredients-field").appendChild(newField);
 }
 
@@ -107,6 +148,10 @@ function add_step() {
     newStep.style.height = "70px";
     newStep.style.width = "300px";
     newStep.style.verticalAlign = "middle";
+
+    //Add unique id's to the textareas, the id is "step" and the step number
+    let idNum = document.querySelector(".recipe-steps").childElementCount + 1;
+    newStep.id = "step" + idNum;
 
     //Append HTMl elements to DOM
     newField.appendChild(label);
