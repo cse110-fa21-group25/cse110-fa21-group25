@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 /**
  *  Function to build the JSON from the HTML form data.
- *  @param {event} event - The event that the event listener returns.
+ *  @param {event} event - The "submit" event that the event listener returns.
  */
 function buildJSON(event) {
     //prevent submit button from refreshing the page.
@@ -35,7 +35,8 @@ function buildJSON(event) {
     // in order to run reduce on it and scrape out the necessary data.
     const recipeInput = Array.from(document.querySelectorAll(".ingredients-field input"));
 
-    //Take all the inputs and make it a key value pair, then format the ingredients list as the JSON expects
+    //Take all the inputs and make it a key value pair, scrape the necessary data.
+    //Then build an array of strings with the ingredients as the entries.
     const formattedIngredients  = recipeInput.reduce((acc,input) => ({...acc,[input.id]: input.value}), {});
     let ingredientArray = [];
     for(const currIngred in formattedIngredients) {
@@ -72,7 +73,18 @@ function buildJSON(event) {
         cookTime = "PT" + numHours + "H" + numMinutes + "M";
     }
 
-    //Start building JSON string first from object, fill out the obvious form
+    //Get the image and store in local directory, server side implementation on TODO
+    const recipeImage = document.querySelector("#recipe-image");
+
+    //If user has not uploaded in recipes throw alert.
+    if (!recipeImage.files[0]) {
+        alert("Please upload an image of your recipe");
+    }
+
+    
+
+
+    //Start building JSON string first from object, fill out the form values.
     let object = {};
     object.description = document.querySelector("#description").value;
     object.name = document.querySelector("#recipe-title").value;
