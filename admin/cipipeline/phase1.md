@@ -43,4 +43,4 @@ After you have finished making your changes locally, sucessfully passed the appr
 Work In Progress
 
 ## Code Quality via Tool
-Work in Progress
+We are using CodeFactor, which is an automated code review tool for git. To see any issues with the code quality of our repository, visit this [link](https://www.codefactor.io/repository/github/cse110-fa21-group25/cse110-fa21-group25).
