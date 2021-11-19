@@ -9,18 +9,42 @@
 <body>
     <!-- User credential -->
     <section id="credential">
-        <form>
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="username"><br>
+            <label for="email">Email</label><br>
+            <input type="text" id="email" name="email"><br>
             <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br>
-            <input type="submit" value="Log in"><br><br>
+            <input type="password" id="password" name="password">
+            <br /><span id="error-message" style="color: red"></span><br />
+            <input
+                id="login"
+                type="button"
+                value="Log In"
+                onclick="login()"
+            /><br /><br />
             <a href="signup.html">Don't have an account? Sign up here!</a>
-        </form>
     </section>
     <!-- Redirect to home page -->
     <section id="redirect-homepage">
-        <a href="#">Back to Home Page</a>
+        <a href="home-page.html">Back to Home Page</a>
     </section>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script>
+       // Your web app's Firebase configuration
+       const firebaseConfig = {
+          apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
+          authDomain: "cse110-fa21-group25.firebaseapp.com",
+          projectId: "cse110-fa21-group25",
+          storageBucket: "cse110-fa21-group25.appspot.com",
+          messagingSenderId: "72880092536",
+          appId: "1:72880092536:web:e991fa2672b4ba6d2d848d"
+       };
+       // Initialize Firebase
+       firebase.initializeApp(firebaseConfig)
+    </script>
+
+    <!-- Custom JavaScript -->
+    <script src="./assets/scripts/auth.js"></script>
 </body>
 </html>
