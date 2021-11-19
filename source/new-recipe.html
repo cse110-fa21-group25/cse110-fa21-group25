@@ -12,9 +12,14 @@
             <h1> Create New Recipe</h1>
         </header>
         <main>
-            <form>
+            <form id="recipeForm">
                 <label> My Recipe Title:</label>
-                <input type="text" class="recipe-title">
+                <input type="text" name="recipe-title" id="recipe-title">
+                <br><br>
+
+                <p>Description:</p>
+                <textarea id="description" placeholder="Tell us a little bit about your recipe here!"
+                style="height:70px; width:300px;"></textarea>
                 <br><br>
                 
                 <label>Tags:</label>
@@ -31,11 +36,9 @@
 
                 <label>Ingredients</label>
                 <section name="ingredients">
-                    
                     <div class="ingredients-field">
                         <div>
-                            <input type="text" class="ingredient" placeholder="Ingredient Name">
-                            <input type="text" class="quantity" placeholder="Quantity">
+                            <input type="text" class="ingredient" placeholder="Ingredient Name" id="ingredient1">
                         </div>
                         
                     </div>
@@ -45,6 +48,41 @@
                 </section>
                 <br><br>
 
+                <label> Cook Time: </label>
+                <div class="cook-time" id="cook-time"> 
+                    <select id="num-hours">
+                        <option value="0">0 Hours</option>
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="4">4 Hours</option>
+                        <option value="5">5 Hour</option>
+                        <option value="6">6 Hours</option>
+                        <option value="7">7 Hours</option>
+                        <option value="8">8 Hours</option>
+                        <option value="9">9 Hour</option>
+                        <option value="10">10 Hours</option>
+                        <option value="11">11 Hours</option>
+                        <option value="12">12+ Hours</option>
+                    </select>
+
+                    <select id="num-minutes">
+                        <option value="0">0 Minutes</option>
+                        <option value="1">5 Minutes</option>
+                        <option value="2">10 Minutes</option>
+                        <option value="3">15 Minutes</option>
+                        <option value="4">20 Minutes</option>
+                        <option value="5">25 Minutes</option>
+                        <option value="6">30 Minutes</option>
+                        <option value="7">35 Minutes</option>
+                        <option value="8">40 Minutes</option>
+                        <option value="9">45 Minutes</option>
+                        <option value="10">50 Minutes</option>
+                        <option value="11">55 Minutes</option>
+                    </select>
+                </div>
+                <br><br>
+            
                 <label>Steps:</label>
                 <section name="steps">
                     <!-- same as above -->
@@ -52,7 +90,7 @@
                         <div>
                             <label>1.</label>
                             <textarea class="steps" style="height:70px; width:300px; vertical-align: middle" 
-                            placeholder='Add the first step of creating your recipe here!'></textarea>
+                            placeholder='Add the first step of creating your recipe here!' id="step1"></textarea>
                         </div>
                         
                     </div>
@@ -63,10 +101,10 @@
                 <br><br>
 
                 <label>Upload Image:</label>
-                <input type="file" accept="image/png, image/jpeg">
+                <input type="file" id="recipe-image" accept="image/png, image/jpeg">
                 <br><br>
 
-                <input type="submit" id="submit-recipe">
+                <button type="submit" id="submit-recipe"> Submit </button>
                 <button type='button' id='cancel'>Cancel</button>
             </form>
         </main>
