@@ -1,5 +1,5 @@
 /**
- * Function used to display error messages 
+ * Function used to display error messages
  * @param {string} message - Used to display error from API or user mistake
 */
 function showError(message) {
@@ -19,14 +19,14 @@ function login() {
     showError('Please enter a password.');
   } else {
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-      })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        showError(errorMessage);
-      });
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          showError(errorMessage);
+        });
   }
 }
 
@@ -49,12 +49,12 @@ function signup() {
   } else {
     // creating a user with email & password
     firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      showError(errorMessage);
-    });
+        .then((userCredential) => {
+          const user = userCredential.user;
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          showError(errorMessage);
+        });
   }
 }
