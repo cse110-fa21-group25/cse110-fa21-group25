@@ -8,7 +8,7 @@ function showError(message) {
 }
 
 /** Function used to handle user login using Firebase DB */
-function login() {
+function login() { // eslint-disable-line no-unused-vars
   // Resets error message
   showError('');
   const email = document.getElementById('email').value;
@@ -20,10 +20,10 @@ function login() {
   } else {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
+          const user = userCredential.user; // eslint-disable-line no-unused-vars
         })
         .catch((error) => {
-          const errorCode = error.code;
+          const errorCode = error.code; // eslint-disable-line no-unused-vars
           const errorMessage = error.message;
           showError(errorMessage);
         });
@@ -31,7 +31,7 @@ function login() {
 }
 
 /** Function used to create new users in Firebase DB. */
-function signup() {
+function signup() { // eslint-disable-line no-unused-vars
   // Resets error message
   showError('');
   const email = document.getElementById('email').value;
@@ -50,9 +50,9 @@ function signup() {
     // creating a user with email & password
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
+          const user = userCredential.user; // eslint-disable-line no-unused-vars
         }).catch((error) => {
-          const errorCode = error.code;
+          const errorCode = error.code; // eslint-disable-line no-unused-vars
           const errorMessage = error.message;
           showError(errorMessage);
         });
