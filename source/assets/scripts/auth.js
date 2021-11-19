@@ -4,6 +4,7 @@ function showError(message) {
   }
   
 function login() {
+  // Resets error message
   showError("");
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -17,9 +18,7 @@ function login() {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -30,6 +29,7 @@ function login() {
 }
 
 function signup() {
+  // Resets error message
   showError("");
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
