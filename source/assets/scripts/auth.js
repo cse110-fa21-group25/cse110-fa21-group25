@@ -20,7 +20,7 @@ function login() { // eslint-disable-line no-unused-vars
   } else {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user; // eslint-disable-line no-unused-vars
+          const user = userCredential.user;// eslint-disable-line no-unused-vars
         })
         .catch((error) => {
           const errorCode = error.code; // eslint-disable-line no-unused-vars
@@ -50,7 +50,7 @@ function signup() { // eslint-disable-line no-unused-vars
     // creating a user with email & password
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user; // eslint-disable-line no-unused-vars
+          const user = userCredential.user;// eslint-disable-line no-unused-vars
         }).catch((error) => {
           const errorCode = error.code; // eslint-disable-line no-unused-vars
           const errorMessage = error.message;
