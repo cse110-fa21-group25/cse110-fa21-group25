@@ -51,7 +51,7 @@ async function fetchRecipes() {
  * Creating recipe cards from the recipeData.
  */
 async function createRecipeCard() {
-  for (let i = 0; i < recipeData.length; i++) {
+  for (const recipe in recipeData) {
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -79,16 +79,16 @@ async function createRecipeCard() {
     // cardDiv.setAttribute('style', "width: 18rem;")
 
     const thumbnailImg = document.createElement('img');
-    thumbnailImg.setAttribute('src', getImage(recipeData[recipeData[i]]));
+    thumbnailImg.setAttribute('src', getImage(recipeData[recipe]));
 
     const cardBodyDiv = document.createElement('div');
     cardBodyDiv.classList.add('card-body');
 
     const recipeTitleH4 = document.createElement('h4');
-    recipeTitleH4.innerHTML = getTitle(recipeData[recipeData[i]]);
+    recipeTitleH4.innerHTML = getTitle(recipeData[recipe]);
 
     const timeP = document.createElement('p');
-    timeP.innerHTML = formatTime( getTime(recipeData[recipeData[i]]) );
+    timeP.innerHTML = formatTime( getTime(recipeData[recipe]) );
 
     const recipeOwnerP = document.createElement('p');
     // TODO: helper function for getRecipeOwner
