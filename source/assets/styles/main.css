@@ -1,0 +1,41 @@
+.recipe-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.card{
+    box-shadow: 1px 2px #cfcfcf;
+    margin: 10px.5px;
+}
+
+.card-body{
+    height: 70vh;
+    width: auto;
+}
+
+.card-body img{
+    /* border-top-left-radius: 8px;
+    border-top-right-radius: 8px; */
+    height: 30vh;
+    object-fit: cover;
+    /* margin-left: -16px; */
+    width: calc(100%);
+}
+
+.tags{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tags button{
+    margin: 1px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(190, 226, 255);
+    
+}
