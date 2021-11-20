@@ -21,6 +21,7 @@ function login() { // eslint-disable-line no-unused-vars
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const user = userCredential.user;// eslint-disable-line no-unused-vars
+          window.location.href = 'home-page.html';
         })
         .catch((error) => {
           const errorCode = error.code; // eslint-disable-line no-unused-vars
