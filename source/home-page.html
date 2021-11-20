@@ -11,8 +11,9 @@
             <p>Your logo</p>
          </div>
          <input id="header-search" type="search" placeholder="Search" />
-         <div id="header-right">
-            <a href="login.html">Log In</a>
+         <div id="header-right"><br>
+            <a id="login" href="login.html" hidden><button>Log In</button></a>
+            <a id="logout" onclick="logout()" hidden><button>Logout</button></a>
          </div>
       </header>
       <section>
@@ -84,10 +85,13 @@
          <a href="">Contact Us</a>
       </footer>
 
+      
       <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+      
+      <!-- <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script> -->
       <script>
          // Your web app's Firebase configuration
          const firebaseConfig = {
@@ -104,5 +108,7 @@
 
       <!-- Custom JavaScript -->
       <script src="./assets/scripts/auth.js"></script>
+      <script src="./assets/scripts/userAuthentication.js"></script>
+      <script src="./assets/scripts/crud.js"></script>
    </body>
 </html>
