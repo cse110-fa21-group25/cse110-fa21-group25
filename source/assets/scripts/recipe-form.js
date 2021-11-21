@@ -90,7 +90,6 @@ async function buildJSON(event) {
   }
 
 
-
   // Start building JSON string first from object, fill out the form values.
   const object = {};
   object.name = document.querySelector('#recipe-title').value;
@@ -118,9 +117,9 @@ async function buildJSON(event) {
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log('Successfully uploaded image at: ' + downloadURL);
-         
-          //once the image is uploaded, we retrieve the download URL
-          //and attach it to the object, then push object to DB
+
+          // once the image is uploaded, we retrieve the download URL
+          // and attach it to the object, then push object to DB
           object.imageURL = downloadURL;
           createRecipe(object);
           alert('Succesfully Uploaded Recipe!');
