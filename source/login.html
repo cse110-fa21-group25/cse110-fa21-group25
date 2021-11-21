@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,27 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/source/assets/styles/login.css">
 </head>
 <body>
     <!-- User credential -->
     <section id="credential">
-            <label for="email">Email</label><br>
-            <input type="text" id="email" name="email"><br>
-            <label for="password">Password</label><br>
+            <img id= "logoBox" src="logo.png" alt="logo">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+            <label for="password">Password</label>
             <input type="password" id="password" name="password">
-            <br /><span id="error-message" style="color: red"></span><br />
+            <span id="error-message" style="color: red"></span>
             <input
                 id="login"
                 type="button"
                 value="Log In"
                 onclick="login()"
-            /><br /><br />
+            />
             <a href="signup.html">Don't have an account? Sign up here!</a>
+            <section id="redirect-homepage">
+                <a href="home-page.html">Back to Home Page</a>
+            </section>
     </section>
     <!-- Redirect to home page -->
-    <section id="redirect-homepage">
-        <a href="home-page.html">Back to Home Page</a>
-    </section>
+    
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>

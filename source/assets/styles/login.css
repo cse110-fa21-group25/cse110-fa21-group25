@@ -1,0 +1,78 @@
+
+*{
+    padding:0;
+    margin:0;   
+}
+
+
+body, html{
+    height: 100%;
+    background-color: rgb(150, 112, 43);
+    font-style: normal;
+    color: rgb(66, 63, 63);
+}
+
+
+#credential{
+    
+    display: flex;
+    width: 37%;
+    height: 100vh;
+    background-color: white;
+    margin: 100px auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;   
+}
+
+
+
+#logoBox{
+    display: flex;
+    width: 60%;
+    height: 220px;
+    margin: 40px auto;
+    background-color: white;
+    justify-content: center;
+}
+
+label[for = email]{
+    font-size: 100;
+    margin-right: 40px;
+    margin-bottom: 0;   
+}
+
+#email{
+    
+    height: 40px;
+    width: 90%;    
+}
+
+label[for = password]{
+    font-size: 100;
+    margin-bottom: 0;
+    align-items: flex-start;   
+}
+
+#password{
+    
+    height: 40px;
+    width: 90%;
+}
+
+#login{
+    
+    height: 30px;
+    align-items: center;
+    background-color: rgb(211, 171, 97);
+    width: 35%;
+    box-sizing: border-box;   
+}
+
+a{
+    text-align: center;
+    color: rgb(54, 51, 51);
+    display: block;
+    
+}
+ 
