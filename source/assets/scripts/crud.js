@@ -1,9 +1,52 @@
+export { uploadImage };
+
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 /**
  * CREATE/UPDATE/DELETE: only works when user is logged in
  * GET: works regardless of authentication
  */
+
+/**
+ * upload an image to firebase storage
+ * @param {string} name the name to store the image under
+ * @param {File} file the image file
+ * @returns {string} url for the image
+ */
+async function uploadImage(name, file) {
+  let ref = storage.ref().child(`images/${name}-${file.name}`);
+  let uploadTask = ref.put(file);
+  uploadTask.on('state_changed', 
+    (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalbytes) * 100;
+      console.log(progress + '% done');
+    },
+    (error) => {
+      console.error('Error uploading image: ' + error);
+    },
+    () => {
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+       console.log('Successfully uploaded image at: ' + downloadURL);
+      });
+    }
+  );
+  let imageURL = await ref.getDownloadURL();
+  return imageURL;
+}
+
+/**
+ * delete an image from firebase storage 
+ * @param {string} imageURL the downloaded url of the image
+ */
+function deleteImage(imageURL) {
+  let ref = storage.refFromURL(imageURL);
+  ref.delete().then(() => {
+    console.log('File deleted');
+  }).catch((err) => {
+    console.error('Error deleting image: ' + err);
+  });
+}
 
 /**
  * function retrieves all of the existing recipes
