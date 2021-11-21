@@ -89,7 +89,6 @@ async function buildJSON(event) {
     alert('Please upload an image of your recipe');
   }
 
-  const iName = recipeImage.files[0].name;
 
 
   // Start building JSON string first from object, fill out the form values.
@@ -102,9 +101,11 @@ async function buildJSON(event) {
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
 
+  const userID = firebase.auth().currentUser.uid;
+
   // Upload image to server, once that process is complete (async),
   // write the object to database
-  const ref = storage.ref().child(`images/${object.name}-${iName}`);
+  const ref = storage.ref().child(`images/${object.name}-${userID}`);
   const uploadTask = ref.put(recipeImage.files[0]);
   uploadTask.on('state_changed',
       (snapshot) => {
@@ -117,6 +118,9 @@ async function buildJSON(event) {
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log('Successfully uploaded image at: ' + downloadURL);
+         
+          //once the image is uploaded, we retrieve the download URL
+          //and attach it to the object, then push object to DB
           object.imageURL = downloadURL;
           createRecipe(object);
           alert('Succesfully Uploaded Recipe!');
