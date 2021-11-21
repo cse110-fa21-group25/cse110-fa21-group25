@@ -1,5 +1,3 @@
-import { uploadImage } from './crud.js';
-
 /**
  * Function that runs when DOM COntent is loaded
  */
@@ -91,20 +89,44 @@ async function buildJSON(event) {
     alert('Please upload an image of your recipe');
   }
 
+  const iName = recipeImage.files[0].name;
+
 
   // Start building JSON string first from object, fill out the form values.
   const object = {};
-  object.description = document.querySelector('#description').value;
   object.name = document.querySelector('#recipe-title').value;
+  object.author = document.querySelector('#author').value;
+  object.description = document.querySelector('#description').value;
   object.datePublished = new Date();
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
-  object.imageURL = await uploadImage(object.name, recipeImage.files[0]);
 
-  // Use JSON stringify to create json string from object.
-  const jsonString = JSON.stringify(object);
-  console.log(jsonString);
+  // Upload image to server, once that process is complete (async),
+  // write the object to database
+  const ref = storage.ref().child(`images/${object.name}-${iName}`);
+  const uploadTask = ref.put(recipeImage.files[0]);
+  uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+        console.log(progress + '% done');
+      },
+      (error) => {
+        console.error('Error uploading image: ' + error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          console.log('Successfully uploaded image at: ' + downloadURL);
+          object.imageURL = downloadURL;
+          createRecipe(object);
+          alert('Succesfully Uploaded Recipe!');
+        });
+      },
+  );
+
+  // Use JSON stringify to create json string from object for debug purposes
+  // const jsonString = JSON.stringify(object);
+  // console.log(jsonString);
 }
 
 
