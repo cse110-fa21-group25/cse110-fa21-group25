@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', init);
  *  Function to build the JSON from the HTML form data.
  *  @param {event} event - The "submit" event that the event listener returns.
  */
-function buildJSON(event) {
+async function buildJSON(event) {
   // prevent submit button from refreshing the page.
   event.preventDefault();
   console.log('building JSON');
@@ -92,16 +92,44 @@ function buildJSON(event) {
 
   // Start building JSON string first from object, fill out the form values.
   const object = {};
-  object.description = document.querySelector('#description').value;
   object.name = document.querySelector('#recipe-title').value;
+  object.author = document.querySelector('#author').value;
+  object.description = document.querySelector('#description').value;
   object.datePublished = new Date();
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
 
-  // Use JSON stringify to create json string from object.
-  const jsonString = JSON.stringify(object);
-  console.log(jsonString);
+  const userID = firebase.auth().currentUser.uid;
+
+  // Upload image to server, once that process is complete (async),
+  // write the object to database
+  const ref = storage.ref().child(`images/${object.name}-${userID}`);
+  const uploadTask = ref.put(recipeImage.files[0]);
+  uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+        console.log(progress + '% done');
+      },
+      (error) => {
+        console.error('Error uploading image: ' + error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          console.log('Successfully uploaded image at: ' + downloadURL);
+
+          // once the image is uploaded, we retrieve the download URL
+          // and attach it to the object, then push object to DB
+          object.imageURL = downloadURL;
+          createRecipe(object);
+          alert('Succesfully Uploaded Recipe!');
+        });
+      },
+  );
+
+  // Use JSON stringify to create json string from object for debug purposes
+  // const jsonString = JSON.stringify(object);
+  // console.log(jsonString);
 }
 
 

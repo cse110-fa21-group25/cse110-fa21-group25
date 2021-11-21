@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: userAuthentication.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,42 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: userAuthentication.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * function that allows the user to logout if signed in
+ */
+function logout() { // eslint-disable-line no-unused-vars
+  firebase.auth().signOut().then(() => {
+    console.log('successfully signed out');
+  });
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    const loginLink = document.getElementById('login');
+    const logoutLink = document.getElementById('logout');
+    loginLink.setAttribute('hidden', true);
+    logoutLink.removeAttribute('hidden');
+  } else {
+    // No user is signed in.
+    const loginLink = document.getElementById('login');
+    const logoutLink = document.getElementById('logout');
+    loginLink.removeAttribute('hidden');
+    logoutLink.setAttribute('hidden', true);
+  }
+});
+</code></pre>
+        </article>
+    </section>
 
 
 
