@@ -32,16 +32,33 @@ function getRecipeById(recipeId) { // eslint-disable-line no-unused-vars
 }
 
 /**
- * function that gets recipes based on name of recipe
- * @param {string} title name of recipe
- * @return {Promise} a promise for all the recipes containing the given title
+ * function that gets recipes based on userId
+ * @param {string} userId userId associated with recipe
+ * @return {Promise} a promise for all the recipes containing the userId
  */
-function getRecipesByTitle(title) { // eslint-disable-line no-unused-vars
+function getRecipesByUserId(userId) { // eslint-disable-line no-unused-vars
+  return db.collection('recipes')
+      .where('userId', '==', userId)
+      .get().then((querySnapshot) => {
+        const results = [];
+        querySnapshot.forEach((doc) => {
+          results.push({id: doc.id, data: doc.data()});
+        });
+        return results;
+      });
+}
+
+/**
+ * function that gets recipes based on name of recipe
+ * @param {string} name name of recipe
+ * @return {Promise} a promise for all the recipes containing the given name
+ */
+function getRecipesByName(name) { // eslint-disable-line no-unused-vars
   return db.collection('recipes').get().then((querySnapshot) => {
     const results = [];
     querySnapshot.forEach((doc) => {
-      const resultTitle = doc.data().title;
-      if (resultTitle.toLowerCase().includes(title.toLowerCase())) {
+      const resultName = doc.data().name;
+      if (resultName.toLowerCase().includes(name.toLowerCase())) {
         results.push({id: doc.id, data: doc.data()});
       }
     });
@@ -72,7 +89,8 @@ function getRecipesByTag(tag) { // eslint-disable-line no-unused-vars
  * @return {Promise} a promise for the creation of the given recipe
  */
 function createRecipe(recipeData) { // eslint-disable-line no-unused-vars
-  return db.collection('recipes').doc().set(recipeData)
+  const user = firebase.auth().currentUser;
+  return db.collection('recipes').doc().set({...recipeData, userId: user.uid})
       .then(() => {
         return console.log('Document successfully written!');
       })
@@ -88,12 +106,16 @@ function createRecipe(recipeData) { // eslint-disable-line no-unused-vars
  * @return {Promise} a promise for the modification of the given recipe
  */
 function updateRecipe(recipe) { // eslint-disable-line no-unused-vars
-  return db.collection('recipes').doc(recipe.id).set(recipe.data).then(() => {
-    return console.log('Document successfully written!');
-  })
-      .catch((error) => {
-        console.error('Error updating document: ', error);
-      });
+  const user = firebase.auth().currentUser;
+  try {
+    if (user.uid !== recipe.data.userId) throw new Error('not authenticated');
+    return db.collection('recipes').doc(recipe.id)
+        .set({...recipe.data}).then(() => {
+          return console.log('Document successfully written!');
+        });
+  } catch (error) {
+    console.error('Error updating document: ', error);
+  }
 }
 
 /**
@@ -103,11 +125,13 @@ function updateRecipe(recipe) { // eslint-disable-line no-unused-vars
  * @return {Promise} a promise for the deletion of the given recipe
  */
 function deleteRecipeById(recipeId) { // eslint-disable-line no-unused-vars
-  return db.collection('recipes').doc(recipeId).delete().then(() => {
-    return console.log('Document successfully written!');
-  })
-      .catch((error) => {
-        console.error('Error deleting recipe: ', error);
-      });
+  const user = firebase.auth().currentUser;
+  try {
+    if (user.uid !== recipe.data.userId) throw new Error('not authenticated');
+    return db.collection('recipes').doc(recipeId).delete().then(() => {
+      return console.log('Document successfully written!');
+    });
+  } catch (error) {
+    console.error('Error deleting document: ', error);
+  }
 }
-
