@@ -1,4 +1,3 @@
-/* eslint-disable guard-for-in */
 // get recipes
 const recipesJSON = [
   'https://introweb.tech/assets/json/ghostCookies.json',
