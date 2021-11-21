@@ -52,7 +52,7 @@ function signup() { // eslint-disable-line no-unused-vars
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const user = userCredential.user;// eslint-disable-line no-unused-vars
-          window.location.href = 'home-page.html';
+          window.location.href = 'home-page.html'; // redirects to home page
         }).catch((error) => {
           const errorCode = error.code; // eslint-disable-line no-unused-vars
           const errorMessage = error.message;
