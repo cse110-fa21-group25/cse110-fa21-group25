@@ -5,6 +5,19 @@
         <title>New Recipe</title>
         <!-- TODO: Temporary Icon -->
         <link rel="icon" href="icon.png">
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+        <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
+            authDomain: "cse110-fa21-group25.firebaseapp.com",
+            projectId: "cse110-fa21-group25",
+            storageBucket: "cse110-fa21-group25.appspot.com",
+            messagingSenderId: "72880092536",
+            appId: "1:72880092536:web:e991fa2672b4ba6d2d848d"
+        };
+
+        firebase.initializeApp(firebaseConfig)
+        </script>
         <script src="./assets/scripts/recipe-form.js" type="module"></script>
     </head>
     <body>

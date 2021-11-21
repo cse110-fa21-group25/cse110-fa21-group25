@@ -1,3 +1,5 @@
+import { uploadImage } from './crud.js';
+
 /**
  * Function that runs when DOM COntent is loaded
  */
@@ -29,7 +31,7 @@ window.addEventListener('DOMContentLoaded', init);
  *  Function to build the JSON from the HTML form data.
  *  @param {event} event - The "submit" event that the event listener returns.
  */
-function buildJSON(event) {
+async function buildJSON(event) {
   // prevent submit button from refreshing the page.
   event.preventDefault();
   console.log('building JSON');
@@ -98,6 +100,7 @@ function buildJSON(event) {
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
+  object.imageURL = await uploadImage(object.name, recipeImage.files[0]);
 
   // Use JSON stringify to create json string from object.
   const jsonString = JSON.stringify(object);

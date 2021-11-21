@@ -12,14 +12,14 @@ const storage = firebase.storage();
  * upload an image to firebase storage
  * @param {string} name the name to store the image under
  * @param {File} file the image file
- * @returns {string} url for the image
+ * @returns {Promise} promise resolves to URL of uploaded image
  */
-async function uploadImage(name, file) {
+function uploadImage(name, file) {
   let ref = storage.ref().child(`images/${name}-${file.name}`);
   let uploadTask = ref.put(file);
   uploadTask.on('state_changed', 
     (snapshot) => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalbytes) * 100;
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log(progress + '% done');
     },
     (error) => {
@@ -31,8 +31,7 @@ async function uploadImage(name, file) {
       });
     }
   );
-  let imageURL = await ref.getDownloadURL();
-  return imageURL;
+  return ref.getDownloadURL();
 }
 
 /**
