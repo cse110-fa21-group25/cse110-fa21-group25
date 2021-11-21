@@ -1,4 +1,3 @@
-/* eslint-disable guard-for-in */
 // get recipes
 const recipesJSON = [
   'https://introweb.tech/assets/json/ghostCookies.json',
@@ -52,7 +51,7 @@ async function fetchRecipes() {
  * Creating recipe cards from the recipeData.
  */
 async function createRecipeCard() {
-  for (const recipe in recipeData) {
+  for (const recipe of recipeData) {
     // Card DOM Structure
     /* *********************************** *
          * card format:
