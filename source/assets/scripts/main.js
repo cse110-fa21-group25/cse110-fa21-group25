@@ -149,7 +149,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
      * *********************************** */
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
-    
+
     const closeRecipeExpandDiv = document.createElement('div');
     const closeRecipeExpandButton = document.createElement('button');
     closeRecipeExpandButton.innerHTML = 'X';
@@ -160,7 +160,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     const bodyDiv = document.createElement('div');
     bodyDiv.classList.add('expand-body-section');
     bodyDiv.classList.add('expand-main');
-    
+
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
 
@@ -186,11 +186,11 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     ingredientsDiv.classList.add('expand-main');
     const ingredientsH4 = document.createElement('h4');
     ingredientsH4.innerHTML = 'Ingredients:';
-    
+
     const ingredientsUl = document.createElement('ul');
-    
+
     ingredientsDiv.classList.add('ingredients-expand');
-    for(const ingredient in recipe.data.recipeIngredient){
+    for (const ingredient in recipe.data.recipeIngredient) {
       const ingredientIl = document.createElement('li');
       ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
       ingredientsUl.appendChild(ingredientIl);
@@ -242,7 +242,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     instructionsDiv.appendChild(instructionsH4);
     instructionsDiv.appendChild(instructionsOl);
-    
+
     console.log(overlayDiv);
 
     // attach expanded view to body element
@@ -250,7 +250,6 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     bodyHtml.appendChild(overlayDiv);
 
     removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
-
   });
 }
 
