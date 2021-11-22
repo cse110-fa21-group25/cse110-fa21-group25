@@ -105,14 +105,12 @@ async function createRecipeCard() {
   console.log('done looping through recipes');
 }
 
-// TODO: 
-// - CHANGE FUNCTION'S DESC
 /**
- * Get total time from recipe's JSON object
- * @param {String} time: time as String
- * @return {String} reformatted time as String
- **/
-async function recipeCardDetail(recipeDetailButton, recipe){
+ * Recipe card details when user clicks on a recipe.
+ * @param {*} recipeDetailButton button that the user clicks
+ * @param {*} recipe recipe that is displayed to user
+ */
+async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
     console.log('Hello!! I\'m clicked');
     /* *********************************** *
@@ -151,10 +149,10 @@ async function recipeCardDetail(recipeDetailButton, recipe){
 
     const bodyDiv = document.createElement('div');
     bodyDiv.classList.add('expand-section');
-    
+
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
-    
+
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
@@ -175,7 +173,7 @@ async function recipeCardDetail(recipeDetailButton, recipe){
 
     const ingredientsDiv = document.createElement('div');
     ingredientsDiv.classList.add('ingredients-expand');
-    for(const ingredient in recipe.data.recipeIngredient){
+    for (const ingredient in recipe.data.recipeIngredient) {
       const ingredientUl = document.createElement('ul');
       ingredientUl.innerHTML = recipe.data.recipeIngredient[ingredient];
       ingredientsDiv.appendChild(ingredientUl);
@@ -205,7 +203,7 @@ async function recipeCardDetail(recipeDetailButton, recipe){
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
 
-    
+
     bodyDiv.appendChild(recipeTitleH2);
     bodyDiv.appendChild(thumbnailImg);
     bodyDiv.appendChild(timeP);
@@ -220,18 +218,21 @@ async function recipeCardDetail(recipeDetailButton, recipe){
     bodyHtml.appendChild(expandDiv);
 
     removeExpandRecipe(closeRecipeExpandButton, expandDiv);
-
   });
 }
 
-async function removeExpandRecipe(button, expandDiv){
+/**
+ * Collapse expanded recipe.
+ * @param {*} button button to collapse
+ * @param {*} expandDiv div to remove expanded recipe from
+ */
+async function removeExpandRecipe(button, expandDiv) {
   button.addEventListener('click', ()=>{
-    while(expandDiv.hasChildNodes()){
+    while (expandDiv.hasChildNodes()) {
       expandDiv.removeChild(expandDiv.lastChild);
     }
     expandDiv.remove();
   });
-
 }
 
 
@@ -249,8 +250,8 @@ function formatTime(time) {
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if(parseInt(timeFormat[i-1])==0){
-        if(timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))){
+      if (parseInt(timeFormat[i-1])==0) {
+        if (timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))) { // eslint-disable-line max-len
           timeFormat[i] += 's';
         }
       }
@@ -263,8 +264,8 @@ function formatTime(time) {
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if(parseInt(timeFormat[i-1])==0){
-        if(timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))){
+      if (parseInt(timeFormat[i-1])==0) {
+        if (timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))) { // eslint-disable-line max-len
           timeFormat[i] += 's';
         }
       }
