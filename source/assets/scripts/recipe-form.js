@@ -21,6 +21,10 @@ function init() {
   // Add event listener for Submitting the Form
   const formSubmitted = document.querySelector('#recipeForm');
   formSubmitted.addEventListener('submit', buildJSON);
+
+  // Add event listener for adding the tag
+  const buttonTag = document.querySelector('#add-tag');
+  buttonTag.addEventListener('click', addTag);
 }
 
 window.addEventListener('DOMContentLoaded', init);
@@ -89,6 +93,13 @@ async function buildJSON(event) {
     alert('Please upload an image of your recipe');
   }
 
+  // Retrieve all the tags selected
+  const tags = document.querySelectorAll('#selected-tags div');
+  const tagArray = [];
+  for (let i = 0; i < tags.length; i++) {
+    tagArray.push(tags[i].textContent.slice(0, -1));
+  }
+
 
   // Start building JSON string first from object, fill out the form values.
   const object = {};
@@ -99,6 +110,7 @@ async function buildJSON(event) {
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
+  object.tags = tagArray;
 
   const userID = firebase.auth().currentUser.uid;
 
@@ -131,7 +143,55 @@ async function buildJSON(event) {
   // const jsonString = JSON.stringify(object);
   // console.log(jsonString);
 }
+/**
+ * Function to remove a tag when the corresponding button is clicked
+ */
+function deleteTag() {
+  const parent = this.parentNode; // eslint-disable-line no-invalid-this
+  const grandParent = parent.parentNode;
+  grandParent.removeChild(parent);
+}
+/**
+ * Function to allow the user to use a multiple select and select multiple
+ * tags for their recipes. The multiselect prohibits the default tag
+ * "select tags" from being selected. It also will prohibit duplicate tags
+ * It will add the tag as a <div> with a button that is linked to it.
+ * This button is linked to deleteTag so it will remove the tag onclick.
+ */
+function addTag() {
+  const tagsDiv = document.querySelector('#selected-tags');
+  const itemList = document.getElementById('tags');
+  const collection = itemList.selectedOptions;
+  for (let i = 0; i < collection.length; i++) {
+    const currLabel = collection[i].label;
 
+    // shouldn't add the "select tags: option" or any tags already added
+    if (currLabel != 'Select Tags:') {
+      // prevent duplicate
+      const tags = document.querySelectorAll('#selected-tags div');
+      if (tags.length) {
+        // search through div to make sure no dupilcates are added
+        for (let j = 0; j < tags.length; j++) {
+          const divLabel = tags[j].textContent.slice(0, -1);
+          if (currLabel == divLabel) {
+            // remove old elements
+            tags[j].remove();
+          }
+        }
+      }
+      // add elements also add a button to remove
+      // the tag.
+      const newTag = document.createElement('div');
+      const newButton = document.createElement('button');
+      newButton.type = 'button';
+      newButton.onclick = deleteTag;
+      newButton.textContent = 'x';
+      newTag.textContent = currLabel;
+      newTag.appendChild(newButton);
+      tagsDiv.appendChild(newTag);
+    }
+  }
+}
 
 /**
  *  Function to append a new input to the Ingredients part of the form.
