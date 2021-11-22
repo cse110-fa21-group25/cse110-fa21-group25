@@ -64,9 +64,8 @@ async function createRecipeCard() {
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
     console.log('ingredients ', recipe.data.ingredients);
-    console.log('instructions ', recipe.data.recipeInstructions);
 
-    // for actual recipes from our app, use loop to check for all tags
+    // use loop to check for all tags
     const tagDiv = document.createElement('div');
     tagDiv.classList.add('tags');
     for (const tag in recipe.data.tags) {
