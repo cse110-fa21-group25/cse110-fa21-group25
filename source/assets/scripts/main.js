@@ -113,6 +113,7 @@ async function createRecipeCard() {
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
     console.log('Hello!! I\'m clicked');
+    console.log(recipe);
     /* *********************************** *
      * expand format:
      * <div>
@@ -130,26 +131,36 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
      *          </div>
      *      </div>
      *      <div class='ingredients'>
-     *          <ul>{ingredient 1}</ul>
+     *          <h4>Ingredients:</h4>
+     *          <ul>
+     *              <li>{ingredient 1}</li>
      *          ... // more ingredients go here
+     *          </ul>
      *      </div>
      *      <div class='instructions'>
-     *          <ul>{instruction 1}</ul>
-     *          ... // more instructions go here
+     *          <h4>Instructions:</h4>
+     *          <ul>
+     *              <li>{instruction 1}</li>
+     *              ... // more instructions go here
+     *          </ul>
      *      </div>
      * </div>
      *
      * *********************************** */
+    const overlayDiv = document.createElement('div');
+    overlayDiv.classList.add('overlay');
+    
     const closeRecipeExpandDiv = document.createElement('div');
     const closeRecipeExpandButton = document.createElement('button');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
-    expandDiv.classList.add('overlay');
+    expandDiv.classList.add('expand-card');
 
     const bodyDiv = document.createElement('div');
-    bodyDiv.classList.add('expand-section');
-
+    bodyDiv.classList.add('expand-body-section');
+    bodyDiv.classList.add('expand-main');
+    
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
 
@@ -157,7 +168,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
     const timeP = document.createElement('p');
-    timeP.innerHTML = formatTime(recipe.data.cookTime);
+    timeP.innerHTML = `Total time: ${formatTime(recipe.data.cookTime)}`;
 
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
@@ -172,31 +183,45 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     }
 
     const ingredientsDiv = document.createElement('div');
+    ingredientsDiv.classList.add('expand-main');
+    const ingredientsH4 = document.createElement('h4');
+    ingredientsH4.innerHTML = 'Ingredients:';
+    
+    const ingredientsUl = document.createElement('ul');
+    
     ingredientsDiv.classList.add('ingredients-expand');
-    for (const ingredient in recipe.data.recipeIngredient) {
-      const ingredientUl = document.createElement('ul');
-      ingredientUl.innerHTML = recipe.data.recipeIngredient[ingredient];
-      ingredientsDiv.appendChild(ingredientUl);
+    for(const ingredient in recipe.data.recipeIngredient){
+      const ingredientIl = document.createElement('li');
+      ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientsUl.appendChild(ingredientIl);
     }
-    ingredientsDiv.classList.add('expand-section');
 
-    // TODO: Get instructions
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO: Get instructions from database!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const instructionsDiv = document.createElement('div');
+    instructionsDiv.classList.add('expand-main');
+    const instructionsH4 = document.createElement('h4');
+    instructionsH4.innerHTML = 'Instructions:';
     instructionsDiv.classList.add('instructions-expand');
-    const step1 = document.createElement('ol');
-    const step2 = document.createElement('ol');
-    const step3 = document.createElement('ol');
-    const step4 = document.createElement('ol');
+    const instructionsOl = document.createElement('ol');
+    const step1 = document.createElement('li');
+    const step2 = document.createElement('li');
+    const step3 = document.createElement('li');
+    const step4 = document.createElement('li');
     step1.innerHTML = 'Prepare.';
     step2.innerHTML = 'Cook.';
     step3.innerHTML = 'Serve.';
     step4.innerHTML = 'Feast!!';
-    instructionsDiv.appendChild(step1);
-    instructionsDiv.appendChild(step2);
-    instructionsDiv.appendChild(step3);
-    instructionsDiv.appendChild(step4);
-    instructionsDiv.classList.add('expand-section');
+    instructionsOl.appendChild(step1);
+    instructionsOl.appendChild(step2);
+    instructionsOl.appendChild(step3);
+    instructionsOl.appendChild(step4);
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO: Get instructions from database!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    overlayDiv.appendChild(expandDiv);
 
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
@@ -212,12 +237,20 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     closeRecipeExpandDiv.appendChild(closeRecipeExpandButton);
 
-    console.log(expandDiv);
+    ingredientsDiv.appendChild(ingredientsH4);
+    ingredientsDiv.appendChild(ingredientsUl);
 
+    instructionsDiv.appendChild(instructionsH4);
+    instructionsDiv.appendChild(instructionsOl);
+    
+    console.log(overlayDiv);
+
+    // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
-    bodyHtml.appendChild(expandDiv);
+    bodyHtml.appendChild(overlayDiv);
 
-    removeExpandRecipe(closeRecipeExpandButton, expandDiv);
+    removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
+
   });
 }
 
