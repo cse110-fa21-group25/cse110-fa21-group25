@@ -11,7 +11,6 @@ async function init() {
   } catch (e) {
     throw (e);
   }
-
   console.log(Object.keys(recipeData).length);
   createRecipeCard();
 }
@@ -63,7 +62,7 @@ async function createRecipeCard() {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    console.log('ingredients ', recipe.data.ingredients);
+    console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -96,7 +95,7 @@ async function createRecipeCard() {
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
         '#example-recipe > .recipe-row');
-    // check if cardDiv generated properly 
+    // check if cardDiv generated properly
     // console.log(cardDiv);
     exampleRecipeRow.appendChild(cardDiv);
   }
@@ -111,25 +110,37 @@ async function createRecipeCard() {
 function formatTime(time) {
   time = time.slice(2);
   const timeFormat = time.split('');
-  for(let i=0; i < timeFormat.length; i++){
+  for (let i=0; i < timeFormat.length; i++) {
     if (timeFormat[i] == 'H') {
       timeFormat[i] = ' hr';
-      if(parseInt(timeFormat[i-1]) > 1){
+      if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if(i != timeFormat.length-1){
+      if (i != timeFormat.length-1) {
         timeFormat[i] += ' ';
       }
     }
     if (timeFormat[i] == 'M') {
       timeFormat[i] = ' min';
-      if(parseInt(timeFormat[i-1]) > 1){
+      if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if(i != timeFormat.length-1){
+      if (i != timeFormat.length-1) {
         timeFormat[i] += ' ';
       }
     }
   }
   return timeFormat.join('');
+}
+
+/**
+ * If user is logged in navigate to create new recipe page.
+ * Otherwise, navigate to login page.
+ */
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'new-recipe.html';
+  } else {
+    window.location.href = 'login.html';
+  }
 }

@@ -39,7 +39,6 @@ async function init() {
   } catch (e) {
     throw (e);
   }
-
   console.log(Object.keys(recipeData).length);
   createRecipeCard();
 }
@@ -91,7 +90,9 @@ async function createRecipeCard() {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    // for actual recipes from our app, use loop to check for all tags
+    console.log('ingredients ', recipe.data.recipeIngredient);
+
+    // use loop to check for all tags
     const tagDiv = document.createElement('div');
     tagDiv.classList.add('tags');
     for (const tag in recipe.data.tags) {
@@ -122,7 +123,8 @@ async function createRecipeCard() {
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
         '#example-recipe > .recipe-row');
-    console.log(cardDiv);
+    // check if cardDiv generated properly
+    // console.log(cardDiv);
     exampleRecipeRow.appendChild(cardDiv);
   }
   console.log('done looping through recipes');
@@ -136,21 +138,40 @@ async function createRecipeCard() {
 function formatTime(time) {
   time = time.slice(2);
   const timeFormat = time.split('');
-  let unit = timeFormat.pop();
-  if (unit == 'H') {
-    unit = 'hr';
+  for (let i=0; i &lt; timeFormat.length; i++) {
+    if (timeFormat[i] == 'H') {
+      timeFormat[i] = ' hr';
+      if (parseInt(timeFormat[i-1]) > 1) {
+        timeFormat[i] += 's';
+      }
+      if (i != timeFormat.length-1) {
+        timeFormat[i] += ' ';
+      }
+    }
+    if (timeFormat[i] == 'M') {
+      timeFormat[i] = ' min';
+      if (parseInt(timeFormat[i-1]) > 1) {
+        timeFormat[i] += 's';
+      }
+      if (i != timeFormat.length-1) {
+        timeFormat[i] += ' ';
+      }
+    }
   }
-  if (unit == 'M') {
-    unit = 'min';
-  }
-  if (parseInt(timeFormat[0]) > 1) {
-    unit += 's';
-  }
-  const editedUnit = ' '+unit;
-  timeFormat.push(editedUnit);
   return timeFormat.join('');
 }
 
+/**
+ * If user is logged in navigate to create new recipe page.
+ * Otherwise, navigate to login page.
+ */
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'new-recipe.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
 </code></pre>
         </article>
     </section>
@@ -161,13 +182,13 @@ function formatTime(time) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 21 2021 15:35:12 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 21 2021 17:47:03 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
