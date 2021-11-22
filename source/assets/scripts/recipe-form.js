@@ -68,8 +68,6 @@ async function buildJSON(event) {
     }
   }
 
-  // remove the extra semicolon
-  const completedSteps = stepString.slice(0, -1);
 
   // convert cooktime to ISO 8601 Duration format
   const numHours = document.querySelector('#num-hours').value;
@@ -109,7 +107,7 @@ async function buildJSON(event) {
   object.datePublished = new Date();
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
-  object.recipeInstructions = completedSteps;
+  object.recipeInstructions = stepString;
   object.tags = tagArray;
 
   const userID = firebase.auth().currentUser.uid;
