@@ -23,7 +23,6 @@ async function init() {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
-    console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -64,7 +63,8 @@ async function createRecipeCard() {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    console.log('ingredients ', getIngredientsList(recipe));
+    console.log('ingredients ', recipe.data.ingredients);
+    console.log('instructions ', recipe.data.recipeInstructions);
 
     // for actual recipes from our app, use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -112,41 +112,25 @@ async function createRecipeCard() {
 function formatTime(time) {
   time = time.slice(2);
   const timeFormat = time.split('');
-  let unit = timeFormat.pop();
-  if (unit == 'H') {
-    unit = 'hr';
+  for(let i=0; i < timeFormat.length; i++){
+    if (timeFormat[i] == 'H') {
+      timeFormat[i] = ' hr';
+      if(parseInt(timeFormat[i-1]) > 1){
+        timeFormat[i] += 's';
+      }
+      if(i != timeFormat.length-1){
+        timeFormat[i] += ' ';
+      }
+    }
+    if (timeFormat[i] == 'M') {
+      timeFormat[i] = ' min';
+      if(parseInt(timeFormat[i-1]) > 1){
+        timeFormat[i] += 's';
+      }
+      if(i != timeFormat.length-1){
+        timeFormat[i] += ' ';
+      }
+    }
   }
-  if (unit == 'M') {
-    unit = 'min';
-  }
-  if (parseInt(timeFormat[0]) > 1) {
-    unit += 's';
-  }
-  const editedUnit = ' '+unit;
-  timeFormat.push(editedUnit);
   return timeFormat.join('');
-}
-
-
-// TODO: GET RECIPE'S OWNER FUNCTION
-
-/**
- * Get all ingredients from recipe's JSON object
- * @param {Object} data: data as JSON Object
- * @return {Array} array of strings of ingredients
- **/
- function getIngredientsList(data){
-  let ingredients;
-  Object.keys(data).some((key)=>{
-    if (key == 'recipeIngredient' && Array.isArray(data[key])) {
-      ingredients = data[key];
-      return true;
-    }
-    // recurse on data to get ingredients
-    if (data[key] && typeof data[key] == 'object') {
-      ingredients = getIngredientsList(data[key]);
-      return ingredients !== undefined;
-    }
-  });
-  return ingredients;
 }
