@@ -23,6 +23,7 @@ async function init() {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
+    console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -63,6 +64,8 @@ async function createRecipeCard() {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
+    console.log('ingredients ', getIngredientsList(recipe));
+
     // for actual recipes from our app, use loop to check for all tags
     const tagDiv = document.createElement('div');
     tagDiv.classList.add('tags');
@@ -94,7 +97,8 @@ async function createRecipeCard() {
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
         '#example-recipe > .recipe-row');
-    console.log(cardDiv);
+    // check if cardDiv generated properly 
+    // console.log(cardDiv);
     exampleRecipeRow.appendChild(cardDiv);
   }
   console.log('done looping through recipes');
@@ -123,3 +127,26 @@ function formatTime(time) {
   return timeFormat.join('');
 }
 
+
+// TODO: GET RECIPE'S OWNER FUNCTION
+
+/**
+ * Get all ingredients from recipe's JSON object
+ * @param {Object} data: data as JSON Object
+ * @return {Array} array of strings of ingredients
+ **/
+ function getIngredientsList(data){
+  let ingredients;
+  Object.keys(data).some((key)=>{
+    if (key == 'recipeIngredient' && Array.isArray(data[key])) {
+      ingredients = data[key];
+      return true;
+    }
+    // recurse on data to get ingredients
+    if (data[key] && typeof data[key] == 'object') {
+      ingredients = getIngredientsList(data[key]);
+      return ingredients !== undefined;
+    }
+  });
+  return ingredients;
+}
