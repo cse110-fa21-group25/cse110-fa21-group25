@@ -61,10 +61,10 @@ async function buildJSON(event) {
   const recipeTextArea = Array.from(allTextAreas);
   const formattedSteps = recipeTextArea.reduce((acc, textarea) =>
     ({...acc, [textarea.id]: textarea.value}), {});
-  let stepString = '';
+  const stepString = [];
   for (const currStep in formattedSteps) {
     if (formattedSteps[currStep]) {
-      stepString += (formattedSteps[currStep] + ';');
+      stepString.push(formattedSteps[currStep]);
     }
   }
 
