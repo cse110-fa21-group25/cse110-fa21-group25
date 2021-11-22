@@ -22,6 +22,7 @@ async function init() {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
+    console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -98,9 +99,141 @@ async function createRecipeCard() {
     // check if cardDiv generated properly
     // console.log(cardDiv);
     exampleRecipeRow.appendChild(cardDiv);
+
+    recipeCardDetail(recipeDetailButton, recipe);
   }
   console.log('done looping through recipes');
 }
+
+// TODO: 
+// - CHANGE FUNCTION'S DESC
+/**
+ * Get total time from recipe's JSON object
+ * @param {String} time: time as String
+ * @return {String} reformatted time as String
+ **/
+async function recipeCardDetail(recipeDetailButton, recipe){
+  recipeDetailButton.addEventListener('click', ()=>{
+    console.log('Hello!! I\'m clicked');
+    /* *********************************** *
+     * expand format:
+     * <div>
+     *      <div class='close-recipe-detail-div'>
+     *          <button>X</button>
+     *      </div>
+     *      <div>
+     *          <h4> {recipe's title} </h4>
+     *          <img src='{recipe's thumbnail}'>
+     *          <p> Cook/prep time </p>
+     *          <p> {recipe's owner} </p>
+     *          <div class='tags'>
+     *              <button> {recipe's tag 1} </button>
+     *              ... // more tags go here
+     *          </div>
+     *      </div>
+     *      <div class='ingredients'>
+     *          <ul>{ingredient 1}</ul>
+     *          ... // more ingredients go here
+     *      </div>
+     *      <div class='instructions'>
+     *          <ul>{instruction 1}</ul>
+     *          ... // more instructions go here
+     *      </div>
+     * </div>
+     *
+     * *********************************** */
+    const closeRecipeExpandDiv = document.createElement('div');
+    const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.innerHTML = 'X';
+
+    const expandDiv = document.createElement('div');
+    expandDiv.classList.add('overlay');
+
+    const bodyDiv = document.createElement('div');
+    bodyDiv.classList.add('expand-section');
+    
+    const recipeTitleH2 = document.createElement('h2');
+    recipeTitleH2.innerHTML = recipe.data.name;
+    
+    const thumbnailImg = document.createElement('img');
+    thumbnailImg.setAttribute('src', recipe.data.imageURL);
+
+    const timeP = document.createElement('p');
+    timeP.innerHTML = formatTime(recipe.data.cookTime);
+
+    const recipeOwnerP = document.createElement('p');
+    recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
+
+    // use loop to check for all tags
+    const tagDiv = document.createElement('div');
+    tagDiv.classList.add('tags');
+    for (const tag in recipe.data.tags) {
+      const tagButton = document.createElement('button');
+      tagButton.innerHTML = recipe.data.tags[tag];
+      tagDiv.appendChild(tagButton);
+    }
+
+    const ingredientsDiv = document.createElement('div');
+    ingredientsDiv.classList.add('ingredients-expand');
+    for(const ingredient in recipe.data.recipeIngredient){
+      const ingredientUl = document.createElement('ul');
+      ingredientUl.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientsDiv.appendChild(ingredientUl);
+    }
+    ingredientsDiv.classList.add('expand-section');
+
+    // TODO: Get instructions
+    const instructionsDiv = document.createElement('div');
+    instructionsDiv.classList.add('instructions-expand');
+    const step1 = document.createElement('ol');
+    const step2 = document.createElement('ol');
+    const step3 = document.createElement('ol');
+    const step4 = document.createElement('ol');
+    step1.innerHTML = 'Prepare.';
+    step2.innerHTML = 'Cook.';
+    step3.innerHTML = 'Serve.';
+    step4.innerHTML = 'Feast!!';
+    instructionsDiv.appendChild(step1);
+    instructionsDiv.appendChild(step2);
+    instructionsDiv.appendChild(step3);
+    instructionsDiv.appendChild(step4);
+    instructionsDiv.classList.add('expand-section');
+
+
+    expandDiv.appendChild(closeRecipeExpandDiv);
+    expandDiv.appendChild(bodyDiv);
+    expandDiv.appendChild(ingredientsDiv);
+    expandDiv.appendChild(instructionsDiv);
+
+    
+    bodyDiv.appendChild(recipeTitleH2);
+    bodyDiv.appendChild(thumbnailImg);
+    bodyDiv.appendChild(timeP);
+    bodyDiv.appendChild(recipeOwnerP);
+    bodyDiv.appendChild(tagDiv);
+
+    closeRecipeExpandDiv.appendChild(closeRecipeExpandButton);
+
+    console.log(expandDiv);
+
+    const bodyHtml = document.querySelector('body');
+    bodyHtml.appendChild(expandDiv);
+
+    removeExpandRecipe(closeRecipeExpandButton, expandDiv);
+
+  });
+}
+
+async function removeExpandRecipe(button, expandDiv){
+  button.addEventListener('click', ()=>{
+    while(expandDiv.hasChildNodes()){
+      expandDiv.removeChild(expandDiv.lastChild);
+    }
+    expandDiv.remove();
+  });
+
+}
+
 
 /**
  * Get total time from recipe's JSON object
@@ -116,6 +249,11 @@ function formatTime(time) {
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
+      if(parseInt(timeFormat[i-1])==0){
+        if(timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))){
+          timeFormat[i] += 's';
+        }
+      }
       if (i != timeFormat.length-1) {
         timeFormat[i] += ' ';
       }
@@ -124,6 +262,11 @@ function formatTime(time) {
       timeFormat[i] = ' min';
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
+      }
+      if(parseInt(timeFormat[i-1])==0){
+        if(timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))){
+          timeFormat[i] += 's';
+        }
       }
       if (i != timeFormat.length-1) {
         timeFormat[i] += ' ';
