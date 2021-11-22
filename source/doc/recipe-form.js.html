@@ -49,6 +49,10 @@ function init() {
   // Add event listener for Submitting the Form
   const formSubmitted = document.querySelector('#recipeForm');
   formSubmitted.addEventListener('submit', buildJSON);
+
+  // Add event listener for adding the tag
+  const buttonTag = document.querySelector('#add-tag');
+  buttonTag.addEventListener('click', addTag);
 }
 
 window.addEventListener('DOMContentLoaded', init);
@@ -117,6 +121,13 @@ async function buildJSON(event) {
     alert('Please upload an image of your recipe');
   }
 
+  // Retrieve all the tags selected
+  const tags = document.querySelectorAll('#selected-tags div');
+  const tagArray = [];
+  for (let i = 0; i &lt; tags.length; i++) {
+    tagArray.push(tags[i].textContent.slice(0, -1));
+  }
+
 
   // Start building JSON string first from object, fill out the form values.
   const object = {};
@@ -127,6 +138,7 @@ async function buildJSON(event) {
   object.cookTime = cookTime;
   object.recipeIngredient = ingredientArray;
   object.recipeInstructions = completedSteps;
+  object.tags = tagArray;
 
   const userID = firebase.auth().currentUser.uid;
 
@@ -159,7 +171,55 @@ async function buildJSON(event) {
   // const jsonString = JSON.stringify(object);
   // console.log(jsonString);
 }
+/**
+ * Function to remove a tag when the corresponding button is clicked
+ */
+function deleteTag() {
+  const parent = this.parentNode; // eslint-disable-line no-invalid-this
+  const grandParent = parent.parentNode;
+  grandParent.removeChild(parent);
+}
+/**
+ * Function to allow the user to use a multiple select and select multiple
+ * tags for their recipes. The multiselect prohibits the default tag
+ * "select tags" from being selected. It also will prohibit duplicate tags
+ * It will add the tag as a &lt;div> with a button that is linked to it.
+ * This button is linked to deleteTag so it will remove the tag onclick.
+ */
+function addTag() {
+  const tagsDiv = document.querySelector('#selected-tags');
+  const itemList = document.getElementById('tags');
+  const collection = itemList.selectedOptions;
+  for (let i = 0; i &lt; collection.length; i++) {
+    const currLabel = collection[i].label;
 
+    // shouldn't add the "select tags: option" or any tags already added
+    if (currLabel != 'Select Tags:') {
+      // prevent duplicate
+      const tags = document.querySelectorAll('#selected-tags div');
+      if (tags.length) {
+        // search through div to make sure no dupilcates are added
+        for (let j = 0; j &lt; tags.length; j++) {
+          const divLabel = tags[j].textContent.slice(0, -1);
+          if (currLabel == divLabel) {
+            // remove old elements
+            tags[j].remove();
+          }
+        }
+      }
+      // add elements also add a button to remove
+      // the tag.
+      const newTag = document.createElement('div');
+      const newButton = document.createElement('button');
+      newButton.type = 'button';
+      newButton.onclick = deleteTag;
+      newButton.textContent = 'x';
+      newTag.textContent = currLabel;
+      newTag.appendChild(newButton);
+      tagsDiv.appendChild(newTag);
+    }
+  }
+}
 
 /**
  *  Function to append a new input to the Ingredients part of the form.
@@ -256,13 +316,13 @@ function removeStep() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#addTag">addTag</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#deleteTag">deleteTag</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 21 2021 17:47:03 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 21 2021 19:46:19 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
