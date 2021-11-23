@@ -10,7 +10,7 @@ function init() {
   const removeIngrButton = document.querySelector('#remove-ingredient');
   removeIngrButton.addEventListener('click', removeIngredient);
 
-  // Add event listneer for "Add Step" Button Press
+  // Add event listener for "Add Step" Button Press
   const addStepButton = document.querySelector('#add-step');
   addStepButton.addEventListener('click', addStep);
 
@@ -25,6 +25,10 @@ function init() {
   // Add event listener for adding the tag
   const buttonTag = document.querySelector('#add-tag');
   buttonTag.addEventListener('click', addTag);
+
+  // Add event listener for "Cancel" Button Press
+  const cancelRecipeButton = document.querySelector('#cancel');
+  cancelRecipeButton.addEventListener('click', cancelRecipe);
 }
 
 window.addEventListener('DOMContentLoaded', init);
@@ -275,4 +279,11 @@ function removeStep() {
 
   const remove = document.querySelector('.recipe-steps');
   remove.removeChild(remove.lastChild);
+}
+
+/**
+ * Returns to home page when 'cancel' button is pressed.
+ */
+function cancelRecipe() {
+  window.location.href = 'home-page.html';
 }
