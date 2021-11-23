@@ -1,5 +1,5 @@
 /* eslint-disable guard-for-in */
-module.exports = { formatTime };
+module.exports = {formatTime};
 
 let recipeData;
 
