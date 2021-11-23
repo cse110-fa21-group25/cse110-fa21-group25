@@ -282,8 +282,7 @@ function removeStep() {
 }
 
 /**
- * Cancels recipe creation and returns to home page when 'cancel' button 
- * is pressed.
+ * Returns to home page when 'cancel' button is pressed.
  */
 function cancelRecipe() {
   window.location.href = 'home-page.html';
