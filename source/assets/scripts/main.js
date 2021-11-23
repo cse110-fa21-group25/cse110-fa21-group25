@@ -1,4 +1,6 @@
 /* eslint-disable guard-for-in */
+module.exports = { formatTime };
+
 let recipeData;
 
 window.addEventListener('DOMContentLoaded', init);
