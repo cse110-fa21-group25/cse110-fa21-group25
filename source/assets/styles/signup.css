@@ -66,6 +66,13 @@ body {
   font-family: "Oswald", sans-serif;
 }
 
+#error-message {
+  text-align: center;
+  font-size: small;
+  font-family: "Comforter Brush", cursive;
+  font-family: "Oswald", sans-serif;
+}
+
 #footer-container {
   padding: 7.5px 7.5px;
   margin: 10px 10px 10px 10px;
