@@ -279,16 +279,32 @@ function formatTime(time) {
   time = time.slice(2);
   const timeFormat = time.split('');
   for (let i=0; i < timeFormat.length; i++) {
+    // remove 'R' in 'HR'
+    if (timeFormat[i] == 'R'){
+      timeFormat[i] = '';
+      if(timeFormat[i-1] == ' hrs ' && i == timeFormat.length-1){
+        timeFormat[i-1] = ' hrs';
+      }
+      if(timeFormat[i-1] == ' hr ' && i == timeFormat.length-1){
+        timeFormat[i-1] = ' hr';
+      }
+    }
     if (timeFormat[i] == 'H') {
       timeFormat[i] = ' hr';
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if (parseInt(timeFormat[i-1])==0) {
+      // Handled 10-11 (two digits)
+      if (parseInt(timeFormat[i-1])==0 || parseInt(timeFormat[i-1])==1) {
         if (timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))) { // eslint-disable-line max-len
           timeFormat[i] += 's';
         }
       }
+      //Handle 12 hrs --> should be 12+ hrs
+      if(parseInt(timeFormat[i-1])==2 && parseInt(timeFormat[i-2])==1){
+        timeFormat[i-1] += '+';
+      }
+      // if not the end of string, push a space
       if (i != timeFormat.length-1) {
         timeFormat[i] += ' ';
       }
@@ -298,7 +314,8 @@ function formatTime(time) {
       if (parseInt(timeFormat[i-1]) > 1) {
         timeFormat[i] += 's';
       }
-      if (parseInt(timeFormat[i-1])==0) {
+      // Handled 10-11 (two digits)
+      if (parseInt(timeFormat[i-1])==0 || parseInt(timeFormat[i-1])==1) {
         if (timeFormat[i-2] && !isNaN(parseFloat(timeFormat[i-2]+timeFormat[i-1]) - (timeFormat[i-2]+timeFormat[i-1]))) { // eslint-disable-line max-len
           timeFormat[i] += 's';
         }
