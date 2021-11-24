@@ -4,6 +4,7 @@
 function logout() { // eslint-disable-line no-unused-vars
   firebase.auth().signOut().then(() => {
     console.log('successfully signed out');
+    window.location.href = 'login.html';
   });
 }
 
