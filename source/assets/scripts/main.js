@@ -280,12 +280,12 @@ function formatTime(time) {
   const timeFormat = time.split('');
   for (let i=0; i < timeFormat.length; i++) {
     // remove 'R' in 'HR'
-    if (timeFormat[i] == 'R'){
+    if (timeFormat[i] == 'R') {
       timeFormat[i] = '';
-      if(timeFormat[i-1] == ' hrs ' && i == timeFormat.length-1){
+      if (timeFormat[i-1] == ' hrs ' && i == timeFormat.length-1) {
         timeFormat[i-1] = ' hrs';
       }
-      if(timeFormat[i-1] == ' hr ' && i == timeFormat.length-1){
+      if (timeFormat[i-1] == ' hr ' && i == timeFormat.length-1) {
         timeFormat[i-1] = ' hr';
       }
     }
@@ -300,8 +300,8 @@ function formatTime(time) {
           timeFormat[i] += 's';
         }
       }
-      //Handle 12 hrs --> should be 12+ hrs
-      if(parseInt(timeFormat[i-1])==2 && parseInt(timeFormat[i-2])==1){
+      // Handle 12 hrs --> should be 12+ hrs
+      if (parseInt(timeFormat[i-1])==2 && parseInt(timeFormat[i-2])==1) {
         timeFormat[i-1] += '+';
       }
       // if not the end of string, push a space
