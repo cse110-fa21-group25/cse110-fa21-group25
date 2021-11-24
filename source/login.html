@@ -6,27 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Oswald:wght@200;400&display=swap');
+    </style>
     <link rel="stylesheet" href="/source/assets/styles/login.css">
 </head>
 <body>
     <!-- User credential -->
     <section id="credential">
+        <div id="image-container">
             <img id= "logoBox" src="logo.png" alt="logo">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+        </div>
+        <div id="login-container"> 
+            <!-- <label for="email">Email</label> -->
+            <input type="text" id="email" name="email" placeholder="Email">
+            <!-- <label for="password">Password</label> -->
+            <input type="password" id="password" name="password" placeholder="Password">
             <span id="error-message" style="color: red"></span>
             <input
                 id="login"
                 type="button"
-                value="Log In"
+                value="Login"
                 onclick="login()"
-            />
-            <a href="signup.html">Don't have an account? Sign up here!</a>
-            <section id="redirect-homepage">
-                <a href="home-page.html">Back to Home Page</a>
-            </section>
+            />   
+            <div id="footer-container">
+                <a href="signup.html">Sign up</a>
+                <a href="home-page.html">Home</a>
+            </div>         
+        </div>
     </section>
     <!-- Redirect to home page -->
     
