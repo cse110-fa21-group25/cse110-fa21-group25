@@ -31,4 +31,3 @@ jobs:
       run: |
         npm install
         grunt
-        npm run test
