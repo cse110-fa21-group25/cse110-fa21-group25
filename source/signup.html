@@ -4,37 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Oswald:wght@200;400&display=swap');
+    </style>
     <link rel="stylesheet" href="/source/assets/styles/signup.css">
     <title>Document</title>
   </head>
   <body>
     <!-- User credential -->
     <section id="credential">
-      <img id= "logoBox" src="logo.png" alt="logo">
-      <!-- <form > -->
-      <label for="Email">Email</label>
-      <input type="email" id="email" name="email" /><br />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" /><br />
-      <label for="confirm-password">Confirm Password</label>
-      <input
-        type="password"
-        id="confirm-password"
-        name="confirm-password"
-      /><br />
+      <div id="image-container">
+        <img id= "logoBox" src="app-logo.png" alt="logo">
+      </div>
+      <div id="signup-container"> 
+      <input type="email" id="email" name="email" placeholder="Email"/>
+      <input type="password" id="password" name="password" placeholder="Password"/>
+      <input type="password" id="confirm-password" name="confirm-password" 
+      placeholder="Confirm Password"/>
+      <!-- Error message output -->
       <span id="error-message" style="color: red"></span>
+      <!-- Sign up -->
       <input
         id="signup"
         type="button"
         value="Sign Up"
         onclick="signup()"
       />
-      <a href="login.html">Already have an account? Log in here!</a>
-      <!-- </form> -->
-      <!-- Redirect to home page -->
-      <section id="redirect-homepage">
-        <a href="home-page.html">Back to Home Page</a>
-      </section>
+      <!-- Redirect to home page or login-->
+      <div id="footer-container">
+        <a href="login.html">Login</a>
+        <a href="home-page.html">Home</a>
+      </div>     
+    </div>
     </section>
     
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
