@@ -3,6 +3,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    shell: {
+      test: {
+        command: 'npm run test',
+      },
+    },
     eslint: {
       target: ['Gruntfile.js', 'assets/**/*.js'],
     },
@@ -20,5 +25,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsdoc');
 
   // Default task(s).
-  grunt.registerTask('default', ['eslint', 'jsdoc']);
+  grunt.registerTask('default', ['shell:test', 'eslint', 'jsdoc']);
 };
