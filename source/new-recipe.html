@@ -1,150 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>New Recipe</title>
-        <!-- TODO: Temporary Icon -->
-        <link rel="icon" href="icon.png">
-        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
-        <script>
-            // Your web app's Firebase configuration
-            const firebaseConfig = {
-                apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
-                authDomain: "cse110-fa21-group25.firebaseapp.com",
-                projectId: "cse110-fa21-group25",
-                storageBucket: "cse110-fa21-group25.appspot.com",
-                messagingSenderId: "72880092536",
-                appId: "1:72880092536:web:e991fa2672b4ba6d2d848d"
-            };
-            // Initialize Firebase
-            if (!firebase.apps.length) {
-                firebase.initializeApp(firebaseConfig);
-            }
-        </script>
-        <!-- Custom JavaScript -->
-        <script src="./assets/scripts/crud.js"></script>
-        <script src="./assets/scripts/recipe-form.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1> Create New Recipe</h1>
-        </header>
-        <main>
-            <form id="recipeForm">
-                <label> My Recipe Title:</label>
-                <input type="text" name="recipe-title" id="recipe-title">
-                <br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Recipe</title>
+    <!-- TODO: Temporary Icon -->
+    <link rel="icon" href="icon.png" />
 
-                <label> Author: </label>
-                <input type="text" name="author" id="author">
-                <br><br>
-                <p>Description:</p>
-                <textarea id="description" placeholder="Tell us a little bit about your recipe here!"
-                style="height:70px; width:300px;"></textarea>
-                <br><br>
-                
-                <section id="tag-section">
-                    <label>Tags:</label>
-                    <select class="tags" id="tags" multiple="yes" style="vertical-align: middle; width:120px">
-                        <option value="0">Select Tags:</option>
-                        <option value="1">Breakfast</option>
-                        <option value="2">Dessert</option>
-                        <option value="3">Dinner</option>
-                        <option value="4">Easy</option>
-                        <option value="5">Healthy</option>
-                        <option value="6">Lunch</option>
-                        <option value="7">Quick</option>
-                        <option value="8">Snack</option>
-                    </select>
-                    <button id="add-tag" type="button"> Add Tag(s) </button>
-                    <div id="selected-tags">
-                         
-                    </div>
-                    
-                </section>
-            
-                <br><br>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
+        authDomain: "cse110-fa21-group25.firebaseapp.com",
+        projectId: "cse110-fa21-group25",
+        storageBucket: "cse110-fa21-group25.appspot.com",
+        messagingSenderId: "72880092536",
+        appId: "1:72880092536:web:e991fa2672b4ba6d2d848d",
+      };
+      // Initialize Firebase
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="./assets/scripts/crud.js"></script>
+    <script src="./assets/scripts/recipe-form.js"></script>
 
-                <label>Ingredients</label>
-                <section name="ingredients">
-                    <div class="ingredients-field">
-                        <div>
-                            <input type="text" class="ingredient" placeholder="Ingredient Name" id="ingredient1">
-                        </div>
-                        
-                    </div>
-                    <button id="add-ingredient" type="button">Add Ingredient</button>
-                    <button id="remove-ingredient" type="button">Remove Ingredient</button>
+    <!-- main.css -->
+    <link href="./assets/styles/main.css" rel="stylesheet" />
+    <link href="./assets/styles/navbar.css" rel="stylesheet" />
+    <link href="./assets/styles/new-recipe.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
 
-                </section>
-                <br><br>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="nav-placeholder"></div>
+      <script>
+        $(function () {
+          $("#nav-placeholder").load("navbar.html");
+        });
+      </script>
+      <h1>Create New Recipe</h1>
+    </header>
+    <main>
+      <form id="recipeForm">
+        <label> My Recipe Title:</label>
+        <input type="text" name="recipe-title" id="recipe-title" />
+        <br /><br />
 
-                <label> Cook Time: </label>
-                <div class="cook-time" id="cook-time"> 
-                    <select id="num-hours">
-                        <option value="0">0 Hours</option>
-                        <option value="1">1 Hour</option>
-                        <option value="2">2 Hours</option>
-                        <option value="3">3 Hours</option>
-                        <option value="4">4 Hours</option>
-                        <option value="5">5 Hour</option>
-                        <option value="6">6 Hours</option>
-                        <option value="7">7 Hours</option>
-                        <option value="8">8 Hours</option>
-                        <option value="9">9 Hour</option>
-                        <option value="10">10 Hours</option>
-                        <option value="11">11 Hours</option>
-                        <option value="12">12+ Hours</option>
-                    </select>
+        <label> Author: </label>
+        <input type="text" name="author" id="author" />
+        <br /><br />
+        <p>Description:</p>
+        <textarea
+          id="description"
+          placeholder="Tell us a little bit about your recipe here!"
+          style="height: 70px; width: 300px"
+        ></textarea>
+        <br /><br />
 
-                    <select id="num-minutes">
-                        <option value="0">0 Minutes</option>
-                        <option value="1">5 Minutes</option>
-                        <option value="2">10 Minutes</option>
-                        <option value="3">15 Minutes</option>
-                        <option value="4">20 Minutes</option>
-                        <option value="5">25 Minutes</option>
-                        <option value="6">30 Minutes</option>
-                        <option value="7">35 Minutes</option>
-                        <option value="8">40 Minutes</option>
-                        <option value="9">45 Minutes</option>
-                        <option value="10">50 Minutes</option>
-                        <option value="11">55 Minutes</option>
-                    </select>
-                </div>
-                <br><br>
-            
-                <label>Steps:</label>
-                <section name="steps">
-                    <!-- same as above -->
-                    <div class="recipe-steps">
-                        <div>
-                            <label>1.</label>
-                            <textarea class="steps" style="height:70px; width:300px; vertical-align: middle" 
-                            placeholder='Add the first step of creating your recipe here!' id="step1"></textarea>
-                        </div>
-                        
-                    </div>
-                    <button id="add-step" type="button">Add Step</button>
-                    <button id="remove-step" type="button">Remove Step</button>
+        <section id="tag-section">
+          <label>Tags:</label>
+          <select
+            class="tags"
+            id="tags"
+            multiple="yes"
+            style="vertical-align: middle; width: 120px"
+          >
+            <option value="0">Select Tags:</option>
+            <option value="1">Breakfast</option>
+            <option value="2">Dessert</option>
+            <option value="3">Dinner</option>
+            <option value="4">Easy</option>
+            <option value="5">Healthy</option>
+            <option value="6">Lunch</option>
+            <option value="7">Quick</option>
+            <option value="8">Snack</option>
+          </select>
+          <button id="add-tag" type="button">Add Tag(s)</button>
+          <div id="selected-tags"></div>
+        </section>
 
-                </section>
-                <br><br>
+        <br /><br />
 
-                <label>Upload Image:</label>
-                <input type="file" id="recipe-image" accept="image/png, image/jpeg">
-                <br><br>
+        <label>Ingredients</label>
+        <section name="ingredients">
+          <div class="ingredients-field">
+            <div>
+              <input
+                type="text"
+                class="ingredient"
+                placeholder="Ingredient Name"
+                id="ingredient1"
+              />
+            </div>
+          </div>
+          <button id="add-ingredient" type="button">Add Ingredient</button>
+          <button id="remove-ingredient" type="button">
+            Remove Ingredient
+          </button>
+        </section>
+        <br /><br />
 
-                <button type="submit" id="submit-recipe"> Submit </button>
-                <button type='button' id='cancel'>Cancel</button>
-            </form>
-        </main>
-        <footer>
-        </footer>
-    </body>
+        <label> Cook Time: </label>
+        <div class="cook-time" id="cook-time">
+          <select id="num-hours">
+            <option value="0">0 Hours</option>
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+            <option value="5">5 Hour</option>
+            <option value="6">6 Hours</option>
+            <option value="7">7 Hours</option>
+            <option value="8">8 Hours</option>
+            <option value="9">9 Hour</option>
+            <option value="10">10 Hours</option>
+            <option value="11">11 Hours</option>
+            <option value="12">12+ Hours</option>
+          </select>
+
+          <select id="num-minutes">
+            <option value="0">0 Minutes</option>
+            <option value="1">5 Minutes</option>
+            <option value="2">10 Minutes</option>
+            <option value="3">15 Minutes</option>
+            <option value="4">20 Minutes</option>
+            <option value="5">25 Minutes</option>
+            <option value="6">30 Minutes</option>
+            <option value="7">35 Minutes</option>
+            <option value="8">40 Minutes</option>
+            <option value="9">45 Minutes</option>
+            <option value="10">50 Minutes</option>
+            <option value="11">55 Minutes</option>
+          </select>
+        </div>
+        <br /><br />
+
+        <label>Steps:</label>
+        <section name="steps">
+          <!-- same as above -->
+          <div class="recipe-steps">
+            <div>
+              <label>1.</label>
+              <textarea
+                class="steps"
+                style="height: 70px; width: 300px; vertical-align: middle"
+                placeholder="Add the first step of creating your recipe here!"
+                id="step1"
+              ></textarea>
+            </div>
+          </div>
+          <button id="add-step" type="button">Add Step</button>
+          <button id="remove-step" type="button">Remove Step</button>
+        </section>
+        <br /><br />
+
+        <label>Upload Image:</label>
+        <input type="file" id="recipe-image" accept="image/png, image/jpeg" />
+        <br /><br />
+
+        <button type="submit" id="submit-recipe">Submit</button>
+        <button type="button" id="cancel">Cancel</button>
+      </form>
+    </main>
+    <footer></footer>
+  </body>
 </html>
-
