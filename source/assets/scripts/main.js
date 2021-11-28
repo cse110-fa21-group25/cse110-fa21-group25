@@ -344,3 +344,14 @@ function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
     window.location.href = 'login.html';
   }
 }
+
+/**
+ * If user is not logged in, navigate to the login page.
+ */
+function navigateLogin() { // eslint-disable-line no-unused-vars
+  if (!firebase.auth().currentUser) {
+    window.location.href = 'login.html';
+  } else {
+    logout();
+  }
+}
