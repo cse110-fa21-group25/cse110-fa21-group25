@@ -35,7 +35,8 @@ header {
 }
 
 .tags button {
-  margin: 1px;
+  margin: 2px;
+  padding: 3px;
   border: none;
   border-radius: 10px;
   background-color: rgb(190, 226, 255);
@@ -54,7 +55,7 @@ header {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  z-index: 100;
   cursor: pointer;
 }
 
@@ -74,6 +75,11 @@ header {
   padding: 2px;
 }
 
+/* TODO: image on center without 100% width */
 .expand-body-section > img {
   width: 100%;
+}
+
+.unscroll-body {    
+  overflow-y: hidden; 
 }
