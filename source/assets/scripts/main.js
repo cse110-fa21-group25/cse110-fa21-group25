@@ -355,3 +355,15 @@ function navigateLogin() { // eslint-disable-line no-unused-vars
     logout();
   }
 }
+
+/**
+ * If user is logged in navigate to my page
+ * Otherwise, navigate to login page.
+ */
+function navigateMyPage() {
+  if (firebase.auth().currentUser) {
+    window.location.href = 'person.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
