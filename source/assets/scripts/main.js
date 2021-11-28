@@ -1,9 +1,14 @@
 /* eslint-disable guard-for-in */
-module.exports = {formatTime};
+if (typeof module !== 'undefined') {
+  module.exports = {formatTime};
+}
 
 let recipeData;
 
-window.addEventListener('DOMContentLoaded', init);
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', init);
+}
+
 /**
  * Initialization to fetch the recipes and create recipe cards.
  */
