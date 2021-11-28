@@ -12,9 +12,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     const logoutButton = document.getElementById('login-button');
     logoutButton.innerHTML = 'Logout';
+    logoutButton.hidden = false;
   } else {
     // No user is signed in.
     const loginButton = document.getElementById('login-button');
     loginButton.innerHTML = 'Login';
+    loginButton.hidden = false;
   }
 });
