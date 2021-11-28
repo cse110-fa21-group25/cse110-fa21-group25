@@ -258,13 +258,13 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     // let overlayOpen = expandDiv.className === 'overlay';
 
-     /* Toggle the aria-hidden state on the overlay and the 
+    /* Toggle the aria-hidden state on the overlay and the
         no-scroll class on the body */
     bodyHtml.classList.add('unscroll-body');
     //  bodyHtml.classList.toggle('noscroll', overlayOpen);
 
-     /* On some mobile browser when the overlay was previously
-        opened and scrolled, if you open it again it doesn't 
+    /* On some mobile browser when the overlay was previously
+        opened and scrolled, if you open it again it doesn't
         reset its scrollTop property */
     //  overlayDiv.scrollTop = 0;
 
