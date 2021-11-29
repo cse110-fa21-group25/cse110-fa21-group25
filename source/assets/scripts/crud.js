@@ -141,11 +141,10 @@ function updateRecipe(recipe) { // eslint-disable-line no-unused-vars
  * @return {Promise} a promise for the deletion of the given recipe
  */
 function deleteRecipeById(recipeId) { // eslint-disable-line no-unused-vars
-  const user = firebase.auth().currentUser;
   try {
-    if (user.uid !== recipe.data.userId) throw new Error('not authenticated');
     return db.collection('recipes').doc(recipeId).delete().then(() => {
-      return console.log('Document successfully written!');
+      window.location.reload();
+      return console.log('Recipe Deleted!');
     });
   } catch (error) {
     console.error('Error deleting document: ', error);

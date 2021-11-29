@@ -1,8 +1,4 @@
 /* eslint-disable guard-for-in */
-if (typeof module !== 'undefined') {
-  module.exports = {formatTime};
-}
-
 let recipeData;
 
 if (typeof window !== 'undefined') {
@@ -10,46 +6,48 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * Initialization to fetch the recipes and create recipe cards.
+ * Function that runs when DOM content is loaded
+ * Populate the my recipes with the recipes that user has created
  */
 async function init() {
-  try {
-    recipeData = await getAllRecipes();
-  } catch (e) {
-    throw (e);
-  }
-  console.log(Object.keys(recipeData).length);
-  createRecipeCard();
+  firebase.auth().onAuthStateChanged(async function(user) {
+    if (user) {
+      recipeData = await getRecipesByUserId(user.uid);
+      createRecipeCard();
+    } else {
+      // User is signed out.
+      console.error('user entered person\'s page without being logged in');
+    }
+  });
 }
 
-// TODO: SPLIT BASED ON HOME-PAGE CATEGORIES
-// (CLARIFY CATEGORIES (e.g. trending recipes, etc.))
 /**
- * Creating recipe cards from the recipeData.
+ * Works the same way as the one in main.js
+ * It will search throguh recipeData and populate with recipeCards
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
-    console.log(recipe);
+    // console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
-         * card format:
-         * <div class='card'>
-         *      <div class='card-body'>
-         *      <img src='{recipe's thumbnail}'>
-         *          <h4> {recipe's name} </h4>
-         *          <p> Cook/prep time </p>
-         *          <p> User's name (who created the recipe) </p>
-         *          <div class='tags'>
-         *              <button> {recipe's tag 1} </button>
-         *              ... // more tags go here
-         *          </div>
-         *      </div>
-         *      <div class='card-footer'>
-         *          <button>View Recipe</button>
-         *      </div>
-         * </div>
-         *
-         * *********************************** */
+                * card format:
+                * <div class='card'>
+                *      <div class='card-body'>
+                *      <img src='{recipe's thumbnail}'>
+                *          <h4> {recipe's name} </h4>
+                *          <p> Cook/prep time </p>
+                *          <p> User's name (who created the recipe) </p>
+                *          <div class='tags'>
+                *              <button> {recipe's tag 1} </button>
+                *              ... // more tags go here
+                *          </div>
+                *      </div>
+                *      <div class='card-footer'>
+                *          <button>View Recipe</button>
+                *      </div>
+                * </div>
+                *
+                * *********************************** */
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
@@ -70,7 +68,7 @@ async function createRecipeCard() {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    console.log('ingredients ', recipe.data.recipeIngredient);
+    // console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -88,6 +86,11 @@ async function createRecipeCard() {
     const recipeDetailButton = document.createElement('button');
     recipeDetailButton.innerHTML = 'View Recipe';
 
+    // Button to Delete Recipe
+    const recipeDeleteButton = document.createElement('button');
+    recipeDeleteButton.innerHTML = 'Delete Recipe';
+    // recipeDeleteButton.onclick = deleteRecipe;
+
     // Assemble Recipe Card's DOM (as above structure reference)
     cardDiv.appendChild(cardBodyDiv);
     cardDiv.appendChild(cardFooterDiv);
@@ -99,17 +102,18 @@ async function createRecipeCard() {
     cardBodyDiv.appendChild(tagDiv);
 
     cardFooterDiv.appendChild(recipeDetailButton);
+    cardFooterDiv.appendChild(recipeDeleteButton);
 
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
-        '#example-recipe > .recipe-row');
+        '#created-recipes > .my-recipe');
     // check if cardDiv generated properly
     // console.log(cardDiv);
     exampleRecipeRow.appendChild(cardDiv);
 
     recipeCardDetail(recipeDetailButton, recipe);
+    deleteRecipe(recipeDeleteButton, recipe);
   }
-  console.log('done looping through recipes');
 }
 
 /**
@@ -122,38 +126,38 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     console.log('Hello!! I\'m clicked');
     console.log(recipe);
     /* *********************************** *
-     * expand format:
-     * <div>
-     *      <div class='close-recipe-detail-div'>
-     *          <button>X</button>
-     *      </div>
-     *      <div>
-     *          <h4> {recipe's title} </h4>
-     *          <img src='{recipe's thumbnail}'>
-     *          <p> Cook/prep time </p>
-     *          <p> {recipe's owner} </p>
-     *          <div class='tags'>
-     *              <button> {recipe's tag 1} </button>
-     *              ... // more tags go here
-     *          </div>
-     *      </div>
-     *      <div class='ingredients'>
-     *          <h4>Ingredients:</h4>
-     *          <ul>
-     *              <li>{ingredient 1}</li>
-     *          ... // more ingredients go here
-     *          </ul>
-     *      </div>
-     *      <div class='instructions'>
-     *          <h4>Instructions:</h4>
-     *          <ul>
-     *              <li>{instruction 1}</li>
-     *              ... // more instructions go here
-     *          </ul>
-     *      </div>
-     * </div>
-     *
-     * *********************************** */
+       * expand format:
+       * <div>
+       *      <div class='close-recipe-detail-div'>
+       *          <button>X</button>
+       *      </div>
+       *      <div>
+       *          <h4> {recipe's title} </h4>
+       *          <img src='{recipe's thumbnail}'>
+       *          <p> Cook/prep time </p>
+       *          <p> {recipe's owner} </p>
+       *          <div class='tags'>
+       *              <button> {recipe's tag 1} </button>
+       *              ... // more tags go here
+       *          </div>
+       *      </div>
+       *      <div class='ingredients'>
+       *          <h4>Ingredients:</h4>
+       *          <ul>
+       *              <li>{ingredient 1}</li>
+       *          ... // more ingredients go here
+       *          </ul>
+       *      </div>
+       *      <div class='instructions'>
+       *          <h4>Instructions:</h4>
+       *          <ul>
+       *              <li>{instruction 1}</li>
+       *              ... // more instructions go here
+       *          </ul>
+       *      </div>
+       * </div>
+       *
+       * *********************************** */
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
 
@@ -250,7 +254,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     instructionsDiv.appendChild(instructionsH4);
     instructionsDiv.appendChild(instructionsOl);
 
-    console.log(overlayDiv);
+    // console.log(overlayDiv);
 
     // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
@@ -334,36 +338,22 @@ function formatTime(time) {
 }
 
 /**
- * If user is logged in navigate to create new recipe page.
- * Otherwise, navigate to login page.
+ * Function to delete the recipe that was clicked on
+ * It will ask the user to confirm if they really want to delete
+ * before deleting.
+ *
+ * @param {*} recipeDeleteButton button that the user clicks to delete
+ * @param {*} recipe recipe that is displayed to user
  */
-function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
-  if (firebase.auth().currentUser) {
-    window.location.href = 'new-recipe.html';
-  } else {
-    window.location.href = 'login.html';
-  }
-}
-
-/**
- * If user is not logged in, navigate to the login page.
- */
-function navigateLogin() { // eslint-disable-line no-unused-vars
-  if (!firebase.auth().currentUser) {
-    window.location.href = 'login.html';
-  } else {
-    logout();
-  }
-}
-
-/**
- * If user is logged in navigate to my page
- * Otherwise, navigate to login page.
- */
-function navigateMyPage() { // eslint-disable-line no-unused-vars
-  if (firebase.auth().currentUser) {
-    window.location.href = 'person.html';
-  } else {
-    window.location.href = 'login.html';
-  }
+async function deleteRecipe(recipeDeleteButton, recipe) {
+  recipeDeleteButton.addEventListener('click', ()=>{
+    // console.log(recipe);
+    // console.log(recipe.id);
+    const result = confirm('Do you really want to delete this recipe?');
+    if (result) {
+      // delete the image and the recipe by id.
+      deleteImage(recipe.data.imageURL);
+      deleteRecipeById(recipe.id);
+    }
+  });
 }
