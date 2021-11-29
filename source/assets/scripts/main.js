@@ -328,35 +328,22 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     ingredientsDiv.classList.add('ingredients-expand');
     for (const ingredient in recipe.data.recipeIngredient) {
-      const ingredientIl = document.createElement('li');
-      ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
-      ingredientsUl.appendChild(ingredientIl);
+      const ingredientLi = document.createElement('li');
+      ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientsUl.appendChild(ingredientLi);
     }
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const instructionsDiv = document.createElement('div');
     instructionsDiv.classList.add('expand-main');
     const instructionsH4 = document.createElement('h4');
     instructionsH4.innerHTML = 'Instructions:';
     instructionsDiv.classList.add('instructions-expand');
     const instructionsOl = document.createElement('ol');
-    const step1 = document.createElement('li');
-    const step2 = document.createElement('li');
-    const step3 = document.createElement('li');
-    const step4 = document.createElement('li');
-    step1.innerHTML = 'Prepare.';
-    step2.innerHTML = 'Cook.';
-    step3.innerHTML = 'Serve.';
-    step4.innerHTML = 'Feast!!';
-    instructionsOl.appendChild(step1);
-    instructionsOl.appendChild(step2);
-    instructionsOl.appendChild(step3);
-    instructionsOl.appendChild(step4);
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    for (const instruction in recipe.data.recipeInstructions) {
+      const instructionLi = document.createElement('li');
+      instructionLi.innerHTML = recipe.data.recipeInstructions[instruction];
+      instructionsOl.appendChild(instructionLi);
+    }
 
     overlayDiv.appendChild(expandDiv);
 
