@@ -37,21 +37,26 @@ async function init() {
 // (CLARIFY CATEGORIES (e.g. trending recipes, etc.))
 /**
  * Creating recipe cards from the recipeData.
+ * @param {*} data the recipe data
  */
-async function populateHomePage(data){
+async function populateHomePage(data) {
   createRecipeCard(data, 'All Recipes');
 }
 
-
+/**
+ * Creating recipe cards from the recipe data and section name.
+ * @param {*} data data for the recipe
+ * @param {*} sectionName section the card should go into
+ */
 async function createRecipeCard(data, sectionName) {
   // Add recipes to home page
   // 1) Create new section
-    // <section id="example-recipe">
-    //   <h2>Example:</h2>
-    //   <div class="recipe-row">
-    //     <!-- RECIPE CARD GOES HERE -->
-    //   </div>
-    // </section>
+  // <section id="example-recipe">
+  //   <h2>Example:</h2>
+  //   <div class="recipe-row">
+  //     <!-- RECIPE CARD GOES HERE -->
+  //   </div>
+  // </section>
   // 2) Put recipes in the newly created section
   const section = document.createElement('section');
   section.setAttribute('id', 'searched-recipe');
@@ -137,8 +142,8 @@ async function createRecipeCard(data, sectionName) {
     cardFooterDiv.appendChild(recipeDetailButton);
 
     // Attach to the appropriate recipe-row category
-    const exampleRecipeRow = document.querySelector(
-        '#example-recipe > .recipe-row');
+    // const exampleRecipeRow = document.querySelector(
+    //     '#example-recipe > .recipe-row');
     // check if cardDiv generated properly
     // console.log(cardDiv);
     // exampleRecipeRow.appendChild(cardDiv);
@@ -152,45 +157,51 @@ async function createRecipeCard(data, sectionName) {
   recipeCategoriesDiv.insertBefore(section, recipeCategoriesDiv.firstChild);
 }
 
-
-async function searchRecipes(query){
-  if(!query){
+/**
+ * Search for recipes based on query.
+ * @param {*} query query to search for recipes
+ */
+async function searchRecipes(query) {
+  if (!query) {
     alert('Please enter a search query!');
     return;
   }
-  let array = [];
+  const array = [];
   let recipeDataBasedOnSearch;
-  try{
+  try {
     recipeDataBasedOnSearch = await getRecipesByName(query);
-    if(Object.keys(recipeDataBasedOnSearch).length > 0){
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
       // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
     recipeDataBasedOnSearch = await getRecipesByTag(query);
-    if(Object.keys(recipeDataBasedOnSearch).length > 0){
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
       // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
     recipeDataBasedOnSearch = await getRecipesByUserId(query);
-    if(Object.keys(recipeDataBasedOnSearch).length > 0){
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
       // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
-  }
-  catch(e){
-    throw(e);
+  } catch (e) {
+    throw (e);
   }
   // get unique recipes
-  const unique = [...new Map(array.map((item) => [item["id"], item])).values()];
-  if(unique.length > 0 ){
+  const unique = [...new Map(array.map((item) => [item['id'], item])).values()];
+  if (unique.length > 0 ) {
     showRecipesOnSearch(unique[0], 'Search Results');
-  }
-  else{
+  } else {
     showRecipesOnSearch(recipeData, 'All Recipes');
   }
 }
 
-async function showRecipesOnSearch(data, sectionName){
+/**
+ * Show the recipe cards based on search query.
+ * @param {*} data recipes to display
+ * @param {*} sectionName section where recipes should be displayed
+ */
+async function showRecipesOnSearch(data, sectionName) {
   const overlayDiv = document.createElement('div');
   overlayDiv.classList.add('overlay');
   const loaderDiv = document.createElement('div');
@@ -200,11 +211,11 @@ async function showRecipesOnSearch(data, sectionName){
   overlayDiv.appendChild(loaderDiv);
   bodyHtml.appendChild(overlayDiv);
 
-// remove entire page's sections
+  // remove entire page's sections
   const recipeCategoriesDiv = document.querySelector('#recipe-categories');
 
   setTimeout(()=>{
-    while(recipeCategoriesDiv.lastChild){
+    while (recipeCategoriesDiv.lastChild) {
       recipeCategoriesDiv.removeChild(recipeCategoriesDiv.lastChild);
     }
     createRecipeCard(data, sectionName);
@@ -213,16 +224,19 @@ async function showRecipesOnSearch(data, sectionName){
     }
     overlayDiv.remove();
     bodyHtml.classList.remove('unscroll-body');
-    if(sectionName == 'All Recipes'){
+    if (sectionName == 'All Recipes') {
       alert('No matching recipes found...showing all recipes');
     }
   }, 1000);
 }
 
-
-
-async function searchByTag(button, tagName){
-  let recipeWithTag;
+/**
+ * Search for a recipe by tag
+ * @param {*} button button for the tag
+ * @param {*} tagName name of the tag
+ */
+async function searchByTag(button, tagName) {
+  // let recipeWithTag;
   button.addEventListener('click', ()=>{
   });
 }
