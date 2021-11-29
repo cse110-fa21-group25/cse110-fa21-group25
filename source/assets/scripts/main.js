@@ -25,7 +25,7 @@ async function init() {
   searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       searchRecipes(searchBar.value);
-      console.log(searchBar.value);
+      // console.log(searchBar.value);
     }
   });
 
@@ -162,10 +162,15 @@ async function createRecipeCard(data, sectionName) {
  * @param {*} query query to search for recipes
  */
 async function searchRecipes(query) {
+  // const breakfastTest = await getRecipesByTag('Breakfast');
+  // console.log(breakfastTest);
   if (!query) {
     alert('Please enter a search query!');
     return;
   }
+  // Capitilized query (for search by tag)
+  query = query.toLowerCase();
+  query = query.charAt(0).toUpperCase() + query.slice(1);
   const array = [];
   let recipeDataBasedOnSearch;
   try {
@@ -238,6 +243,7 @@ async function showRecipesOnSearch(data, sectionName) {
 async function searchByTag(button, tagName) {
   // let recipeWithTag;
   button.addEventListener('click', ()=>{
+    console.log('tag button clicked');
   });
 }
 
