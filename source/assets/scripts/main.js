@@ -5,6 +5,7 @@ if (typeof module !== 'undefined') {
 
 let recipeData;
 
+
 if (typeof window !== 'undefined') {
   window.addEventListener('DOMContentLoaded', init);
 }
@@ -18,17 +19,55 @@ async function init() {
   } catch (e) {
     throw (e);
   }
+
+  const searchBar = document.getElementById('search-bar');
+
+  searchBar.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      searchRecipes(searchBar.value);
+      // console.log(searchBar.value);
+    }
+  });
+
   console.log(Object.keys(recipeData).length);
-  createRecipeCard();
+  populateHomePage(recipeData);
 }
 
 // TODO: SPLIT BASED ON HOME-PAGE CATEGORIES
 // (CLARIFY CATEGORIES (e.g. trending recipes, etc.))
 /**
  * Creating recipe cards from the recipeData.
+ * @param {*} data the recipe data
  */
-async function createRecipeCard() {
-  for (const recipe of recipeData) {
+async function populateHomePage(data) {
+  createRecipeCard(data, 'All Recipes');
+}
+
+/**
+ * Creating recipe cards from the recipe data and section name.
+ * @param {*} data data for the recipe
+ * @param {*} sectionName section the card should go into
+ */
+async function createRecipeCard(data, sectionName) {
+  // Add recipes to home page
+  // 1) Create new section
+  // <section id="example-recipe">
+  //   <h2>Example:</h2>
+  //   <div class="recipe-row">
+  //     <!-- RECIPE CARD GOES HERE -->
+  //   </div>
+  // </section>
+  // 2) Put recipes in the newly created section
+  const section = document.createElement('section');
+  section.setAttribute('id', 'searched-recipe');
+  const sectionTitleH2 = document.createElement('h2');
+  sectionTitleH2.innerHTML = `${sectionName}:`;
+  const sectionRecipeDiv = document.createElement('div');
+  sectionRecipeDiv.classList.add('recipe-row');
+  section.appendChild(sectionTitleH2);
+  section.appendChild(sectionRecipeDiv);
+
+  for (const recipe of data) {
     console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
@@ -63,6 +102,7 @@ async function createRecipeCard() {
 
     const recipeTitleH4 = document.createElement('h4');
     recipeTitleH4.innerHTML = recipe.data.name;
+    recipeTitleH4.classList.add('recipe-title-capitalize');
 
     const timeP = document.createElement('p');
     timeP.innerHTML = formatTime(recipe.data.cookTime);
@@ -79,6 +119,7 @@ async function createRecipeCard() {
       const tagButton = document.createElement('button');
       tagButton.innerHTML = recipe.data.tags[tag];
       tagDiv.appendChild(tagButton);
+      searchByTag(tagButton, tagButton.innerHTML);
     }
 
     const cardFooterDiv = document.createElement('div');
@@ -101,15 +142,109 @@ async function createRecipeCard() {
     cardFooterDiv.appendChild(recipeDetailButton);
 
     // Attach to the appropriate recipe-row category
-    const exampleRecipeRow = document.querySelector(
-        '#example-recipe > .recipe-row');
+    // const exampleRecipeRow = document.querySelector(
+    //     '#example-recipe > .recipe-row');
     // check if cardDiv generated properly
     // console.log(cardDiv);
-    exampleRecipeRow.appendChild(cardDiv);
+    // exampleRecipeRow.appendChild(cardDiv);
+
+    sectionRecipeDiv.appendChild(cardDiv);
 
     recipeCardDetail(recipeDetailButton, recipe);
   }
   console.log('done looping through recipes');
+  const recipeCategoriesDiv = document.querySelector('#recipe-categories');
+  recipeCategoriesDiv.insertBefore(section, recipeCategoriesDiv.firstChild);
+}
+
+/**
+ * Search for recipes based on query.
+ * @param {*} query query to search for recipes
+ */
+async function searchRecipes(query) {
+  // const breakfastTest = await getRecipesByTag('Breakfast');
+  // console.log(breakfastTest);
+  if (!query) {
+    alert('Please enter a search query!');
+    return;
+  }
+  // Capitilized query (for search by tag)
+  query = query.toLowerCase();
+  query = query.charAt(0).toUpperCase() + query.slice(1);
+  const array = [];
+  let recipeDataBasedOnSearch;
+  try {
+    recipeDataBasedOnSearch = await getRecipesByName(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      // console.log(recipeDataBasedOnSearch);
+      array.push(recipeDataBasedOnSearch);
+    }
+    recipeDataBasedOnSearch = await getRecipesByTag(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      // console.log(recipeDataBasedOnSearch);
+      array.push(recipeDataBasedOnSearch);
+    }
+    recipeDataBasedOnSearch = await getRecipesByUserId(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      // console.log(recipeDataBasedOnSearch);
+      array.push(recipeDataBasedOnSearch);
+    }
+  } catch (e) {
+    throw (e);
+  }
+  // get unique recipes
+  const unique = [...new Map(array.map((item) => [item['id'], item])).values()];
+  if (unique.length > 0 ) {
+    showRecipesOnSearch(unique[0], 'Search Results');
+  } else {
+    showRecipesOnSearch(recipeData, 'All Recipes');
+  }
+}
+
+/**
+ * Show the recipe cards based on search query.
+ * @param {*} data recipes to display
+ * @param {*} sectionName section where recipes should be displayed
+ */
+async function showRecipesOnSearch(data, sectionName) {
+  const overlayDiv = document.createElement('div');
+  overlayDiv.classList.add('overlay');
+  const loaderDiv = document.createElement('div');
+  loaderDiv.classList.add('loader');
+  const bodyHtml = document.querySelector('body');
+  bodyHtml.classList.add('unscroll-body');
+  overlayDiv.appendChild(loaderDiv);
+  bodyHtml.appendChild(overlayDiv);
+
+  // remove entire page's sections
+  const recipeCategoriesDiv = document.querySelector('#recipe-categories');
+
+  setTimeout(()=>{
+    while (recipeCategoriesDiv.lastChild) {
+      recipeCategoriesDiv.removeChild(recipeCategoriesDiv.lastChild);
+    }
+    createRecipeCard(data, sectionName);
+    while (overlayDiv.hasChildNodes()) {
+      overlayDiv.removeChild(overlayDiv.lastChild);
+    }
+    overlayDiv.remove();
+    bodyHtml.classList.remove('unscroll-body');
+    if (sectionName == 'All Recipes') {
+      alert('No matching recipes found...showing all recipes');
+    }
+  }, 1000);
+}
+
+/**
+ * Search for a recipe by tag
+ * @param {*} button button for the tag
+ * @param {*} tagName name of the tag
+ */
+async function searchByTag(button, tagName) {
+  // let recipeWithTag;
+  button.addEventListener('click', ()=>{
+    console.log('tag button clicked');
+  });
 }
 
 /**
@@ -170,6 +305,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
+    recipeTitleH2.classList.add('recipe-title-capitalize');
 
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
@@ -198,35 +334,22 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     ingredientsDiv.classList.add('ingredients-expand');
     for (const ingredient in recipe.data.recipeIngredient) {
-      const ingredientIl = document.createElement('li');
-      ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
-      ingredientsUl.appendChild(ingredientIl);
+      const ingredientLi = document.createElement('li');
+      ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientsUl.appendChild(ingredientLi);
     }
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const instructionsDiv = document.createElement('div');
     instructionsDiv.classList.add('expand-main');
     const instructionsH4 = document.createElement('h4');
     instructionsH4.innerHTML = 'Instructions:';
     instructionsDiv.classList.add('instructions-expand');
     const instructionsOl = document.createElement('ol');
-    const step1 = document.createElement('li');
-    const step2 = document.createElement('li');
-    const step3 = document.createElement('li');
-    const step4 = document.createElement('li');
-    step1.innerHTML = 'Prepare.';
-    step2.innerHTML = 'Cook.';
-    step3.innerHTML = 'Serve.';
-    step4.innerHTML = 'Feast!!';
-    instructionsOl.appendChild(step1);
-    instructionsOl.appendChild(step2);
-    instructionsOl.appendChild(step3);
-    instructionsOl.appendChild(step4);
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    for (const instruction in recipe.data.recipeInstructions) {
+      const instructionLi = document.createElement('li');
+      instructionLi.innerHTML = recipe.data.recipeInstructions[instruction];
+      instructionsOl.appendChild(instructionLi);
+    }
 
     overlayDiv.appendChild(expandDiv);
 
@@ -256,6 +379,19 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
+    // let overlayOpen = expandDiv.className === 'overlay';
+
+    /* Toggle the aria-hidden state on the overlay and the
+        no-scroll class on the body */
+    bodyHtml.classList.add('unscroll-body');
+    //  bodyHtml.classList.toggle('noscroll', overlayOpen);
+
+    /* On some mobile browser when the overlay was previously
+        opened and scrolled, if you open it again it doesn't
+        reset its scrollTop property */
+    //  overlayDiv.scrollTop = 0;
+
+
     removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
   });
 }
@@ -271,6 +407,8 @@ async function removeExpandRecipe(button, expandDiv) {
       expandDiv.removeChild(expandDiv.lastChild);
     }
     expandDiv.remove();
+    const bodyHtml = document.querySelector('body');
+    bodyHtml.classList.remove('unscroll-body');
   });
 }
 
