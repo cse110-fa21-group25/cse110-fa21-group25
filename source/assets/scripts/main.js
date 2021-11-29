@@ -18,6 +18,15 @@ async function init() {
   } catch (e) {
     throw (e);
   }
+
+  const searchBar = document.getElementById('search-bar');
+
+  searchBar.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      console.log(searchBar.value);
+    }
+  });
+
   console.log(Object.keys(recipeData).length);
   createRecipeCard();
 }
