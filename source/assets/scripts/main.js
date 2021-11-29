@@ -360,7 +360,7 @@ function navigateLogin() { // eslint-disable-line no-unused-vars
  * If user is logged in navigate to my page
  * Otherwise, navigate to login page.
  */
-function navigateMyPage() {
+function navigateMyPage() { // eslint-disable-line no-unused-vars
   if (firebase.auth().currentUser) {
     window.location.href = 'person.html';
   } else {
