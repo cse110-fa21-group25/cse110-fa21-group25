@@ -118,7 +118,8 @@ async function buildJSON(event) {
 
   // Upload image to server, once that process is complete (async),
   // write the object to database
-  const ref = storage.ref().child(`images/${object.name}-${userID}`);
+  let uniqueImageName = Date.now().toString();
+  const ref = storage.ref().child(`images/${userID}-${uniqueImageName}`);
   const uploadTask = ref.put(recipeImage.files[0]);
   uploadTask.on('state_changed',
       (snapshot) => {

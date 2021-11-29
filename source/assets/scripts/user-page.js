@@ -76,6 +76,11 @@ async function createRecipeCard() {
             // SPA Button -- TODO: display recipe details
             const recipeDetailButton = document.createElement('button');
             recipeDetailButton.innerHTML = 'View Recipe';
+
+            //Button to Delete Recipe
+            const recipeDeleteButton = document.createElement('button');
+            recipeDeleteButton.innerHTML = 'Delete Recipe';
+            //recipeDeleteButton.onclick = deleteRecipe;
         
             // Assemble Recipe Card's DOM (as above structure reference)
             cardDiv.appendChild(cardBodyDiv);
@@ -88,6 +93,7 @@ async function createRecipeCard() {
             cardBodyDiv.appendChild(tagDiv);
         
             cardFooterDiv.appendChild(recipeDetailButton);
+            cardFooterDiv.appendChild(recipeDeleteButton);
         
             // Attach to the appropriate recipe-row category
             const exampleRecipeRow = document.querySelector(
@@ -97,6 +103,7 @@ async function createRecipeCard() {
             exampleRecipeRow.appendChild(cardDiv);
         
             recipeCardDetail(recipeDetailButton, recipe);
+            deleteRecipe(recipeDeleteButton, recipe);
     }
         
 }
@@ -320,4 +327,26 @@ async function createRecipeCard() {
       }
     }
     return timeFormat.join('');
+}
+
+/**
+ * Function to delete the recipe that was clicked on
+ * It will ask the user to confirm if they really want to delete
+ * before deleting.
+ * 
+ * @param {*} recipeDeleteButton button that the user clicks to delete
+ * @param {*} recipe recipe that is displayed to user
+ */
+async function deleteRecipe(recipeDeleteButton, recipe) {
+    recipeDeleteButton.addEventListener('click', ()=>{
+        //console.log(recipe);
+        //console.log(recipe.id);
+        let result = confirm("Do you really want to delete this recipe?");
+        if (result) {
+            //delete the image and the recipe by id.
+            deleteImage(recipe.data.imageURL);
+            deleteRecipeById(recipe.id);
+        }
+    });
+    
 }
