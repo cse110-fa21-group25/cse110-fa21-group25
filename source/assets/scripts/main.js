@@ -207,6 +207,7 @@ async function searchRecipes(query) {
  * Show the recipe cards based on search query.
  * @param {*} data recipes to display
  * @param {*} sectionName section where recipes should be displayed
+ * @param {*} query search query
  */
 async function showRecipesOnSearch(data, sectionName, query) {
   const overlayDiv = document.createElement('div');
@@ -238,13 +239,13 @@ async function showRecipesOnSearch(data, sectionName, query) {
   }, 500);
 }
 
+const uniqueFilters = new Set();
+let filterRecipeArray = [];
 /**
  * Search for a recipe by tag
  * @param {*} button button for the tag
  * @param {*} tagName name of the tag
  */
-const uniqueFilters = new Set();
-let filterRecipeArray = [];
 async function searchByTag(button, tagName) {
   // let recipeWithTag;
   // const recipeDataBasedOnSearch = await getRecipesByTag(tagName);
@@ -253,41 +254,41 @@ async function searchByTag(button, tagName) {
   // }
   // console.log(map);
   button.addEventListener('click', ()=>{
-    for(const recipe of recipeData){
+    for (const recipe of recipeData) {
       for (const tag in recipe.data.tags) {
-        if(tagName == recipe.data.tags[tag]){
+        if (tagName == recipe.data.tags[tag]) {
           filterRecipeArray.push(recipe);
         }
       }
     }
-    filterRecipeArray = [...new Map(filterRecipeArray.map((item) => [item['id'], item])).values()];
+    filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
+      [item['id'], item])).values()];
 
     console.log(filterRecipeArray);
 
     const header = document.querySelector('header');
     let wrapper;
     let filterDiv;
-    if(!document.querySelector('.wrapper')){
+    if (!document.querySelector('.wrapper')) {
       console.log('filter not found');
       wrapper = document.createElement('section');
       wrapper.classList.add('wrapper');
       filterDiv = document.createElement('div');
       filterDiv.classList.add('sticky-top');
       wrapper.appendChild(filterDiv);
-      header.insertAdjacentElement('afterend',wrapper);
-    }
-    else{
+      header.insertAdjacentElement('afterend', wrapper);
+    } else {
       wrapper = document.querySelector('.wrapper');
       filterDiv = document.querySelector('.sticky-top');
     }
     console.log('tag button clicked');
-    if(!uniqueFilters.has(button.innerHTML)){
+    if (!uniqueFilters.has(button.innerHTML)) {
       const buttonDiv = document.createElement('div');
       const buttonClone = button.cloneNode(true);
       const closeButton = document.createElement('button');
-      closeButton.innerHTML = 'x'
+      closeButton.innerHTML = 'x';
       console.log(buttonClone);
-      uniqueFilters.add(buttonClone.innerHTML)
+      uniqueFilters.add(buttonClone.innerHTML);
       buttonClone.classList.add('tag');
       buttonDiv.classList.add('filter-component');
       buttonDiv.appendChild(buttonClone);
@@ -296,52 +297,57 @@ async function searchByTag(button, tagName) {
 
       showRecipesOnSearch(filterRecipeArray, 'Filter Results', null);
 
-      removeFilterTag(closeButton, buttonClone.innerHTML, buttonDiv, filterDiv, wrapper);
+      removeFilterTag(closeButton, buttonClone.innerHTML,
+          buttonDiv, filterDiv, wrapper);
     }
   });
 }
+
 /**
  * Removes a filter tag and recipes that are associated to it
- * @param {DOM button} closeButton button to remove filter tag
- * @param {string} filterTagName selected filter tag name
- * @param {DOM div} buttonDiv filter tag button to remove
- * @param {DOM div} filterDiv div that contains all of the filter tags
- * @param {DOM div} wrapper outter div of filter div
+ * @param {*} closeButton button to remove filter tag
+ * @param {*} filterTagName selected filter tag name
+ * @param {*} buttonDiv filter tag button to remove
+ * @param {*} filterDiv div that contains all of the filter tags
+ * @param {*} wrapper outer div of filter div
  */
-async function removeFilterTag(closeButton, filterTagName, buttonDiv, filterDiv, wrapper){
+async function removeFilterTag(closeButton, filterTagName,
+    buttonDiv, filterDiv, wrapper) {
   closeButton.addEventListener('click', ()=>{
-    while(buttonDiv.hasChildNodes()){
+    while (buttonDiv.hasChildNodes()) {
       buttonDiv.removeChild(buttonDiv.lastChild);
       uniqueFilters.delete(filterTagName);
     }
     buttonDiv.remove();
-    if(!filterDiv.hasChildNodes()){
+    if (!filterDiv.hasChildNodes()) {
       filterDiv.remove();
-      while(wrapper.hasChildNodes()){
+      while (wrapper.hasChildNodes()) {
         wrapper.removeChild(wrapper.lastChild);
       }
       wrapper.remove();
     }
 
     // filter recipe
-    // filterRecipeArray = filterRecipeArray.filter(recipe => !(recipe.data.tags.includes(filterTagName)));
+    /* filterRecipeArray = filterRecipeArray.
+    filter(recipe => !(recipe.data.tags.includes(filterTagName)));
+    */
     filterRecipeArray = [];
-    for(const availTag of uniqueFilters){
-      for(const recipe of recipeData){
+    for (const availTag of uniqueFilters) {
+      for (const recipe of recipeData) {
         // console.log(availTag);
         for (const tag in recipe.data.tags) {
-          if(availTag == recipe.data.tags[tag]){
+          if (availTag == recipe.data.tags[tag]) {
             filterRecipeArray.push(recipe);
           }
         }
       }
     }
-    filterRecipeArray = [...new Map(filterRecipeArray.map((item) => [item['id'], item])).values()];
+    filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
+      [item['id'], item])).values()];
     // console.log(filterRecipeArray);
-    if(!filterRecipeArray.length){
+    if (!filterRecipeArray.length) {
       showRecipesOnSearch(recipeData, 'All Recipes', null);
-    }
-    else{
+    } else {
       showRecipesOnSearch(filterRecipeArray, 'Filter Results', null);
     }
   });
