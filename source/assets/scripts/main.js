@@ -21,12 +21,17 @@ async function init() {
   }
 
   const searchBar = document.getElementById('search-bar');
+  const searchButton = document.getElementById('search-button');
 
   searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       searchRecipes(searchBar.value);
       // console.log(searchBar.value);
     }
+  });
+
+  searchButton.addEventListener('click', ()=>{
+    searchRecipes(searchBar.value);
   });
 
   console.log(Object.keys(recipeData).length);
@@ -494,7 +499,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     //  overlayDiv.scrollTop = 0;
 
 
-    removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
+    removeExpandRecipe(closeRecipeExpandButton, overlayDiv, 'Escape');
   });
 }
 
@@ -502,8 +507,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
  * Collapse expanded recipe.
  * @param {*} button button to collapse
  * @param {*} expandDiv div to remove expanded recipe from
+ * @param {*} key key to collapse if pressed
  */
-async function removeExpandRecipe(button, expandDiv) {
+async function removeExpandRecipe(button, expandDiv, key) {
   button.addEventListener('click', ()=>{
     while (expandDiv.hasChildNodes()) {
       expandDiv.removeChild(expandDiv.lastChild);
@@ -512,8 +518,17 @@ async function removeExpandRecipe(button, expandDiv) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.classList.remove('unscroll-body');
   });
+  window.addEventListener('keydown', function(e) {
+    if (e.key == key) {
+      while (expandDiv.hasChildNodes()) {
+        expandDiv.removeChild(expandDiv.lastChild);
+      }
+      expandDiv.remove();
+      const bodyHtml = document.querySelector('body');
+      bodyHtml.classList.remove('unscroll-body');
+    }
+  });
 }
-
 
 /**
  * Get total time from recipe's JSON object

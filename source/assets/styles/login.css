@@ -92,3 +92,9 @@ a:hover {
 a {
   text-decoration: none;
 }
+
+#login:hover {
+  cursor: pointer;
+  background: #6d4319;
+  color: white;
+}

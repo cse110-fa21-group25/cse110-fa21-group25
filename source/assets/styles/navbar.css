@@ -193,7 +193,30 @@
   }
 }
 
+#search-button {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  background: #7e5832;
+  width: 55px;
+}
+
 #create-new-recipe:hover {
   cursor: pointer;
   color: white;
+}
+
+#login-button:hover {
+  cursor: pointer;
+  color: white;
+}
+
+#search-button:hover {
+  cursor: pointer;
+  background-color: #6d4319;
 }
