@@ -54,6 +54,7 @@
 .menu-items li {
   list-style: none;
   margin-left: 2.5rem;
+  margin-top: 2rem;
   font-size: 1.5rem;
   color: #7e5832;
 
@@ -80,6 +81,9 @@
   }
   .navbar {
     opacity: 0.95;
+  }
+  .search{
+    margin-left:-2.5rem;
   }
 
   .navbar-container input[type="checkbox"],
@@ -191,9 +195,27 @@
   .navbar-container input[type="checkbox"]:checked ~ .logo {
     display: none;
   }
+ 
 }
 
 #create-new-recipe:hover {
   cursor: pointer;
   color: white;
+}
+
+/* .search {
+  background:black;
+} */
+
+input{
+  background: rgba(255,255,255,0.4);
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  width: 200px;
+  margin-top:-0.7rem;
+  margin-left:1.5rem;
+  padding: 10px;
+  box-shadow: 0 2px 10px 1px rgba(0,0,0,0.2);
+  
 }
