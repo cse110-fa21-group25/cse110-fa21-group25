@@ -382,9 +382,6 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
 
     e.preventDefault();
 
-
-    console.log(recipe)
-
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
 
@@ -695,17 +692,18 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
 
     //Element for uploading Image
 
-    const file_label = document.createElement("label");
-    file_label.innerHTML = "Upload Image";
+    const file_label = document.createElement("lapbel");
+    file_label.innerHTML = "Please upload your new recipe image if you would like to change";
     main_form.append(file_label);
-
 
     const file_label_input = document.createElement("input");
     file_label_input.type = "file";
     file_label_input.accept = "image/png,image/jpeg";
     file_label_input.setAttribute("id","recipe-image");
-
+  
+    
     main_form.append(file_label_input);
+    
 
     const br15 = document.createElement('br');
     main_form.append(br15);
@@ -785,15 +783,11 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
         cookTime = 'PT' + numHours + 'H' + numMinutes + 'M';
       }
 
+      console.log(cookTime);
       // Get the image, serverside implementation needed
       //const recipeImage = document.querySelector('#recipe-image');
       const recipeImage = document.querySelector('#recipe-image');
       
-      // If user has not uploaded in recipes throw alert.
-      if (!recipeImage.files[0]) {
-        alert('Please upload an image of your recipe');
-      }
-
       // Retrieve all the tags selected
       const tags = document.querySelectorAll('#selected-tags div');
       const tagArray = [];
@@ -817,13 +811,24 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
 
       const userID = firebase.auth().currentUser.uid;
 
-      // Upload image to server, once that process is complete (async),
-      // write the object to database
-      const ref = storage.ref().child(`images/${recipe.data.name}-${userID}`);
-      const uploadTask = ref.put(recipeImage.files[0]);
-      uploadTask.on('state_changed',
-          (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+
+         // If user has not uploaded in recipes throw alert.
+      if (!recipeImage.files[0]) {
+        updateRecipe(recipe).then(()=>{
+          window.location.reload();
+        });
+      }
+
+
+      else{
+
+          // Upload image to server, once that process is complete (async),
+          // write the object to database
+          const ref = storage.ref().child(`images/${recipe.data.name}-${userID}`);
+          const uploadTask = ref.put(recipeImage.files[0]);
+          uploadTask.on('state_changed',
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
             console.log(progress + '% done');
           },
           (error) => {
@@ -844,6 +849,10 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
            });
           },
       );
+
+
+      }
+    
 
     });
 
@@ -1045,6 +1054,7 @@ function loadingTimeHtml(object) {
   let hour='';
   let min='';
   let time = searchForKey(object, 'cookTime');
+  console.log(time);
 
   // Remove PT
   time = time.slice(2);
@@ -1062,6 +1072,18 @@ function loadingTimeHtml(object) {
     min += time[i];
   }
 
+  if(min == '' && hour == '')
+  {
+    for(const a in time)
+    {
+      if(time[a] == "M")
+      for( let i = 0 ; i < a; i ++ )
+      {
+        min += time[i];
+      }
+    } 
+  }
+
   // Updaing these two value to HTML form
   if ( hour != '') {
     document.querySelector('#num-hours').value = hour;
@@ -1069,6 +1091,9 @@ function loadingTimeHtml(object) {
   } else {
     document.querySelector('#num-minutes').value = min / 5;
   }
+
+  console.log(min)
+  console.log(hour);
 }
 
 
