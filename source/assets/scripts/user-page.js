@@ -362,7 +362,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
  * If user is logged in navigate to create new recipe page.
  * Otherwise, navigate to login page.
  */
- function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
   if (firebase.auth().currentUser) {
     window.location.href = 'new-recipe.html';
   } else {
