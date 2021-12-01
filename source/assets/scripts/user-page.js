@@ -1248,16 +1248,12 @@ function loadingTimeHtml(object) {
    * You can remove any of the HTML elements added but not the first one.
    */
   function removeStep() {
+
     // Return without doing anything if there is only one element
     if (document.querySelector('.recipe-steps').childElementCount === 1) {
       return;
     }
-  
+    
     const remove = document.querySelector('.recipe-steps');
     remove.removeChild(remove.lastChild);
   }
-  
-
-
-
-
