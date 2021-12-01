@@ -407,8 +407,8 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     const header_h1 = document.createElement("h1");
 
     
-    header.setAttribute("id","nav-placeholder" );
-    header_h1.innerHTML = "Create New Recipe";
+    header.setAttribute("id","nav-placeholder");
+    header_h1.innerHTML = "Update New Recipe";
     header.append(header_div);
     header.append(header_h1);
     bodyDiv.append(header);
@@ -422,7 +422,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     main_form.setAttribute("id","recipeForm");
 
     const label_title = document.createElement("label");
-    label_title.innerHTML = "My Recipe Title:"
+    label_title.innerHTML = "My Recipe Title:";
     const label_input = document.createElement("input");
     label_input.setAttribute("type","text");
     label_input.setAttribute("name", "recipe-title" );
@@ -442,7 +442,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
 
     //Label for author
     const label_author = document.createElement("label");
-    label_author.innerHTML = "Author:"
+    label_author.innerHTML = "Author:";
     const label_author_input = document.createElement("input");
     label_author_input.setAttribute("type","text");
     label_author_input.setAttribute("name","author");
@@ -465,7 +465,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     p_description.innerHTML = "Description:";
     const p_description_textarea = document.createElement("textarea");
     p_description_textarea.id = "description";
-    p_description_textarea.placeholder = "Tell us a little bit about your recipe here!"
+    p_description_textarea.placeholder = "Tell us a little bit about your recipe here!";
     p_description_textarea.style = "height: 70px; width: 300px";
 
     main_form.append(p_description);
@@ -576,7 +576,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     section_ingredient_div_div_input.setAttribute("placeholder","Ingredient Name");
     section_ingredient_div_div_input.setAttribute("id","ingredient1");
     
-    section_ingredient_div_div.append(section_ingredient_div_div_input)
+    section_ingredient_div_div.append(section_ingredient_div_div_input);
 
     section_ingredient_div.append(section_ingredient_div_div);
     section_ingredient.append(section_ingredient_div);
@@ -657,18 +657,18 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     section_steps_div.classList.add("recipe-steps");
     const section_steps_div_div = document.createElement("div");      
     const section_steps_div_div_label = document.createElement("label");
-    section_steps_div_div_label.innerHTML = "1. "
+    section_steps_div_div_label.innerHTML = "1. ";
     section_steps_div_div.append(section_steps_div_div_label);
     
     const section_steps_div_div_textarea = document.createElement("textarea");
     section_steps_div_div_textarea.classList.add("steps");
     section_steps_div_div_textarea.style = "height: 70px; width: 300px; vertical-align: middle";
-    section_steps_div_div_textarea.placeholder = "Add the first step of creating your recipe here! "
+    section_steps_div_div_textarea.placeholder = "Add the first step of creating your recipe here! ";
     section_steps_div_div_textarea.id = "step1"
 
     section_steps_div_div.append(section_steps_div_div_textarea);
 
-    section_steps_div.append(section_steps_div_div)
+    section_steps_div.append(section_steps_div_div);
     section_steps.append(section_steps_div);
 
     const section_steps_AddButton = document.createElement("button");
