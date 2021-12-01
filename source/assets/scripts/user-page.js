@@ -91,7 +91,6 @@ async function createRecipeCard() {
     const recipeDeleteButton = document.createElement('button');
     recipeDeleteButton.innerHTML = 'Delete Recipe';
     
-
     //Button to update recipe
     const recipeUpdateButton = document.createElement('button');
     recipeUpdateButton.innerHTML = 'Update Recipe';
@@ -120,9 +119,6 @@ async function createRecipeCard() {
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
     updating(recipeUpdateButton, recipe);
-
- 
-
   }
 }
 
@@ -907,13 +903,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     removeExpandRecipe(cancel_button,overlayDiv);
 
   });
-
-
-  
-
 }
-
-
 
 /**
    * Getting Ingredient from JSON file and load time to HTML
@@ -1187,7 +1177,6 @@ function loadingTimeHtml(object) {
     // set classes
     newIngredient.className = 'ingredient';
   
-  
     // set unique id's, the name of the ingredient is ingredient
     // + number of children the parent div will
     // have after these elements are added.
@@ -1253,7 +1242,7 @@ function loadingTimeHtml(object) {
     if (document.querySelector('.recipe-steps').childElementCount === 1) {
       return;
     }
-    
+
     const remove = document.querySelector('.recipe-steps');
     remove.removeChild(remove.lastChild);
   }
