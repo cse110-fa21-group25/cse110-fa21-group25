@@ -1,7 +1,7 @@
 /**
  * Function that runs when DOM COntent is loaded
  */
-function init() {
+ function init() {
   // Add event listener for "Add Ingredient" Button Press
   const addIngredientButton = document.querySelector('#add-ingredient');
   addIngredientButton.addEventListener('click', addIngredient);
