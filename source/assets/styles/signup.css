@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #948c6c;
+  background-color: #a8ccbb;
 }
 
 #credential {
@@ -16,8 +16,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e4d9c3;
+  background-color: #72a98f;
   border-radius: 25px;
+  margin-top: 10px;
 }
 
 #image-container {
@@ -29,8 +30,7 @@ body {
 #logoBox {
   height: 85%;
   width: 90%;
-  margin-left: 8px;
-  margin-top: 5px;
+  border-radius: 200px;
 }
 
 #signup-container {
@@ -40,28 +40,28 @@ body {
   justify-content: center;
 }
 
+#email,
+#password,
+#confirm-password {
+  padding: 7.5px;
+  margin: 5px 10px 10px 10px;
+  width: 220px;
+  height: 30px;
+  border-radius: 9px;
+  border: none;
+  font-family: "Comforter Brush", cursive;
+  font-family: "Oswald", sans-serif;
+}
+
 #signup {
   padding: 5px;
-  margin: 10px 0;
-  background: #7e5832;
+  margin: 5px;
+  background: #bcbcbc;
   color: white;
   border: none;
   border-radius: 20px;
   width: 235px;
   height: 35px;
-  font-family: "Comforter Brush", cursive;
-  font-family: "Oswald", sans-serif;
-}
-
-#email,
-#password,
-#confirm-password {
-  padding: 7.5px;
-  margin: 10px;
-  width: 220px;
-  height: 30px;
-  border-radius: 9px;
-  border: none;
   font-family: "Comforter Brush", cursive;
   font-family: "Oswald", sans-serif;
 }
@@ -84,12 +84,22 @@ body {
   font-family: "Oswald", sans-serif;
   font-size: 12px;
 }
+
 a:active,
-a:visited,
+a:visited {
+  color: white;
+}
+
 a:hover {
-  color: grey;
+  color: #e0e4e2;
 }
 
 a {
   text-decoration: none;
+}
+
+#signup:hover {
+  cursor: pointer;
+  background: #a4ada8;
+  color: white;
 }

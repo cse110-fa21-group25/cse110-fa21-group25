@@ -23,45 +23,45 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #e4d9c3;
-  color: #7e5832;
+  background: #72a98f;
+  color: white;
   /* opacity: 0.85; */
   z-index: 100;
   /* margin-bottom: 100px; */
   /* font-family: "Satisfy", cursive; */
-  font-family: "Oswald", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  height: 64px;
+  height: 80px;
   align-items: center;
 }
 
 .menu-items {
   order: 2;
   display: flex;
-  color: #7e5832;
+  color: white;
 }
 .logo {
   order: 1;
   /* font-size: 5rem; */
   /* padding: 3px; */
-  height: 60px;
+  height: 80px;
 }
 
 .menu-items li {
   list-style: none;
   margin-left: 2.5rem;
   font-size: 1.5rem;
-  color: #7e5832;
+  color: white;
 
   /* font-family: "Satisfy", cursive; */
 }
 
 .navbar a {
-  color: #7e5832;
+  color: white;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
@@ -141,7 +141,7 @@
 
   .navbar .menu-items {
     padding-top: 100px;
-    background: #e4d9c3;
+    background: #72a98f;
     height: 100vh;
     max-width: 300px;
     transform: translate(-150%);
@@ -201,21 +201,27 @@
   font-size: 1.5rem;
   border: none;
   border-radius: 20px;
-  background: #7e5832;
-  width: 55px;
+  background: #a4ada8;
+  width: 70px;
 }
 
-#create-new-recipe:hover {
+#create-new-recipe:hover,
+#login-button:hover,
+#my-page-button:hover {
   cursor: pointer;
-  color: white;
-}
-
-#login-button:hover {
-  cursor: pointer;
-  color: white;
+  color: gray;
 }
 
 #search-button:hover {
   cursor: pointer;
-  background-color: #6d4319;
+  background-color: #bcbcbc;
+}
+
+input[type="text"] {
+  color: black;
+  font-weight: 700;
+}
+
+#search-bar {
+  font-size: medium;
 }

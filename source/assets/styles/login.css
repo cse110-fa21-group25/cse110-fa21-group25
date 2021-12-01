@@ -5,8 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #948c6c;
-  /* background-color: #9c8c6c; */
+  background-color: #a8ccbb;
 }
 
 #credential {
@@ -17,11 +16,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e4d9c3;
+  background-color: #72a98f;
   border-radius: 25px;
 }
 
 #image-container {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@ body {
 #logoBox {
   height: 85%;
   width: 90%;
-  margin-left: 8px;
+  border-radius: 200px;
 }
 
 #login-container {
@@ -43,7 +43,7 @@ body {
 #login {
   padding: 5px;
   margin: 10px 0;
-  background: #7e5832;
+  background: #bcbcbc;
   color: white;
   border: none;
   border-radius: 20px;
@@ -84,17 +84,18 @@ body {
   font-size: 12px;
 }
 a:active,
-a:visited,
-a:hover {
-  color: grey;
+a:visited {
+  color: white;
 }
-
+a:hover {
+  color: #e0e4e2;
+}
 a {
   text-decoration: none;
 }
 
 #login:hover {
   cursor: pointer;
-  background: #6d4319;
+  background: #a4ada8;
   color: white;
 }
