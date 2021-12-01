@@ -723,7 +723,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     //   location.reload();
     // }
 
-    console.log(main);
+    
     update_button.addEventListener("click",function(event){
 
       event.preventDefault();
@@ -836,13 +836,15 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
           // once the image is uploaded, we retrieve the download URL
           // and attach it to the object, then push object to DB
               recipe.data.imageURL = downloadURL;
-              updateRecipe(recipe);
+              updateRecipe(recipe).then(()=>{
+                window.location.reload();
+              });
               alert('Succesfully Updated Recipe!');
+              
            });
           },
-
-          
       );
+
     });
 
     main_form.append(update_button);
@@ -896,6 +898,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     removeExpandRecipe(cancel_button,overlayDiv);
 
   });
+
 
   
 
@@ -1198,7 +1201,7 @@ function loadingTimeHtml(object) {
     const parentDiv = document.querySelector('.recipe-steps');
   
     // Set the step label to be the number of "steps" fields there will be.
-    label.textContent = (parentDiv.childElementCount + 1) + '.';
+    label.textContent = (parentDiv.childElementCount + 1) + '. ';
   
     // Adjust some basic styles for  the textarea element
     newStep.style.height = '70px';
