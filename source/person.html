@@ -43,80 +43,55 @@
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
     }
-    </script>
+
     
+
+    </script>
+    <!-- main.js -->
+    <script src="./assets/scripts/main.js"></script>
+
+    <link href="./assets/styles/main.css" rel="stylesheet" />
+    <link href="./assets/styles/navbar.css" rel="stylesheet" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto:wght@100&display=swap"
+        rel="stylesheet"
+      />
     <!-- Custom JavaScript -->
     <script src="./assets/scripts/crud.js"></script>
     <script src="./assets/scripts/user-page.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
   </head>
   <body>
-    <!-- Logo -->
-    <div style="display: flex; justify-content: center">
-      <button
-        type="button"
-        style="
-          color: white;
-          background-color: #008cba;
-          padding: 15px 30px;
-          margin: 20px;
-          text-align: center;
-        "
-      >
-        Logo
-      </button>
-      
-      <form id="form" style="margin-top: 30px">
-        <input
-          type="search"
-          id="search"
-          name="search"
-          placeholder="Search..."
-        />
-        <button>Search</button>
-      </form>
-      
-      <button
-        type="button"
-        onclick="location.href='login.html'"
-        style="
-          color: white;
-          background-color: #4caf50;
-          padding: 15px 30px;
-          text-align: center;
-          margin: 20px;
-        "
-      >
-    
-        Log in
-      </button>
-    </div>
+    <header>
+      <div id="nav-placeholder"></div>
+      <script>
+        $(function () {
+          $("#nav-placeholder").load("navbar.html");
+        });
+      </script>
+    </header>
+  
+   
 
-    <!-- recipe button -->
-    <br />
-    <br />
-    <div style="display: flex; justify-content: center">
-      <button
-        type="button"
-        onclick="location.href='new-recipe.html'"
-        style="
-          color: white;
-          background-color: black;
-          padding: 30px 80px;
-          text-align: center;
-          margin: 20px;
-        "
-      >
-        Add Recipe
-      </button>
-    </div>
     <!-- Section for created recipes -->
     <section id="created-recipes">
       <h2> My Recipes:</h2>
-      <div class="my-recipe">
+      <div  class="my-recipe">
         <!-- RECIPE CARD GOES HERE -->
+        <img
+            src="http://via.placeholder.com/640x360"
+            alt="pinned recipe 1"
+            style="width: 250px; height: 120px"
+          />
+          <img
+            src="http://via.placeholder.com/640x360"
+            alt="pinned recipe 2"
+            style="width: 250px; height: 120px"
+          />
       </div>
     </section>
+
 
     <!-- Section for pinned/saved/bookmarked recipes -->
     <div style="display: flex; justify-content: center">

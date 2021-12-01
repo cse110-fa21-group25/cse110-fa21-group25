@@ -23,8 +23,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #e4d9c3;
-  color: #7e5832;
+  background: #72A98F;
+  color: white;
   /* opacity: 0.85; */
   z-index: 100;
   /* margin-bottom: 100px; */
@@ -35,14 +35,14 @@
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  height: 64px;
+  height: 8rem;
   align-items: center;
 }
 
 .menu-items {
   order: 2;
   display: flex;
-  color: #7e5832;
+  color: white;
 }
 .logo {
   order: 1;
@@ -55,25 +55,30 @@
   list-style: none;
   margin-left: 2.5rem;
   margin-top: 2rem;
-  font-size: 1.5rem;
-  color: #7e5832;
+  /* font-size: 2rem; */
+  color: white;
 
   /* font-family: "Satisfy", cursive; */
 }
+
 
 .navbar a {
-  color: #7e5832;
+  color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-size: 2rem;
   transition: color 0.3s ease-in-out;
   /* font-family: "Satisfy", cursive; */
-  font-size: 2.1rem;
-  font-weight: bold;
+  /* font-size: 2.1rem; */
+  /* font-weight: bold; */
 }
 
-.navbar a:hover {
-  color: white;
+#create-new-recipe:hover, 
+#my-page-button:hover, 
+#login-button:hover {
+  color: #2C5F2D;
+  cursor: pointer;
 }
+
 
 @media (max-width: 768px) {
   html {
@@ -145,7 +150,7 @@
 
   .navbar .menu-items {
     padding-top: 100px;
-    background: #e4d9c3;
+    background-color: #72A98F;
     height: 100vh;
     max-width: 300px;
     transform: translate(-150%);
@@ -162,12 +167,19 @@
     margin-bottom: 1.8rem;
     font-size: 1.5rem;
     font-weight: 500;
+    color:white;
     /* font-family: "Satisfy", cursive; */
   }
+  #create-new-recipe:hover, 
+  #my-page-button:hover, 
+  #login-button:hover {
+  color: #2C5F2D;
+  cursor: pointer;
+}
 
   .logo {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 15px;
     font-size: 2.5rem;
     /* font-family: "Satisfy", cursive; */
@@ -198,16 +210,8 @@
  
 }
 
-#create-new-recipe:hover {
-  cursor: pointer;
-  color: white;
-}
 
-/* .search {
-  background:black;
-} */
-
-input{
+#search-bar{
   background: rgba(255,255,255,0.4);
   border: none;
   border-radius: 30px;
