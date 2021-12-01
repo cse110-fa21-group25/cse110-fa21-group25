@@ -23,19 +23,19 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #72a98f;
+  background: #72A98F;
   color: white;
   /* opacity: 0.85; */
   z-index: 100;
   /* margin-bottom: 100px; */
   /* font-family: "Satisfy", cursive; */
-  font-family: "Quicksand", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 8rem;
   align-items: center;
 }
 
@@ -48,31 +48,37 @@
   order: 1;
   /* font-size: 5rem; */
   /* padding: 3px; */
-  height: 80px;
+  height: 60px;
 }
 
 .menu-items li {
   list-style: none;
   margin-left: 2.5rem;
-  font-size: 1.5rem;
+  margin-top: 2rem;
+  /* font-size: 2rem; */
   color: white;
 
   /* font-family: "Satisfy", cursive; */
 }
+
 
 .navbar a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-size: 2rem;
   transition: color 0.3s ease-in-out;
   /* font-family: "Satisfy", cursive; */
-  font-size: 2.1rem;
-  font-weight: bold;
+  /* font-size: 2.1rem; */
+  /* font-weight: ; */
 }
 
-.navbar a:hover {
-  color: white;
+#create-new-recipe:hover, 
+#my-page-button:hover, 
+#login-button:hover {
+  color: #2C5F2D;
+  cursor: pointer;
 }
+
 
 @media (max-width: 768px) {
   html {
@@ -80,6 +86,9 @@
   }
   .navbar {
     opacity: 0.95;
+  }
+  .search{
+    margin-left:-2.5rem;
   }
 
   .navbar-container input[type="checkbox"],
@@ -141,7 +150,7 @@
 
   .navbar .menu-items {
     padding-top: 100px;
-    background: #72a98f;
+    background-color: #72A98F;
     height: 100vh;
     max-width: 300px;
     transform: translate(-150%);
@@ -158,12 +167,19 @@
     margin-bottom: 1.8rem;
     font-size: 1.5rem;
     font-weight: 500;
+    color:white;
     /* font-family: "Satisfy", cursive; */
   }
+  #create-new-recipe:hover, 
+  #my-page-button:hover, 
+  #login-button:hover {
+  color: #2C5F2D;
+  cursor: pointer;
+}
 
   .logo {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 15px;
     font-size: 2.5rem;
     /* font-family: "Satisfy", cursive; */
@@ -191,37 +207,20 @@
   .navbar-container input[type="checkbox"]:checked ~ .logo {
     display: none;
   }
+ 
 }
 
-#search-button {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
-  font-size: 1.5rem;
+
+
+#search-bar{
+  background: rgba(255,255,255,0.4);
   border: none;
-  border-radius: 20px;
-  background: #a4ada8;
-  width: 70px;
-}
-
-#create-new-recipe:hover,
-#login-button:hover,
-#my-page-button:hover {
-  cursor: pointer;
-  color: gray;
-}
-
-#search-button:hover {
-  cursor: pointer;
-  background-color: #bcbcbc;
-}
-
-input[type="text"] {
-  color: black;
-  font-weight: 700;
-}
-
-#search-bar {
-  font-size: medium;
+  border-radius: 30px;
+  outline: none;
+  width: 200px;
+  margin-top:-0.7rem;
+  margin-left:1.5rem;
+  padding: 10px;
+  box-shadow: 0 2px 10px 1px rgba(0,0,0,0.2);
+  
 }
