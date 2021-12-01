@@ -638,7 +638,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
       div_time_select_mins.append(div_time_select_mins_option);
     }
     div_time.append(div_time_select_mins);
-    main_form.append(div_time)
+    main_form.append(div_time);
     const br11 = document.createElement('br');
     main_form.append(br11);
     const br12 = document.createElement('br');
@@ -664,7 +664,7 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     section_steps_div_div_textarea.classList.add("steps");
     section_steps_div_div_textarea.style = "height: 70px; width: 300px; vertical-align: middle";
     section_steps_div_div_textarea.placeholder = "Add the first step of creating your recipe here! ";
-    section_steps_div_div_textarea.id = "step1"
+    section_steps_div_div_textarea.id = "step1";
 
     section_steps_div_div.append(section_steps_div_div_textarea);
 
@@ -672,14 +672,14 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
     section_steps.append(section_steps_div);
 
     const section_steps_AddButton = document.createElement("button");
-    section_steps_AddButton.id = "add-step"
+    section_steps_AddButton.id = "add-step";
     section_steps_AddButton.addEventListener('click', addStep);
     section_steps_AddButton.type = "button";
     section_steps_AddButton.innerHTML = "Add Step";
     section_steps.append(section_steps_AddButton);
 
     const section_steps_RemoveButton = document.createElement("button");
-    section_steps_RemoveButton.id = "remove-step"
+    section_steps_RemoveButton.id = "remove-step";
     section_steps_RemoveButton.addEventListener('click', removeStep);
     section_steps_RemoveButton.type = "button";
     section_steps_RemoveButton.innerHTML = "Remove Step";
@@ -702,8 +702,8 @@ async function deleteRecipe(recipeDeleteButton, recipe) {
 
     const file_label_input = document.createElement("input");
     file_label_input.type = "file";
-    file_label_input.accept = "image/png,image/jpeg"
-    file_label_input.setAttribute("id","recipe-image")
+    file_label_input.accept = "image/png,image/jpeg";
+    file_label_input.setAttribute("id","recipe-image");
 
     main_form.append(file_label_input);
 
