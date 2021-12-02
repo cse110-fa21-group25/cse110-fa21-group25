@@ -60,3 +60,14 @@ function signup() { // eslint-disable-line no-unused-vars
         });
   }
 }
+/* Redirects the user to homepage if they are already signed in */
+function redirectIfLoggedIn() { 
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      window.location.href = "home-page.html";
+    }
+  });
+}
+
+redirectIfLoggedIn();
