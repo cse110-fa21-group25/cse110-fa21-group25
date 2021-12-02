@@ -473,7 +473,7 @@ async function updating(recipeUpdateButton, recipe) {
     pDescription.innerHTML = 'Description:';
     const pDescriptionTextarea = document.createElement('textarea');
     pDescriptionTextarea.id = 'description';
-    let someThing = 'Tell us a little bit about your recipe here!';
+    const someThing = 'Tell us a little bit about your recipe here!';
     pDescriptionTextarea.placeholder = someThing;
     pDescriptionTextarea.style = 'height: 70px; width: 300px';
 
@@ -580,7 +580,7 @@ async function updating(recipeUpdateButton, recipe) {
     sectionIngredientDivDivInput.setAttribute('id', 'ingredient1');
     sectionIngredientDivDiv.appendChild(sectionIngredientDivDivInput);
     sectionIngredientDiv.appendChild(sectionIngredientDivDiv);
-    sectionIngredient.appendChild(sectionIngredientDiv);    
+    sectionIngredient.appendChild(sectionIngredientDiv);   
     const ingredientAddButton = document.createElement('button');
     ingredientAddButton.setAttribute('type', 'button');
     ingredientAddButton.innerHTML = 'Add Ingredient';
@@ -615,9 +615,8 @@ async function updating(recipeUpdateButton, recipe) {
     const divTimeSelectHour = document.createElement('select');
     divTimeSelectHour.setAttribute('id', 'num-hours');
 
-    for ( let i = 0; i < 13 ; i ++ )
-    {
-      let divTimeSelectHourOption= document.createElement('option');
+    for ( let i = 0; i < 13; i ++ ){
+      const divTimeSelectHourOption= document.createElement('option');
       divTimeSelectHourOption.value = i;
       divTimeSelectHourOption.innerHTML = i + '  hours';
       divTimeSelectHour.appendChild(divTimeSelectHourOption);
@@ -627,8 +626,7 @@ async function updating(recipeUpdateButton, recipe) {
     const divTimeSelectMins = document.createElement('select');
     divTimeSelectMins.setAttribute('id', 'num-minutes');
 
-    for ( let i = 0;i < 12 ;i ++ )
-    {
+    for ( let i = 0; i < 12; i ++ ){
       let divTimeSelectMinsOption= document.createElement('option');
       divTimeSelectMinsOption.value = i;
       divTimeSelectMinsOption.innerHTML = i*5 + '  mins';
