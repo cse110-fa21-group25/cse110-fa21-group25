@@ -470,7 +470,7 @@ async function updating(recipeUpdateButton, recipe) {
     const br4 = document.createElement('br');
     main_form.append(br4);
   
-    //Element for description
+    //  Element for description
 
     const p_description = document.createElement('p');
     p_description.innerHTML = 'Description:';
@@ -486,7 +486,8 @@ async function updating(recipeUpdateButton, recipe) {
     const br6 = document.createElement('br');
     main_form.append(br6);
 
-    //Element for tag
+    //  Element for tag
+
     const section_tag = document.createElement("section");
     section_tag.id = "tag-section";
     const section_tag_label = document.createElement("label");
@@ -562,7 +563,7 @@ async function updating(recipeUpdateButton, recipe) {
     const br8 = document.createElement('br');
     main_form.append(br8);
 
-    //Element for Ingredients
+    //  Element for Ingredients
 
     const ingredient_label = document.createElement('label');
     ingredient_label.innerHTML = 'Ingredients';
@@ -574,31 +575,31 @@ async function updating(recipeUpdateButton, recipe) {
     const section_ingredient_div = document.createElement('div');
     section_ingredient_div.classList.add('ingredients-field');
     
-    const section_ingredient_div_div = document.createElement("div");
+    const section_ingredient_div_div = document.createElement('div');
 
-    const section_ingredient_div_div_input = document.createElement("input");
-    section_ingredient_div_div_input.setAttribute("type","text");
-    section_ingredient_div_div_input.classList.add("ingredient");
-    section_ingredient_div_div_input.setAttribute("placeholder","Ingredient Name");
-    section_ingredient_div_div_input.setAttribute("id","ingredient1");
+    const section_ingredient_div_div_input = document.createElement('input');
+    section_ingredient_div_div_input.setAttribute('type', 'text');
+    section_ingredient_div_div_input.classList.add('ingredient');
+    section_ingredient_div_div_input.setAttribute('placeholder', 'Ingredient Name');
+    section_ingredient_div_div_input.setAttribute('id','ingredient1');
     
     section_ingredient_div_div.append(section_ingredient_div_div_input);
 
     section_ingredient_div.append(section_ingredient_div_div);
     section_ingredient.append(section_ingredient_div);
     
-    const ingredient_add_button = document.createElement("button");
-    ingredient_add_button.setAttribute("type","button");
-    ingredient_add_button.innerHTML = "Add Ingredient";
-    ingredient_add_button.id = "add-ingredient";
+    const ingredient_add_button = document.createElement('button');
+    ingredient_add_button.setAttribute('type', 'button');
+    ingredient_add_button.innerHTML = 'Add Ingredient';
+    ingredient_add_button.id = 'add-ingredient';
     ingredient_add_button.addEventListener('click', addIngredient);
 
     section_ingredient.append(ingredient_add_button);
 
-    const ingredient_remove_button = document.createElement("button");
-    ingredient_remove_button.setAttribute("type","button");
-    ingredient_remove_button.innerHTML = "Remove Ingredient";
-    ingredient_remove_button.id = "remove-ingredient";
+    const ingredient_remove_button = document.createElement('button');
+    ingredient_remove_button.setAttribute('type', 'button');
+    ingredient_remove_button.innerHTML = 'Remove Ingredient';
+    ingredient_remove_button.id = 'remove-ingredient';
     ingredient_remove_button.addEventListener('click', removeIngredient);
     section_ingredient.append(ingredient_remove_button);
 
@@ -609,36 +610,36 @@ async function updating(recipeUpdateButton, recipe) {
     const br10 = document.createElement('br');
     main_form.append(br10);
 
-    //Make a Cook Time element
+    //  Make a Cook Time element
 
-    const time_label = document.createElement("label");
-    time_label.innerHTML = "Cook Time: ";
+    const time_label = document.createElement('label');
+    time_label.innerHTML = 'Cook Time: ';
     main_form.append(time_label);
 
-    const div_time = document.createElement("div");
-    div_time.classList.add("cook-time");
-    div_time.setAttribute("id","cook-time");
+    const div_time = document.createElement('div');
+    div_time.classList.add('cook-time');
+    div_time.setAttribute('id', 'cook-time');
 
-    div_time_select_hour = document.createElement("select");
-    div_time_select_hour.setAttribute("id","num-hours");
+    div_time_select_hour = document.createElement('select');
+    div_time_select_hour.setAttribute('id', 'num-hours');
 
     for( let i = 0; i < 13 ; i ++ )
     {
-      let div_time_select_hour_option= document.createElement("option");
+      let div_time_select_hour_option= document.createElement('option');
       div_time_select_hour_option.value = i;
-      div_time_select_hour_option.innerHTML = i + "  hours";
+      div_time_select_hour_option.innerHTML = i + '  hours';
       div_time_select_hour.append(div_time_select_hour_option);
     }
     div_time.append(div_time_select_hour);
 
-    div_time_select_mins = document.createElement("select");
-    div_time_select_mins.setAttribute("id","num-minutes");
+    div_time_select_mins = document.createElement('select');
+    div_time_select_mins.setAttribute('id','num-minutes');
 
     for( let i = 0; i < 12 ; i ++ )
     {
-      let div_time_select_mins_option= document.createElement("option");
+      let div_time_select_mins_option= document.createElement('option');
       div_time_select_mins_option.value = i;
-      div_time_select_mins_option.innerHTML = i*5 + "  mins";
+      div_time_select_mins_option.innerHTML = i*5 + '  mins';
       div_time_select_mins.append(div_time_select_mins_option);
     }
     div_time.append(div_time_select_mins);
@@ -648,44 +649,44 @@ async function updating(recipeUpdateButton, recipe) {
     const br12 = document.createElement('br');
     main_form.append(br12);
 
-    //Elements for steps
+    //  Elements for steps
 
-    const steps_label = document.createElement("label");
-    steps_label.innerHTML = "Steps:";
+    const steps_label = document.createElement('label');
+    steps_label.innerHTML = 'Steps:';
 
-    const section_steps = document.createElement("section");
-    section_steps.setAttribute("name","steps");
+    const section_steps = document.createElement('section');
+    section_steps.setAttribute('name', 'steps');
 
-    const section_steps_div = document.createElement("div");
-    section_steps_div.classList.add("recipe-steps");
-    const section_steps_div_div = document.createElement("div");      
-    const section_steps_div_div_label = document.createElement("label");
+    const section_steps_div = document.createElement('div');
+    section_steps_div.classList.add('recipe-steps');
+    const section_steps_div_div = document.createElement('div');      
+    const section_steps_div_div_label = document.createElement('label');
     section_steps_div_div_label.innerHTML = "1. ";
     section_steps_div_div.append(section_steps_div_div_label);
     
-    const section_steps_div_div_textarea = document.createElement("textarea");
+    const section_steps_div_div_textarea = document.createElement('textarea');
     section_steps_div_div_textarea.classList.add("steps");
-    section_steps_div_div_textarea.style = "height: 70px; width: 300px; vertical-align: middle";
-    section_steps_div_div_textarea.placeholder = "Add the first step of creating your recipe here! ";
-    section_steps_div_div_textarea.id = "step1";
+    section_steps_div_div_textarea.style = 'height: 70px; width: 300px; vertical-align: middle';
+    section_steps_div_div_textarea.placeholder = 'Add the first step of creating your recipe here! ';
+    section_steps_div_div_textarea.id = 'step1';
 
     section_steps_div_div.append(section_steps_div_div_textarea);
 
     section_steps_div.append(section_steps_div_div);
     section_steps.append(section_steps_div);
 
-    const section_steps_AddButton = document.createElement("button");
-    section_steps_AddButton.id = "add-step";
+    const section_steps_AddButton = document.createElement('button');
+    section_steps_AddButton.id = 'add-step';
     section_steps_AddButton.addEventListener('click', addStep);
-    section_steps_AddButton.type = "button";
-    section_steps_AddButton.innerHTML = "Add Step";
+    section_steps_AddButton.type = 'button';
+    section_steps_AddButton.innerHTML = 'Add Step';
     section_steps.append(section_steps_AddButton);
 
-    const section_steps_RemoveButton = document.createElement("button");
-    section_steps_RemoveButton.id = "remove-step";
+    const section_steps_RemoveButton = document.createElement('button');
+    section_steps_RemoveButton.id = 'remove-step';
     section_steps_RemoveButton.addEventListener('click', removeStep);
-    section_steps_RemoveButton.type = "button";
-    section_steps_RemoveButton.innerHTML = "Remove Step";
+    section_steps_RemoveButton.type = 'button';
+    section_steps_RemoveButton.innerHTML = 'Remove Step';
     section_steps.append(section_steps_RemoveButton);
 
     main_form.append(section_steps);
@@ -697,14 +698,14 @@ async function updating(recipeUpdateButton, recipe) {
 
     //Element for uploading Image
 
-    const file_label = document.createElement("lapbel");
-    file_label.innerHTML = "Please upload your new recipe image if you would like to change";
+    const file_label = document.createElement('lapbel');
+    file_label.innerHTML = 'Please upload your new recipe image if you would like to change';
     main_form.append(file_label);
 
-    const file_label_input = document.createElement("input");
-    file_label_input.type = "file";
-    file_label_input.accept = "image/png,image/jpeg";
-    file_label_input.setAttribute("id","recipe-image");
+    const file_label_input = document.createElement('input');
+    file_label_input.type = 'file';
+    file_label_input.accept = 'image/png,image/jpeg';
+    file_label_input.setAttribute('id', 'recipe-image');
   
     main_form.append(file_label_input);
     
@@ -713,12 +714,12 @@ async function updating(recipeUpdateButton, recipe) {
     const br16 = document.createElement('br');
     main_form.append(br16);
 
-    const update_button = document.createElement("button");
-    update_button.type = "click";
-    update_button.id = "update-recipe";
-    update_button.innerHTML = "Update";
+    const update_button = document.createElement('button');
+    update_button.type = 'click';
+    update_button.id = 'update-recipe';
+    update_button.innerHTML = 'Update';
 
-    update_button.addEventListener("click",function(event){
+    update_button.addEventListener('click',function(event){
 
       event.preventDefault();
       const allInputs = document.querySelectorAll('.ingredients-field input');
