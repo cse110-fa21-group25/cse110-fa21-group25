@@ -693,8 +693,8 @@ async function updating(recipeUpdateButton, recipe) {
     // Element for uploading Image
 
     const fileLabel = document.createElement('lapbel');
-    const expl = 'Please upload your new recipe image if you would like to change';
-    fileLabel.innerHTML = expl;
+    const q = 'Please upload your new recipe image if you would like to change';
+    fileLabel.innerHTML = q;
     mainForm.appendChild(fileLabel);
 
     const fileLabelInput = document.createElement('input');
@@ -793,7 +793,7 @@ async function updating(recipeUpdateButton, recipe) {
 
       // If user has not uploaded in recipes throw alert.
       if (!recipeImage.files[0]) {
-        updateRecipe(recipe).then(()=>{
+        updateRecipe(recipe).then(()=>{ 
           window.location.reload();
         });
       }
@@ -1027,8 +1027,8 @@ function loadingTimeHtml(object) {
 
   if (min == '' && hour == '') {
     for (const a in time) {
-    if (time[a] == 'M') {
-      for (let i = 0; i<a; i ++ ) {
+      if (time[a] == 'M') {
+        for (let i = 0; i<a; i ++ ) {
           min += time[i];
         }
       }
