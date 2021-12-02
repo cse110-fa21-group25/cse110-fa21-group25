@@ -732,8 +732,7 @@ async function updating(recipeUpdateButton, recipe) {
       for (const currIngred in formattedIngredientsPlaceholder) {
         if (formattedIngredients[currIngred]) {
           ingredientArray.push(formattedIngredients[currIngred]);
-        }
-        else {
+        } else {
           ingredientArray.push(formattedIngredientsPlaceholder[currIngred]);
         }
       }
@@ -796,8 +795,7 @@ async function updating(recipeUpdateButton, recipe) {
         updateRecipe(recipe).then(()=>{
           window.location.reload();
         });
-      }
-      else {
+      } else {
         // Upload image to server, once that process is complete (async),
         // write the object to database
         const ref = storage.ref().child(`images/${recipe.data.name}-${userID}`);
