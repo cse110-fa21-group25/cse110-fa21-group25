@@ -580,7 +580,7 @@ async function updating(recipeUpdateButton, recipe) {
     sectionIngredientDivDivInput.setAttribute('id', 'ingredient1');
     sectionIngredientDivDiv.appendChild(sectionIngredientDivDivInput);
     sectionIngredientDiv.appendChild(sectionIngredientDivDiv);
-    sectionIngredient.appendChild(sectionIngredientDiv);   
+    sectionIngredient.appendChild(sectionIngredientDiv);
     const ingredientAddButton = document.createElement('button');
     ingredientAddButton.setAttribute('type', 'button');
     ingredientAddButton.innerHTML = 'Add Ingredient';
@@ -615,7 +615,7 @@ async function updating(recipeUpdateButton, recipe) {
     const divTimeSelectHour = document.createElement('select');
     divTimeSelectHour.setAttribute('id', 'num-hours');
 
-    for ( let i = 0; i < 13; i ++ ){
+    for ( let i = 0; i < 13; i ++ ) {
       const divTimeSelectHourOption= document.createElement('option');
       divTimeSelectHourOption.value = i;
       divTimeSelectHourOption.innerHTML = i + '  hours';
@@ -626,8 +626,8 @@ async function updating(recipeUpdateButton, recipe) {
     const divTimeSelectMins = document.createElement('select');
     divTimeSelectMins.setAttribute('id', 'num-minutes');
 
-    for ( let i = 0; i < 12; i ++ ){
-      let divTimeSelectMinsOption= document.createElement('option');
+    for ( let i = 0; i < 12; i ++ ) {
+      const divTimeSelectMinsOption= document.createElement('option');
       divTimeSelectMinsOption.value = i;
       divTimeSelectMinsOption.innerHTML = i*5 + '  mins';
       divTimeSelectMins.appendChild(divTimeSelectMinsOption);
@@ -649,18 +649,18 @@ async function updating(recipeUpdateButton, recipe) {
 
     const sectionStepsDiv = document.createElement('div');
     sectionStepsDiv.classList.add('recipe-steps');
-    const sectionStepsDivDiv = document.createElement('div');      
+    const sectionStepsDivDiv = document.createElement('div');
     const sectionStepsDivDivLabel = document.createElement('label');
     sectionStepsDivDivLabel.innerHTML = '1. ';
     sectionStepsDivDiv.appendChild(sectionStepsDivDivLabel);
     const sectionStepsDivDivTextarea = document.createElement('textarea');
-    sectionStepsDivDivTextarea.classList.add("steps");
-    let height = 'height: 70px;';
-    let width = ' width: 300px;';
-    let vertical = ' vertical-align: middle';
+    sectionStepsDivDivTextarea.classList.add('steps');
+    const height = 'height: 70px;';
+    const width = ' width: 300px;';
+    const vertical = ' vertical-align: middle';
     sectionStepsDivDivTextarea.style = height + width + vertical;
-    let firstEx= 'Add the first step of creating ';
-    let secondEx= 'your recipe here!'
+    const firstEx= 'Add the first step of creating ';
+    const secondEx= 'your recipe here!';
     sectionStepsDivDivTextarea.placeholder = firstEx + secondEx;
     sectionStepsDivDivTextarea.id = 'step1';
 
@@ -693,8 +693,8 @@ async function updating(recipeUpdateButton, recipe) {
     // Element for uploading Image
 
     const fileLabel = document.createElement('lapbel');
-    let a = 'Please upload your new recipe image if you would like to change';
-    fileLabel.innerHTML = a;
+    const expl = 'Please upload your new recipe image if you would like to change';
+    fileLabel.innerHTML = expl;
     mainForm.appendChild(fileLabel);
 
     const fileLabelInput = document.createElement('input');
@@ -723,19 +723,17 @@ async function updating(recipeUpdateButton, recipe) {
         ({...acc, [input.id]: input.value}), {});
       const ingredientArray = [];
 
-      const allIPlaceholder = document.querySelectorAll(
-        '.ingredients-field placeholder');
+      // const allIPlaceholder = document.querySelectorAll(
+      //     '.ingredients-field placeholder');
       const formattedIngredientsPlaceholder = recipeInput.reduce((acc, input) =>
         ({...acc, [input.id]: input.placeholder}), {});
 
 
       for (const currIngred in formattedIngredientsPlaceholder) {
-        if (formattedIngredients[currIngred]) 
-        {
+        if (formattedIngredients[currIngred]) {
           ingredientArray.push(formattedIngredients[currIngred]);
         }
-        else
-        {
+        else {
           ingredientArray.push(formattedIngredientsPlaceholder[currIngred]);
         }
       }
@@ -807,7 +805,7 @@ async function updating(recipeUpdateButton, recipe) {
         const uploadTask = ref.put(recipeImage.files[0]);
         uploadTask.on('state_changed',
             (snapshot) => {
-              let a = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+              const a = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
               const progress = a;
               console.log(progress + '% done');
             },
@@ -997,8 +995,8 @@ function loadingAuthorHtml(object) {
    * @param {*} object
    */
 function loadingDescriptionHtml(object) {
-  document.querySelector('#description').value = searchForKey(object, 
-    'description');
+  document.querySelector('#description').value = searchForKey(object,
+      'description');
 }
 
 /**
@@ -1027,21 +1025,15 @@ function loadingTimeHtml(object) {
     min += time[i];
   }
 
-  if (min == '' && hour == '')
-  {
-    for (const a in time)
-    {
-    if (time[a] == 'M')
-    {
-      for (let i = 0; i<a; i ++ )
-      {
-        min += time[i];
+  if (min == '' && hour == '') {
+    for (const a in time) {
+    if (time[a] == 'M') {
+      for (let i = 0; i<a; i ++ ) {
+          min += time[i];
+        }
       }
     }
-    
-    }
   }
-
   // Updaing these two value to HTML form
   if ( hour != '') {
     document.querySelector('#num-hours').value = hour;
@@ -1142,7 +1134,7 @@ function addIngredient() {
   // Append to HTML doc
   newField.appendChild(newIngredient);
   document.querySelector('.ingredients-field').appendChild(newField);
-} 
+}
 /**
    * Just removes the last element (bottom-most) from the Ingredients input
    * fields. You can remove any of the HTML elements added
@@ -1156,7 +1148,6 @@ function removeIngredient() {
   const remove = document.querySelector('.ingredients-field');
   remove.removeChild(remove.lastChild);
 }
-  
 /**
    * Dynamically adds additional steps to the HTML document.
    */
@@ -1180,7 +1171,6 @@ function addStep() {
   newField.appendChild(newStep);
   document.querySelector('.recipe-steps').appendChild(newField);
 }
-  
 /**
    * Just removes the last element (bottom-most) from the Steps input fields.
    * You can remove any of the HTML elements added but not the first one.
