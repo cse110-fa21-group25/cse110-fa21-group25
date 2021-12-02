@@ -27,6 +27,7 @@ body {
 .card-body {
   height: 50vh;
   width: auto;
+  overflow: auto;
 }
 
 .card-footer {
