@@ -213,30 +213,17 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
       ingredientsUl.appendChild(ingredientIl);
     }
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const instructionsDiv = document.createElement('div');
     instructionsDiv.classList.add('expand-main');
     const instructionsH4 = document.createElement('h4');
     instructionsH4.innerHTML = 'Instructions:';
     instructionsDiv.classList.add('instructions-expand');
     const instructionsOl = document.createElement('ol');
-    const step1 = document.createElement('li');
-    const step2 = document.createElement('li');
-    const step3 = document.createElement('li');
-    const step4 = document.createElement('li');
-    step1.innerHTML = 'Prepare.';
-    step2.innerHTML = 'Cook.';
-    step3.innerHTML = 'Serve.';
-    step4.innerHTML = 'Feast!!';
-    instructionsOl.appendChild(step1);
-    instructionsOl.appendChild(step2);
-    instructionsOl.appendChild(step3);
-    instructionsOl.appendChild(step4);
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: Get instructions from database!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    for (const instruction in recipe.data.recipeInstructions) {
+      const instructionLi = document.createElement('li');
+      instructionLi.innerHTML = recipe.data.recipeInstructions[instruction];
+      instructionsOl.appendChild(instructionLi);
+    }
 
     overlayDiv.appendChild(expandDiv);
 
@@ -244,6 +231,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     expandDiv.appendChild(bodyDiv);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
+
 
     bodyDiv.appendChild(recipeTitleH2);
     bodyDiv.appendChild(thumbnailImg);
@@ -791,7 +779,7 @@ async function updating(recipeUpdateButton, recipe) {
       const userID = firebase.auth().currentUser.uid;
 
       // If user has not uploaded in recipes throw alert.
-      if (!recipeImage.file[0]) {
+      if (!recipeImage.files[0]) {
         updateRecipe(recipe).then(()=>{
           window.location.reload();
         });
