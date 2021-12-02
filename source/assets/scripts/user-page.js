@@ -572,26 +572,20 @@ async function updating(recipeUpdateButton, recipe) {
 
     const section_ingredient_div = document.createElement('div');
     section_ingredient_div.classList.add('ingredients-field');
-    
     const section_ingredient_div_div = document.createElement('div');
-
     const section_ingredient_div_div_input = document.createElement('input');
     section_ingredient_div_div_input.setAttribute('type', 'text');
     section_ingredient_div_div_input.classList.add('ingredient');
     section_ingredient_div_div_input.setAttribute('placeholder', 'Ingredient Name');
-    section_ingredient_div_div_input.setAttribute('id','ingredient1');
-    
+    section_ingredient_div_div_input.setAttribute('id', 'ingredient1');
     section_ingredient_div_div.append(section_ingredient_div_div_input);
-
     section_ingredient_div.append(section_ingredient_div_div);
-    section_ingredient.append(section_ingredient_div);
-    
+    section_ingredient.append(section_ingredient_div);    
     const ingredient_add_button = document.createElement('button');
     ingredient_add_button.setAttribute('type', 'button');
     ingredient_add_button.innerHTML = 'Add Ingredient';
     ingredient_add_button.id = 'add-ingredient';
     ingredient_add_button.addEventListener('click', addIngredient);
-
     section_ingredient.append(ingredient_add_button);
 
     const ingredient_remove_button = document.createElement('button');
