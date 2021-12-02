@@ -431,9 +431,9 @@ async function updating(recipeUpdateButton, recipe) {
 
     header.setAttribute('id', 'nav-placeholder');
     header_h1.innerHTML = recipe.data.name;
-    header.append(header_div);
-    header.append(header_h1);
-    bodyDiv.append(header);
+    header.appendChild(header_div);
+    header.appendChild(header_h1);
+    bodyDiv.appendChild(header);
 
     //  Make main
 
