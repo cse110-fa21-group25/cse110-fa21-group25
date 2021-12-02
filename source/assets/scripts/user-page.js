@@ -443,7 +443,7 @@ async function updating(recipeUpdateButton, recipe) {
     const label_title = document.createElement('label');
     label_title.innerHTML = 'My Recipe Title:';
     const label_input = document.createElement('input');
-    label_input.setAttribute('type','text');
+    label_input.setAttribute('type', 'text');
     label_input.setAttribute('name', 'recipe-title');
     label_input.setAttribute('id', 'recipe-title');
 
@@ -454,14 +454,13 @@ async function updating(recipeUpdateButton, recipe) {
     const br2 = document.createElement('br');
     main_form.append(br2);
     //  main_form.append(br);
-    
     //  Label for author
     const label_author = document.createElement('label');
     label_author.innerHTML = 'Author:';
     const label_author_input = document.createElement('input');
-    label_author_input.setAttribute('type','text');
-    label_author_input.setAttribute('name','author');
-    label_author_input.setAttribute('id','author');
+    label_author_input.setAttribute('type', 'text');
+    label_author_input.setAttribute('name', 'author');
+    label_author_input.setAttribute('id', 'author');
 
     label_author.append(label_author_input);
     main_form.append(label_author);
@@ -471,7 +470,6 @@ async function updating(recipeUpdateButton, recipe) {
     main_form.append(br4);
   
     //  Element for description
-
     const p_description = document.createElement('p');
     p_description.innerHTML = 'Description:';
     const p_description_textarea = document.createElement('textarea');
@@ -488,16 +486,16 @@ async function updating(recipeUpdateButton, recipe) {
 
     //  Element for tag
 
-    const section_tag = document.createElement("section");
-    section_tag.id = "tag-section";
-    const section_tag_label = document.createElement("label");
-    section_tag_label.innerHTML = "Tags:";
+    const section_tag = document.createElement('section');
+    section_tag.id = 'tag-section';
+    const section_tag_label = document.createElement('label');
+    section_tag_label.innerHTML = 'Tags:';
     section_tag.append(section_tag_label);
-    const section_tag_select = document.createElement("select");
-    section_tag_select.classList.add("tags");
-    section_tag_select.id = "tags";
-    section_tag_select.multiple = "yes";
-    section_tag_select.style = "vertical-align: middle; width: 120px";
+    const section_tag_select = document.createElement('select');
+    section_tag_select.classList.add('tags');
+    section_tag_select.id = 'tags';
+    section_tag_select.multiple = 'yes';
+    section_tag_select.style = 'vertical-align: middle; width: 120px';
 
     const tag_option0 = document.createElement('option');
     tag_option0.value = 0;
