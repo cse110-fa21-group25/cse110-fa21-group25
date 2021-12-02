@@ -91,8 +91,8 @@ async function createRecipeCard() {
     recipeDeleteButton.innerHTML = 'Delete Recipe';
     // recipeDeleteButton.onclick = deleteRecipe;
 
-    //Button to update Recipe
-    const recipeUpdateButton = document.createElement("button");
+    // Button to update Recipe
+    const recipeUpdateButton = document.createElement('button');
     recipeUpdateButton.innerHTML = 'Update Recipe';
 
     // Assemble Recipe Card's DOM (as above structure reference)
@@ -118,7 +118,7 @@ async function createRecipeCard() {
 
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
-    updating(recipeUpdateButton,recipe);
+    updating(recipeUpdateButton, recipe);
   }
 }
 
@@ -406,9 +406,8 @@ function navigateMyPage() { // eslint-disable-line no-unused-vars
  * @param {*} recipeUpdateButton button that the user clicks to update
  * @param {*} recipe recipe that is displayed to user
  */
- async function updating(recipeUpdateButton, recipe) {
+async function updating(recipeUpdateButton, recipe) {
   recipeUpdateButton.addEventListener('click', (e)=>{
-
     e.preventDefault();
 
     const overlayDiv = document.createElement('div');
@@ -425,20 +424,19 @@ function navigateMyPage() { // eslint-disable-line no-unused-vars
     bodyDiv.classList.add('expand-body-section');
     bodyDiv.classList.add('expand-main');
 
-    //Make a header 
+    //  Make a header 
     
     const header = document.createElement('header');
     const header_div = document.createElement("div");
     const header_h1 = document.createElement("h1");
 
-    
     header.setAttribute("id","nav-placeholder");
     header_h1.innerHTML = "Update New Recipe";
     header.append(header_div);
     header.append(header_h1);
     bodyDiv.append(header);
 
-    //Make main
+    //  Make main
 
     const main = document.createElement("main");
     const main_form = document.createElement("form");
