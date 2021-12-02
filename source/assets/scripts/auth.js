@@ -60,6 +60,7 @@ function signup() { // eslint-disable-line no-unused-vars
         });
   }
 }
+
 /**
  * Redirects the user to homepage if they are already signed in
  * and attempt to access either the login or sign up page(s)
