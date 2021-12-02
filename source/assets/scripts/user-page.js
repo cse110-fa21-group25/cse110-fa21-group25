@@ -429,7 +429,7 @@ async function updating(recipeUpdateButton, recipe) {
     const header_div = document.createElement('div');
     const header_h1 = document.createElement('h1');
 
-    header.setAttribute('id","nav-placeholder');
+    header.setAttribute('id','nav-placeholder');
     header_h1.innerHTML = loadingTitleHtml(recipe);
     header.append(header_div);
     header.append(header_h1);
@@ -437,15 +437,15 @@ async function updating(recipeUpdateButton, recipe) {
 
     //  Make main
 
-    const main = document.createElement("main");
-    const main_form = document.createElement("form");
-    main_form.setAttribute("id","recipeForm")
-    const label_title = document.createElement("label");
-    label_title.innerHTML = "My Recipe Title:";
-    const label_input = document.createElement("input");
-    label_input.setAttribute("type","text");
-    label_input.setAttribute("name", "recipe-title" );
-    label_input.setAttribute("id", "recipe-title" );
+    const main = document.createElement('main');
+    const main_form = document.createElement('form');
+    main_form.setAttribute('id','recipeForm')
+    const label_title = document.createElement('label');
+    label_title.innerHTML = 'My Recipe Title:';
+    const label_input = document.createElement('input');
+    label_input.setAttribute('type','text');
+    label_input.setAttribute('name', 'recipe-title' );
+    label_input.setAttribute('id', 'recipe-title' );
 
     label_title.append(label_input);
     main_form.append(label_title);
