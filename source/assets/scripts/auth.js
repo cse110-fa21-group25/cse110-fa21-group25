@@ -60,3 +60,17 @@ function signup() { // eslint-disable-line no-unused-vars
         });
   }
 }
+/**
+ * Redirects the user to homepage if they are already signed in
+ * and attempt to access either the login or sign up page(s)
+*/
+function redirectIfLoggedIn() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // Redirect to home-page if user is signed in
+      window.location.href = 'home-page.html';
+    }
+  });
+}
+
+redirectIfLoggedIn();
