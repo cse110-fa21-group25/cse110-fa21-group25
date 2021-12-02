@@ -399,7 +399,7 @@ function navigateMyPage() { // eslint-disable-line no-unused-vars
 }
 
 /**
- * Function to update the recipe that was clicked on. 
+ * Function to update the recipe that was clicked on.
  * It will take the recipedata and populate the form with it
  * Then it will allow user to update the recipe
  *
@@ -424,14 +424,13 @@ async function updating(recipeUpdateButton, recipe) {
     bodyDiv.classList.add('expand-body-section');
     bodyDiv.classList.add('expand-main');
 
-    //  Make a header 
-    
+    //  Make a header
     const header = document.createElement('header');
-    const header_div = document.createElement("div");
-    const header_h1 = document.createElement("h1");
+    const header_div = document.createElement('div');
+    const header_h1 = document.createElement('h1');
 
-    header.setAttribute("id","nav-placeholder");
-    header_h1.innerHTML = "Update New Recipe";
+    header.setAttribute('id","nav-placeholder');
+    header_h1.innerHTML = loadingTitleHtml(recipe);
     header.append(header_div);
     header.append(header_h1);
     bodyDiv.append(header);
