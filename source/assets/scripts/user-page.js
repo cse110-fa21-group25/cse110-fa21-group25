@@ -429,8 +429,8 @@ async function updating(recipeUpdateButton, recipe) {
     const header_div = document.createElement('div');
     const header_h1 = document.createElement('h1');
 
-    header.setAttribute('id','nav-placeholder');
-    header_h1.innerHTML = loadingTitleHtml(recipe);
+    header.setAttribute('id', 'nav-placeholder');
+    header_h1.innerHTML = recipe.data.name;
     header.append(header_div);
     header.append(header_h1);
     bodyDiv.append(header);
@@ -439,13 +439,13 @@ async function updating(recipeUpdateButton, recipe) {
 
     const main = document.createElement('main');
     const main_form = document.createElement('form');
-    main_form.setAttribute('id','recipeForm')
+    main_form.setAttribute('id', 'recipeForm');
     const label_title = document.createElement('label');
     label_title.innerHTML = 'My Recipe Title:';
     const label_input = document.createElement('input');
     label_input.setAttribute('type','text');
-    label_input.setAttribute('name', 'recipe-title' );
-    label_input.setAttribute('id', 'recipe-title' );
+    label_input.setAttribute('name', 'recipe-title');
+    label_input.setAttribute('id', 'recipe-title');
 
     label_title.append(label_input);
     main_form.append(label_title);
@@ -453,15 +453,15 @@ async function updating(recipeUpdateButton, recipe) {
     main_form.append(br1);
     const br2 = document.createElement('br');
     main_form.append(br2);
-    //main_form.append(br);
+    //  main_form.append(br);
     
-    //Label for author
-    const label_author = document.createElement("label");
-    label_author.innerHTML = "Author:";
-    const label_author_input = document.createElement("input");
-    label_author_input.setAttribute("type","text");
-    label_author_input.setAttribute("name","author");
-    label_author_input.setAttribute("id","author");
+    //  Label for author
+    const label_author = document.createElement('label');
+    label_author.innerHTML = 'Author:';
+    const label_author_input = document.createElement('input');
+    label_author_input.setAttribute('type','text');
+    label_author_input.setAttribute('name','author');
+    label_author_input.setAttribute('id','author');
 
     label_author.append(label_author_input);
     main_form.append(label_author);
@@ -472,12 +472,12 @@ async function updating(recipeUpdateButton, recipe) {
   
     //Element for description
 
-    const p_description = document.createElement("p");
-    p_description.innerHTML = "Description:";
-    const p_description_textarea = document.createElement("textarea");
-    p_description_textarea.id = "description";
-    p_description_textarea.placeholder = "Tell us a little bit about your recipe here!";
-    p_description_textarea.style = "height: 70px; width: 300px";
+    const p_description = document.createElement('p');
+    p_description.innerHTML = 'Description:';
+    const p_description_textarea = document.createElement('textarea');
+    p_description_textarea.id = 'description';
+    p_description_textarea.placeholder = 'Tell us a little bit about your recipe here!';
+    p_description_textarea.style = 'height: 70px; width: 300px';
 
     main_form.append(p_description);
     main_form.append(p_description_textarea);
@@ -498,62 +498,62 @@ async function updating(recipeUpdateButton, recipe) {
     section_tag_select.multiple = "yes";
     section_tag_select.style = "vertical-align: middle; width: 120px";
 
-    const tag_option0 = document.createElement("option");
+    const tag_option0 = document.createElement('option');
     tag_option0.value = 0;
-    tag_option0.innerHTML = "Select Tags:";
+    tag_option0.innerHTML = 'Select Tags:';
     section_tag_select.append(tag_option0);
 
-    const tag_option1 = document.createElement("option");
+    const tag_option1 = document.createElement('option');
     tag_option1.value = 1;
-    tag_option1.innerHTML = "Breakfast";
+    tag_option1.innerHTML = 'Breakfast';
     section_tag_select.append(tag_option1);
 
-    const tag_option2 = document.createElement("option");
+    const tag_option2 = document.createElement('option');
     tag_option2.value = 2;
-    tag_option2.innerHTML = "Dessert";
+    tag_option2.innerHTML = 'Dessert';
     section_tag_select.append(tag_option2);
 
-    const tag_option3 = document.createElement("option");
+    const tag_option3 = document.createElement('option');
     tag_option3.value = 3;
-    tag_option3.innerHTML = "Dinner";
+    tag_option3.innerHTML = 'Dinner';
     section_tag_select.append(tag_option3);
 
-    const tag_option4 = document.createElement("option");
+    const tag_option4 = document.createElement('option');
     tag_option4.value = 4;
-    tag_option4.innerHTML = "Easy";
+    tag_option4.innerHTML = 'Easy';
     section_tag_select.append(tag_option4);
 
-    const tag_option5 = document.createElement("option");
+    const tag_option5 = document.createElement('option');
     tag_option5.value = 5;
-    tag_option5.innerHTML = "Healthy";
+    tag_option5.innerHTML = 'Healthy';
     section_tag_select.append(tag_option5);
 
-    const tag_option6 = document.createElement("option");
+    const tag_option6 = document.createElement('option');
     tag_option6.value = 6;
-    tag_option6.innerHTML = "Lunch";
+    tag_option6.innerHTML = 'Lunch';
     section_tag_select.append(tag_option6);
 
-    const tag_option7 = document.createElement("option");
+    const tag_option7 = document.createElement('option');
     tag_option7.value = 7;
-    tag_option7.innerHTML = "Quick";
+    tag_option7.innerHTML = 'Quick';
     section_tag_select.append(tag_option7);
 
-    const tag_option8 = document.createElement("option");
+    const tag_option8 = document.createElement('option');
     tag_option8.value = 8;
-    tag_option8.innerHTML = "Snack";
+    tag_option8.innerHTML = 'Snack';
     section_tag_select.append(tag_option8);
 
     section_tag.append(section_tag_select);
 
-    const tag_button = document.createElement("button");
-    tag_button.id = "add-tag";
+    const tag_button = document.createElement('button');
+    tag_button.id = 'add-tag';
     tag_button.addEventListener('click', addTag);
-    tag_button.type = "button";
-    tag_button.innerHTML = "Add Tag(s)";
+    tag_button.type = 'button';
+    tag_button.innerHTML = 'Add Tag(s)';
     section_tag.append(tag_button);
 
-    const tag_div = document.createElement("div");
-    tag_div.id = "selected-tags";
+    const tag_div = document.createElement('div');
+    tag_div.id = 'selected-tags';
     section_tag.append(tag_div);
     main_form.append(section_tag);
 
@@ -564,15 +564,15 @@ async function updating(recipeUpdateButton, recipe) {
 
     //Element for Ingredients
 
-    const ingredient_label = document.createElement("label");
-    ingredient_label.innerHTML = "Ingredients";
+    const ingredient_label = document.createElement('label');
+    ingredient_label.innerHTML = 'Ingredients';
     main_form.append(ingredient_label);
 
-    const section_ingredient = document.createElement("section");
-    section_ingredient.setAttribute("name", "ingredients");
+    const section_ingredient = document.createElement('section');
+    section_ingredient.setAttribute('name', 'ingredients');
 
-    const section_ingredient_div = document.createElement("div");
-    section_ingredient_div.classList.add("ingredients-field");
+    const section_ingredient_div = document.createElement('div');
+    section_ingredient_div.classList.add('ingredients-field');
     
     const section_ingredient_div_div = document.createElement("div");
 
