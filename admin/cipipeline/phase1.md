@@ -25,7 +25,7 @@ If you encounter errors while running `grunt` due to ESLint errors/warnings, you
 ---
 
 ## Linting (In CI/CD Pipeline)
-We are using grunt in order to incorporate the linting process directly into the build pipeline. ESLint will be used for JS code style enforcement, all members of the team are expected to make sure that all JS code follows the linting guidelines before the commits are pushed into their respective branches. During a pull request the reviewer may also use the `grunt`  command to make sure that style guidelines are followed before approving of the merge request. After running `grunt`, there should not be any warnings or errors in your terminal.
+We are using grunt in order to incorporate the linting process directly into the build pipeline. ESLint will be used for JS code style enforcement, all members of the team are expected to make sure that all JS code follows the linting guidelines before the commits are pushed into their respective branches. During a pull request the reviewer may also use the `grunt` command to make sure that style guidelines are followed before approving of the merge request. After running `grunt`, there should not be any warnings or errors in your terminal.
 
 ## Autogenerating Documentation 
 We aer using JSDocs in order to generate documentation. In order for JSDocs to work properly you must follow these guidelines:
@@ -40,7 +40,7 @@ If all of the above steps are followed, then you can autogenerate the documentat
 After you have finished making your changes locally, sucessfully passed the appropriate linting and documentation generation tasks using Grunt, you can push your changes the remote branch. At this point you can make a pull request. Pull requests have been set up to require manual review from one of your team members before anything can be merged into main. This is to ensure the code quality remains high. 
 
 ## Unit Tests
-Work In Progress
+We are using Jest, which is a JavaScript testing framework, for unit testing. We also integrated this with Grunt, so running the `grunt` command will also run the unit tests.
 
 ## Code Quality via Tool
 We are using CodeFactor, which is an automated code review tool for git. To see any issues with the code quality of our repository, visit this [link](https://www.codefactor.io/repository/github/cse110-fa21-group25/cse110-fa21-group25). CodeFactor will also run automatically whenever there is a pull request.
