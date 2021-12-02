@@ -1035,7 +1035,7 @@ function loadingTimeHtml(object) {
     {
     if (time[a] == 'M')
     {
-      for (let i = 0 ; i  a ; i ++ )
+      for (let i = 0; i<a; i ++ )
       {
         min += time[i];
       }
