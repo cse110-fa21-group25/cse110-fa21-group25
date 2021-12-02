@@ -711,8 +711,7 @@ async function updating(recipeUpdateButton, recipe) {
     update_button.id = 'update-recipe';
     update_button.innerHTML = 'Update';
 
-    update_button.addEventListener('click',function(event){
-
+    update_button.addEventListener('click', function(event) {
       event.preventDefault();
       const allInputs = document.querySelectorAll('.ingredients-field input');
       const recipeInput = Array.from(allInputs);
@@ -724,7 +723,6 @@ async function updating(recipeUpdateButton, recipe) {
       const ingredientArray = [];
 
       const allIPlaceholder = document.querySelectorAll('.ingredients-field placeholder');
-      const recipePlaceHolder = Array.from(allIPlaceholder)
       const formattedIngredientsPlaceholder = recipeInput.reduce((acc, input) =>
         ({...acc, [input.id]: input.placeholder}), {});
 
@@ -733,8 +731,7 @@ async function updating(recipeUpdateButton, recipe) {
         if (formattedIngredients[currIngred]) {
           ingredientArray.push(formattedIngredients[currIngred]);
         }
-        else{
-
+        else {
           ingredientArray.push(formattedIngredientsPlaceholder[currIngred]);
         }
       }
@@ -746,7 +743,7 @@ async function updating(recipeUpdateButton, recipe) {
       const allTextAreas = document.querySelectorAll('.recipe-steps textarea');
       const recipeTextArea = Array.from(allTextAreas);
       const formattedSteps = recipeTextArea.reduce((acc, textarea) =>
-      ({...acc, [textarea.id]: textarea.value}), {});
+        ({...acc, [textarea.id]: textarea.value}), {});
       const stepString = [];
       for (const currStep in formattedSteps) {
         if (formattedSteps[currStep]) {
@@ -754,7 +751,7 @@ async function updating(recipeUpdateButton, recipe) {
         }
       }
       
-  // convert cooktime to ISO 8601 Duration format
+      // convert cooktime to ISO 8601 Duration format
       const numHours = document.querySelector('#num-hours').value;
       const numMinutes = document.querySelector('#num-minutes').value * 5;
       let cookTime;
@@ -770,7 +767,6 @@ async function updating(recipeUpdateButton, recipe) {
 
       console.log(cookTime);
       // Get the image, serverside implementation needed
-      //const recipeImage = document.querySelector('#recipe-image');
       const recipeImage = document.querySelector('#recipe-image');
       
       // Retrieve all the tags selected
@@ -780,7 +776,7 @@ async function updating(recipeUpdateButton, recipe) {
         tagArray.push(tags[i].textContent.slice(0, -1));
       } 
 
-  // Start building JSON string first from object, fill out the form values.
+      // Start building JSON string first from object, fill out the form values.
 
       console.log(recipe.data);
       recipe.data.tags = tagArray;
@@ -796,53 +792,53 @@ async function updating(recipeUpdateButton, recipe) {
 
       const userID = firebase.auth().currentUser.uid;
 
-         // If user has not uploaded in recipes throw alert.
+      // If user has not uploaded in recipes throw alert.
       if (!recipeImage.files[0]) {
         updateRecipe(recipe).then(()=>{
           window.location.reload();
         });
       }
-      else{
-          // Upload image to server, once that process is complete (async),
-          // write the object to database
-          const ref = storage.ref().child(`images/${recipe.data.name}-${userID}`);
-          const uploadTask = ref.put(recipeImage.files[0]);
-          uploadTask.on('state_changed',
-          (snapshot) => {
+
+      else {
+        // Upload image to server, once that process is complete (async),
+        // write the object to database
+        const ref = storage.ref().child(`images/${recipe.data.name}-${userID}`);
+        const uploadTask = ref.put(recipeImage.files[0]);
+        uploadTask.on('state_changed',
+            (snapshot) => {
               const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
               console.log(progress + '% done');
-          },
-          (error) => {
-            console.error('Error uploading image: ' + error);
-          },
-          () => {
-            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              console.log('Successfully uploaded image at: ' + downloadURL);
+            },
+            (error) => {
+              console.error('Error uploading image: ' + error);
+            },
+            () => {
+              uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                console.log('Successfully uploaded image at: ' + downloadURL);
 
-          // once the image is uploaded, we retrieve the download URL
-          // and attach it to the object, then push object to DB
-              recipe.data.imageURL = downloadURL;
-              updateRecipe(recipe).then(()=>{
-                window.location.reload();
+                // once the image is uploaded, we retrieve the download URL
+                // and attach it to the object, then push object to DB
+                recipe.data.imageURL = downloadURL;
+                updateRecipe(recipe).then(()=>{
+                  window.location.reload();
+                });
+                alert('Succesfully Updated Recipe!');
               });
-              alert('Succesfully Updated Recipe!');
-           });
-          },
-      );
+            },
+        );
       }
     });
 
     main_form.append(update_button);
 
-    const cancel_button = document.createElement("button");
-    cancel_button.type = "button";
-    cancel_button.id = "cancel-recipe";
-    cancel_button.innerHTML = "Canel";
+    const cancel_button = document.createElement('button');
+    cancel_button.type = 'button';
+    cancel_button.id = 'cancel-recipe';
+    cancel_button.innerHTML = 'Canel';
 
     main_form.append(cancel_button);
     main.append(main_form);
     bodyDiv.append(main);
-    
     overlayDiv.appendChild(expandDiv);
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
@@ -867,8 +863,7 @@ async function updating(recipeUpdateButton, recipe) {
     loadingAuthorHtml(recipe);
 
     removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
-    removeExpandRecipe(cancel_button,overlayDiv);
-
+    removeExpandRecipe(cancel_button, overlayDiv);
   });
 }
 
@@ -1029,16 +1024,16 @@ function loadingTimeHtml(object) {
     min += time[i];
   }
 
-  if(min == '' && hour == '')
+  if (min == '' && hour == '')
   {
-    for(const a in time)
+    for (const a in time)
     {
-      if(time[a] == "M")
-      for( let i = 0 ; i < a; i ++ )
-      {
-        min += time[i];
-      }
-    } 
+    if (time[a] == "M")
+    for ( let i = 0 ; i < a; i ++ )
+    {
+      min += time[i];
+    }
+    }
   }
 
   // Updaing these two value to HTML form
@@ -1048,11 +1043,7 @@ function loadingTimeHtml(object) {
   } else {
     document.querySelector('#num-minutes').value = min / 5;
   }
-
-  console.log(min)
-  console.log(hour);
 }
-
 
 
 /**
@@ -1061,7 +1052,7 @@ function loadingTimeHtml(object) {
  * @param {*} key
  * @return {*} value found at key
  */
- function searchForKey(object, key) {
+function searchForKey(object, key) {
   let value;
   Object.keys(object).some(function(k) {
     if (k === key) {
@@ -1076,16 +1067,14 @@ function loadingTimeHtml(object) {
   return value;
 }
 
-
-
   /**
    * Function to remove a tag when the corresponding button is clicked
    */
-   function deleteTag() {
-    const parent = this.parentNode; // eslint-disable-line no-invalid-this
-    const grandParent = parent.parentNode;
-    grandParent.removeChild(parent);
-  }
+function deleteTag() {
+  const parent = this.parentNode; // eslint-disable-line no-invalid-this
+  const grandParent = parent.parentNode;
+  grandParent.removeChild(parent);
+}
   /**
    * Function to allow the user to use a multiple select and select multiple
    * tags for their recipes. The multiselect prohibits the default tag
@@ -1093,110 +1082,105 @@ function loadingTimeHtml(object) {
    * It will add the tag as a <div> with a button that is linked to it.
    * This button is linked to deleteTag so it will remove the tag onclick.
    */
-  function addTag() {
-    const tagsDiv = document.querySelector('#selected-tags');
-    const itemList = document.getElementById('tags');
-    const collection = itemList.selectedOptions;
-    for (let i = 0; i < collection.length; i++) {
-      const currLabel = collection[i].label;
+function addTag() {
+  const tagsDiv = document.querySelector('#selected-tags');
+  const itemList = document.getElementById('tags');
+  const collection = itemList.selectedOptions;
+  for (let i = 0; i < collection.length; i++) {
+    const currLabel = collection[i].label;
   
-      // shouldn't add the "select tags: option" or any tags already added
-      if (currLabel != 'Select Tags:') {
-        // prevent duplicate
-        const tags = document.querySelectorAll('#selected-tags div');
-        if (tags.length) {
-          // search through div to make sure no dupilcates are added
-          for (let j = 0; j < tags.length; j++) {
-            const divLabel = tags[j].textContent.slice(0, -1);
-            if (currLabel == divLabel) {
-              // remove old elements
-              tags[j].remove();
-            }
+    // shouldn't add the "select tags: option" or any tags already added
+    if (currLabel != 'Select Tags:') {
+      // prevent duplicate
+      const tags = document.querySelectorAll('#selected-tags div');
+      if (tags.length) {
+        // search through div to make sure no dupilcates are added
+        for (let j = 0; j < tags.length; j++) {
+          const divLabel = tags[j].textContent.slice(0, -1);
+          if (currLabel == divLabel) {
+            // remove old elements
+            tags[j].remove();
           }
         }
-        // add elements also add a button to remove
-        // the tag.
-        const newTag = document.createElement('div');
-        const newButton = document.createElement('button');
-        newButton.type = 'button';
-        newButton.onclick = deleteTag;
-        newButton.textContent = 'x';
-        newTag.textContent = currLabel;
-        newTag.appendChild(newButton);
-        tagsDiv.appendChild(newTag);
       }
+      // add elements also add a button to remove
+      // the tag.
+      const newTag = document.createElement('div');
+      const newButton = document.createElement('button');
+      newButton.type = 'button';
+      newButton.onclick = deleteTag;
+      newButton.textContent = 'x';
+      newTag.textContent = currLabel;
+      newTag.appendChild(newButton);
+      tagsDiv.appendChild(newTag);
     }
   }
+}
   
   /**
    *  Function to append a new input to the Ingredients part of the form.
    *  On button click, a new Ingredient form will appear along with its
    *  corresponding input fields.
    */
-  function addIngredient() {
-    // Create HTML elements
-    const newField = document.createElement('div');
-    const newIngredient = document.createElement('input');
+function addIngredient() {
+  // Create HTML elements
+  const newField = document.createElement('div');
+  const newIngredient = document.createElement('input');
   
-    // Populate Input Fields
-    newIngredient.type = 'text';
+  // Populate Input Fields
+  newIngredient.type = 'text';
   
-    // set classes
-    newIngredient.className = 'ingredient';
+  // set classes
+  newIngredient.className = 'ingredient';
   
-    // set unique id's, the name of the ingredient is ingredient
-    // + number of children the parent div will
-    // have after these elements are added.
-    const idNum = document.querySelector('.ingredients-field').childElementCount +
-      1;
-    newIngredient.id = 'ingredient' + idNum;
-  
-  
-    // Append to HTML doc
-    newField.appendChild(newIngredient);
-    document.querySelector('.ingredients-field').appendChild(newField);
-  }
+  // set unique id's, the name of the ingredient is ingredient
+  // + number of children the parent div will
+  // have after these elements are added.
+  const idNum = document.querySelector('.ingredients-field').childElementCount +
+    1;
+  newIngredient.id = 'ingredient' + idNum;
+  // Append to HTML doc
+  newField.appendChild(newIngredient);
+  document.querySelector('.ingredients-field').appendChild(newField);
+}
   
   /**
    * Just removes the last element (bottom-most) from the Ingredients input
    * fields. You can remove any of the HTML elements added but not the first one.
    */
-  function removeIngredient() {
-    // Return without doing anything if there is only one element
-    if (document.querySelector('.ingredients-field').childElementCount === 1) {
-      return;
-    }
-  
-    const remove = document.querySelector('.ingredients-field');
-    remove.removeChild(remove.lastChild);
+function removeIngredient() {
+  // Return without doing anything if there is only one element
+  if (document.querySelector('.ingredients-field').childElementCount === 1) {
+    return;
   }
+  
+  const remove = document.querySelector('.ingredients-field');
+  remove.removeChild(remove.lastChild);
+}
   
   /**
    * Dynamically adds additional steps to the HTML document.
    */
-  function addStep() {
-    // Create HTML elements
-    const newField = document.createElement('div');
-    const label = document.createElement('label');
-    const newStep = document.createElement('textarea');
-    const parentDiv = document.querySelector('.recipe-steps');
+function addStep() {
+  // Create HTML elements
+  const newField = document.createElement('div');
+  const label = document.createElement('label');
+  const newStep = document.createElement('textarea');
+  const parentDiv = document.querySelector('.recipe-steps');
+  // Set the step label to be the number of "steps" fields there will be.
+  label.textContent = (parentDiv.childElementCount + 1) + '. ';
+  // Adjust some basic styles for  the textarea element
+  newStep.style.height = '70px';
+  newStep.style.width = '300px';
+  newStep.style.verticalAlign = 'middle';
   
-    // Set the step label to be the number of "steps" fields there will be.
-    label.textContent = (parentDiv.childElementCount + 1) + '. ';
-  
-    // Adjust some basic styles for  the textarea element
-    newStep.style.height = '70px';
-    newStep.style.width = '300px';
-    newStep.style.verticalAlign = 'middle';
-  
-    // Add unique id's to the textareas, the id is "step" and the step number
-    const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
-    newStep.id = 'step' + idNum;
-  
-    // Append HTMl elements to DOM
-    newField.appendChild(label);
-    newField.appendChild(newStep);
-    document.querySelector('.recipe-steps').appendChild(newField);
+  // Add unique id's to the textareas, the id is "step" and the step number
+  const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
+  newStep.id = 'step' + idNum;
+  // Append HTMl elements to DOM
+  newField.appendChild(label);
+  newField.appendChild(newStep);
+  document.querySelector('.recipe-steps').appendChild(newField);
   }
   
   /**
@@ -1204,12 +1188,11 @@ function loadingTimeHtml(object) {
    * You can remove any of the HTML elements added but not the first one.
    */
   function removeStep() {
-
     // Return without doing anything if there is only one element
-    if (document.querySelector('.recipe-steps').childElementCount === 1) {
-      return;
-    }
-
-    const remove = document.querySelector('.recipe-steps');
-    remove.removeChild(remove.lastChild);
+  if (document.querySelector('.recipe-steps').childElementCount === 1) {
+    return;
   }
+
+  const remove = document.querySelector('.recipe-steps');
+  remove.removeChild(remove.lastChild);
+}
