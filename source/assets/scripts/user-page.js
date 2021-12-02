@@ -447,12 +447,12 @@ async function updating(recipeUpdateButton, recipe) {
     label_input.setAttribute('name', 'recipe-title');
     label_input.setAttribute('id', 'recipe-title');
 
-    label_title.append(label_input);
-    main_form.append(label_title);
+    label_title.appendChild(label_input);
+    main_form.appendChild(label_title);
     const br1 = document.createElement('br');
-    main_form.append(br1);
+    main_form.appendChild(br1);
     const br2 = document.createElement('br');
-    main_form.append(br2);
+    main_form.appendChild(br2);
     //  main_form.append(br);
     //  Label for author
     const label_author = document.createElement('label');
@@ -462,12 +462,12 @@ async function updating(recipeUpdateButton, recipe) {
     label_author_input.setAttribute('name', 'author');
     label_author_input.setAttribute('id', 'author');
 
-    label_author.append(label_author_input);
-    main_form.append(label_author);
+    label_author.appendChild(label_author_input);
+    main_form.appendChild(label_author);
     const br3 = document.createElement('br');
-    main_form.append(br3);
+    main_form.appendChild(br3);
     const br4 = document.createElement('br');
-    main_form.append(br4);
+    main_form.appendChild(br4);
     //  Element for description
     const p_description = document.createElement('p');
     p_description.innerHTML = 'Description:';
@@ -477,12 +477,12 @@ async function updating(recipeUpdateButton, recipe) {
     p_description_textarea.placeholder = something;
     p_description_textarea.style = 'height: 70px; width: 300px';
 
-    main_form.append(p_description);
-    main_form.append(p_description_textarea);
+    main_form.appendChild(p_description);
+    main_form.appendChild(p_description_textarea);
     const br5 = document.createElement('br');
-    main_form.append(br5);
+    main_form.appendChild(br5);
     const br6 = document.createElement('br');
-    main_form.append(br6);
+    main_form.appendChild(br6);
 
     //  Element for tag
 
@@ -490,7 +490,7 @@ async function updating(recipeUpdateButton, recipe) {
     section_tag.id = 'tag-section';
     const section_tag_label = document.createElement('label');
     section_tag_label.innerHTML = 'Tags:';
-    section_tag.append(section_tag_label);
+    section_tag.appendChild(section_tag_label);
     const section_tag_select = document.createElement('select');
     section_tag_select.classList.add('tags');
     section_tag_select.id = 'tags';
@@ -500,72 +500,72 @@ async function updating(recipeUpdateButton, recipe) {
     const tag_option0 = document.createElement('option');
     tag_option0.value = 0;
     tag_option0.innerHTML = 'Select Tags:';
-    section_tag_select.append(tag_option0);
+    section_tag_select.appendChild(tag_option0);
 
     const tag_option1 = document.createElement('option');
     tag_option1.value = 1;
     tag_option1.innerHTML = 'Breakfast';
-    section_tag_select.append(tag_option1);
+    section_tag_select.appendChild(tag_option1);
 
     const tag_option2 = document.createElement('option');
     tag_option2.value = 2;
     tag_option2.innerHTML = 'Dessert';
-    section_tag_select.append(tag_option2);
+    section_tag_select.appendChild(tag_option2);
 
     const tag_option3 = document.createElement('option');
     tag_option3.value = 3;
     tag_option3.innerHTML = 'Dinner';
-    section_tag_select.append(tag_option3);
+    section_tag_select.appendChild(tag_option3);
 
     const tag_option4 = document.createElement('option');
     tag_option4.value = 4;
     tag_option4.innerHTML = 'Easy';
-    section_tag_select.append(tag_option4);
+    section_tag_select.appendChild(tag_option4);
 
     const tag_option5 = document.createElement('option');
     tag_option5.value = 5;
     tag_option5.innerHTML = 'Healthy';
-    section_tag_select.append(tag_option5);
+    section_tag_select.appendChild(tag_option5);
 
     const tag_option6 = document.createElement('option');
     tag_option6.value = 6;
     tag_option6.innerHTML = 'Lunch';
-    section_tag_select.append(tag_option6);
+    section_tag_select.appendChild(tag_option6);
 
     const tag_option7 = document.createElement('option');
     tag_option7.value = 7;
     tag_option7.innerHTML = 'Quick';
-    section_tag_select.append(tag_option7);
+    section_tag_select.appendChild(tag_option7);
 
     const tag_option8 = document.createElement('option');
     tag_option8.value = 8;
     tag_option8.innerHTML = 'Snack';
-    section_tag_select.append(tag_option8);
+    section_tag_select.appendChild(tag_option8);
 
-    section_tag.append(section_tag_select);
+    section_tag.appendChild(section_tag_select);
 
     const tag_button = document.createElement('button');
     tag_button.id = 'add-tag';
     tag_button.addEventListener('click', addTag);
     tag_button.type = 'button';
     tag_button.innerHTML = 'Add Tag(s)';
-    section_tag.append(tag_button);
+    section_tag.appendChild(tag_button);
 
     const tag_div = document.createElement('div');
     tag_div.id = 'selected-tags';
-    section_tag.append(tag_div);
-    main_form.append(section_tag);
+    section_tag.appendChild(tag_div);
+    main_form.appendChild(section_tag);
 
     const br7 = document.createElement('br');
-    main_form.append(br7);
+    main_form.appendChild(br7);
     const br8 = document.createElement('br');
-    main_form.append(br8);
+    main_form.appendChild(br8);
 
     //  Element for Ingredients
 
     const ingredient_label = document.createElement('label');
     ingredient_label.innerHTML = 'Ingredients';
-    main_form.append(ingredient_label);
+    main_form.appendChild(ingredient_label);
 
     const section_ingredient = document.createElement('section');
     section_ingredient.setAttribute('name', 'ingredients');
@@ -578,35 +578,35 @@ async function updating(recipeUpdateButton, recipe) {
     section_ingredient_div_div_input.classList.add('ingredient');
     section_ingredient_div_div_input.setAttribute('placeholder', 'Ingredient Name');
     section_ingredient_div_div_input.setAttribute('id', 'ingredient1');
-    section_ingredient_div_div.append(section_ingredient_div_div_input);
-    section_ingredient_div.append(section_ingredient_div_div);
-    section_ingredient.append(section_ingredient_div);    
+    section_ingredient_div_div.appendChild(section_ingredient_div_div_input);
+    section_ingredient_div.appendChild(section_ingredient_div_div);
+    section_ingredient.appendChild(section_ingredient_div);    
     const ingredient_add_button = document.createElement('button');
     ingredient_add_button.setAttribute('type', 'button');
     ingredient_add_button.innerHTML = 'Add Ingredient';
     ingredient_add_button.id = 'add-ingredient';
     ingredient_add_button.addEventListener('click', addIngredient);
-    section_ingredient.append(ingredient_add_button);
+    section_ingredient.appendChild(ingredient_add_button);
 
     const ingredient_remove_button = document.createElement('button');
     ingredient_remove_button.setAttribute('type', 'button');
     ingredient_remove_button.innerHTML = 'Remove Ingredient';
     ingredient_remove_button.id = 'remove-ingredient';
     ingredient_remove_button.addEventListener('click', removeIngredient);
-    section_ingredient.append(ingredient_remove_button);
+    section_ingredient.appendChild(ingredient_remove_button);
 
-    main_form.append(section_ingredient);
+    main_form.appendChild(section_ingredient);
 
     const br9 = document.createElement('br');
-    main_form.append(br9);
+    main_form.appendChild(br9);
     const br10 = document.createElement('br');
-    main_form.append(br10);
+    main_form.appendChild(br10);
 
     //  Make a Cook Time element
 
     const time_label = document.createElement('label');
     time_label.innerHTML = 'Cook Time: ';
-    main_form.append(time_label);
+    main_form.appendChild(time_label);
 
     const div_time = document.createElement('div');
     div_time.classList.add('cook-time');
@@ -620,9 +620,9 @@ async function updating(recipeUpdateButton, recipe) {
       let div_time_select_hour_option= document.createElement('option');
       div_time_select_hour_option.value = i;
       div_time_select_hour_option.innerHTML = i + '  hours';
-      div_time_select_hour.append(div_time_select_hour_option);
+      div_time_select_hour.appendChild(div_time_select_hour_option);
     }
-    div_time.append(div_time_select_hour);
+    div_time.appendChild(div_time_select_hour);
 
     div_time_select_mins = document.createElement('select');
     div_time_select_mins.setAttribute('id', 'num-minutes');
@@ -632,14 +632,14 @@ async function updating(recipeUpdateButton, recipe) {
       let div_time_select_mins_option= document.createElement('option');
       div_time_select_mins_option.value = i;
       div_time_select_mins_option.innerHTML = i*5 + '  mins';
-      div_time_select_mins.append(div_time_select_mins_option);
+      div_time_select_mins.appendChild(div_time_select_mins_option);
     }
-    div_time.append(div_time_select_mins);
-    main_form.append(div_time);
+    div_time.appendChild(div_time_select_mins);
+    main_form.appendChild(div_time);
     const br11 = document.createElement('br');
-    main_form.append(br11);
+    main_form.appendChild(br11);
     const br12 = document.createElement('br');
-    main_form.append(br12);
+    main_form.appendChild(br12);
 
     //  Elements for steps
 
@@ -654,7 +654,7 @@ async function updating(recipeUpdateButton, recipe) {
     const section_steps_div_div = document.createElement('div');      
     const section_steps_div_div_label = document.createElement('label');
     section_steps_div_div_label.innerHTML = '1. ';
-    section_steps_div_div.append(section_steps_div_div_label);
+    section_steps_div_div.appendChild(section_steps_div_div_label);
     const section_steps_div_div_textarea = document.createElement('textarea');
     section_steps_div_div_textarea.classList.add("steps");
     let height = 'height: 70px;';
@@ -666,48 +666,48 @@ async function updating(recipeUpdateButton, recipe) {
     section_steps_div_div_textarea.placeholder = first_ex + second_ex;
     section_steps_div_div_textarea.id = 'step1';
 
-    section_steps_div_div.append(section_steps_div_div_textarea);
+    section_steps_div_div.appendChild(section_steps_div_div_textarea);
 
-    section_steps_div.append(section_steps_div_div);
-    section_steps.append(section_steps_div);
+    section_steps_div.appendChild(section_steps_div_div);
+    section_steps.appendChild(section_steps_div);
 
     const section_steps_AddButton = document.createElement('button');
     section_steps_AddButton.id = 'add-step';
     section_steps_AddButton.addEventListener('click', addStep);
     section_steps_AddButton.type = 'button';
     section_steps_AddButton.innerHTML = 'Add Step';
-    section_steps.append(section_steps_AddButton);
+    section_steps.appendChild(section_steps_AddButton);
 
     const section_steps_RemoveButton = document.createElement('button');
     section_steps_RemoveButton.id = 'remove-step';
     section_steps_RemoveButton.addEventListener('click', removeStep);
     section_steps_RemoveButton.type = 'button';
     section_steps_RemoveButton.innerHTML = 'Remove Step';
-    section_steps.append(section_steps_RemoveButton);
+    section_steps.appendChild(section_steps_RemoveButton);
 
-    main_form.append(section_steps);
+    main_form.appendChild(section_steps);
 
     const br13 = document.createElement('br');
-    main_form.append(br13);
+    main_form.appendChild(br13);
     const br14 = document.createElement('br');
-    main_form.append(br14);
+    main_form.appendChild(br14);
 
     // Element for uploading Image
 
     const file_label = document.createElement('lapbel');
     let a = 'Please upload your new recipe image if you would like to change';
     file_label.innerHTML = a;
-    main_form.append(file_label);
+    main_form.appendChild(file_label);
 
     const file_label_input = document.createElement('input');
     file_label_input.type = 'file';
     file_label_input.accept = 'image/png,image/jpeg';
     file_label_input.setAttribute('id', 'recipe-image');
-    main_form.append(file_label_input);
+    main_form.appendChild(file_label_input);
     const br15 = document.createElement('br');
-    main_form.append(br15);
+    main_form.appendChild(br15);
     const br16 = document.createElement('br');
-    main_form.append(br16);
+    main_form.appendChild(br16);
 
     const update_button = document.createElement('button');
     update_button.type = 'click';
@@ -833,16 +833,16 @@ async function updating(recipeUpdateButton, recipe) {
       }
     });
 
-    main_form.append(update_button);
+    main_form.appendChild(update_button);
 
     const cancel_button = document.createElement('button');
     cancel_button.type = 'button';
     cancel_button.id = 'cancel-recipe';
     cancel_button.innerHTML = 'Canel';
 
-    main_form.append(cancel_button);
-    main.append(main_form);
-    bodyDiv.append(main);
+    main_form.appendChild(cancel_button);
+    main.appendChild(main_form);
+    bodyDiv.appendChild(main);
     overlayDiv.appendChild(expandDiv);
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
