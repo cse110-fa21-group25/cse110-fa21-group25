@@ -792,12 +792,11 @@ async function updating(recipeUpdateButton, recipe) {
       const userID = firebase.auth().currentUser.uid;
 
       // If user has not uploaded in recipes throw alert.
-      if (!recipeImage.files[0]) {
-        updateRecipe(recipe).then(()=>{ 
+      if (!recipeImage.file[0]) {
+        updateRecipe(recipe).then(()=>{
           window.location.reload();
         });
       }
-
       else {
         // Upload image to server, once that process is complete (async),
         // write the object to database
