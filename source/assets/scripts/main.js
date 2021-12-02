@@ -21,7 +21,6 @@ async function init() {
   }
 
   const searchBar = document.getElementById('search-bar');
-  // const searchButton = document.getElementById('search-button');
 
   searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {

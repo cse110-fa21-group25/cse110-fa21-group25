@@ -49,17 +49,24 @@ body {
   padding-top: 10px;
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
+@media (max-width: 768px) {
+  .sticky-top{
+    top: 64px;
+  }
+}
 .sticky-top {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(227, 251, 240, 0.9);
   position: fixed;
-  top: 76px;
+  top: 92px;
   width: 100%;
   z-index: 100;
   display: flex;
   justify-content: start;
-  padding: 10px 20px;
+  padding: 5px 20px;
+  margin: 0;
 }
 
 .view-recipe-button {
