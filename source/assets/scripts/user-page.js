@@ -119,78 +119,78 @@ async function showRecipesOnSearch(data, sectionName, query) {
 
 async function searchedRecipe(recipe) {
   const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
-    cardDiv.classList.add('col-md-3');
-    cardDiv.classList.add('col-sm-6');
-    // cardDiv.setAttribute('style', "width: 18rem;")
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.setAttribute('src', recipe.data.imageURL);
+  cardDiv.classList.add('card');
+  cardDiv.classList.add('col-md-3');
+  cardDiv.classList.add('col-sm-6');
+  // cardDiv.setAttribute('style', "width: 18rem;")
+  const thumbnailImg = document.createElement('img');
+  thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
-    const cardBodyDiv = document.createElement('div');
-    cardBodyDiv.classList.add('card-body');
+  const cardBodyDiv = document.createElement('div');
+  cardBodyDiv.classList.add('card-body');
 
-    const recipeTitleH4 = document.createElement('h4');
-    recipeTitleH4.innerHTML = recipe.data.name;
+  const recipeTitleH4 = document.createElement('h4');
+  recipeTitleH4.innerHTML = recipe.data.name;
 
-    const timeP = document.createElement('p');
-    timeP.innerHTML = formatTime(recipe.data.cookTime);
+  const timeP = document.createElement('p');
+  timeP.innerHTML = formatTime(recipe.data.cookTime);
 
-    const recipeOwnerP = document.createElement('p');
-    recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
+  const recipeOwnerP = document.createElement('p');
+  recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
 
-    // use loop to check for all tags
-    const tagDiv = document.createElement('div');
-    tagDiv.classList.add('tags');
-    for (const tag in recipe.data.tags) {
-      const tagButton = document.createElement('button');
-      tagButton.innerHTML = recipe.data.tags[tag];
-      tagDiv.appendChild(tagButton);
-    }
+  // use loop to check for all tags
+  const tagDiv = document.createElement('div');
+  tagDiv.classList.add('tags');
+  for (const tag in recipe.data.tags) {
+    const tagButton = document.createElement('button');
+    tagButton.innerHTML = recipe.data.tags[tag];
+    tagDiv.appendChild(tagButton);
+  }
 
-    const cardFooterDiv = document.createElement('div');
-    cardFooterDiv.classList.add('card-footer');
+  const cardFooterDiv = document.createElement('div');
+  cardFooterDiv.classList.add('card-footer');
 
-    // SPA Button -- TODO: display recipe details
-    const recipeDetailButton = document.createElement('button');
-    recipeDetailButton.innerHTML = 'View Recipe';
+  // SPA Button -- TODO: display recipe details
+  const recipeDetailButton = document.createElement('button');
+  recipeDetailButton.innerHTML = 'View Recipe';
 
-    // Button to Delete Recipe
-    const recipeDeleteButton = document.createElement('button');
-    recipeDeleteButton.innerHTML = 'Delete Recipe';
-    // recipeDeleteButton.onclick = deleteRecipe;
+  // Button to Delete Recipe
+  const recipeDeleteButton = document.createElement('button');
+  recipeDeleteButton.innerHTML = 'Delete Recipe';
+  // recipeDeleteButton.onclick = deleteRecipe;
 
-    // Button to update Recipe
-    const recipeUpdateButton = document.createElement('button');
-    recipeUpdateButton.innerHTML = 'Update Recipe';
+  // Button to update Recipe
+  const recipeUpdateButton = document.createElement('button');
+  recipeUpdateButton.innerHTML = 'Update Recipe';
 
-    // Assemble Recipe Card's DOM (as above structure reference)
-    cardDiv.appendChild(cardBodyDiv);
-    cardDiv.appendChild(cardFooterDiv);
+  // Assemble Recipe Card's DOM (as above structure reference)
+  cardDiv.appendChild(cardBodyDiv);
+  cardDiv.appendChild(cardFooterDiv);
 
-    cardBodyDiv.appendChild(thumbnailImg);
-    cardBodyDiv.appendChild(recipeTitleH4);
-    cardBodyDiv.appendChild(timeP);
-    cardBodyDiv.appendChild(recipeOwnerP);
-    cardBodyDiv.appendChild(tagDiv);
+  cardBodyDiv.appendChild(thumbnailImg);
+  cardBodyDiv.appendChild(recipeTitleH4);
+  cardBodyDiv.appendChild(timeP);
+  cardBodyDiv.appendChild(recipeOwnerP);
+  cardBodyDiv.appendChild(tagDiv);
 
-    cardFooterDiv.appendChild(recipeDetailButton);
-    cardFooterDiv.appendChild(recipeDeleteButton);
-    cardFooterDiv.appendChild(recipeUpdateButton);
+  cardFooterDiv.appendChild(recipeDetailButton);
+  cardFooterDiv.appendChild(recipeDeleteButton);
+  cardFooterDiv.appendChild(recipeUpdateButton);
 
-    // Attach to the appropriate recipe-row category
-    const searchedRecipeRow = document.querySelector('#created-recipes');
-    const myRecipe = document.createElement("div");
-    myRecipe.classList.add("my-recipe");
-    searchedRecipeRow.appendChild(myRecipe);
-    myRecipe.appendChild(cardDiv);
-    // check if cardDiv generated properly
-    
-    // searchedRecipeRow.appendChild(cardDiv);
+  // Attach to the appropriate recipe-row category
+  const searchedRecipeRow = document.querySelector('#created-recipes');
+  const myRecipe = document.createElement("div");
+  myRecipe.classList.add("my-recipe");
+  searchedRecipeRow.appendChild(myRecipe);
+  myRecipe.appendChild(cardDiv);
+  // check if cardDiv generated properly
+  
+  // searchedRecipeRow.appendChild(cardDiv);
 
-    recipeCardDetail(recipeDetailButton, recipe);
-    deleteRecipe(recipeDeleteButton, recipe);
-    updating(recipeUpdateButton, recipe);
+  recipeCardDetail(recipeDetailButton, recipe);
+  deleteRecipe(recipeDeleteButton, recipe);
+  updating(recipeUpdateButton, recipe);
 }
 
 async function searchedRecipeCard(data)  {
