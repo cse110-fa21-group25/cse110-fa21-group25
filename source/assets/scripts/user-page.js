@@ -205,8 +205,7 @@ async function searchedRecipe(recipe) {
 async function searchedRecipeCard(data) {
   if (!data.length) {
     searchedRecipe(data);
-  }
-  else {
+  } else {
     for (const recipe of data) {
       searchedRecipe(recipe);
     }
@@ -299,8 +298,8 @@ async function createRecipeCard() {
     cardFooterDiv.appendChild(recipeUpdateButton);
 
     // Attach to the appropriate recipe-row category
-    const exampleRecipeRow = document.querySelector
-    ('#created-recipes > .my-recipe');
+    const exampleRecipeRow = document.querySelector(
+      '#created-recipes > .my-recipe');
     // check if cardDiv generated properly
   
     exampleRecipeRow.appendChild(cardDiv);
