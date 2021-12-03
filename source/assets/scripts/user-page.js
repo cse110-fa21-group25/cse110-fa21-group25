@@ -201,7 +201,7 @@ async function searchedRecipeCard(data) {
     for (const recipe of data) {
       searchedRecipe(recipe);
     }
-  } 
+  }
 }
 
 /**
