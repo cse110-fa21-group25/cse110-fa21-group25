@@ -1,4 +1,3 @@
-
 .my-recipe {
   display: flex;
   justify-content: space-around;
@@ -79,7 +78,7 @@
   border-width: thin;
   padding-bottom: 50px;
 
-  margin: 150px 150px 80px 150px;
+  margin: 150px 150px 80px;
 }
 .title-box {
   display: flex;
@@ -89,8 +88,8 @@
 .titles {
   font-family: "Oswald", sans-serif;
   border-bottom: 1px solid #72a98f;
-  padding-bottom:15px;
-   width:20%;
+  padding-bottom: 15px;
+  width: 20%;
   margin-top: 60px;
   margin-bottom: 30px;
   display: flex;
@@ -98,17 +97,14 @@
   align-items: center;
   font-weight: bold;
   font-size: 40px;
-  
 }
 .button {
   padding: 10px;
   height: 50px;
-  padding:10px;
-  width:20%;
+  width: 20%;
   border-radius: 20px;
   border: none;
   background: #688779;
   color: white;
   font-family: "Oswald", sans-serif;
 }
-
