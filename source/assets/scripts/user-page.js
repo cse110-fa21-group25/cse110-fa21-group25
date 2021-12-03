@@ -18,11 +18,194 @@ async function init() {
     if (user) {
       recipeData = await getRecipesByUserId(user.uid);
       createRecipeCard();
+      const searchBar = document.getElementById('search-bar');
+      searchBar.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          searchRecipes(searchBar.value, user.uid);
+        }
+      });
     } else {
-      // User is signed out.
       console.error('user entered person\'s page without being logged in');
     }
   });
+}
+
+/**
+ * Search for recipes based on query.
+ * @param {*} query query to search for recipes
+ * @param {*} id query to search for userID
+ */
+async function searchRecipes(query, id) {
+  if (!query) {
+    showRecipesOnSearch(recipeData, 'All Recipes', query);
+    return;
+  }
+  // Capitilized query (for search by tag)
+  query = query.toLowerCase();
+  query = query.charAt(0).toUpperCase() + query.slice(1);
+  const array = [];
+  let recipeDataBasedOnSearch;
+  try {
+    recipeDataBasedOnSearch = await getRecipesByName(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      for (let i = 0; i < recipeDataBasedOnSearch.length; i++) {
+        // console.log(recipeDataBasedOnSearch[i].data.userId);
+        if (recipeDataBasedOnSearch[i].data.userId == id) {
+          array.push(recipeDataBasedOnSearch[i]);
+        }
+      }
+    }
+    recipeDataBasedOnSearch = await getRecipesByTag(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      for (let i = 0; i < recipeDataBasedOnSearch.length; i++) {
+        if (recipeDataBasedOnSearch[i].data.userId == id) {
+          array.push(recipeDataBasedOnSearch[i]);
+        }
+      }
+    }
+    recipeDataBasedOnSearch = await getRecipesByUserId(query);
+    if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+      for (let i = 0; i < recipeDataBasedOnSearch.length; i++) {
+        if (recipeDataBasedOnSearch[i].data.userId == id) {
+          array.push(recipeDataBasedOnSearch[i]);
+        }
+      }
+    }
+  } catch (e) {
+    throw (e);
+  }
+  // get unique recipes
+  const unique = [...new Map(array.map((item) => [item['id'], item])).values()];
+  if (unique.length > 0) {
+    showRecipesOnSearch(unique[0], 'Search Results', query);
+  } else {
+    showRecipesOnSearch(recipeData, 'All Recipes', query);
+  }
+}
+
+/**
+ * Search for recipes based on query.
+ * @param {*} data data
+ * @param {*} sectionName sectionName
+ * @param {*} query query
+ */
+async function showRecipesOnSearch(data, sectionName, query) {
+  const overlayDiv = document.createElement('div');
+  overlayDiv.classList.add('overlay');
+  const loaderDiv = document.createElement('div');
+  loaderDiv.classList.add('loader');
+  const bodyHtml = document.querySelector('body');
+  bodyHtml.classList.add('unscroll-body');
+  overlayDiv.appendChild(loaderDiv);
+  bodyHtml.appendChild(overlayDiv);
+
+  const recipeCategoriesDiv = document.querySelector('#created-recipes');
+  setTimeout(()=>{
+    while (recipeCategoriesDiv.lastChild) {
+      recipeCategoriesDiv.removeChild(recipeCategoriesDiv.lastChild);
+    }
+    searchedRecipeCard(data);
+    while (overlayDiv.hasChildNodes()) {
+      overlayDiv.removeChild(overlayDiv.lastChild);
+    }
+    overlayDiv.remove();
+    bodyHtml.classList.remove('unscroll-body');
+    // if inserted a query that does not match any recipe, alert user
+    if (query && sectionName == 'All Recipes') {
+      alert('No matching recipes found...showing all recipes');
+    }
+  }, 500);
+}
+
+/**
+ * Search for recipes based on query.
+ * @param {*} recipe query get recipe data
+ */
+async function searchedRecipe(recipe) {
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('card');
+  cardDiv.classList.add('col-md-3');
+  cardDiv.classList.add('col-sm-6');
+  // cardDiv.setAttribute('style', "width: 18rem;")
+  const thumbnailImg = document.createElement('img');
+  thumbnailImg.setAttribute('src', recipe.data.imageURL);
+
+  const cardBodyDiv = document.createElement('div');
+  cardBodyDiv.classList.add('card-body');
+
+  const recipeTitleH4 = document.createElement('h4');
+  recipeTitleH4.innerHTML = recipe.data.name;
+
+  const timeP = document.createElement('p');
+  timeP.innerHTML = formatTime(recipe.data.cookTime);
+
+  const recipeOwnerP = document.createElement('p');
+  recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
+
+  // use loop to check for all tags
+  const tagDiv = document.createElement('div');
+  tagDiv.classList.add('tags');
+  for (const tag in recipe.data.tags) {
+    const tagButton = document.createElement('button');
+    tagButton.innerHTML = recipe.data.tags[tag];
+    tagDiv.appendChild(tagButton);
+  }
+
+  const cardFooterDiv = document.createElement('div');
+  cardFooterDiv.classList.add('card-footer');
+
+  // SPA Button -- TODO: display recipe details
+  const recipeDetailButton = document.createElement('button');
+  recipeDetailButton.innerHTML = 'View Recipe';
+
+  // Button to Delete Recipe
+  const recipeDeleteButton = document.createElement('button');
+  recipeDeleteButton.innerHTML = 'Delete Recipe';
+  // recipeDeleteButton.onclick = deleteRecipe;
+
+  // Button to update Recipe
+  const recipeUpdateButton = document.createElement('button');
+  recipeUpdateButton.innerHTML = 'Update Recipe';
+
+  // Assemble Recipe Card's DOM (as above structure reference)
+  cardDiv.appendChild(cardBodyDiv);
+  cardDiv.appendChild(cardFooterDiv);
+
+  cardBodyDiv.appendChild(thumbnailImg);
+  cardBodyDiv.appendChild(recipeTitleH4);
+  cardBodyDiv.appendChild(timeP);
+  cardBodyDiv.appendChild(recipeOwnerP);
+  cardBodyDiv.appendChild(tagDiv);
+
+  cardFooterDiv.appendChild(recipeDetailButton);
+  cardFooterDiv.appendChild(recipeDeleteButton);
+  cardFooterDiv.appendChild(recipeUpdateButton);
+
+  // Attach to the appropriate recipe-row category
+  const searchedRecipeRow = document.querySelector('#created-recipes');
+  const myRecipe = document.createElement('div');
+  myRecipe.classList.add('my-recipe');
+  searchedRecipeRow.appendChild(myRecipe);
+  myRecipe.appendChild(cardDiv);
+  // check if cardDiv generated properly
+
+  recipeCardDetail(recipeDetailButton, recipe);
+  deleteRecipe(recipeDeleteButton, recipe);
+  updating(recipeUpdateButton, recipe);
+}
+
+/**
+ * Search for recipes based on query.
+ * @param {*} data data
+ */
+async function searchedRecipeCard(data) {
+  if (!data.length) {
+    searchedRecipe(data);
+  } else {
+    for (const recipe of data) {
+      searchedRecipe(recipe);
+    }
+  }
 }
 
 /**
@@ -31,32 +214,10 @@ async function init() {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
-    // console.log(recipe);
-    // Card DOM Structure
-    /* *********************************** *
-                * card format:
-                * <div class='card'>
-                *      <div class='card-body'>
-                *      <img src='{recipe's thumbnail}'>
-                *          <h4> {recipe's name} </h4>
-                *          <p> Cook/prep time </p>
-                *          <p> User's name (who created the recipe) </p>
-                *          <div class='tags'>
-                *              <button> {recipe's tag 1} </button>
-                *              ... // more tags go here
-                *          </div>
-                *      </div>
-                *      <div class='card-footer'>
-                *          <button>View Recipe</button>
-                *      </div>
-                * </div>
-                *
-                * *********************************** */
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
     cardDiv.classList.add('col-sm-6');
-    // cardDiv.setAttribute('style', "width: 18rem;")
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
@@ -71,8 +232,6 @@ async function createRecipeCard() {
 
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
-
-    // console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -116,10 +275,8 @@ async function createRecipeCard() {
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
         '#created-recipes > .my-recipe');
-    // check if cardDiv generated properly
-    // console.log(cardDiv);
-    exampleRecipeRow.appendChild(cardDiv);
 
+    exampleRecipeRow.appendChild(cardDiv);
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
     updating(recipeUpdateButton, recipe);
@@ -133,8 +290,6 @@ async function createRecipeCard() {
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    console.log('Hello!! I\'m clicked');
-    console.log(recipe);
     /* *********************************** *
        * expand format:
        * <div>
