@@ -204,6 +204,10 @@ async function searchedRecipeCard(data) {
   } 
 }
 
+/**
+ * Works the same way as the one in main.js
+ * It will search throguh recipeData and populate with recipeCards
+ */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
     const cardDiv = document.createElement('div');
