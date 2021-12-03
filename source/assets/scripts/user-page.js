@@ -12,21 +12,15 @@ if (typeof window !== 'undefined') {
 async function init() {
   firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
-
       recipeData = await getRecipesByUserId(user.uid);
       createRecipeCard();
- 
       const searchBar = document.getElementById('search-bar');
       // const searchButton = document.getElementById('search-button');
-
       searchBar.addEventListener('keydown', (e) => {
-
         if (e.key === 'Enter') {
           searchRecipes(searchBar.value, user.uid);
         }
-
       });
-
     } else {
       // User is signed out.
       console.error('user entered person\'s page without being logged in');
@@ -34,7 +28,13 @@ async function init() {
   });
 }
 
-async function searchRecipes(query,id) {
+/**
+ * Search for recipes based on query.
+ * @param {*} query query to search for recipes
+ * @param {*} id query to search for userID
+ */
+
+async function searchRecipes(query, id) {
   // const breakfastTest = await getRecipesByTag('Breakfast');
   // console.log(breakfastTest);
   if (!query) {
@@ -85,6 +85,13 @@ async function searchRecipes(query,id) {
   }
 }
 
+/**
+ * Search for recipes based on query.
+ * @param {*} data 
+ * @param {*} sectionName
+ * @param {*} query
+ */
+
 async function showRecipesOnSearch(data, sectionName, query) {
   const overlayDiv = document.createElement('div');
   overlayDiv.classList.add('overlay');
@@ -114,6 +121,11 @@ async function showRecipesOnSearch(data, sectionName, query) {
     }
   }, 500);
 }
+
+/**
+ * Search for recipes based on query.
+ * @param {*} recipe query get recipe data
+ */
 
 async function searchedRecipe(recipe) {
   const cardDiv = document.createElement('div');
@@ -189,15 +201,21 @@ async function searchedRecipe(recipe) {
   updating(recipeUpdateButton, recipe);
 }
 
+/**
+ * Search for recipes based on query.
+ * @param {*} data
+ */
+
 async function searchedRecipeCard(data) {
-  if (!data.length) searchedRecipe(data);
+  if (!data.length) {
+    searchedRecipe(data);
+  }
   else {
     for (const recipe of data) {
       searchedRecipe(recipe);
     }
-  }
+  } 
 }
-
 
 /**
  * Works the same way as the one in main.js
@@ -286,7 +304,8 @@ async function createRecipeCard() {
     cardFooterDiv.appendChild(recipeUpdateButton);
 
     // Attach to the appropriate recipe-row category
-    const exampleRecipeRow = document.querySelector('#created-recipes > .my-recipe');
+    const exampleRecipeRow = document.querySelector
+    ('#created-recipes > .my-recipe');
     // check if cardDiv generated properly
   
     exampleRecipeRow.appendChild(cardDiv);
