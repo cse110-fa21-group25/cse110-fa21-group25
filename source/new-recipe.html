@@ -58,12 +58,34 @@
   </head>
   <body class="new-recipe">
     <header>
-      <div id="nav-placeholder"></div>
-      <script>
-        $(function () {
-          $("#nav-placeholder").load("navbar.html");
-        });
-      </script>
+      <nav class="navbar">
+        <div class="navbar-container this-container">
+          <input type="checkbox" name="" id="" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>
+          <ul class="menu-items">
+            <li>
+              <a id="create-new-recipe" onclick="navigateCreateNewRecipe()">
+                Create Recipe</a
+              >
+            </li>
+            <li>
+              <a id="my-page-button" onclick="navigateMyPage()"> My Page</a>
+            </li>
+            <li>
+              <a id="login-button" onclick="navigateLogin()" hidden></a>
+            </li>
+          </ul>
+          <a href="./home-page.html"
+            ><img class="logo" src="logo-nav.png" alt="Recipeasy Logo"
+          /></a>
+          <!-- <input id="search-bar" type="text"> -->
+          <!-- <button id="search-button" type="button">Search</button> -->
+        </div>
+      </nav>
       
     </header>
     <main class="wrapper">
