@@ -204,8 +204,6 @@ async function searchedRecipeCard(data) {
   } 
 }
 
-/**
- */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
     const cardDiv = document.createElement('div');
