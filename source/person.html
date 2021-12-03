@@ -28,41 +28,36 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
-    
+
     <script>
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
-      authDomain: "cse110-fa21-group25.firebaseapp.com",
-      projectId: "cse110-fa21-group25",
-      storageBucket: "cse110-fa21-group25.appspot.com",
-      messagingSenderId: "72880092536",
-      appId: "1:72880092536:web:e991fa2672b4ba6d2d848d",
-    };
-    // Initialize Firebase
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-
-    
-
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACHFyaF3jrB9VxWN5NPEfVsFf2fkSHjpg",
+        authDomain: "cse110-fa21-group25.firebaseapp.com",
+        projectId: "cse110-fa21-group25",
+        storageBucket: "cse110-fa21-group25.appspot.com",
+        messagingSenderId: "72880092536",
+        appId: "1:72880092536:web:e991fa2672b4ba6d2d848d",
+      };
+      // Initialize Firebase
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
     </script>
     <!-- main.js -->
     <script src="./assets/scripts/user-page.js"></script>
     <!-- <script src="./assets/scripts/main.js"></script> -->
 
-
     <link href="./assets/styles/main.css" rel="stylesheet" />
     <link href="./assets/styles/navbar.css" rel="stylesheet" />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto:wght@100&display=swap"
-        rel="stylesheet"
-      />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <!-- Custom JavaScript -->
     <script src="./assets/scripts/crud.js"></script>
     <script src="./assets/scripts/user-page.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
   </head>
   <body>
     <header>
@@ -73,49 +68,28 @@
         });
       </script>
     </header>
-  
+
+    <div class="box">
+      <div class="title-box">
+
    
+      <div class="titles">My Recipes</div>
+    </div>
 
-    <!-- Section for created recipes -->
-    <section id="created-recipes">
-      <h2> My Recipes:</h2>
-      <div  class="my-recipe">
-        <!-- RECIPE CARD GOES HERE -->
-      </div>
-    </section>
-
-
-    <!-- Section for pinned/saved/bookmarked recipes -->
-    <div style="display: flex; justify-content: center">
-      <section>
-        <h2>Pinned Recipe:</h2>
-        <br />
-        <div>
-          <img
-            src="http://via.placeholder.com/640x360"
-            alt="pinned recipe 1"
-            style="width: 250px; height: 120px"
-          />
-          <img
-            src="http://via.placeholder.com/640x360"
-            alt="pinned recipe 2"
-            style="width: 250px; height: 120px"
-          />
+      <!-- Section for created recipes -->
+      <section id="created-recipes">
+        <div class="my-recipe">
+          <!— RECIPE CARD GOES HERE —>
         </div>
       </section>
     </div>
-    <!-- Account setting Button -->
-    <div style="display: flex; justify-content: center">
+
+    <!-- <!— Account setting Button —> -->
+    <div style="display: flex; justify-content: center; margin-bottom: 40px;">
       <button
         type="button"
         onclick="location.href='account-setting.html'"
-        style="
-          color: white;
-          background-color: black;
-          padding: 15px 30px;
-          text-align: center;
-          margin: 20px;
-        "
+        class="button"
       >
         Account Setting
       </button>
