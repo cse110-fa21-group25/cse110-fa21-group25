@@ -1,6 +1,10 @@
 /* eslint-disable guard-for-in */
 let recipeData;
 
+if (typeof module !== 'undefined') {
+  module.exports = {searchForKey};
+}
+
 if (typeof window !== 'undefined') {
   window.addEventListener('DOMContentLoaded', init);
 }
