@@ -23,7 +23,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #72A98F;
+  background: #72a98f;
   color: white;
   /* opacity: 0.85; */
   z-index: 100;
@@ -48,7 +48,7 @@
   order: 1;
   /* font-size: 5rem; */
   /* padding: 3px; */
-  height: 60px;
+  height: 70px;
 }
 
 .menu-items li {
@@ -61,7 +61,6 @@
   /* font-family: "Satisfy", cursive; */
 }
 
-
 .navbar a {
   color: white;
   text-decoration: none;
@@ -72,13 +71,12 @@
   /* font-weight: ; */
 }
 
-#create-new-recipe:hover, 
-#my-page-button:hover, 
+#create-new-recipe:hover,
+#my-page-button:hover,
 #login-button:hover {
-  color: #2C5F2D;
+  color: #2c5f2d;
   cursor: pointer;
 }
-
 
 @media (max-width: 768px) {
   html {
@@ -87,8 +85,8 @@
   .navbar {
     opacity: 0.95;
   }
-  .search{
-    margin-left:-2.5rem;
+  .search {
+    margin-left: -2.5rem;
   }
 
   .navbar-container input[type="checkbox"],
@@ -150,7 +148,7 @@
 
   .navbar .menu-items {
     padding-top: 100px;
-    background-color: #72A98F;
+    background-color: #72a98f;
     height: 100vh;
     max-width: 300px;
     transform: translate(-150%);
@@ -167,15 +165,15 @@
     margin-bottom: 1.8rem;
     font-size: 1.5rem;
     font-weight: 500;
-    color:white;
+    color: white;
     /* font-family: "Satisfy", cursive; */
   }
-  #create-new-recipe:hover, 
-  #my-page-button:hover, 
+  #create-new-recipe:hover,
+  #my-page-button:hover,
   #login-button:hover {
-  color: #2C5F2D;
-  cursor: pointer;
-}
+    color: #2c5f2d;
+    cursor: pointer;
+  }
 
   .logo {
     position: absolute;
@@ -207,20 +205,20 @@
   .navbar-container input[type="checkbox"]:checked ~ .logo {
     display: none;
   }
- 
 }
 
-
-
-#search-bar{
-  background: rgba(255,255,255,0.4);
+#search-bar {
+  background: rgba(255, 255, 255, 0.4);
   border: none;
   border-radius: 30px;
   outline: none;
   width: 200px;
-  margin-top:-0.7rem;
-  margin-left:1.5rem;
+  margin-top: -0.7rem;
+  margin-left: 1.5rem;
   padding: 10px;
-  box-shadow: 0 2px 10px 1px rgba(0,0,0,0.2);
-  
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"] {
+  color: black;
 }

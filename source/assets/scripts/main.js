@@ -449,6 +449,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     for (const ingredient in recipe.data.recipeIngredient) {
       const ingredientLi = document.createElement('li');
       ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientLi.classList.add('emoji');
       ingredientsUl.appendChild(ingredientLi);
     }
 

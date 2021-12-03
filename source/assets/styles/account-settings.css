@@ -1,0 +1,125 @@
+#credential {
+  display: flex;
+  width: 600px;
+  height: 750px;
+  margin: 100px auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #72a98f;
+  border-radius: 15px;
+}
+
+#image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logoBox {
+  height: 95%;
+  width: 95%;
+}
+
+#change-credentials-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#email-container,
+#password-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#email-container {
+  margin-bottom: 25px;
+}
+
+#email {
+  padding: 7.5px;
+  width: 300px;
+  height: 35px;
+  border-radius: 9px;
+  border: none;
+  font-family: "Fira Sans", sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#change-email {
+  padding: 5px;
+  margin: 5px;
+  background: #bcbcbc;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  width: 150px;
+  height: 35px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+}
+
+#change-password {
+  padding: 5px;
+  margin: 5px;
+  background: #bcbcbc;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  width: 150px;
+  height: 35px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+}
+
+#password,
+#confirm-password {
+  padding: 7.5px;
+  margin: 5px 10px 10px;
+  width: 300px;
+  height: 35px;
+  border-radius: 9px;
+  border: none;
+  font-family: "Fira Sans", sans-serif;
+}
+
+#error-message-email,
+#error-message-password {
+  text-align: center;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+}
+
+#change-email:hover,
+#change-password:hover {
+  cursor: pointer;
+  background: #a4ada8;
+}
+
+#footer-container {
+  padding: 7.5px;
+  margin: 10px;
+  width: 220px;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 15px;
+}
+
+a:active,
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: #3e5248;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
+    <!-- Importing fonts from fonts.google.com -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Quicksand:wght@300&display=swap');
     </style>
+    
     <title>Home Page</title>
     <meta name="description" content="Our first page" />
     <meta name="keywords" content="html tutorial template" />
+    
     <!-- Bootstrap (for styling) -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -22,9 +26,11 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- main.css -->
+    
+    <!-- main.css and navbar.css-->
     <link href="./assets/styles/main.css" rel="stylesheet" />
     <link href="./assets/styles/navbar.css" rel="stylesheet" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto:wght@100&display=swap"
       rel="stylesheet"
@@ -32,8 +38,11 @@
 
     <!-- main.js -->
     <script src="./assets/scripts/main.js"></script>
+    
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  
+    <!-- Navigation Bar -->
   </head>
   <body>
     <header>
@@ -44,79 +53,11 @@
         });
       </script>
     </header>
+    
+    <!-- Where Recipes are Populated -->
+    <div id='recipe-categories'> </div>
 
-    <div id='recipe-categories'>
-
-      <!-- <section>
-        <h2>Seasonal Recommendation:</h2>
-        <div class="recipe-row">
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Popular Recipe:</h2>
-        <div class="recipe-row">
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>New Recipe:</h2>
-        <div class="recipe-row">
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-          <div class="recipe-item">
-            <img src="./img-placeholder.png" alt="" />
-            <p class="recipe-name">Name of Recipe</p>
-            <p class="recipe-ingredients">Ingredients:</p>
-          </div>
-        </div>
-      </section> -->
-    </div>
-
-    <footer>
-      <a href="">Categorized Recipe</a>
-      <a href="">About Us</a>
-      <a href="">Contact Us</a>
-    </footer>
-
+    <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
@@ -133,6 +74,7 @@
         messagingSenderId: "72880092536",
         appId: "1:72880092536:web:e991fa2672b4ba6d2d848d",
       };
+      
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
