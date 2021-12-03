@@ -205,7 +205,6 @@ async function searchedRecipeCard(data) {
 }
 
 /**
- *
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
