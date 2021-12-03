@@ -33,7 +33,6 @@ async function init() {
  * @param {*} query query to search for recipes
  * @param {*} id query to search for userID
  */
-
 async function searchRecipes(query, id) {
   // const breakfastTest = await getRecipesByTag('Breakfast');
   // console.log(breakfastTest);
@@ -91,7 +90,6 @@ async function searchRecipes(query, id) {
  * @param {*} sectionName
  * @param {*} query
  */
-
 async function showRecipesOnSearch(data, sectionName, query) {
   const overlayDiv = document.createElement('div');
   overlayDiv.classList.add('overlay');
@@ -126,7 +124,6 @@ async function showRecipesOnSearch(data, sectionName, query) {
  * Search for recipes based on query.
  * @param {*} recipe query get recipe data
  */
-
 async function searchedRecipe(recipe) {
   const cardDiv = document.createElement('div');
   cardDiv.classList.add('card');
@@ -205,7 +202,6 @@ async function searchedRecipe(recipe) {
  * Search for recipes based on query.
  * @param {*} data
  */
-
 async function searchedRecipeCard(data) {
   if (!data.length) {
     searchedRecipe(data);
@@ -223,7 +219,6 @@ async function searchedRecipeCard(data) {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
-
     // Card DOM Structure
     /* *********************************** *
       * card format:
@@ -323,7 +318,6 @@ async function createRecipeCard() {
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
- 
     /* *********************************** *
        * expand format:
        * <div>
