@@ -21,7 +21,7 @@ async function init() {
 
       searchBar.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-          searchRecipes(searchBar.value,user.uid);
+          searchRecipes(searchBar.value, user.uid);
           // console.log(searchBar.value);
         }
       });
@@ -51,25 +51,25 @@ async function searchRecipes(query,id) {
   try {
     recipeDataBasedOnSearch = await getRecipesByName(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      for( let i=0; i<recipeDataBasedOnSearch.length; i++){
+      for (let i=0; i<recipeDataBasedOnSearch.length; i++){
         // console.log(recipeDataBasedOnSearch[i].data.userId);
-        if(recipeDataBasedOnSearch[i].data.userId == id){
+        if (recipeDataBasedOnSearch[i].data.userId == id){
           array.push(recipeDataBasedOnSearch[i]);
         }
       }
     }
     recipeDataBasedOnSearch = await getRecipesByTag(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      for( let i=0; i<recipeDataBasedOnSearch.length; i++){
-        if(recipeDataBasedOnSearch[i].data.userId == id){
+      for (let i=0; i<recipeDataBasedOnSearch.length; i++){
+        if (recipeDataBasedOnSearch[i].data.userId == id){
           array.push(recipeDataBasedOnSearch[i]);
         }
       }
     }
     recipeDataBasedOnSearch = await getRecipesByUserId(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      for( let i=0; i<recipeDataBasedOnSearch.length; i++){
-        if(recipeDataBasedOnSearch[i].data.userId == id){
+      for (let i=0; i<recipeDataBasedOnSearch.length; i++){
+        if (recipeDataBasedOnSearch[i].data.userId == id){
           array.push(recipeDataBasedOnSearch[i]);
         }
       }
@@ -80,7 +80,7 @@ async function searchRecipes(query,id) {
   // get unique recipes
   const unique = [...new Map(array.map((item) => [item['id'], item])).values()];
   if (unique.length > 0 ) {
-    console.log(unique[0]);
+    // console.log(unique[0]);
     showRecipesOnSearch(unique[0], 'Search Results', query);
   } else {
     showRecipesOnSearch(recipeData, 'All Recipes', query);
