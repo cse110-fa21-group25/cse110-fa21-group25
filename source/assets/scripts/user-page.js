@@ -15,14 +15,12 @@ async function init() {
       recipeData = await getRecipesByUserId(user.uid);
       createRecipeCard();
       const searchBar = document.getElementById('search-bar');
-      // const searchButton = document.getElementById('search-button');
       searchBar.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           searchRecipes(searchBar.value, user.uid);
         }
       });
     } else {
-      // User is signed out.
       console.error('user entered person\'s page without being logged in');
     }
   });
@@ -34,8 +32,6 @@ async function init() {
  * @param {*} id query to search for userID
  */
 async function searchRecipes(query, id) {
-  // const breakfastTest = await getRecipesByTag('Breakfast');
-  // console.log(breakfastTest);
   if (!query) {
     showRecipesOnSearch(recipeData, 'All Recipes', query);
     return;
@@ -77,7 +73,6 @@ async function searchRecipes(query, id) {
   // get unique recipes
   const unique = [...new Map(array.map((item) => [item['id'], item])).values()];
   if (unique.length > 0) {
-    // console.log(unique[0]);
     showRecipesOnSearch(unique[0], 'Search Results', query);
   } else {
     showRecipesOnSearch(recipeData, 'All Recipes', query);
@@ -100,9 +95,7 @@ async function showRecipesOnSearch(data, sectionName, query) {
   overlayDiv.appendChild(loaderDiv);
   bodyHtml.appendChild(overlayDiv);
 
-  // remove entire page's sections
   const recipeCategoriesDiv = document.querySelector('#created-recipes');
-
   setTimeout(()=>{
     while (recipeCategoriesDiv.lastChild) {
       recipeCategoriesDiv.removeChild(recipeCategoriesDiv.lastChild);
@@ -144,7 +137,6 @@ async function searchedRecipe(recipe) {
 
   const recipeOwnerP = document.createElement('p');
   recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
-
 
   // use loop to check for all tags
   const tagDiv = document.createElement('div');
@@ -212,32 +204,8 @@ async function searchedRecipeCard(data) {
   } 
 }
 
-/*
- * Works the same way as the one in main.js
- * It will search throguh recipeData and populate with recipeCards
- */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
-    // Card DOM Structure
-    /* *********************************** *
-      * card format:
-      * <div class='card'>
-      *      <div class='card-body'>
-      *      <img src='{recipe's thumbnail}'>
-      *          <h4> {recipe's name} </h4>
-      *          <p> Cook/prep time </p>
-      *          <p> User's name (who created the recipe) </p>
-      *          <div class='tags'>
-      *              <button> {recipe's tag 1} </button>
-      *              ... // more tags go here
-      *          </div>
-      *      </div>
-      *      <div class='card-footer'>
-      *          <button>View Recipe</button>
-      *      </div>
-      * </div>
-      *
-    * *********************************** */
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
@@ -299,8 +267,8 @@ async function createRecipeCard() {
 
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
-      '#created-recipes > .my-recipe');
-    // check if cardDiv generated properly 
+        '#created-recipes > .my-recipe');
+
     exampleRecipeRow.appendChild(cardDiv);
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
