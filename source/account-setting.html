@@ -55,16 +55,21 @@
       
       <!-- Credentials container -->
       <div id="change-credentials-container">
-       
-        <!-- Change email -->
-        <input type="email" id="email" name="email" placeholder="New Email"/>
         
-        <!-- Error message output -->
-        <span id="error-message-email" style="color: red"></span>
-
-        <!-- Change Email Button -->
-        <input id="change-email" type="button" value="Update Email" onclick="onChangeEmail()"/>
-        
+        <!-- Email container -->
+        <div id="email-container">
+          <!-- Change email -->
+          <input type="email" id="email" name="email" placeholder="New Email"/>
+          
+          <!-- Error message output -->
+          <span id="error-message-email" style="color: red"></span>
+  
+          <!-- Change Email Button -->
+          <input id="change-email" type="button" value="Update Email" onclick="onChangeEmail()"/>
+        </div>
+      
+      <!-- Password container -->
+      <div id="password-container">
         <!-- Change Password & Confirm New Password-->
         <input type="password" id="password" name="password" placeholder="New Password"/>
         <input type="password" id="confirm-password" name="confirm-password" 
@@ -75,10 +80,10 @@
         
         <!-- Change Password Button -->
         <input id="change-password" type="button" value="Update Password" onclick="onChangePassword()"/>
-
+      </div>
         <!-- Footer Container -->
         <div id="footer-container">
-          <a href="person.html">Back to My Page</a>
+          <a style="text-decoration:none" href="person.html">Back to My Page</a>
         </div>
     </div>
     </section> 
