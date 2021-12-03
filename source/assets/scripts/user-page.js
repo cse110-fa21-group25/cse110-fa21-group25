@@ -81,9 +81,9 @@ async function searchRecipes(query, id) {
 
 /**
  * Search for recipes based on query.
- * @param {*} data 
- * @param {*} sectionName
- * @param {*} query
+ * @param {*} data data
+ * @param {*} sectionName sectionName
+ * @param {*} query query
  */
 async function showRecipesOnSearch(data, sectionName, query) {
   const overlayDiv = document.createElement('div');
@@ -192,7 +192,7 @@ async function searchedRecipe(recipe) {
 
 /**
  * Search for recipes based on query.
- * @param {*} data
+ * @param {*} data data
  */
 async function searchedRecipeCard(data) {
   if (!data.length) {
@@ -205,7 +205,7 @@ async function searchedRecipeCard(data) {
 }
 
 /**
- * createRecipeFunction
+ * @param {*}
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
