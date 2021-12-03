@@ -20,15 +20,13 @@ async function init() {
       // const searchButton = document.getElementById('search-button');
 
       searchBar.addEventListener('keydown', (e) => {
+
         if (e.key === 'Enter') {
           searchRecipes(searchBar.value, user.uid);
-          // console.log(searchBar.value);
         }
+
       });
 
-      // searchButton.addEventListener('click', ()=>{
-      //   searchRecipes(searchBar.value);
-      // });
     } else {
       // User is signed out.
       console.error('user entered person\'s page without being logged in');
@@ -185,8 +183,6 @@ async function searchedRecipe(recipe) {
   searchedRecipeRow.appendChild(myRecipe);
   myRecipe.appendChild(cardDiv);
   // check if cardDiv generated properly
-  
-  // searchedRecipeRow.appendChild(cardDiv);
 
   recipeCardDetail(recipeDetailButton, recipe);
   deleteRecipe(recipeDeleteButton, recipe);
@@ -212,24 +208,24 @@ async function createRecipeCard() {
 
     // Card DOM Structure
     /* *********************************** *
-                * card format:
-                * <div class='card'>
-                *      <div class='card-body'>
-                *      <img src='{recipe's thumbnail}'>
-                *          <h4> {recipe's name} </h4>
-                *          <p> Cook/prep time </p>
-                *          <p> User's name (who created the recipe) </p>
-                *          <div class='tags'>
-                *              <button> {recipe's tag 1} </button>
-                *              ... // more tags go here
-                *          </div>
-                *      </div>
-                *      <div class='card-footer'>
-                *          <button>View Recipe</button>
-                *      </div>
-                * </div>
-                *
-                * *********************************** */
+      * card format:
+      * <div class='card'>
+      *      <div class='card-body'>
+      *      <img src='{recipe's thumbnail}'>
+      *          <h4> {recipe's name} </h4>
+      *          <p> Cook/prep time </p>
+      *          <p> User's name (who created the recipe) </p>
+      *          <div class='tags'>
+      *              <button> {recipe's tag 1} </button>
+      *              ... // more tags go here
+      *          </div>
+      *      </div>
+      *      <div class='card-footer'>
+      *          <button>View Recipe</button>
+      *      </div>
+      * </div>
+      *
+    * *********************************** */
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
@@ -249,7 +245,6 @@ async function createRecipeCard() {
 
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
-
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
