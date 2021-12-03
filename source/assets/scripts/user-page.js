@@ -204,13 +204,15 @@ async function searchedRecipeCard(data) {
   } 
 }
 
+/**
+ * createRecipeFunction
+ */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
     cardDiv.classList.add('col-sm-6');
-    // cardDiv.setAttribute('style', "width: 18rem;")
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
