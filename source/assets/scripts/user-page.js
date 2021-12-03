@@ -212,7 +212,7 @@ async function searchedRecipeCard(data) {
   } 
 }
 
-/**
+/*
  * Works the same way as the one in main.js
  * It will search throguh recipeData and populate with recipeCards
  */
@@ -300,10 +300,8 @@ async function createRecipeCard() {
     // Attach to the appropriate recipe-row category
     const exampleRecipeRow = document.querySelector(
       '#created-recipes > .my-recipe');
-    // check if cardDiv generated properly
-  
+    // check if cardDiv generated properly 
     exampleRecipeRow.appendChild(cardDiv);
-
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
     updating(recipeUpdateButton, recipe);
