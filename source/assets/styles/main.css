@@ -1,10 +1,11 @@
 header {
- 
   margin-bottom: 100px;
 }
+
 body {
   background-color: #e3fbf0;
 }
+
 #recipe-categories {
   margin: 10px 20px;
   font-family: "Oswald", sans-serif;
@@ -18,7 +19,6 @@ body {
 }
 
 .card {
-  /* box-shadow: 1px 2px #7e5832; */
   margin: 10px 5px;
   border-radius: 15px;
   border-color: #8db3a1;
@@ -37,11 +37,9 @@ body {
 }
 
 .card-body img {
-  /* border-top-left-radius: 8px;
-    border-top-right-radius: 8px; */
+  margin-top: 5px;
   height: 30vh;
   object-fit: cover;
-  /* margin-left: -16px; */
   width: calc(100%);
 }
 
@@ -68,10 +66,13 @@ body {
   height: 35px;
   border-radius: 20px;
   border: none;
-  background: #8db3a1;
+  background: #688779;
   font-weight: 600;
   color: white;
   font-family: "Quicksand", sans-serif;
+}
+.view-recipe-button:hover {
+  background: #536d61;
 }
 
 .filter-component {
@@ -133,6 +134,8 @@ body {
 .expand-main {
   margin: 5px;
   padding: 2px;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 15px;
 }
 
 .expand-body-section > img {
@@ -146,7 +149,8 @@ body {
 .recipe-title-capitalize {
   text-transform: capitalize;
   font-weight: 580;
-  font-family: "Oswald", sans-serif;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 700;
 }
 
 .unscroll-body {
@@ -184,4 +188,11 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.emoji:before {
+  content: "\1F37D";
+  margin-left: -20px;
+  margin-right: 10px;
+  font-size: 20px;
 }
