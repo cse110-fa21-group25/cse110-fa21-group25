@@ -104,9 +104,11 @@
   padding: 10px;
   height: 50px;
   padding:10px;
+  width:20%;
   border-radius: 20px;
   border: none;
   background: #688779;
   color: white;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
+
