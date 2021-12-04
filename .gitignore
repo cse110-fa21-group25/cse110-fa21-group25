@@ -1,4 +1,5 @@
 .vscode
 .DS_Store
+firebase-debug.log
 node_modules/
 node_modules
