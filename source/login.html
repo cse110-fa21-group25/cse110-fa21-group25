@@ -14,17 +14,18 @@
     <!-- User credential -->
     <section id="credential">
       <div id="image-container">
-        <img id="logoBox" src="logo.png" alt="logo" />
+        <img id="logoBox" src="./assets/images/logo.png" alt="logo" />
       </div>
       <div id="login-container">
         <!-- <label for="email">Email</label> -->
-        <input type="text" id="email" name="email" placeholder="Email" />
+        <input type="text" id="email" name="email" placeholder="Email" onkeypress="return login()" />
         <!-- <label for="password">Password</label> -->
         <input
           type="password"
           id="password"
           name="password"
           placeholder="Password"
+          onkeypress="return login()"
         />
         <span id="error-message" style="color: red"></span>
         <input id="login" type="button" value="Log in" onclick="login()" />
