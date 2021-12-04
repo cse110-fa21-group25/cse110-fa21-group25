@@ -67,13 +67,18 @@ p{
 }
 #add-tag{
     grid-row: 3;
-    grid-column: 3/5;
+    grid-column: 3/4;
     height: 40px;
     font-size: 15px;
     border-radius: 15px;
     background-color: #5faa87;
     color: white;
     border-style: hidden;
+}
+
+#selected-tags{
+    grid-row: 4;
+    grid-column: 1;
 }
 
 #ingredients{
