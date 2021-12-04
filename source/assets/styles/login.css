@@ -88,9 +88,11 @@ a:visited {
   color: white;
 }
 a:hover {
-  color: #e0e4e2;
+  color: #3e5248;
 }
+
 a {
+  color: white;
   text-decoration: none;
 }
 
