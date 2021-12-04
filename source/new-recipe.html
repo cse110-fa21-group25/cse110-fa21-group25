@@ -55,17 +55,29 @@
                 style=></textarea>
                 <br><br>
                 
-                <label id="tags">Tags:</label>
-                <select class="tags">
-                    <option value="0">Select Tags:</option>
-                    <option value="1">Healthy</option>
-                    <option value="2">Easy</option>
-                    <option value="3">Quick</option>
-                    <option value="4">Dinner</option>
-                    <option value="5">Lunch</option>
-                </select>
-                
-                <br><br>
+                <section id="tag-section">
+                  <label id="tags">Tags:</label>
+                  <select
+                    class="tags"
+                    id="tags"
+                    multiple="yes"
+                   
+                  >
+                    <option value="0">  Select Tags:</option>
+                    <option value="1">Breakfast</option>
+                    <option value="2">Dessert</option>
+                    <option value="3">Dinner</option>
+                    <option value="4">Easy</option>
+                    <option value="5">Healthy</option>
+                    <option value="6">Lunch</option>
+                    <option value="7">Quick</option>
+                    <option value="8">Snack</option>
+                  </select>
+                  <button id="add-tag" type="button">Add Tag(s)</button>
+                  <div id="selected-tags"></div>
+                </section>
+        
+                <br /><br />
 
                 <label id="ingredients">Ingredients:</label>
                 <section class="ingredients">
