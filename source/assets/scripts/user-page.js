@@ -1162,11 +1162,10 @@ function loadingTimeHtml(object) {
       for (let i = 0; i < a; i ++ ) {
         hour += time[i];
       }
+      for (let i = hour.length+1; i < time.length-1; i ++ ) {
+        min += time[i];
+      }
     }
-  }
-  // Getting minues
-  for (let i = hour.length+1; i < time.length-1; i ++ ) {
-    min += time[i];
   }
 
   if (min == '' && hour == '') {
@@ -1186,7 +1185,6 @@ function loadingTimeHtml(object) {
     document.querySelector('#num-minutes').value = min / 5;
   }
 }
-
 
 /**
  * Function to search for a key.
