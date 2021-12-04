@@ -1,13 +1,16 @@
 .wrapper{
     /* /* border-radius: 15px;
     background-color: white; */
-    padding: 20px 30% 0 30%; 
+    padding: 20px 35% 0 35%; 
   
 }
 
 /* form{ border: 5px solid white} */
 
-input[type=text], textarea{
+input[name="recipe-title"], 
+input[name="author"],
+input[class="ingredient"],
+textarea{
     width: 100%;
     padding: 12px 40px;
     display: block;
@@ -42,6 +45,7 @@ input[type=text], textarea{
 .cook-time, .ingredient-button{
     display: flex;
     justify-content: space-evenly;
+    padding-top: 5px;
 }
 
 #submit-recipe, #add-step,
@@ -62,4 +66,4 @@ input[type=text], textarea{
     border-radius: 10px; 
     background-color: rgb(179, 96, 96);
     color: white; 
-}
+} 
