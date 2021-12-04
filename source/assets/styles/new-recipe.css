@@ -16,14 +16,23 @@ input[name="author"]{
     border-radius: 10px;
     box-sizing: border-box;
 }
-input[class="ingredient"],
-textarea{
+input[class="ingredient"]
+{
     width: 100%;
     padding: 12px 40px;
     display: block;
     border: 3px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+}
+
+textarea{
+    width: 100%;
+    padding: 12px 40px;
+    display: block;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box; 
 }
 
 #tags{
