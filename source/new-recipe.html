@@ -112,12 +112,14 @@
         <label>Ingredients</label>
         <section name="ingredients">
           <div class="ingredients-field">
-            <input
+            <div>
+              <input
               type="text"
               class="ingredient"
               placeholder="Ingredient Name"
               id="ingredient1"
             />
+            </div>
           </div>
           <div class="ingredient-button">
             <button id="add-ingredient" type="button">Add Ingredient</button>
@@ -165,13 +167,15 @@
         <section name="steps">
           <!-- same as above -->
           <div class="recipe-steps">
-            <label>1.</label>
+            <div>
+              <label>1.</label>
             <textarea
               class="steps"
-              style="height: 70px;"
+              style="height: 70px; width: 100%;"
               placeholder="Add the first step of creating your recipe here!"
               id="step1"
             ></textarea>
+            </div>
           </div>
           <div class="step-button">
             <button id="add-step" type="button">Add Step</button>
