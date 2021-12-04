@@ -8,7 +8,14 @@
 /* form{ border: 5px solid white} */
 
 input[name="recipe-title"], 
-input[name="author"],
+input[name="author"]{
+    width: 50%;
+    padding: 12px 40px;
+    display: block;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
 input[class="ingredient"],
 textarea{
     width: 100%;
@@ -21,6 +28,8 @@ textarea{
 
 #tags{
     font-size: 15px;
+    border: 3px solid #ccc;
+    border-radius: 10px;
 }
 
  #add-tag{
