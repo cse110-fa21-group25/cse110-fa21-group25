@@ -984,7 +984,7 @@ async function updating(recipeUpdateButton, recipe) {
     const cancelButton = document.createElement('button');
     cancelButton.type = 'button';
     cancelButton.id = 'cancel-recipe';
-    cancelButton.innerHTML = 'Canel';
+    cancelButton.innerHTML = 'Cancel';
 
     mainForm.appendChild(cancelButton);
     main.appendChild(mainForm);
@@ -1001,7 +1001,7 @@ async function updating(recipeUpdateButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    bodyHtml.classList.add('unscroll-body');
+    // bodyHtml.classList.add('unscroll-body');
 
     loadingAuthorHtml(recipe);
     loadingTitleHtml(recipe);
