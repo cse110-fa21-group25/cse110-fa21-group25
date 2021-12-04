@@ -327,7 +327,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
@@ -339,6 +341,8 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
+    recipeTitleH2.classList.add('recipe-title-capitalize');
+
 
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
@@ -372,9 +376,10 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     ingredientsDiv.classList.add('ingredients-expand');
     for (const ingredient in recipe.data.recipeIngredient) {
-      const ingredientIl = document.createElement('li');
-      ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
-      ingredientsUl.appendChild(ingredientIl);
+      const ingredientLi = document.createElement('li');
+      ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientLi.classList.add('emoji');
+      ingredientsUl.appendChild(ingredientLi);
     }
 
     const instructionsDiv = document.createElement('div');
