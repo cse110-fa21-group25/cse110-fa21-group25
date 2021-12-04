@@ -80,7 +80,7 @@
         <textarea
           id="description"
           placeholder="Tell us a little bit about your recipe here!"
-          style="height: 130px; "
+          style="height: 100px; "
         ></textarea>
         <br /><br />
 
@@ -90,7 +90,7 @@
             class="tags"
             id="tags"
             multiple="yes"
-            style="vertical-align: middle; width: 100%; "
+            style="vertical-align: middle; width: 120px"
           >
             <option value="0">Select Tags:</option>
             <option value="1">Breakfast</option>
@@ -102,7 +102,6 @@
             <option value="7">Quick</option>
             <option value="8">Snack</option>
           </select>
-          <br>
           <button id="add-tag" type="button">Add Tag(s)</button>
           <div id="selected-tags"></div>
         </section>
@@ -114,16 +113,18 @@
           <div class="ingredients-field">
             <div>
               <input
-              type="text"
-              class="ingredient"
-              placeholder="Ingredient Name"
-              id="ingredient1"
-            />
+                type="text"
+                class="ingredient"
+                placeholder="Ingredient Name"
+                id="ingredient1"
+              />
             </div>
           </div>
           <div class="ingredient-button">
             <button id="add-ingredient" type="button">Add Ingredient</button>
-            <button id="remove-ingredient" type="button">Remove Ingredient</button>
+          <button id="remove-ingredient" type="button">
+            Remove Ingredient
+          </button>
           </div>
         </section>
         <br /><br />
@@ -169,19 +170,18 @@
           <div class="recipe-steps">
             <div>
               <label>1.</label>
-            <textarea
-              class="steps"
-              style="height: 70px; width: 100%;"
-              placeholder="Add the first step of creating your recipe here!"
-              id="step1"
-            ></textarea>
+              <textarea
+                class="steps"
+                style="height: 70px; vertical-align: middle"
+                placeholder="Add the first step of creating your recipe here!"
+                id="step1"
+              ></textarea>
             </div>
           </div>
           <div class="step-button">
             <button id="add-step" type="button">Add Step</button>
             <button id="remove-step" type="button">Remove Step</button>
           </div>
-          
         </section>
         <br /><br />
 

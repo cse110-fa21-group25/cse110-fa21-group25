@@ -1,11 +1,8 @@
+
 .wrapper{
-    /* /* border-radius: 15px;
-    background-color: white; */
     padding: 20px 35% 0 35%; 
   
 }
-
-/* form{ border: 5px solid white} */
 
 input[name="recipe-title"], 
 input[name="author"]{
@@ -34,6 +31,9 @@ textarea{
     border-radius: 10px;
     box-sizing: border-box; 
 }
+
+
+
 
 #tags{
     font-size: 15px;
@@ -85,3 +85,8 @@ textarea{
     background-color: rgb(179, 96, 96);
     color: white; 
 } 
+
+
+    
+
+

@@ -67,11 +67,11 @@ body {
   border-radius: 20px;
   border: none;
   background: #688779;
-  font-weight: 600;
   color: white;
   font-family: "Quicksand", sans-serif;
 }
-.view-recipe-button:hover {
+.view-recipe-button:hover, 
+.card-footer > button:hover {
   background: #536d61;
 }
 
@@ -195,4 +195,17 @@ body {
   margin-left: -20px;
   margin-right: 10px;
   font-size: 20px;
+}
+
+
+.card-footer > button {
+  height: 30px;
+  width:100%;
+  border-radius: 20px;
+  border: none;
+  background: #688779;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  margin:2px;
+  text-align:center;
 }

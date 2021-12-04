@@ -1,43 +1,42 @@
 .my-recipe {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-  
-.card {
-    box-shadow: 1px 2px #cfcfcf;
-    margin: 10px.5px;
-}
-  
-.card-body {
-    height: 70vh;
-    width: auto;
-}
-  
-.card-body img {
-    /* border-top-left-radius: 8px;
-      border-top-right-radius: 8px; */
-    height: 30vh;
-    object-fit: cover;
-    /* margin-left: -16px; */
-    width: calc(100%);
-}
-  
-.tags {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap;
-}
-  
-.tags button {
-    margin: 1px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(190, 226, 255);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+.card {
+  box-shadow: 1px 2px #cfcfcf;
+  margin: 10px.5px;
+}
+
+.card-body {
+  height: 70vh;
+  width: auto;
+}
+
+.card-body img {
+  /* border-top-left-radius: 8px;
+      border-top-right-radius: 8px; */
+  height: 30vh;
+  object-fit: cover;
+  /* margin-left: -16px; */
+  width: calc(100%);
+}
+
+.tags {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tags button {
+  margin: 1px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(190, 226, 255);
+}
 
 .overlay {
   position: fixed;
@@ -73,4 +72,39 @@
 
 .expand-body-section > img {
   width: 100%;
+}
+.box {
+  border: 1px dotted #2c5f2d;
+  border-width: thin;
+  padding-bottom: 50px;
+
+  margin: 150px 150px 80px;
+}
+.title-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titles {
+  font-family: "Oswald", sans-serif;
+  border-bottom: 1px solid #72a98f;
+  padding-bottom: 15px;
+  width: 20%;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 40px;
+}
+.button {
+  padding: 10px;
+  height: 50px;
+  width: 20%;
+  border-radius: 20px;
+  border: none;
+  background: #688779;
+  color: white;
+  font-family: "Oswald", sans-serif;
 }
