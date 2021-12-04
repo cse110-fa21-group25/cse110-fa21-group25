@@ -12,7 +12,7 @@
     </style>
     
     <!-- login.css -->
-    <link rel="stylesheet" href="./assets/styles/login.css" />
+    <link rel="stylesheet" href="/source/assets/styles/login.css" />
   </head>
   <body>
     <!-- User credential -->
@@ -23,15 +23,18 @@
         <img id="logoBox" src="logo.png" alt="logo" />
       </div>
       
-      <!-- Login Container -->
-      <div id="login-container">
-        
-        <!-- Input for Email -->
-        <input type="text" id="email" name="email" placeholder="Email" />
-        
-        <!-- Input for Password -->
-        <input type="password" id="password" name="password" placeholder="Password"/>
-        
+      <!-- Login Form -->
+      <form id="login-form-container">
+        <!-- Login Container -->
+        <div id="login-container">
+          <!-- Input for Email -->
+          <input type="text" id="email" name="email" placeholder="Email" />
+          
+          <!-- Input for Password -->
+          <input type="password" id="password" name="password" placeholder="Password"/>
+        </div>
+      </form>
+
         <!-- Error Message -->
         <span id="error-message" style="color: red"></span>
         
@@ -43,7 +46,6 @@
           <a href="signup.html">Sign up</a>
           <a href="home-page.html">Home</a>
         </div>
-      </div>
     </section>
 
     <!-- Firebase scripts for functionality -->
