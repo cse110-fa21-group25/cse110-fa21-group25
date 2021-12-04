@@ -327,7 +327,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
@@ -339,6 +341,8 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     const recipeTitleH2 = document.createElement('h2');
     recipeTitleH2.innerHTML = recipe.data.name;
+    recipeTitleH2.classList.add('recipe-title-capitalize');
+
 
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
@@ -357,6 +361,11 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
       tagButton.innerHTML = recipe.data.tags[tag];
       tagDiv.appendChild(tagButton);
     }
+    const descriptionLabel = document.createElement('h4');
+    descriptionLabel.innerHTML = 'Description';
+
+    const descriptiondiv = document.createElement('div');
+    descriptiondiv.innerHTML = searchForKey(recipe, 'description');
 
     const ingredientsDiv = document.createElement('div');
     ingredientsDiv.classList.add('expand-main');
@@ -367,9 +376,10 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     ingredientsDiv.classList.add('ingredients-expand');
     for (const ingredient in recipe.data.recipeIngredient) {
-      const ingredientIl = document.createElement('li');
-      ingredientIl.innerHTML = recipe.data.recipeIngredient[ingredient];
-      ingredientsUl.appendChild(ingredientIl);
+      const ingredientLi = document.createElement('li');
+      ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientLi.classList.add('emoji');
+      ingredientsUl.appendChild(ingredientLi);
     }
 
     const instructionsDiv = document.createElement('div');
@@ -385,9 +395,10 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     }
 
     overlayDiv.appendChild(expandDiv);
-
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
+    expandDiv.appendChild(descriptionLabel);
+    expandDiv.appendChild(descriptiondiv);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
 
@@ -978,7 +989,7 @@ async function updating(recipeUpdateButton, recipe) {
     const cancelButton = document.createElement('button');
     cancelButton.type = 'button';
     cancelButton.id = 'cancel-recipe';
-    cancelButton.innerHTML = 'Canel';
+    cancelButton.innerHTML = 'Cancel';
 
     mainForm.appendChild(cancelButton);
     main.appendChild(mainForm);
@@ -995,7 +1006,7 @@ async function updating(recipeUpdateButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    bodyHtml.classList.add('unscroll-body');
+    // bodyHtml.classList.add('unscroll-body');
 
     loadingAuthorHtml(recipe);
     loadingTitleHtml(recipe);
@@ -1162,11 +1173,10 @@ function loadingTimeHtml(object) {
       for (let i = 0; i < a; i ++ ) {
         hour += time[i];
       }
+      for (let i = hour.length+1; i < time.length-1; i ++ ) {
+        min += time[i];
+      }
     }
-  }
-  // Getting minues
-  for (let i = hour.length+1; i < time.length-1; i ++ ) {
-    min += time[i];
   }
 
   if (min == '' && hour == '') {
@@ -1186,7 +1196,6 @@ function loadingTimeHtml(object) {
     document.querySelector('#num-minutes').value = min / 5;
   }
 }
-
 
 /**
  * Function to search for a key.

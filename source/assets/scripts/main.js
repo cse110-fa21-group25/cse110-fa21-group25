@@ -404,7 +404,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
@@ -437,7 +439,10 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
       tagDiv.appendChild(tagButton);
       searchByTag(tagButton, tagButton.innerHTML);
     }
-
+    const Description = document.createElement('h4');
+    Description.innerHTML = 'Description';
+    const DescriptionH4 = document.createElement('p');
+    DescriptionH4.innerHTML = recipe.data.description;
     const ingredientsDiv = document.createElement('div');
     ingredientsDiv.classList.add('expand-main');
     const ingredientsH4 = document.createElement('h4');
@@ -469,6 +474,8 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
+    expandDiv.appendChild(Description);
+    expandDiv.appendChild(DescriptionH4);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
 
