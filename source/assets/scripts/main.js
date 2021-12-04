@@ -472,7 +472,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
-    expandDiv.appendChild(Description)
+    expandDiv.appendChild(Description);
     expandDiv.appendChild(DescriptionH4);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);

@@ -358,7 +358,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
       tagDiv.appendChild(tagButton);
     }
     const descriptionLabel = document.createElement('h4');
-    descriptionLabel.innerHTML = "Description";
+    descriptionLabel.innerHTML = 'Description';
 
     const descriptiondiv = document.createElement('div');
     descriptiondiv.innerHTML = searchForKey(recipe, 'description');
