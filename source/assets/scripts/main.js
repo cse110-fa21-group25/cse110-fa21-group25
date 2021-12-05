@@ -34,7 +34,7 @@ async function init() {
   //   searchRecipes(searchBar.value);
   // });
 
-  console.log(Object.keys(recipeData).length);
+  // console.log(Object.keys(recipeData).length);
   populateHomePage(recipeData);
 }
 
@@ -45,7 +45,7 @@ async function init() {
  * @param {*} data the recipe data
  */
 async function populateHomePage(data) {
-  createRecipeCard(data, 'All Recipes');
+  createRecipeCard(data, 'Explore Recipes');
 }
 
 /**
@@ -66,14 +66,14 @@ async function createRecipeCard(data, sectionName) {
   const section = document.createElement('section');
   section.setAttribute('id', 'searched-recipe');
   const sectionTitleH2 = document.createElement('h2');
-  sectionTitleH2.innerHTML = `${sectionName}:`;
+  sectionTitleH2.innerHTML = `${sectionName}`;
   const sectionRecipeDiv = document.createElement('div');
   sectionRecipeDiv.classList.add('recipe-row');
   section.appendChild(sectionTitleH2);
   section.appendChild(sectionRecipeDiv);
 
   for (const recipe of data) {
-    console.log(recipe);
+    // console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -115,7 +115,7 @@ async function createRecipeCard(data, sectionName) {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    console.log('ingredients ', recipe.data.recipeIngredient);
+    // console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -159,7 +159,7 @@ async function createRecipeCard(data, sectionName) {
 
     recipeCardDetail(recipeDetailButton, recipe);
   }
-  console.log('done looping through recipes');
+  // console.log('done looping through recipes');
   const recipeCategoriesDiv = document.querySelector('#recipe-categories');
   recipeCategoriesDiv.insertBefore(section, recipeCategoriesDiv.firstChild);
 }
@@ -269,7 +269,7 @@ async function searchByTag(button, tagName) {
     filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
       [item['id'], item])).values()];
 
-    console.log(filterRecipeArray);
+    // console.log(filterRecipeArray);
 
     const header = document.querySelector('header');
     let wrapper;
@@ -292,7 +292,7 @@ async function searchByTag(button, tagName) {
       const buttonClone = button.cloneNode(true);
       const closeButton = document.createElement('button');
       closeButton.innerHTML = 'x';
-      console.log(buttonClone);
+      // console.log(buttonClone);
       uniqueFilters.add(buttonClone.innerHTML);
       buttonClone.classList.add('tag');
       buttonDiv.classList.add('filter-component');
@@ -365,8 +365,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    console.log('Hello!! I\'m clicked');
-    console.log(recipe);
     /* *********************************** *
      * expand format:
      * <div>
@@ -404,7 +402,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
