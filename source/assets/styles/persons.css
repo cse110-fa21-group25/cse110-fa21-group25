@@ -128,3 +128,6 @@
   color: white;
   font-family: "Oswald", sans-serif;
 }
+button:hover {
+  background-color: #536d61;
+}
