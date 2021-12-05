@@ -365,8 +365,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    console.log('Hello!! I\'m clicked');
-    console.log(recipe);
     /* *********************************** *
      * expand format:
      * <div>
