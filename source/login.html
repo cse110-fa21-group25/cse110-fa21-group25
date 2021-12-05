@@ -14,6 +14,7 @@
     <!-- login.css -->
     <link rel="stylesheet" href="/source/assets/styles/login.css" />
   </head>
+  
   <body>
     <!-- User credential -->
     <section id="credential">
@@ -23,29 +24,26 @@
         <img id="logoBox" src="logo.png" alt="logo" />
       </div>
 
-      <!-- Login Form -->
-      <!-- <form id="login-form-container"> -->
-        <!-- Login Container -->
-        <div id="login-container">
-          <!-- Input for Email -->
-          <input type="text" id="email" name="email" placeholder="Email" />
-          
-          <!-- Input for Password -->
-          <input type="password" id="password" name="password" placeholder="Password"/>
-        </div>
-      <!-- </form> -->
+      <!-- Login Container -->
+      <div id="login-container">
+        <!-- Input for Email -->
+        <input type="text" id="email" name="email" placeholder="Email" />
+        
+        <!-- Input for Password -->
+        <input type="password" id="password" name="password" placeholder="Password"/>
+      </div>
 
-        <!-- Error Message -->
-        <span id="error-message" style="color: red"></span>
+      <!-- Error Message -->
+      <span id="error-message" style="color: red"></span>
+      
+      <!-- Login Button -->
+      <input id="login" type="button" value="Log in" onclick="login()" />
         
-        <!-- Login Button -->
-        <input id="login" type="button" value="Log in" onclick="login()" />
-        
-        <!-- Footer Container -->
-        <div id="footer-container">
-          <a href="signup.html">Sign up</a>
-          <a href="home-page.html">Home</a>
-        </div>
+      <!-- Footer Container -->
+      <div id="footer-container">
+        <a href="signup.html">Sign up</a>
+        <a href="home-page.html">Home</a>
+      </div>
     </section>
 
     <!-- Firebase scripts for functionality -->
