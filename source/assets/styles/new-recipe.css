@@ -1,6 +1,6 @@
 
 .wrapper{
-    padding: 20px 35% 0 35%; 
+    padding: 20px 35% 0; 
   
 }
 
@@ -39,6 +39,7 @@ textarea{
     font-size: 15px;
     border: 3px solid #ccc;
     border-radius: 10px;
+    width: 100%;
 }
 
  #add-tag{
