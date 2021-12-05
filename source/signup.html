@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="./assets/styles/signup.css">
     <link rel="icon" href="./assets/images/logo-circle.png">
-    <title>Document</title>
+    <title>Sign Up</title>
   </head>
   <body>
     <!-- User credential -->
@@ -27,12 +27,12 @@
       <div id="signup-container"> 
       
         <!-- Input for Email  -->
-      <input type="email" id="email" name="email" placeholder="Email"/>
+      <input type="email" id="email" name="email" placeholder="Email" onkeypress="return signup()"/>
 
       <!-- Input for Password & Confirm Password-->
-      <input type="password" id="password" name="password" placeholder="Password"/>
+      <input type="password" id="password" name="password" placeholder="Password" onkeypress="return signup()"/>
       <input type="password" id="confirm-password" name="confirm-password" 
-      placeholder="Confirm Password"/>
+      placeholder="Confirm Password" onkeypress="return signup()"/>
       
       <!-- Error message output -->
       <span id="error-message" style="color: red"></span>
