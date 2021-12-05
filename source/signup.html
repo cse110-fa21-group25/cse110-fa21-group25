@@ -27,18 +27,43 @@
       <div id="signup-container"> 
       
         <!-- Input for Email  -->
-      <input type="email" id="email" name="email" placeholder="Email" onkeypress="return signup()"/>
+      <input type="email" id="email" name="email" placeholder="Email"/>
 
       <!-- Input for Password & Confirm Password-->
-      <input type="password" id="password" name="password" placeholder="Password" onkeypress="return signup()"/>
+      <input type="password" id="password" name="password" placeholder="Password"/>
       <input type="password" id="confirm-password" name="confirm-password" 
-      placeholder="Confirm Password" onkeypress="return signup()"/>
+      placeholder="Confirm Password"/>
       
       <!-- Error message output -->
       <span id="error-message" style="color: red"></span>
       
       <!-- Sign up -->
       <input id="signup" type="button" value="Sign Up" onclick="signup()"/>
+
+      <!-- Using 'enter' to sign up -->
+      <script>
+        var emailInput = document.getElementById("email");
+        var passInput = document.getElementById("password");
+        var confirmPassInput = document.getElementById("confirm-password");
+        emailInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+        passInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+        confirmPassInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+      </script>
       
       <!-- Redirect to home page or login-->
       <div id="footer-container">

@@ -28,16 +28,34 @@
       <div id="login-container">
         
         <!-- Input for Email -->
-        <input type="text" id="email" name="email" placeholder="Email" onkeypress="return login()" />
+        <input type="text" id="email" name="email" placeholder="Email" />
         
         <!-- Input for Password -->
-        <input type="password" id="password" name="password" placeholder="Password" onkeypress="return login()" />
+        <input type="password" id="password" name="password" placeholder="Password" />
         
         <!-- Error Message -->
         <span id="error-message" style="color: red"></span>
         
         <!-- Login Button -->
         <input id="login" type="button" value="Log in" onclick="login()" />
+
+        <!-- Using 'enter' to log in -->
+        <script>
+          var emailInput = document.getElementById("email");
+          var passInput = document.getElementById("password");
+          emailInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+             event.preventDefault();
+             document.getElementById("login").click();
+            }
+          });
+          passInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+             event.preventDefault();
+             document.getElementById("login").click();
+            }
+          });
+        </script>
         
         <!-- Footer Container -->
         <div id="footer-container">
