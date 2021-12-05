@@ -84,6 +84,7 @@ body {
   color: white;
   font-family: "Quicksand", sans-serif;
 }
+
 .view-recipe-button:hover,
 .card-footer > button:hover {
   background: #536d61;
@@ -110,6 +111,10 @@ body {
   border-radius: 10px;
   background-color: rgb(190, 226, 255);
   box-shadow: 0 1px 1px 1px rgb(240, 240, 240);
+}
+
+.tag:hover {
+  background-color: rgb(147, 174, 196);
 }
 
 .tags-div {
