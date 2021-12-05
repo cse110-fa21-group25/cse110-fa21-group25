@@ -84,7 +84,6 @@ body {
   color: white;
   font-family: "Quicksand", sans-serif;
 }
-
 .view-recipe-button:hover,
 .card-footer > button:hover {
   background: #536d61;
@@ -100,7 +99,6 @@ body {
   background: none;
   color: #003050;
   margin-right: 10px;
-
   text-shadow: 0 1px 1px 1px rgb(0, 0, 0);
 }
 
@@ -112,11 +110,9 @@ body {
   background-color: rgb(190, 226, 255);
   box-shadow: 0 1px 1px 1px rgb(240, 240, 240);
 }
-
 .tag:hover {
   background-color: rgb(147, 174, 196);
 }
-
 .tags-div {
   display: flex;
   justify-content: start;
@@ -152,6 +148,9 @@ body {
   border: none;
   border-width: thin;
   font-weight: 600;
+}
+.xbutton:hover {
+  background: #536d61;
 }
 .expand-card {
   width: 50%;
