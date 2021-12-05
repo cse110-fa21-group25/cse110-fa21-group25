@@ -122,6 +122,7 @@ async function showRecipesOnSearch(data, sectionName, query) {
  * @param {*} recipe query get recipe data
  */
 async function searchedRecipe(recipe) {
+  console.log('herehrehrhe');
   const cardDiv = document.createElement('div');
   cardDiv.classList.add('card');
   cardDiv.classList.add('col-md-3');
@@ -149,7 +150,9 @@ async function searchedRecipe(recipe) {
   for (const tag in recipe.data.tags) {
     const tagButton = document.createElement('button');
     tagButton.innerHTML = recipe.data.tags[tag];
+    tagButton.classList.add('tag');
     tagDiv.appendChild(tagButton);
+    searchByTag(tagButton, tagButton.innerHTML);
   }
 
   const cardFooterDiv = document.createElement('div');
@@ -182,12 +185,13 @@ async function searchedRecipe(recipe) {
   cardFooterDiv.appendChild(recipeDeleteButton);
   cardFooterDiv.appendChild(recipeUpdateButton);
 
+  console.log('here???!?!?!?');
   // Attach to the appropriate recipe-row category
   const searchedRecipeRow = document.querySelector('#created-recipes');
-  const myRecipe = document.createElement('div');
-  myRecipe.classList.add('my-recipe');
-  searchedRecipeRow.appendChild(myRecipe);
-  myRecipe.appendChild(cardDiv);
+  const myRecipeDiv = document.createElement('div');
+  myRecipeDiv.classList.add('my-recipe');
+  searchedRecipeRow.appendChild(myRecipeDiv);
+  myRecipeDiv.appendChild(cardDiv);
   // check if cardDiv generated properly
 
   recipeCardDetail(recipeDetailButton, recipe);
@@ -244,6 +248,7 @@ async function createRecipeCard() {
       const tagButton = document.createElement('button');
       tagButton.innerHTML = recipe.data.tags[tag];
       tagButton.classList.add('tag');
+      tagButton.classList.add(`${recipe.data.tags[tag]}`.toLowerCase());
       tagDiv.appendChild(tagButton);
       searchByTag(tagButton, tagButton.innerHTML);
     }
@@ -412,38 +417,38 @@ async function removeFilterTag(closeButton, filterTagName,
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
     /* *********************************** *
-       * expand format:
-       * <div>
-       *      <div class='close-recipe-detail-div'>
-       *          <button>X</button>
-       *      </div>
-       *      <div>
-       *          <h4> {recipe's title} </h4>
-       *          <img src='{recipe's thumbnail}'>
-       *          <p> Cook/prep time </p>
-       *          <p> {recipe's owner} </p>
-       *          <div class='tags'>
-       *              <button> {recipe's tag 1} </button>
-       *              ... // more tags go here
-       *          </div>
-       *      </div>
-       *      <div class='ingredients'>
-       *          <h4>Ingredients:</h4>
-       *          <ul>
-       *              <li>{ingredient 1}</li>
-       *          ... // more ingredients go here
-       *          </ul>
-       *      </div>
-       *      <div class='instructions'>
-       *          <h4>Instructions:</h4>
-       *          <ul>
-       *              <li>{instruction 1}</li>
-       *              ... // more instructions go here
-       *          </ul>
-       *      </div>
-       * </div>
-       *
-       * *********************************** */
+     * expand format:
+     * <div>
+     *      <div class='close-recipe-detail-div'>
+     *          <button>X</button>
+     *      </div>
+     *      <div>
+     *          <h4> {recipe's title} </h4>
+     *          <img src='{recipe's thumbnail}'>
+     *          <p> Cook/prep time </p>
+     *          <p> {recipe's owner} </p>
+     *          <div class='tags'>
+     *              <button> {recipe's tag 1} </button>
+     *              ... // more tags go here
+     *          </div>
+     *      </div>
+     *      <div class='ingredients'>
+     *          <h4>Ingredients:</h4>
+     *          <ul>
+     *              <li>{ingredient 1}</li>
+     *          ... // more ingredients go here
+     *          </ul>
+     *      </div>
+     *      <div class='instructions'>
+     *          <h4>Instructions:</h4>
+     *          <ul>
+     *              <li>{instruction 1}</li>
+     *              ... // more instructions go here
+     *          </ul>
+     *      </div>
+     * </div>
+     *
+     * *********************************** */
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
 
@@ -464,7 +469,6 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     recipeTitleH2.innerHTML = recipe.data.name;
     recipeTitleH2.classList.add('recipe-title-capitalize');
 
-
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
@@ -480,14 +484,14 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     for (const tag in recipe.data.tags) {
       const tagButton = document.createElement('button');
       tagButton.innerHTML = recipe.data.tags[tag];
+      tagButton.classList.add('tag');
       tagDiv.appendChild(tagButton);
+      searchByTag(tagButton, tagButton.innerHTML);
     }
-    const descriptionLabel = document.createElement('h4');
-    descriptionLabel.innerHTML = 'Description';
-
-    const descriptiondiv = document.createElement('div');
-    descriptiondiv.innerHTML = searchForKey(recipe, 'description');
-
+    const Description = document.createElement('h4');
+    Description.innerHTML = 'Description';
+    const DescriptionH4 = document.createElement('p');
+    DescriptionH4.innerHTML = recipe.data.description;
     const ingredientsDiv = document.createElement('div');
     ingredientsDiv.classList.add('expand-main');
     const ingredientsH4 = document.createElement('h4');
@@ -516,10 +520,11 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     }
 
     overlayDiv.appendChild(expandDiv);
+
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
-    expandDiv.appendChild(descriptionLabel);
-    expandDiv.appendChild(descriptiondiv);
+    expandDiv.appendChild(Description);
+    expandDiv.appendChild(DescriptionH4);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
 
@@ -538,22 +543,37 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     instructionsDiv.appendChild(instructionsH4);
     instructionsDiv.appendChild(instructionsOl);
 
-    // console.log(overlayDiv);
+    console.log(overlayDiv);
 
     // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
+    // let overlayOpen = expandDiv.className === 'overlay';
+
+    /* Toggle the aria-hidden state on the overlay and the
+        no-scroll class on the body */
+    bodyHtml.classList.add('unscroll-body');
+    //  bodyHtml.classList.toggle('noscroll', overlayOpen);
+
+    /* On some mobile browser when the overlay was previously
+        opened and scrolled, if you open it again it doesn't
+        reset its scrollTop property */
+    //  overlayDiv.scrollTop = 0;
+
+
+    removeExpandRecipe(closeRecipeExpandButton, overlayDiv, 'Escape');
   });
 }
+
 
 /**
  * Collapse expanded recipe.
  * @param {*} button button to collapse
  * @param {*} expandDiv div to remove expanded recipe from
+ * @param {*} key key to collapse if pressed
  */
-async function removeExpandRecipe(button, expandDiv) {
+async function removeExpandRecipe(button, expandDiv, key) {
   button.addEventListener('click', ()=>{
     while (expandDiv.hasChildNodes()) {
       expandDiv.removeChild(expandDiv.lastChild);
@@ -1245,6 +1265,7 @@ function loadingStepHtml(object) {
    * @param {*} object
    */
 function loadingTagHtml(object) {
+  console.log('!!loadingTagHtml');
   const tagsList = searchForKey(object, 'tags');
   for (const i in tagsList) { // eslint-disable-line guard-for-in
     // Adding that the tag is selected
