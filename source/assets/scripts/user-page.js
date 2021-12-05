@@ -214,6 +214,8 @@ async function searchedRecipeCard(data) {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
+    // const sectionRecipeDiv = document.createElement('div');
+    // sectionRecipeDiv.classList.add('recipe-row');
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
@@ -279,6 +281,8 @@ async function createRecipeCard() {
         '#created-recipes > .my-recipe');
 
     exampleRecipeRow.appendChild(cardDiv);
+
+    // sectionRecipeDiv.append(cardDiv);
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
     updating(recipeUpdateButton, recipe);

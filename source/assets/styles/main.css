@@ -5,7 +5,21 @@ header {
 body {
   background-color: #e3fbf0;
 }
-
+#searched-recipe > h2 {
+  font-family: "Oswald", sans-serif;
+  border-bottom: 1px solid #72a98f;
+  padding-bottom: 15px;
+  width: 30%;
+  margin-top: 140px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 40px;
+}
 #recipe-categories {
   margin: 10px 20px;
   font-family: "Oswald", sans-serif;
