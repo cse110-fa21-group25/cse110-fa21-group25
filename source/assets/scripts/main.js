@@ -45,7 +45,7 @@ async function init() {
  * @param {*} data the recipe data
  */
 async function populateHomePage(data) {
-  createRecipeCard(data, 'All Recipes');
+  createRecipeCard(data, 'Explore Recipes');
 }
 
 /**
@@ -66,7 +66,7 @@ async function createRecipeCard(data, sectionName) {
   const section = document.createElement('section');
   section.setAttribute('id', 'searched-recipe');
   const sectionTitleH2 = document.createElement('h2');
-  sectionTitleH2.innerHTML = `${sectionName}:`;
+  sectionTitleH2.innerHTML = `${sectionName}`;
   const sectionRecipeDiv = document.createElement('div');
   sectionRecipeDiv.classList.add('recipe-row');
   section.appendChild(sectionTitleH2);
@@ -365,8 +365,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    console.log('Hello!! I\'m clicked');
-    console.log(recipe);
     /* *********************************** *
      * expand format:
      * <div>

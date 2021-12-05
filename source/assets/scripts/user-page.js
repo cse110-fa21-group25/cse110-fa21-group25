@@ -215,6 +215,8 @@ async function searchedRecipeCard(data) {
  */
 async function createRecipeCard() {
   for (const recipe of recipeData) {
+    // const sectionRecipeDiv = document.createElement('div');
+    // sectionRecipeDiv.classList.add('recipe-row');
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
@@ -241,7 +243,9 @@ async function createRecipeCard() {
     for (const tag in recipe.data.tags) {
       const tagButton = document.createElement('button');
       tagButton.innerHTML = recipe.data.tags[tag];
+      tagButton.classList.add('tag');
       tagDiv.appendChild(tagButton);
+      searchByTag(tagButton, tagButton.innerHTML);
     }
 
     const cardFooterDiv = document.createElement('div');
@@ -279,12 +283,127 @@ async function createRecipeCard() {
         '#created-recipes > .my-recipe');
 
     exampleRecipeRow.appendChild(cardDiv);
+
+    // sectionRecipeDiv.append(cardDiv);
     recipeCardDetail(recipeDetailButton, recipe);
     deleteRecipe(recipeDeleteButton, recipe);
     updating(recipeUpdateButton, recipe);
   }
 }
 
+const uniqueFilters = new Set();
+let filterRecipeArray = [];
+/**
+ * Search for a recipe by tag
+ * @param {*} button button for the tag
+ * @param {*} tagName name of the tag
+ */
+async function searchByTag(button, tagName) {
+  // let recipeWithTag;
+  // const recipeDataBasedOnSearch = await getRecipesByTag(tagName);
+  // if (Object.keys(recipeDataBasedOnSearch).length > 0) {
+  //   map[tagName] = recipeDataBasedOnSearch;
+  // }
+  // console.log(map);
+  button.addEventListener('click', ()=>{
+    for (const recipe of recipeData) {
+      for (const tag in recipe.data.tags) {
+        if (tagName == recipe.data.tags[tag]) {
+          filterRecipeArray.push(recipe);
+        }
+      }
+    }
+    filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
+      [item['id'], item])).values()];
+
+    console.log(filterRecipeArray);
+
+    const header = document.querySelector('header');
+    let wrapper;
+    let filterDiv;
+    if (!document.querySelector('.wrapper')) {
+      console.log('filter not found');
+      wrapper = document.createElement('section');
+      wrapper.classList.add('wrapper');
+      filterDiv = document.createElement('div');
+      filterDiv.classList.add('sticky-top');
+      wrapper.appendChild(filterDiv);
+      header.insertAdjacentElement('afterend', wrapper);
+    } else {
+      wrapper = document.querySelector('.wrapper');
+      filterDiv = document.querySelector('.sticky-top');
+    }
+    console.log('tag button clicked');
+    if (!uniqueFilters.has(button.innerHTML)) {
+      const buttonDiv = document.createElement('div');
+      const buttonClone = button.cloneNode(true);
+      const closeButton = document.createElement('button');
+      closeButton.innerHTML = 'x';
+      console.log(buttonClone);
+      uniqueFilters.add(buttonClone.innerHTML);
+      buttonClone.classList.add('tag');
+      buttonDiv.classList.add('filter-component');
+      buttonDiv.appendChild(buttonClone);
+      buttonDiv.appendChild(closeButton);
+      filterDiv.appendChild(buttonDiv);
+
+      showRecipesOnSearch(filterRecipeArray, 'Filter Results', null);
+
+      removeFilterTag(closeButton, buttonClone.innerHTML,
+          buttonDiv, filterDiv, wrapper);
+    }
+  });
+}
+
+/**
+ * Removes a filter tag and recipes that are associated to it
+ * @param {*} closeButton button to remove filter tag
+ * @param {*} filterTagName selected filter tag name
+ * @param {*} buttonDiv filter tag button to remove
+ * @param {*} filterDiv div that contains all of the filter tags
+ * @param {*} wrapper outer div of filter div
+ */
+async function removeFilterTag(closeButton, filterTagName,
+    buttonDiv, filterDiv, wrapper) {
+  closeButton.addEventListener('click', ()=>{
+    while (buttonDiv.hasChildNodes()) {
+      buttonDiv.removeChild(buttonDiv.lastChild);
+      uniqueFilters.delete(filterTagName);
+    }
+    buttonDiv.remove();
+    if (!filterDiv.hasChildNodes()) {
+      filterDiv.remove();
+      while (wrapper.hasChildNodes()) {
+        wrapper.removeChild(wrapper.lastChild);
+      }
+      wrapper.remove();
+    }
+
+    // filter recipe
+    /* filterRecipeArray = filterRecipeArray.
+  filter(recipe => !(recipe.data.tags.includes(filterTagName)));
+  */
+    filterRecipeArray = [];
+    for (const availTag of uniqueFilters) {
+      for (const recipe of recipeData) {
+      // console.log(availTag);
+        for (const tag in recipe.data.tags) {
+          if (availTag == recipe.data.tags[tag]) {
+            filterRecipeArray.push(recipe);
+          }
+        }
+      }
+    }
+    filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
+      [item['id'], item])).values()];
+    // console.log(filterRecipeArray);
+    if (!filterRecipeArray.length) {
+      showRecipesOnSearch(recipeData, 'All Recipes', null);
+    } else {
+      showRecipesOnSearch(filterRecipeArray, 'Filter Results', null);
+    }
+  });
+}
 /**
  * Recipe card details when user clicks on a recipe.
  * @param {*} recipeDetailButton button that the user clicks
@@ -440,9 +559,20 @@ async function removeExpandRecipe(button, expandDiv) {
       expandDiv.removeChild(expandDiv.lastChild);
     }
     expandDiv.remove();
+    const bodyHtml = document.querySelector('body');
+    bodyHtml.classList.remove('unscroll-body');
+  });
+  window.addEventListener('keydown', function(e) {
+    if (e.key == key) {
+      while (expandDiv.hasChildNodes()) {
+        expandDiv.removeChild(expandDiv.lastChild);
+      }
+      expandDiv.remove();
+      const bodyHtml = document.querySelector('body');
+      bodyHtml.classList.remove('unscroll-body');
+    }
   });
 }
-
 
 /**
  * Get total time from recipe's JSON object
@@ -1008,7 +1138,7 @@ async function updating(recipeUpdateButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    // bodyHtml.classList.add('unscroll-body');
+    bodyHtml.classList.add('unscroll-body');
 
     loadingAuthorHtml(recipe);
     loadingTitleHtml(recipe);
