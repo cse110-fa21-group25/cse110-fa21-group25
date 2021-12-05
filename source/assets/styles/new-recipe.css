@@ -1,6 +1,93 @@
-.wrapper {
-    margin: 30px;
-    display:block;
-    justify-items: center;
-    align-items: center;
+
+.wrapper{
+    padding: 20px 35% 0; 
+  
 }
+
+input[name="recipe-title"], 
+input[name="author"]{
+    width: 50%;
+    padding: 12px 40px;
+    display: block;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+input[class="ingredient"]
+{
+    width: 100%;
+    padding: 12px 40px;
+    display: block;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+textarea{
+    width: 100%;
+    padding: 12px 40px;
+    display: block;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box; 
+}
+
+
+
+
+#tags{
+    font-size: 15px;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+}
+
+ #add-tag{
+    width: 100%;
+    background-color: rgb(88, 129, 88);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#num-hours, #num-minutes{
+    width: 40%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+}
+
+.submit-button, .step-button, 
+.cook-time, .ingredient-button{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;
+}
+
+#submit-recipe, #add-step,
+#add-ingredient{
+    width: 45%;
+    height: 50px;
+    border: none;
+    border-radius: 10px; 
+    background-color: rgb(88, 129, 88);
+    color: white;
+    
+}
+
+#cancel,  #remove-step,  #remove-ingredient{
+    width: 45%;
+    height: 50px;
+    border: none;
+    border-radius: 10px; 
+    background-color: rgb(179, 96, 96);
+    color: white; 
+} 
+
+
+    
+
+

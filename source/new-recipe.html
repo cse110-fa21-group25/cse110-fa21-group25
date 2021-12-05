@@ -59,34 +59,14 @@
   </head>
   <body class="new-recipe">
     <header>
-      <nav class="navbar">
-        <div class="navbar-container this-container">
-          <input type="checkbox" name="" id="" />
-          <div class="hamburger-lines">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
-          </div>
-          <ul class="menu-items">
-            <li>
-              <a id="create-new-recipe" onclick="navigateCreateNewRecipe()">
-                Create Recipe</a
-              >
-            </li>
-            <li>
-              <a id="my-page-button" onclick="navigateMyPage()"> My Page</a>
-            </li>
-            <li>
-              <a id="login-button" onclick="navigateLogin()" hidden></a>
-            </li>
-          </ul>
-          <a href="./home-page.html"
-            ><img class="logo" src="./assets/images/logo-nav.png" alt="Recipeasy Logo"
-          /></a>
-          <!-- <input id="search-bar" type="text"> -->
-          <!-- <button id="search-button" type="button">Search</button> -->
-        </div>
-      </nav>
+
+      <div id="nav-placeholder"></div>
+      <script>
+        $(function () {
+          $("#nav-placeholder").load("navbar.html");
+        });
+      </script>      
+
       
     </header>
     <main class="wrapper">
@@ -103,7 +83,7 @@
         <textarea
           id="description"
           placeholder="Tell us a little bit about your recipe here!"
-          style="height: 70px; width: 300px"
+          style="height: 100px; "
         ></textarea>
         <br /><br />
 
@@ -113,7 +93,7 @@
             class="tags"
             id="tags"
             multiple="yes"
-            style="vertical-align: middle; width: 120px"
+            style="vertical-align: middle; "
           >
             <option value="0">Select Tags:</option>
             <option value="1">Breakfast</option>
@@ -143,10 +123,12 @@
               />
             </div>
           </div>
-          <button id="add-ingredient" type="button">Add Ingredient</button>
+          <div class="ingredient-button">
+            <button id="add-ingredient" type="button">Add Ingredient</button>
           <button id="remove-ingredient" type="button">
             Remove Ingredient
           </button>
+          </div>
         </section>
         <br /><br />
 
@@ -193,23 +175,26 @@
               <label>1.</label>
               <textarea
                 class="steps"
-                style="height: 70px; width: 300px; vertical-align: middle"
+                style="height: 70px; vertical-align: middle"
                 placeholder="Add the first step of creating your recipe here!"
                 id="step1"
               ></textarea>
             </div>
           </div>
-          <button id="add-step" type="button">Add Step</button>
-          <button id="remove-step" type="button">Remove Step</button>
+          <div class="step-button">
+            <button id="add-step" type="button">Add Step</button>
+            <button id="remove-step" type="button">Remove Step</button>
+          </div>
         </section>
         <br /><br />
 
         <label>Upload Image:</label>
         <input type="file" id="recipe-image" accept="image/png, image/jpeg" />
         <br /><br />
-
-        <button type="submit" id="submit-recipe">Submit</button>
-        <button type="button" id="cancel">Cancel</button>
+        <div class="submit-button">
+          <button type="submit" id="submit-recipe">Submit</button>
+          <button type="button" id="cancel">Cancel</button>
+        </div>
       </form>
     </main>
     <footer></footer>
