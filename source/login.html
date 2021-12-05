@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Log In</title>
     
     <!-- Importing fonts from google fonts -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Fira+Sans:wght@400;700&family=Oswald:wght@200;300;400&family=Quicksand:wght@300&display=swap');
     </style>
     
+    <!-- Importing more fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap');
+    </style>
+    
     <!-- login.css -->
-    <link rel="stylesheet" href="/source/assets/styles/login.css" />
+    <link rel="stylesheet" href="./assets/styles/login.css" />
+    <link rel="icon" href="./assets/images/logo-circle.png">
   </head>
   <body>
     <!-- User credential -->
@@ -20,7 +26,7 @@
       
       <!-- Image Container -->
       <div id="image-container">
-        <img id="logoBox" src="logo.png" alt="logo" />
+        <img id="logoBox" src="./assets/images/logo.png" alt="logo" />
       </div>
       
       <!-- Login Container -->
@@ -30,13 +36,31 @@
         <input type="text" id="email" name="email" placeholder="Email" />
         
         <!-- Input for Password -->
-        <input type="password" id="password" name="password" placeholder="Password"/>
+        <input type="password" id="password" name="password" placeholder="Password" />
         
         <!-- Error Message -->
         <span id="error-message" style="color: red"></span>
         
         <!-- Login Button -->
         <input id="login" type="button" value="Log in" onclick="login()" />
+
+        <!-- Using 'enter' to log in -->
+        <script>
+          var emailInput = document.getElementById("email");
+          var passInput = document.getElementById("password");
+          emailInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+             event.preventDefault();
+             document.getElementById("login").click();
+            }
+          });
+          passInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+             event.preventDefault();
+             document.getElementById("login").click();
+            }
+          });
+        </script>
         
         <!-- Footer Container -->
         <div id="footer-container">

@@ -5,7 +5,21 @@ header {
 body {
   background-color: #e3fbf0;
 }
-
+#searched-recipe > h2 {
+  font-family: "Oswald", sans-serif;
+  border-bottom: 1px solid #72a98f;
+  padding-bottom: 15px;
+  width: 30%;
+  margin-top: 140px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 40px;
+}
 #recipe-categories {
   margin: 10px 20px;
   font-family: "Oswald", sans-serif;
@@ -52,7 +66,7 @@ body {
 .sticky-top {
   background-color: rgba(255, 255, 255, 0.9);
   position: fixed;
-  top: 76px;
+  top: 90px;
   width: 100%;
   z-index: 100;
   display: flex;
@@ -70,7 +84,7 @@ body {
   color: white;
   font-family: "Quicksand", sans-serif;
 }
-.view-recipe-button:hover, 
+.view-recipe-button:hover,
 .card-footer > button:hover {
   background: #536d61;
 }
@@ -84,18 +98,21 @@ body {
   border: none;
   background: none;
   color: #003050;
+  margin-right: 10px;
   text-shadow: 0 1px 1px 1px rgb(0, 0, 0);
 }
 
 .tag {
   margin: 2px;
-  padding: 3px;
+  padding: 6px;
   border: none;
   border-radius: 10px;
   background-color: rgb(190, 226, 255);
   box-shadow: 0 1px 1px 1px rgb(240, 240, 240);
 }
-
+.tag:hover {
+  background-color: rgb(147, 174, 196);
+}
 .tags-div {
   display: flex;
   justify-content: start;
@@ -119,7 +136,22 @@ body {
   z-index: 100;
   cursor: pointer;
 }
-
+.card-top {
+  background-color: #72a98f;
+  height: 25px;
+}
+.xbutton {
+  background-color: #72a98f;
+  margin-right: 10px;
+  padding: 2px;
+  width: 5%;
+  border: none;
+  border-width: thin;
+  font-weight: 600;
+}
+.xbutton:hover {
+  background: #536d61;
+}
 .expand-card {
   width: 50%;
   height: 90%;
@@ -134,7 +166,7 @@ body {
 .expand-main {
   margin: 5px;
   padding: 2px;
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 15px;
 }
 
@@ -144,6 +176,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-top: 10px;
+}
+
+.expand-body-section > h2 {
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
 }
 
 .recipe-title-capitalize {
@@ -197,15 +235,14 @@ body {
   font-size: 20px;
 }
 
-
 .card-footer > button {
   height: 30px;
-  width:100%;
+  width: 100%;
   border-radius: 20px;
   border: none;
   background: #688779;
   color: white;
   font-family: "Oswald", sans-serif;
-  margin:2px;
-  text-align:center;
+  margin: 2px;
+  text-align: center;
 }
