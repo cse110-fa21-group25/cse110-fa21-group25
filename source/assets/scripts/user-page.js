@@ -191,7 +191,7 @@ async function searchedRecipe(recipe) {
   const myRecipeDiv = document.createElement('div');
   myRecipeDiv.classList.add('my-recipe');
   searchedRecipeRow.appendChild(myRecipeDiv);
-  searchedRecipeRow.appendChild(cardDiv);
+  myRecipeDiv.appendChild(cardDiv);
   // check if cardDiv generated properly
 
   recipeCardDetail(recipeDetailButton, recipe);
