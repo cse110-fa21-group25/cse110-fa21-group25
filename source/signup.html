@@ -11,7 +11,8 @@
     </style>
     
     <link rel="stylesheet" href="./assets/styles/signup.css">
-    <title>Document</title>
+    <link rel="icon" href="./assets/images/logo-circle.png">
+    <title>Sign Up</title>
   </head>
   <body>
     <!-- User credential -->
@@ -19,7 +20,7 @@
       
       <!-- Image Container -->
       <div id="image-container">
-        <img id= "logoBox" src="logo.png" alt="logo">
+        <img id= "logoBox" src="./assets/images/logo.png" alt="logo">
       </div>
 
       <!-- Signup Container -->
@@ -38,6 +39,31 @@
       
       <!-- Sign up -->
       <input id="signup" type="button" value="Sign Up" onclick="signup()"/>
+
+      <!-- Using 'enter' to sign up -->
+      <script>
+        var emailInput = document.getElementById("email");
+        var passInput = document.getElementById("password");
+        var confirmPassInput = document.getElementById("confirm-password");
+        emailInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+        passInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+        confirmPassInput.addEventListener("keypress", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("signup").click();
+          }
+        });
+      </script>
       
       <!-- Redirect to home page or login-->
       <div id="footer-container">
