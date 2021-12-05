@@ -135,6 +135,7 @@ async function searchedRecipe(recipe) {
 
   const recipeTitleH4 = document.createElement('h4');
   recipeTitleH4.innerHTML = recipe.data.name;
+  recipeTitleH4.classList.add('recipe-title-capitalize');
 
   const timeP = document.createElement('p');
   timeP.innerHTML = formatTime(recipe.data.cookTime);
@@ -226,6 +227,7 @@ async function createRecipeCard() {
 
     const recipeTitleH4 = document.createElement('h4');
     recipeTitleH4.innerHTML = recipe.data.name;
+    recipeTitleH4.classList.add('recipe-title-capitalize');
 
     const timeP = document.createElement('p');
     timeP.innerHTML = formatTime(recipe.data.cookTime);
