@@ -141,10 +141,3 @@
 button:hover {
   background-color: #536d61;
 }
-#created-recipes {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-right: 25px;
-}

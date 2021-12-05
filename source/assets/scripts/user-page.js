@@ -188,8 +188,13 @@ async function searchedRecipe(recipe) {
   console.log('here???!?!?!?');
   // Attach to the appropriate recipe-row category
   const searchedRecipeRow = document.querySelector('#created-recipes');
-  const myRecipeDiv = document.createElement('div');
-  myRecipeDiv.classList.add('my-recipe');
+  let myRecipeDiv;
+  if (!document.querySelector('.my-recipe')) {
+    myRecipeDiv = document.createElement('div');
+    myRecipeDiv.classList.add('my-recipe');
+  } else {
+    myRecipeDiv = document.querySelector('.my-recipe');
+  }
   searchedRecipeRow.appendChild(myRecipeDiv);
   myRecipeDiv.appendChild(cardDiv);
   // check if cardDiv generated properly
