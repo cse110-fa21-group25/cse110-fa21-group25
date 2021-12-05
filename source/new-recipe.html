@@ -70,23 +70,34 @@
       
     </header>
     <main class="wrapper">
+      <div class="box">
+        <div class="title-box">
+          <div class="titles">
+            Create Recipe
+          </div>
+        </div>
       
       <form id="recipeForm">
-        <label> My Recipe Title:</label>
-        <input type="text" name="recipe-title" id="recipe-title" />
-        <br /><br />
+        <div class="each-form">
+          <label> My Recipe Title:</label>
+          <input type="text" name="recipe-title" id="recipe-title" />
+        </div>
+       
 
-        <label> Author: </label>
+        <div class="each-form">
+        <label> Author:</label>
         <input type="text" name="author" id="author" />
-        <br /><br />
-        <p>Description:</p>
+      </div>
+
+      <div class="description-form">
+        <label>Description:</label>
         <textarea
           id="description"
           placeholder="Tell us a little bit about your recipe here!"
           style="height: 100px; "
         ></textarea>
-        <br /><br />
-
+      </div>
+      <div class="description-form">
         <section id="tag-section">
           <label>Tags:</label>
           <select
@@ -106,12 +117,15 @@
             <option value="8">Snack</option>
           </select>
           <button id="add-tag" type="button">Add Tag(s)</button>
+          <label>
+            Selected Tags:
+          </label>
           <div id="selected-tags"></div>
         </section>
+        </div>
 
-        <br /><br />
-
-        <label>Ingredients</label>
+        <div class="each-form">
+          <label>Ingredients:</label>
         <section name="ingredients">
           <div class="ingredients-field">
             <div>
@@ -124,13 +138,13 @@
             </div>
           </div>
           <div class="ingredient-button">
-            <button id="add-ingredient" type="button">Add Ingredient</button>
+            <button id="add-ingredient" type="button">Add </button>
           <button id="remove-ingredient" type="button">
-            Remove Ingredient
+            Remove 
           </button>
           </div>
         </section>
-        <br /><br />
+        </div>
 
         <label> Cook Time: </label>
         <div class="cook-time" id="cook-time">
@@ -166,7 +180,7 @@
           </select>
         </div>
         <br /><br />
-
+        
         <label>Steps:</label>
         <section name="steps">
           <!-- same as above -->
@@ -175,28 +189,32 @@
               <label>1.</label>
               <textarea
                 class="steps"
-                style="height: 70px; vertical-align: middle"
                 placeholder="Add the first step of creating your recipe here!"
                 id="step1"
               ></textarea>
             </div>
           </div>
+          <div class="each-form">
+
           <div class="step-button">
-            <button id="add-step" type="button">Add Step</button>
-            <button id="remove-step" type="button">Remove Step</button>
+            <button id="add-step" type="button">Add </button>
+            <button id="remove-step" type="button">Remove </button>
           </div>
         </section>
-        <br /><br />
 
         <label>Upload Image:</label>
         <input type="file" id="recipe-image" accept="image/png, image/jpeg" />
-        <br /><br />
+        <div class="each-form">
+
         <div class="submit-button">
           <button type="submit" id="submit-recipe">Submit</button>
           <button type="button" id="cancel">Cancel</button>
         </div>
+        </div>
       </form>
-    </main>
+    
+    </div>
+  </main>
     <footer></footer>
   </body>
 </html>
