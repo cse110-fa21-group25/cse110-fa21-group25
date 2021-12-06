@@ -21,6 +21,7 @@
 }
 
 .each-form {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
@@ -189,4 +190,7 @@ div > button {
 .each-form > .submit-button {
   margin-top: 150px;
   margin-bottom: -30px;
+}
+.recipe-steps > div > label {
+  font-size: 18px;
 }
