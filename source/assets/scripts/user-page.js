@@ -185,7 +185,6 @@ async function searchedRecipe(recipe) {
   cardFooterDiv.appendChild(recipeDeleteButton);
   cardFooterDiv.appendChild(recipeUpdateButton);
 
-  console.log('here???!?!?!?');
   // Attach to the appropriate recipe-row category
   const searchedRecipeRow = document.querySelector('#created-recipes');
   let myRecipeDiv;
@@ -790,7 +789,6 @@ async function updating(recipeUpdateButton, recipe) {
     pDescriptionTextarea.id = 'description';
     const someThing = 'Tell us a little bit about your recipe here!';
     pDescriptionTextarea.placeholder = someThing;
-    pDescriptionTextarea.style = 'height: 70px; width: 300px';
 
     mainForm.appendChild(pDescription);
     mainForm.appendChild(pDescriptionTextarea);
@@ -810,7 +808,6 @@ async function updating(recipeUpdateButton, recipe) {
     sectionTagSelect.classList.add('tags');
     sectionTagSelect.id = 'tags';
     sectionTagSelect.multiple = 'yes';
-    sectionTagSelect.style = 'vertical-align: middle; width: 120px';
 
     const tagOption0 = document.createElement('option');
     tagOption0.value = 0;
@@ -970,10 +967,7 @@ async function updating(recipeUpdateButton, recipe) {
     sectionStepsDivDiv.appendChild(sectionStepsDivDivLabel);
     const sectionStepsDivDivTextarea = document.createElement('textarea');
     sectionStepsDivDivTextarea.classList.add('steps');
-    const height = 'height: 70px;';
-    const width = ' width: 300px;';
-    const vertical = ' vertical-align: middle';
-    sectionStepsDivDivTextarea.style = height + width + vertical;
+
     const firstEx= 'Add the first step of creating ';
     const secondEx= 'your recipe here!';
     sectionStepsDivDivTextarea.placeholder = firstEx + secondEx;
@@ -1245,9 +1239,9 @@ function loadingStepHtml(object) {
       // Set the step label to be the number of "steps" fields there will be.
       newLabel.textContent = (parentDiv.childElementCount + 1) + '.' + ' ';
 
-      // Style the new step box
-      newStep.style = 'height:70px; width:300px ';
-      newStep.setAttribute('vertical-align', 'middle');
+      // // Style the new step box
+      // newStep.style = 'height:70px; width:300px ';
+      // newStep.setAttribute('vertical-align', 'middle');
 
       // Populate Input Fields
       newStep.id = 'step' + key + 1;
@@ -1470,10 +1464,10 @@ function addStep() {
   const parentDiv = document.querySelector('.recipe-steps');
   // Set the step label to be the number of "steps" fields there will be.
   label.textContent = (parentDiv.childElementCount + 1) + '. ';
-  // Adjust some basic styles for  the textarea element
-  newStep.style.height = '70px';
-  newStep.style.width = '300px';
-  newStep.style.verticalAlign = 'middle';
+  // // Adjust some basic styles for  the textarea element
+  // newStep.style.height = '70px';
+  // newStep.style.width = '300px';
+  // newStep.style.verticalAlign = 'middle';
   // Add unique id's to the textareas, the id is "step" and the step number
   const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
   newStep.id = 'step' + idNum;
