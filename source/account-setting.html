@@ -72,6 +72,17 @@
   
           <!-- Change Email Button -->
           <input id="change-email" type="button" value="Update Email" onclick="onChangeEmail()"/>
+
+          <!-- Using 'enter' to update email -->
+          <script>
+            var newEmailInput = document.getElementById("email");
+            newEmailInput.addEventListener("keypress", function(event) {
+              if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("change-email").click();
+              }
+            });
+          </script>
         </div>
       
       <!-- Password container -->
@@ -86,6 +97,24 @@
         
         <!-- Change Password Button -->
         <input id="change-password" type="button" value="Update Password" onclick="onChangePassword()"/>
+
+        <!-- Using 'enter' to update password -->
+        <script>
+          var newPassInput = document.getElementById("password");
+          var confirmPassInput = document.getElementById("confirm-password");
+          newPassInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              document.getElementById("change-password").click();
+            }
+          });
+          confirmPassInput.addEventListener("keypress", function(event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              document.getElementById("change-password").click();
+            }
+          });
+        </script>
       </div>
         <!-- Footer Container -->
         <div id="footer-container">
