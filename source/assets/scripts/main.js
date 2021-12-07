@@ -26,15 +26,9 @@ async function init() {
   searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       searchRecipes(searchBar.value);
-      // console.log(searchBar.value);
     }
   });
 
-  // searchButton.addEventListener('click', ()=>{
-  //   searchRecipes(searchBar.value);
-  // });
-
-  // console.log(Object.keys(recipeData).length);
   populateHomePage(recipeData);
 }
 
@@ -71,7 +65,6 @@ async function createRecipeCard(data, sectionName) {
   section.appendChild(sectionRecipeDiv);
 
   for (const recipe of data) {
-    // console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -113,7 +106,6 @@ async function createRecipeCard(data, sectionName) {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    // console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -150,14 +142,12 @@ async function createRecipeCard(data, sectionName) {
     // const exampleRecipeRow = document.querySelector(
     //     '#example-recipe > .recipe-row');
     // check if cardDiv generated properly
-    // console.log(cardDiv);
     // exampleRecipeRow.appendChild(cardDiv);
 
     sectionRecipeDiv.appendChild(cardDiv);
 
     recipeCardDetail(recipeDetailButton, recipe);
   }
-  // console.log('done looping through recipes');
   const recipeCategoriesDiv = document.querySelector('#recipe-categories');
   recipeCategoriesDiv.insertBefore(section, recipeCategoriesDiv.firstChild);
 }
@@ -167,8 +157,6 @@ async function createRecipeCard(data, sectionName) {
  * @param {*} query query to search for recipes
  */
 async function searchRecipes(query) {
-  // const breakfastTest = await getRecipesByTag('Breakfast');
-  // console.log(breakfastTest);
   if (!query) {
     showRecipesOnSearch(recipeData, 'All Recipes', query);
     return;
@@ -181,17 +169,14 @@ async function searchRecipes(query) {
   try {
     recipeDataBasedOnSearch = await getRecipesByName(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
     recipeDataBasedOnSearch = await getRecipesByTag(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
     recipeDataBasedOnSearch = await getRecipesByUserId(query);
     if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-      // console.log(recipeDataBasedOnSearch);
       array.push(recipeDataBasedOnSearch);
     }
   } catch (e) {
@@ -250,12 +235,6 @@ let filterRecipeArray = [];
  * @param {*} tagName name of the tag
  */
 async function searchByTag(button, tagName) {
-  // let recipeWithTag;
-  // const recipeDataBasedOnSearch = await getRecipesByTag(tagName);
-  // if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-  //   map[tagName] = recipeDataBasedOnSearch;
-  // }
-  // console.log(map);
   button.addEventListener('click', ()=>{
     for (const recipe of recipeData) {
       for (const tag in recipe.data.tags) {
@@ -267,13 +246,10 @@ async function searchByTag(button, tagName) {
     filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
       [item['id'], item])).values()];
 
-    // console.log(filterRecipeArray);
-
     const header = document.querySelector('header');
     let wrapper;
     let filterDiv;
     if (!document.querySelector('.wrapper')) {
-      console.log('filter not found');
       wrapper = document.createElement('section');
       wrapper.classList.add('wrapper');
       filterDiv = document.createElement('div');
@@ -284,13 +260,11 @@ async function searchByTag(button, tagName) {
       wrapper = document.querySelector('.wrapper');
       filterDiv = document.querySelector('.sticky-top');
     }
-    console.log('tag button clicked');
     if (!uniqueFilters.has(button.innerHTML)) {
       const buttonDiv = document.createElement('div');
       const buttonClone = button.cloneNode(true);
       const closeButton = document.createElement('button');
       closeButton.innerHTML = 'x';
-      // console.log(buttonClone);
       uniqueFilters.add(buttonClone.innerHTML);
       buttonClone.classList.add('tag');
       buttonDiv.classList.add('filter-component');
@@ -331,13 +305,9 @@ async function removeFilterTag(closeButton, filterTagName,
     }
 
     // filter recipe
-    /* filterRecipeArray = filterRecipeArray.
-    filter(recipe => !(recipe.data.tags.includes(filterTagName)));
-    */
     filterRecipeArray = [];
     for (const availTag of uniqueFilters) {
       for (const recipe of recipeData) {
-        // console.log(availTag);
         for (const tag in recipe.data.tags) {
           if (availTag == recipe.data.tags[tag]) {
             filterRecipeArray.push(recipe);
@@ -347,7 +317,6 @@ async function removeFilterTag(closeButton, filterTagName,
     }
     filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
       [item['id'], item])).values()];
-    // console.log(filterRecipeArray);
     if (!filterRecipeArray.length) {
       showRecipesOnSearch(recipeData, 'All Recipes', null);
     } else {
@@ -490,7 +459,6 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     instructionsDiv.appendChild(instructionsH4);
     instructionsDiv.appendChild(instructionsOl);
 
-    console.log(overlayDiv);
 
     // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
