@@ -1,6 +1,6 @@
 # Recipe Tagging
 
-* Status: proposed 
+* Status: accepted
 * Date: 2021-11-06
 
 ## Context and Problem Statement
