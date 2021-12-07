@@ -131,6 +131,10 @@
 
 /* style for update-recipe */
 
+#update-top {
+  background-color: #72a98f;
+}
+
 #nav-placeholder > h1 {
   font-weight: 600;
   font-family: "Oswald", sans-serif;
