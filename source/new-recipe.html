@@ -55,64 +55,56 @@
      <link href="./assets/styles/new-recipe.css" rel="stylesheet" />
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="icon" href="./assets/images/logo-circle.png">
   </head>
   <body class="new-recipe">
     <header>
-      <nav class="navbar">
-        <div class="navbar-container this-container">
-          <input type="checkbox" name="" id="" />
-          <div class="hamburger-lines">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
-          </div>
-          <ul class="menu-items">
-            <li>
-              <a id="create-new-recipe" onclick="navigateCreateNewRecipe()">
-                Create Recipe</a
-              >
-            </li>
-            <li>
-              <a id="my-page-button" onclick="navigateMyPage()"> My Page</a>
-            </li>
-            <li>
-              <a id="login-button" onclick="navigateLogin()" hidden></a>
-            </li>
-          </ul>
-          <a href="./home-page.html"
-            ><img class="logo" src="logo-nav.png" alt="Recipeasy Logo"
-          /></a>
-          <!-- <input id="search-bar" type="text"> -->
-          <!-- <button id="search-button" type="button">Search</button> -->
-        </div>
-      </nav>
+
+      <div id="nav-placeholder"></div>
+      <script>
+        $(function () {
+          $("#nav-placeholder").load("navbar.html");
+        });
+      </script>      
+
       
     </header>
     <main class="wrapper">
+      <div class="box">
+        <div class="title-box">
+          <div class="titles">
+            Create Recipe
+          </div>
+        </div>
       
       <form id="recipeForm">
-        <label> My Recipe Title:</label>
-        <input type="text" name="recipe-title" id="recipe-title" />
-        <br /><br />
+        <div class="each-form">
+          <label> My Recipe Title:</label>
+          <input type="text" name="recipe-title" id="recipe-title" />
+        </div>
+       
 
-        <label> Author: </label>
+        <div class="each-form">
+        <label> Author:</label>
         <input type="text" name="author" id="author" />
-        <br /><br />
-        <p>Description:</p>
+      </div>
+
+      <div class="description-form">
+        <label>Description:</label>
         <textarea
           id="description"
           placeholder="Tell us a little bit about your recipe here!"
-          style="height: 70px; width: 300px"
+          style="height: 100px; "
         ></textarea>
-        <br /><br />
-
+      </div>
+      <div class="description-form">
         <section id="tag-section">
           <label>Tags:</label>
           <select
             class="tags"
             id="tags"
             multiple="yes"
-            style="vertical-align: middle; width: 120px"
+            style="vertical-align: middle; "
           >
             <option value="0">Select Tags:</option>
             <option value="1">Breakfast</option>
@@ -125,12 +117,15 @@
             <option value="8">Snack</option>
           </select>
           <button id="add-tag" type="button">Add Tag(s)</button>
+          <label>
+            Selected Tags:
+          </label>
           <div id="selected-tags"></div>
         </section>
+        </div>
 
-        <br /><br />
-
-        <label>Ingredients</label>
+        <div class="each-form">
+          <label>Ingredients:</label>
         <section name="ingredients">
           <div class="ingredients-field">
             <div>
@@ -142,12 +137,14 @@
               />
             </div>
           </div>
-          <button id="add-ingredient" type="button">Add Ingredient</button>
+          <div class="ingredient-button">
+            <button id="add-ingredient" type="button">Add </button>
           <button id="remove-ingredient" type="button">
-            Remove Ingredient
+            Remove 
           </button>
+          </div>
         </section>
-        <br /><br />
+        </div>
 
         <label> Cook Time: </label>
         <div class="cook-time" id="cook-time">
@@ -183,7 +180,7 @@
           </select>
         </div>
         <br /><br />
-
+        
         <label>Steps:</label>
         <section name="steps">
           <!-- same as above -->
@@ -192,25 +189,32 @@
               <label>1.</label>
               <textarea
                 class="steps"
-                style="height: 70px; width: 300px; vertical-align: middle"
                 placeholder="Add the first step of creating your recipe here!"
                 id="step1"
               ></textarea>
             </div>
           </div>
-          <button id="add-step" type="button">Add Step</button>
-          <button id="remove-step" type="button">Remove Step</button>
+          <div class="each-form">
+
+          <div class="step-button">
+            <button id="add-step" type="button">Add </button>
+            <button id="remove-step" type="button">Remove </button>
+          </div>
         </section>
-        <br /><br />
 
         <label>Upload Image:</label>
         <input type="file" id="recipe-image" accept="image/png, image/jpeg" />
-        <br /><br />
+        <div class="each-form">
 
-        <button type="submit" id="submit-recipe">Submit</button>
-        <button type="button" id="cancel">Cancel</button>
+        <div class="submit-button">
+          <button type="submit" id="submit-recipe">Submit</button>
+          <button type="button" id="cancel">Cancel</button>
+        </div>
+        </div>
       </form>
-    </main>
+    
+    </div>
+  </main>
     <footer></footer>
   </body>
 </html>
