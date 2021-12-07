@@ -140,11 +140,6 @@
 }
 
 /* style for update-recipe */
-/* .expand-card > div {
-  background-color: #72a98f;
-  height: 25px;
-} */
-
 #nav-placeholder > h1 {
   font-weight: 600;
   font-family: "Oswald", sans-serif;
@@ -152,7 +147,6 @@
 
 #recipeForm > label {
   display: block;
-  /* text-align: center; */
   align-items: center;
   line-height: 150%;
   font-size: 1em;
@@ -177,7 +171,6 @@ input[class="ingredient"] {
 
 #recipeForm > p {
   display: block;
-  /* text-align: center; */
   align-items: center;
   line-height: 150%;
   font-size: 1em;
@@ -201,12 +194,11 @@ textarea {
 
 #tag-section > label {
   display: block;
-  /* text-align: center; */
   align-items: center;
   line-height: 150%;
   font-size: 1em;
   font-weight: bold;
-  text-shadow: 1px 1px #72a98f; 
+  text-shadow: 1px 1px #72a98f;
 }
 
 #tags {
@@ -245,11 +237,7 @@ textarea {
 }
 #selected-tags {
   display: flex;
-  /* margin-left: auto;
-  margin-right: auto; */
-
   font-size: 16px;
-  /* justify-content: space-evenly; */
   justify-content: left;
 }
 
@@ -269,7 +257,7 @@ textarea {
   width: 25%;
   border: none;
   border-radius: 10px;
-  background-color: rgb(179,96,96);
+  background-color: rgb(179, 96, 96);
   font-size: 15px;
   font-weight: 300;
   color: white;
@@ -308,16 +296,15 @@ textarea {
   width: 25%;
   border: none;
   border-radius: 10px;
-  background-color: rgb(179,96,96);
+  background-color: rgb(179, 96, 96);
   font-size: 15px;
   font-weight: 300;
   color: white;
   height: 30px;
 }
 
-lapbel {
+.label {
   display: block;
-  /* text-align: center; */
   align-items: center;
   line-height: 150%;
   font-size: 1em;
@@ -347,10 +334,9 @@ lapbel {
   width: 25%;
   border: none;
   border-radius: 10px;
-  background-color: rgb(179,96,96);
+  background-color: rgb(179, 96, 96);
   font-size: 15px;
   font-weight: 300;
   color: white;
   height: 30px;
 }
-
