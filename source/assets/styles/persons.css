@@ -197,7 +197,7 @@ textarea {
   border: 1.5px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
-  margin-left: left;
+  /* margin-left: left; */
   margin-right: left;
   font-size: 15px;
   margin-left: 20px;
@@ -224,7 +224,7 @@ textarea {
   border-radius: 10px;
   box-sizing: border-box;
   font-size: 15px;
-  margin-left: left;
+  /* margin-left: left; */
   margin-right: left;
   margin-left: 20px;
 }
@@ -241,7 +241,7 @@ textarea {
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 30px;
-  margin-left: left;
+  /* margin-left: left; */
   margin-right: left;
   font-size: 15px;
   height: 30px;
@@ -344,7 +344,7 @@ lapbel {
 
 #recipe-image {
   margin-top: 10px;
-  margin-left: left;
+  /* margin-left: left; */
   margin-right: left;
   margin-left: 20px;
 }
