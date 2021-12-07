@@ -130,14 +130,11 @@
 }
 
 /* style for update-recipe */
-/* .expand-card > div {
-  background-color: #72a98f;
-  height: 25px;
-} */
 
 #nav-placeholder > h1 {
   font-weight: 600;
   font-family: "Oswald", sans-serif;
+  margin-left: 20px;
 }
 
 #recipeForm > label {
@@ -148,6 +145,7 @@
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
+  margin-left: 20px;
 }
 
 input[name="recipe-title"],
@@ -173,6 +171,7 @@ input[class="ingredient"] {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
+  margin-left: 20px;
 }
 
 textarea {
@@ -187,6 +186,7 @@ textarea {
   margin-left: left;
   margin-right: left;
   font-size: 15px;
+  margin-left: 20px;
 }
 
 #tag-section > label {
@@ -197,6 +197,7 @@ textarea {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f; 
+  margin-left: 20px;
 }
 
 #tags {
@@ -211,6 +212,7 @@ textarea {
   font-size: 15px;
   margin-left: left;
   margin-right: left;
+  margin-left: 20px;
 }
 
 #add-tag {
@@ -229,6 +231,7 @@ textarea {
   margin-right: left;
   font-size: 15px;
   height: 30px;
+  margin-left: 20px;
 }
 #add-tag:hover {
   background-color: #536d61;
@@ -241,6 +244,11 @@ textarea {
   font-size: 16px;
   /* justify-content: space-evenly; */
   justify-content: left;
+  margin-left: 20px;
+}
+
+.ingredients-field {
+  margin-left: 20px;
 }
 
 #add-ingredient {
@@ -252,7 +260,8 @@ textarea {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 #remove-ingredient {
@@ -270,6 +279,7 @@ textarea {
   display: flex;
   justify-content: left;
   align-items: left;
+  margin-left: 20px;
 }
 #num-hours,
 #num-minutes {
@@ -291,7 +301,9 @@ textarea {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 #remove-step {
@@ -313,12 +325,14 @@ lapbel {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
+  margin-left: 20px;
 }
 
 #recipe-image {
   margin-top: 10px;
   margin-left: left;
   margin-right: left;
+  margin-left: 20px;
 }
 
 #update-recipe {
@@ -330,7 +344,8 @@ lapbel {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 #cancel-recipe {
