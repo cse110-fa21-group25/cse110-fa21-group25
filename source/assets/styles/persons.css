@@ -141,7 +141,7 @@
 
 /* style for update-recipe */
 
-#update-top {
+body > div.overlay > div > div:nth-child(1) {
   background-color: #72a98f;
 }
 
