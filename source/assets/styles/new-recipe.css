@@ -311,9 +311,6 @@ textarea {
 }
 #selected-tags {
   display: flex;
-  /* margin-left: auto;
-  margin-right: auto; */
-
   font-size: 16px;
   justify-content: space-evenly;
 }

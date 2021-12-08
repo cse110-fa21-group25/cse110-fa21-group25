@@ -728,7 +728,9 @@ async function updating(recipeUpdateButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
