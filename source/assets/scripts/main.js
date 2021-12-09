@@ -47,14 +47,6 @@ async function populateHomePage(data) {
  */
 async function createRecipeCard(data, sectionName) {
   // Add recipes to home page
-  // 1) Create new section
-  // <section id="example-recipe">
-  //   <h2>Example:</h2>
-  //   <div class="recipe-row">
-  //     <!-- RECIPE CARD GOES HERE -->
-  //   </div>
-  // </section>
-  // 2) Put recipes in the newly created section
   const section = document.createElement('section');
   section.setAttribute('id', 'searched-recipe');
   const sectionTitleH2 = document.createElement('h2');
@@ -65,31 +57,10 @@ async function createRecipeCard(data, sectionName) {
   section.appendChild(sectionRecipeDiv);
 
   for (const recipe of data) {
-    // Card DOM Structure
-    /* *********************************** *
-         * card format:
-         * <div class='card'>
-         *      <div class='card-body'>
-         *      <img src='{recipe's thumbnail}'>
-         *          <h4> {recipe's name} </h4>
-         *          <p> Cook/prep time </p>
-         *          <p> User's name (who created the recipe) </p>
-         *          <div class='tags'>
-         *              <button> {recipe's tag 1} </button>
-         *              ... // more tags go here
-         *          </div>
-         *      </div>
-         *      <div class='card-footer'>
-         *          <button>View Recipe</button>
-         *      </div>
-         * </div>
-         *
-         * *********************************** */
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.classList.add('col-md-3');
     cardDiv.classList.add('col-sm-6');
-    // cardDiv.setAttribute('style', "width: 18rem;")
     const thumbnailImg = document.createElement('img');
     thumbnailImg.setAttribute('src', recipe.data.imageURL);
 
@@ -137,12 +108,6 @@ async function createRecipeCard(data, sectionName) {
     cardBodyDiv.appendChild(tagDiv);
 
     cardFooterDiv.appendChild(recipeDetailButton);
-
-    // Attach to the appropriate recipe-row category
-    // const exampleRecipeRow = document.querySelector(
-    //     '#example-recipe > .recipe-row');
-    // check if cardDiv generated properly
-    // exampleRecipeRow.appendChild(cardDiv);
 
     sectionRecipeDiv.appendChild(cardDiv);
 
@@ -332,39 +297,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    /* *********************************** *
-     * expand format:
-     * <div>
-     *      <div class='close-recipe-detail-div'>
-     *          <button>X</button>
-     *      </div>
-     *      <div>
-     *          <h4> {recipe's title} </h4>
-     *          <img src='{recipe's thumbnail}'>
-     *          <p> Cook/prep time </p>
-     *          <p> {recipe's owner} </p>
-     *          <div class='tags'>
-     *              <button> {recipe's tag 1} </button>
-     *              ... // more tags go here
-     *          </div>
-     *      </div>
-     *      <div class='ingredients'>
-     *          <h4>Ingredients:</h4>
-     *          <ul>
-     *              <li>{ingredient 1}</li>
-     *          ... // more ingredients go here
-     *          </ul>
-     *      </div>
-     *      <div class='instructions'>
-     *          <h4>Instructions:</h4>
-     *          <ul>
-     *              <li>{instruction 1}</li>
-     *              ... // more instructions go here
-     *          </ul>
-     *      </div>
-     * </div>
-     *
-     * *********************************** */
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
 
@@ -464,17 +396,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    // let overlayOpen = expandDiv.className === 'overlay';
-
     /* Toggle the aria-hidden state on the overlay and the
         no-scroll class on the body */
     bodyHtml.classList.add('unscroll-body');
-    //  bodyHtml.classList.toggle('noscroll', overlayOpen);
-
-    /* On some mobile browser when the overlay was previously
-        opened and scrolled, if you open it again it doesn't
-        reset its scrollTop property */
-    //  overlayDiv.scrollTop = 0;
 
 
     removeExpandRecipe(closeRecipeExpandButton, overlayDiv, 'Escape');

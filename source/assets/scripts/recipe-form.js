@@ -253,11 +253,6 @@ function addStep() {
   // Set the step label to be the number of "steps" fields there will be.
   label.textContent = (parentDiv.childElementCount + 1) + '.';
 
-  // Adjust some basic styles for  the textarea element
-  // newStep.style.height = '70px';
-  // newStep.style.width = '300px';
-  // newStep.style.verticalAlign = 'middle';
-
   // Add unique id's to the textareas, the id is "step" and the step number
   const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
   newStep.id = 'step' + idNum;
