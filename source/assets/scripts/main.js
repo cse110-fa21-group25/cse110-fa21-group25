@@ -38,8 +38,6 @@ async function init() {
   populateHomePage(recipeData);
 }
 
-// TODO: SPLIT BASED ON HOME-PAGE CATEGORIES
-// (CLARIFY CATEGORIES (e.g. trending recipes, etc.))
 /**
  * Creating recipe cards from the recipeData.
  * @param {*} data the recipe data

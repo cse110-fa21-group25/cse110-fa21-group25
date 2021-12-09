@@ -49,6 +49,7 @@ async function init() {
   }
 
   const searchBar = document.getElementById('search-bar');
+  // const searchButton = document.getElementById('search-button');
 
   searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -57,18 +58,20 @@ async function init() {
     }
   });
 
-  console.log(Object.keys(recipeData).length);
+  // searchButton.addEventListener('click', ()=>{
+  //   searchRecipes(searchBar.value);
+  // });
+
+  // console.log(Object.keys(recipeData).length);
   populateHomePage(recipeData);
 }
 
-// TODO: SPLIT BASED ON HOME-PAGE CATEGORIES
-// (CLARIFY CATEGORIES (e.g. trending recipes, etc.))
 /**
  * Creating recipe cards from the recipeData.
  * @param {*} data the recipe data
  */
 async function populateHomePage(data) {
-  createRecipeCard(data, 'All Recipes');
+  createRecipeCard(data, 'Explore Recipes');
 }
 
 /**
@@ -89,14 +92,14 @@ async function createRecipeCard(data, sectionName) {
   const section = document.createElement('section');
   section.setAttribute('id', 'searched-recipe');
   const sectionTitleH2 = document.createElement('h2');
-  sectionTitleH2.innerHTML = `${sectionName}:`;
+  sectionTitleH2.innerHTML = `${sectionName}`;
   const sectionRecipeDiv = document.createElement('div');
   sectionRecipeDiv.classList.add('recipe-row');
   section.appendChild(sectionTitleH2);
   section.appendChild(sectionRecipeDiv);
 
   for (const recipe of data) {
-    console.log(recipe);
+    // console.log(recipe);
     // Card DOM Structure
     /* *********************************** *
          * card format:
@@ -138,7 +141,7 @@ async function createRecipeCard(data, sectionName) {
     const recipeOwnerP = document.createElement('p');
     recipeOwnerP.innerHTML = 'By ' + recipe.data.author.italics();
 
-    console.log('ingredients ', recipe.data.recipeIngredient);
+    // console.log('ingredients ', recipe.data.recipeIngredient);
 
     // use loop to check for all tags
     const tagDiv = document.createElement('div');
@@ -182,7 +185,7 @@ async function createRecipeCard(data, sectionName) {
 
     recipeCardDetail(recipeDetailButton, recipe);
   }
-  console.log('done looping through recipes');
+  // console.log('done looping through recipes');
   const recipeCategoriesDiv = document.querySelector('#recipe-categories');
   recipeCategoriesDiv.insertBefore(section, recipeCategoriesDiv.firstChild);
 }
@@ -292,7 +295,7 @@ async function searchByTag(button, tagName) {
     filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
       [item['id'], item])).values()];
 
-    console.log(filterRecipeArray);
+    // console.log(filterRecipeArray);
 
     const header = document.querySelector('header');
     let wrapper;
@@ -315,7 +318,7 @@ async function searchByTag(button, tagName) {
       const buttonClone = button.cloneNode(true);
       const closeButton = document.createElement('button');
       closeButton.innerHTML = 'x';
-      console.log(buttonClone);
+      // console.log(buttonClone);
       uniqueFilters.add(buttonClone.innerHTML);
       buttonClone.classList.add('tag');
       buttonDiv.classList.add('filter-component');
@@ -388,8 +391,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    console.log('Hello!! I\'m clicked');
-    console.log(recipe);
     /* *********************************** *
      * expand format:
      * &lt;div>
@@ -427,7 +428,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     overlayDiv.classList.add('overlay');
 
     const closeRecipeExpandDiv = document.createElement('div');
+    closeRecipeExpandDiv.classList.add('card-top');
     const closeRecipeExpandButton = document.createElement('button');
+    closeRecipeExpandButton.classList.add('xbutton');
     closeRecipeExpandButton.innerHTML = 'X';
 
     const expandDiv = document.createElement('div');
@@ -460,7 +463,10 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
       tagDiv.appendChild(tagButton);
       searchByTag(tagButton, tagButton.innerHTML);
     }
-
+    const Description = document.createElement('h4');
+    Description.innerHTML = 'Description';
+    const DescriptionH4 = document.createElement('p');
+    DescriptionH4.innerHTML = recipe.data.description;
     const ingredientsDiv = document.createElement('div');
     ingredientsDiv.classList.add('expand-main');
     const ingredientsH4 = document.createElement('h4');
@@ -472,6 +478,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     for (const ingredient in recipe.data.recipeIngredient) {
       const ingredientLi = document.createElement('li');
       ingredientLi.innerHTML = recipe.data.recipeIngredient[ingredient];
+      ingredientLi.classList.add('emoji');
       ingredientsUl.appendChild(ingredientLi);
     }
 
@@ -491,6 +498,8 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
 
     expandDiv.appendChild(closeRecipeExpandDiv);
     expandDiv.appendChild(bodyDiv);
+    expandDiv.appendChild(Description);
+    expandDiv.appendChild(DescriptionH4);
     expandDiv.appendChild(ingredientsDiv);
     expandDiv.appendChild(instructionsDiv);
 
@@ -528,7 +537,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     //  overlayDiv.scrollTop = 0;
 
 
-    removeExpandRecipe(closeRecipeExpandButton, overlayDiv);
+    removeExpandRecipe(closeRecipeExpandButton, overlayDiv, 'Escape');
   });
 }
 
@@ -536,8 +545,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
  * Collapse expanded recipe.
  * @param {*} button button to collapse
  * @param {*} expandDiv div to remove expanded recipe from
+ * @param {*} key key to collapse if pressed
  */
-async function removeExpandRecipe(button, expandDiv) {
+async function removeExpandRecipe(button, expandDiv, key) {
   button.addEventListener('click', ()=>{
     while (expandDiv.hasChildNodes()) {
       expandDiv.removeChild(expandDiv.lastChild);
@@ -546,8 +556,17 @@ async function removeExpandRecipe(button, expandDiv) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.classList.remove('unscroll-body');
   });
+  window.addEventListener('keydown', function(e) {
+    if (e.key == key) {
+      while (expandDiv.hasChildNodes()) {
+        expandDiv.removeChild(expandDiv.lastChild);
+      }
+      expandDiv.remove();
+      const bodyHtml = document.querySelector('body');
+      bodyHtml.classList.remove('unscroll-body');
+    }
+  });
 }
-
 
 /**
  * Get total time from recipe's JSON object
@@ -629,6 +648,18 @@ function navigateLogin() { // eslint-disable-line no-unused-vars
     logout();
   }
 }
+
+/**
+ * If user is logged in navigate to my page
+ * Otherwise, navigate to login page.
+ */
+function navigateMyPage() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'person.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
 </code></pre>
         </article>
     </section>
@@ -639,13 +670,13 @@ function navigateLogin() { // eslint-disable-line no-unused-vars
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#addTag">addTag</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#cancelRecipe">cancelRecipe</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#deleteTag">deleteTag</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#navigateLogin">navigateLogin</a></li><li><a href="global.html#populateHomePage">populateHomePage</a></li><li><a href="global.html#recipeCardDetail">recipeCardDetail</a></li><li><a href="global.html#removeExpandRecipe">removeExpandRecipe</a></li><li><a href="global.html#removeFilterTag">removeFilterTag</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#showRecipesOnSearch">showRecipesOnSearch</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#addTag">addTag</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#cancelRecipe">cancelRecipe</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#deleteTag">deleteTag</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadingAuthorHtml">loadingAuthorHtml</a></li><li><a href="global.html#loadingDescriptionHtml">loadingDescriptionHtml</a></li><li><a href="global.html#loadingIngredientHtml">loadingIngredientHtml</a></li><li><a href="global.html#loadingStepHtml">loadingStepHtml</a></li><li><a href="global.html#loadingTagHtml">loadingTagHtml</a></li><li><a href="global.html#loadingTimeHtml">loadingTimeHtml</a></li><li><a href="global.html#loadingTitleHtml">loadingTitleHtml</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#logoutAndRedirect">logoutAndRedirect</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#navigateLogin">navigateLogin</a></li><li><a href="global.html#navigateMyPage">navigateMyPage</a></li><li><a href="global.html#onChangeEmail">onChangeEmail</a></li><li><a href="global.html#onChangePassword">onChangePassword</a></li><li><a href="global.html#populateHomePage">populateHomePage</a></li><li><a href="global.html#recipeCardDetail">recipeCardDetail</a></li><li><a href="global.html#redirectIfLoggedIn">redirectIfLoggedIn</a></li><li><a href="global.html#redirectIfLoggedOut">redirectIfLoggedOut</a></li><li><a href="global.html#removeExpandRecipe">removeExpandRecipe</a></li><li><a href="global.html#removeFilterTag">removeFilterTag</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="global.html#searchedRecipe">searchedRecipe</a></li><li><a href="global.html#searchedRecipeCard">searchedRecipeCard</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#showRecipesOnSearch">showRecipesOnSearch</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li><li><a href="global.html#updating">updating</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 22:31:41 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 08 2021 22:35:24 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
