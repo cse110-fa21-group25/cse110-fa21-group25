@@ -146,7 +146,8 @@ async function buildJSON(event) {
 
   // Upload image to server, once that process is complete (async),
   // write the object to database
-  const ref = storage.ref().child(`images/${object.name}-${userID}`);
+  const uniqueImageName = Date.now().toString();
+  const ref = storage.ref().child(`images/${userID}-${uniqueImageName}`);
   const uploadTask = ref.put(recipeImage.files[0]);
   uploadTask.on('state_changed',
       (snapshot) => {
@@ -281,9 +282,9 @@ function addStep() {
   label.textContent = (parentDiv.childElementCount + 1) + '.';
 
   // Adjust some basic styles for  the textarea element
-  newStep.style.height = '70px';
-  newStep.style.width = '300px';
-  newStep.style.verticalAlign = 'middle';
+  // newStep.style.height = '70px';
+  // newStep.style.width = '300px';
+  // newStep.style.verticalAlign = 'middle';
 
   // Add unique id's to the textareas, the id is "step" and the step number
   const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
@@ -315,6 +316,31 @@ function removeStep() {
 function cancelRecipe() {
   window.location.href = 'home-page.html';
 }
+
+/**
+ * If user is logged in navigate to create new recipe page.
+ * Otherwise, navigate to login page.
+ */
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'new-recipe.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
+
+/**
+ * If user is logged in navigate to my page
+ * Otherwise, navigate to login page.
+ */
+function navigateMyPage() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'person.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
+
 </code></pre>
         </article>
     </section>
@@ -325,13 +351,13 @@ function cancelRecipe() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#addTag">addTag</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#cancelRecipe">cancelRecipe</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#deleteTag">deleteTag</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#navigateLogin">navigateLogin</a></li><li><a href="global.html#populateHomePage">populateHomePage</a></li><li><a href="global.html#recipeCardDetail">recipeCardDetail</a></li><li><a href="global.html#removeExpandRecipe">removeExpandRecipe</a></li><li><a href="global.html#removeFilterTag">removeFilterTag</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#showRecipesOnSearch">showRecipesOnSearch</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addIngredient">addIngredient</a></li><li><a href="global.html#addStep">addStep</a></li><li><a href="global.html#addTag">addTag</a></li><li><a href="global.html#buildJSON">buildJSON</a></li><li><a href="global.html#cancelRecipe">cancelRecipe</a></li><li><a href="global.html#createRecipe">createRecipe</a></li><li><a href="global.html#createRecipeCard">createRecipeCard</a></li><li><a href="global.html#deleteImage">deleteImage</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#deleteRecipeById">deleteRecipeById</a></li><li><a href="global.html#deleteTag">deleteTag</a></li><li><a href="global.html#formatTime">formatTime</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#getRecipesByName">getRecipesByName</a></li><li><a href="global.html#getRecipesByTag">getRecipesByTag</a></li><li><a href="global.html#getRecipesByUserId">getRecipesByUserId</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadingAuthorHtml">loadingAuthorHtml</a></li><li><a href="global.html#loadingDescriptionHtml">loadingDescriptionHtml</a></li><li><a href="global.html#loadingIngredientHtml">loadingIngredientHtml</a></li><li><a href="global.html#loadingStepHtml">loadingStepHtml</a></li><li><a href="global.html#loadingTagHtml">loadingTagHtml</a></li><li><a href="global.html#loadingTimeHtml">loadingTimeHtml</a></li><li><a href="global.html#loadingTitleHtml">loadingTitleHtml</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#logoutAndRedirect">logoutAndRedirect</a></li><li><a href="global.html#navigateCreateNewRecipe">navigateCreateNewRecipe</a></li><li><a href="global.html#navigateLogin">navigateLogin</a></li><li><a href="global.html#navigateMyPage">navigateMyPage</a></li><li><a href="global.html#onChangeEmail">onChangeEmail</a></li><li><a href="global.html#onChangePassword">onChangePassword</a></li><li><a href="global.html#populateHomePage">populateHomePage</a></li><li><a href="global.html#recipeCardDetail">recipeCardDetail</a></li><li><a href="global.html#redirectIfLoggedIn">redirectIfLoggedIn</a></li><li><a href="global.html#redirectIfLoggedOut">redirectIfLoggedOut</a></li><li><a href="global.html#removeExpandRecipe">removeExpandRecipe</a></li><li><a href="global.html#removeFilterTag">removeFilterTag</a></li><li><a href="global.html#removeIngredient">removeIngredient</a></li><li><a href="global.html#removeStep">removeStep</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="global.html#searchedRecipe">searchedRecipe</a></li><li><a href="global.html#searchedRecipeCard">searchedRecipeCard</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#showRecipesOnSearch">showRecipesOnSearch</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#updateRecipe">updateRecipe</a></li><li><a href="global.html#updating">updating</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 22:31:41 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 08 2021 22:35:24 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
