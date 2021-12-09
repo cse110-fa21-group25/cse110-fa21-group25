@@ -1125,7 +1125,6 @@ async function updating(recipeUpdateButton, recipe) {
 function loadingIngredientHtml(object) {
   const ingredientList = searchForKey(object, 'recipeIngredient');
   for (const key in ingredientList) {
-
     // First block is already there. So no need to make new createElement
     if (key == 0 ) {
       const temp = document.querySelector('.ingredients-field input');
@@ -1160,7 +1159,6 @@ function loadingStepHtml(object) {
   const stepsList = searchForKey(object, 'recipeInstructions');
 
   for (const key in stepsList) {
-
     // First block is already there. So no need to make new createElement
     if (key == 0 ) {
       const temp = document.querySelector('.recipe-steps textarea');

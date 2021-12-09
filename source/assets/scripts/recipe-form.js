@@ -141,7 +141,6 @@ async function buildJSON(event) {
         });
       },
   );
-
 }
 /**
  * Function to remove a tag when the corresponding button is clicked
