@@ -288,3 +288,28 @@ function removeStep() {
 function cancelRecipe() {
   window.location.href = 'home-page.html';
 }
+
+/**
+ * If user is logged in navigate to create new recipe page.
+ * Otherwise, navigate to login page.
+ */
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'new-recipe.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
+
+/**
+ * If user is logged in navigate to my page
+ * Otherwise, navigate to login page.
+ */
+function navigateMyPage() { // eslint-disable-line no-unused-vars
+  if (firebase.auth().currentUser) {
+    window.location.href = 'person.html';
+  } else {
+    window.location.href = 'login.html';
+  }
+}
+
