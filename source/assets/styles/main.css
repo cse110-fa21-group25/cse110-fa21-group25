@@ -74,6 +74,12 @@ body {
   padding: 10px 20px;
 }
 
+@media (max-width: 768px) {
+  .sticky-top {
+      top: 76px;
+  }
+}
+
 .view-recipe-button {
   padding: 5px;
   width: 100%;

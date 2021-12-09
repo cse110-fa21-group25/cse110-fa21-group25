@@ -308,12 +308,6 @@ let filterRecipeArray = [];
  * @param {*} tagName name of the tag
  */
 async function searchByTag(button, tagName) {
-  // let recipeWithTag;
-  // const recipeDataBasedOnSearch = await getRecipesByTag(tagName);
-  // if (Object.keys(recipeDataBasedOnSearch).length > 0) {
-  //   map[tagName] = recipeDataBasedOnSearch;
-  // }
-  // console.log(map);
   button.addEventListener('click', ()=>{
     for (const recipe of recipeData) {
       for (const tag in recipe.data.tags) {
@@ -387,11 +381,6 @@ async function removeFilterTag(closeButton, filterTagName,
       }
       wrapper.remove();
     }
-
-    // filter recipe
-    /* filterRecipeArray = filterRecipeArray.
-  filter(recipe => !(recipe.data.tags.includes(filterTagName)));
-  */
     filterRecipeArray = [];
     for (const availTag of uniqueFilters) {
       for (const recipe of recipeData) {
@@ -420,39 +409,6 @@ async function removeFilterTag(closeButton, filterTagName,
  */
 async function recipeCardDetail(recipeDetailButton, recipe) {
   recipeDetailButton.addEventListener('click', ()=>{
-    /* *********************************** *
-     * expand format:
-     * <div>
-     *      <div class='close-recipe-detail-div'>
-     *          <button>X</button>
-     *      </div>
-     *      <div>
-     *          <h4> {recipe's title} </h4>
-     *          <img src='{recipe's thumbnail}'>
-     *          <p> Cook/prep time </p>
-     *          <p> {recipe's owner} </p>
-     *          <div class='tags'>
-     *              <button> {recipe's tag 1} </button>
-     *              ... // more tags go here
-     *          </div>
-     *      </div>
-     *      <div class='ingredients'>
-     *          <h4>Ingredients:</h4>
-     *          <ul>
-     *              <li>{ingredient 1}</li>
-     *          ... // more ingredients go here
-     *          </ul>
-     *      </div>
-     *      <div class='instructions'>
-     *          <h4>Instructions:</h4>
-     *          <ul>
-     *              <li>{instruction 1}</li>
-     *              ... // more instructions go here
-     *          </ul>
-     *      </div>
-     * </div>
-     *
-     * *********************************** */
     const overlayDiv = document.createElement('div');
     overlayDiv.classList.add('overlay');
 
@@ -553,17 +509,9 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     const bodyHtml = document.querySelector('body');
     bodyHtml.appendChild(overlayDiv);
 
-    // let overlayOpen = expandDiv.className === 'overlay';
-
     /* Toggle the aria-hidden state on the overlay and the
         no-scroll class on the body */
     bodyHtml.classList.add('unscroll-body');
-    //  bodyHtml.classList.toggle('noscroll', overlayOpen);
-
-    /* On some mobile browser when the overlay was previously
-        opened and scrolled, if you open it again it doesn't
-        reset its scrollTop property */
-    //  overlayDiv.scrollTop = 0;
 
 
     removeExpandRecipe(closeRecipeExpandButton, overlayDiv, 'Escape');
@@ -666,8 +614,6 @@ function formatTime(time) {
  */
 async function deleteRecipe(recipeDeleteButton, recipe) {
   recipeDeleteButton.addEventListener('click', ()=>{
-    // console.log(recipe);
-    // console.log(recipe.id);
     const result = confirm('Do you really want to delete this recipe?');
     if (result) {
       // delete the image and the recipe by id.
@@ -769,7 +715,6 @@ async function updating(recipeUpdateButton, recipe) {
     mainForm.appendChild(br1);
     const br2 = document.createElement('br');
     mainForm.appendChild(br2);
-    //  main_form.append(br);
     //  Label for author
     const labelAuthor = document.createElement('label');
     labelAuthor.innerHTML = 'Author:';
@@ -1034,8 +979,6 @@ async function updating(recipeUpdateButton, recipe) {
         ({...acc, [input.id]: input.value}), {});
       const ingredientArray = [];
 
-      // const allIPlaceholder = document.querySelectorAll(
-      //     '.ingredients-field placeholder');
       const formattedIngredientsPlaceholder = recipeInput.reduce((acc, input) =>
         ({...acc, [input.id]: input.placeholder}), {});
 
@@ -1182,10 +1125,6 @@ async function updating(recipeUpdateButton, recipe) {
 function loadingIngredientHtml(object) {
   const ingredientList = searchForKey(object, 'recipeIngredient');
   for (const key in ingredientList) {
-    /* <input type="text" class="ingredient"
-    placeholder="Ingredient Name" id="ingredient1">
-    */
-
     // First block is already there. So no need to make new createElement
     if (key == 0 ) {
       const temp = document.querySelector('.ingredients-field input');
@@ -1220,12 +1159,6 @@ function loadingStepHtml(object) {
   const stepsList = searchForKey(object, 'recipeInstructions');
 
   for (const key in stepsList) {
-    /* <textarea class="steps" style="height:70px; width:300px;
-    vertical-align: middle"
-    placeholder='Add the first step of creating your recipe here!'
-    id="step1"></textarea>
-    */
-
     // First block is already there. So no need to make new createElement
     if (key == 0 ) {
       const temp = document.querySelector('.recipe-steps textarea');
@@ -1240,10 +1173,6 @@ function loadingStepHtml(object) {
 
       // Set the step label to be the number of "steps" fields there will be.
       newLabel.textContent = (parentDiv.childElementCount + 1) + '.' + ' ';
-
-      // // Style the new step box
-      // newStep.style = 'height:70px; width:300px ';
-      // newStep.setAttribute('vertical-align', 'middle');
 
       // Populate Input Fields
       newStep.id = 'step' + key + 1;
@@ -1466,11 +1395,6 @@ function addStep() {
   const parentDiv = document.querySelector('.recipe-steps');
   // Set the step label to be the number of "steps" fields there will be.
   label.textContent = (parentDiv.childElementCount + 1) + '. ';
-  // // Adjust some basic styles for  the textarea element
-  // newStep.style.height = '70px';
-  // newStep.style.width = '300px';
-  // newStep.style.verticalAlign = 'middle';
-  // Add unique id's to the textareas, the id is "step" and the step number
   const idNum = document.querySelector('.recipe-steps').childElementCount + 1;
   newStep.id = 'step' + idNum;
   // Append HTMl elements to DOM
