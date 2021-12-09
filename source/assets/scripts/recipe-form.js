@@ -142,9 +142,6 @@ async function buildJSON(event) {
       },
   );
 
-  // Use JSON stringify to create json string from object for debug purposes
-  // const jsonString = JSON.stringify(object);
-  // console.log(jsonString);
 }
 /**
  * Function to remove a tag when the corresponding button is clicked
