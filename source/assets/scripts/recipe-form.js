@@ -293,7 +293,7 @@ function cancelRecipe() {
  * If user is logged in navigate to my page
  * Otherwise, navigate to login page.
  */
- function navigateMyPage() { // eslint-disable-line no-unused-vars
+function navigateMyPage() { // eslint-disable-line no-unused-vars
   if (firebase.auth().currentUser) {
     window.location.href = 'person.html';
   } else {
@@ -305,7 +305,7 @@ function cancelRecipe() {
  * If user is logged in navigate to create new recipe page.
  * Otherwise, navigate to login page.
  */
- function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
+function navigateCreateNewRecipe() { // eslint-disable-line no-unused-vars
   if (firebase.auth().currentUser) {
     window.location.href = 'new-recipe.html';
   } else {
