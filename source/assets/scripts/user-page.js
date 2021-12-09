@@ -122,7 +122,6 @@ async function showRecipesOnSearch(data, sectionName, query) {
  * @param {*} recipe query get recipe data
  */
 async function searchedRecipe(recipe) {
-  console.log('herehrehrhe');
   const cardDiv = document.createElement('div');
   cardDiv.classList.add('card');
   cardDiv.classList.add('col-md-3');
@@ -325,13 +324,13 @@ async function searchByTag(button, tagName) {
     filterRecipeArray = [...new Map(filterRecipeArray.map((item) =>
       [item['id'], item])).values()];
 
-    console.log(filterRecipeArray);
+    //console.log(filterRecipeArray);
 
     const header = document.querySelector('header');
     let wrapper;
     let filterDiv;
     if (!document.querySelector('.wrapper')) {
-      console.log('filter not found');
+      //console.log('filter not found');
       wrapper = document.createElement('section');
       wrapper.classList.add('wrapper');
       filterDiv = document.createElement('div');
@@ -342,13 +341,13 @@ async function searchByTag(button, tagName) {
       wrapper = document.querySelector('.wrapper');
       filterDiv = document.querySelector('.sticky-top');
     }
-    console.log('tag button clicked');
+    //console.log('tag button clicked');
     if (!uniqueFilters.has(button.innerHTML)) {
       const buttonDiv = document.createElement('div');
       const buttonClone = button.cloneNode(true);
       const closeButton = document.createElement('button');
       closeButton.innerHTML = 'x';
-      console.log(buttonClone);
+      //console.log(buttonClone);
       uniqueFilters.add(buttonClone.innerHTML);
       buttonClone.classList.add('tag');
       buttonDiv.classList.add('filter-component');
@@ -547,7 +546,7 @@ async function recipeCardDetail(recipeDetailButton, recipe) {
     instructionsDiv.appendChild(instructionsH4);
     instructionsDiv.appendChild(instructionsOl);
 
-    console.log(overlayDiv);
+    //console.log(overlayDiv);
 
     // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
@@ -1048,7 +1047,7 @@ async function updating(recipeUpdateButton, recipe) {
         }
       }
 
-      console.log(ingredientArray);
+      //console.log(ingredientArray);
 
       // Take all the "textarea" elements within .recipeSteps scrape data
       // Then build a string int he format that the JSON schema expects
@@ -1076,7 +1075,7 @@ async function updating(recipeUpdateButton, recipe) {
         cookTime = 'PT' + numHours + 'H' + numMinutes + 'M';
       }
 
-      console.log(cookTime);
+      //console.log(cookTime);
       // Get the image, serverside implementation needed
       const recipeImage = document.querySelector('#recipe-image');
       // Retrieve all the tags selected
@@ -1088,7 +1087,7 @@ async function updating(recipeUpdateButton, recipe) {
 
       // Start building JSON string first from object, fill out the form values.
 
-      console.log(recipe.data);
+      //console.log(recipe.data);
       recipe.data.tags = tagArray;
       recipe.data.name = document.querySelector('#recipe-title').value;
       recipe.data.author = document.querySelector('#author').value;
@@ -1097,7 +1096,7 @@ async function updating(recipeUpdateButton, recipe) {
       recipe.data.cookTime = cookTime;
       recipe.data.recipeIngredient = ingredientArray;
       recipe.data.recipeInstructions = stepString;
-      console.log(recipe.data);
+      //console.log(recipe.data);
 
       const userID = firebase.auth().currentUser.uid;
 
@@ -1153,7 +1152,7 @@ async function updating(recipeUpdateButton, recipe) {
     closeRecipeExpandDiv.appendChild(closeRecipeExpandButton);
 
 
-    console.log(bodyDiv);
+    //console.log(bodyDiv);
 
     // attach expanded view to body element
     const bodyHtml = document.querySelector('body');
@@ -1266,7 +1265,7 @@ function loadingStepHtml(object) {
    * @param {*} object
    */
 function loadingTagHtml(object) {
-  console.log('!!loadingTagHtml');
+  //console.log('!!loadingTagHtml');
   const tagsList = searchForKey(object, 'tags');
   for (const i in tagsList) { // eslint-disable-line guard-for-in
     // Adding that the tag is selected
@@ -1316,7 +1315,7 @@ function loadingTimeHtml(object) {
   let hour='';
   let min='';
   let time = searchForKey(object, 'cookTime');
-  console.log(time);
+  //console.log(time);
 
   // Remove PT
   time = time.slice(2);

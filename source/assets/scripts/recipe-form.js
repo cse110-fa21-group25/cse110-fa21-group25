@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', init);
 async function buildJSON(event) {
   // prevent submit button from refreshing the page.
   event.preventDefault();
-  console.log('building JSON');
+  //console.log('building JSON');
 
   // Query select all the "input" elements within .ingredients-field
   // make an array order to run reduce on it and scrape out
