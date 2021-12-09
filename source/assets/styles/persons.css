@@ -140,14 +140,9 @@
 }
 
 /* style for update-recipe */
-body > div.overlay > div > div:nth-child(1) {
-  background-color: #72a98f;
-}
-
 #nav-placeholder > h1 {
   font-weight: 600;
   font-family: "Oswald", sans-serif;
-  margin-left: 20px;
 }
 
 #recipeForm > label {
@@ -157,7 +152,6 @@ body > div.overlay > div > div:nth-child(1) {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
-  margin-left: 20px;
 }
 
 input[name="recipe-title"],
@@ -182,7 +176,6 @@ input[class="ingredient"] {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
-  margin-left: 20px;
 }
 
 textarea {
@@ -194,10 +187,9 @@ textarea {
   border: 1.5px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
-  /* margin-left: left; */
+  margin-left: left;
   margin-right: left;
   font-size: 15px;
-  margin-left: 20px;
 }
 
 #tag-section > label {
@@ -206,8 +198,7 @@ textarea {
   line-height: 150%;
   font-size: 1em;
   font-weight: bold;
-  text-shadow: 1px 1px #72a98f; 
-  margin-left: 20px;
+  text-shadow: 1px 1px #72a98f;
 }
 
 #tags {
@@ -220,9 +211,8 @@ textarea {
   border-radius: 10px;
   box-sizing: border-box;
   font-size: 15px;
-  /* margin-left: left; */
+  margin-left: left;
   margin-right: left;
-  margin-left: 20px;
 }
 
 #add-tag {
@@ -237,11 +227,10 @@ textarea {
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 30px;
-  /* margin-left: left; */
+  margin-left: left;
   margin-right: left;
   font-size: 15px;
   height: 30px;
-  margin-left: 20px;
 }
 #add-tag:hover {
   background-color: #536d61;
@@ -250,19 +239,6 @@ textarea {
   display: flex;
   font-size: 16px;
   justify-content: left;
-  margin-left: 20px;
-}
-div > button {
-  background-color: transparent;
-  margin-right: 10px;
-  padding: 5px;
-  border: none;
-  border-width: thin;
-  font-weight: 600;
-}
-
-.ingredients-field {
-  margin-left: 20px;
 }
 
 #add-ingredient {
@@ -274,8 +250,7 @@ div > button {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 10px;
-  margin-left: 20px;
+  margin-right: 5px;
 }
 
 #remove-ingredient {
@@ -293,7 +268,6 @@ div > button {
   display: flex;
   justify-content: left;
   align-items: left;
-  margin-left: 20px;
 }
 #num-hours,
 #num-minutes {
@@ -315,9 +289,7 @@ div > button {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-left: 20px;
+  margin-right: 5px;
 }
 
 #remove-step {
@@ -338,14 +310,12 @@ div > button {
   font-size: 1em;
   font-weight: bold;
   text-shadow: 1px 1px #72a98f;
-  margin-left: 20px;
 }
 
 #recipe-image {
   margin-top: 10px;
-  /* margin-left: left; */
+  margin-left: left;
   margin-right: left;
-  margin-left: 20px;
 }
 
 #update-recipe {
@@ -357,8 +327,7 @@ div > button {
   font-weight: 300;
   color: white;
   height: 30px;
-  margin-right: 10px;
-  margin-left: 20px;
+  margin-right: 5px;
 }
 
 #cancel-recipe {
