@@ -13,7 +13,7 @@ For our project, we need to use a backend in order for our website to be functio
 
 ## Decision Outcome
 
-The decision that we ultimately made was to use Firebase rather than using MongoDB for a few reason. All team members lacked backend experience which made it difficult to begin with when one attempted to do it while Firebase on the other hand is a lot friendlier for beginners. Additionally, Firebase offers a wide variety of features which include hosting a website and user authentication which can reduce the number of software/applications that we use (e.g., avoid heroku). 
+The decision that we ultimately made was to use Firebase rather than using MongoDB. Firebase will be used for user authentication, website hosting, image storage, recipe storage, and user-data storage. Our decision was made based on a few reason which included lack of experience, easier to find solutions due to popularity, and because it reduced the number of applications needed. All team members lacked backend experience which made it difficult to begin with when one attempted to do it while Firebase on the other hand is a lot friendlier for beginners. Additionally, Firebase offers a wide variety of features which include hosting a website and user authentication which can reduce the number of software/applications that we use (e.g., avoid heroku). 
 
 ## Reasons for Choosing Options
 * Friendlier for users who lack backend experience
