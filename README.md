@@ -24,4 +24,4 @@ This project is a "CRUD" web-app that allows users to create, manage, update, an
 
 ## [Final Video (Public)](https://www.youtube.com/watch?v=CJofgszQDRQ)
 
-## [Finval Video (Private)](https://youtu.be/BxyG3uUpajw)
+## [Final Video (Private)](https://youtu.be/BxyG3uUpajw)
